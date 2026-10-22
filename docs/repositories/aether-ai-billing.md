@@ -1,6 +1,6 @@
 # Repository specification: aether-ai-billing
 
-**Status:** Planned; repository not created yet. This document is the design contract to carry into that repository when it is created.
+**Status:** Repository exists; documentation-only on the inspected `main` branch. No application implementation is present in the audited tree.
 
 ## Mission
 
