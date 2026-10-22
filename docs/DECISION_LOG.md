@@ -1,0 +1,22 @@
+# Aether AI — Architecture Decision Log
+
+This is the decision register. A decision is **proposed** until its status is changed to **accepted** with rationale and date. Do not infer that a proposed stack has been selected.
+
+| ID | Decision | Status | Reason / next action |
+|---|---|---|---|
+| ADR-0001 | Keep Aether AI separate from WoHoTech | Accepted | User requirement; separate product/repository identity. |
+| ADR-0002 | Use WoHo AI DevKit as an external dependency, not rewrite it | Accepted in principle | Preserve existing project; verify package APIs and compatibility before implementation. |
+| ADR-0003 | Plan 33 Aether repositories | Proposed | User requested a 33-repository ecosystem; review for boundaries/cycles before creating remaining 23. |
+| ADR-0004 | Treat repository boundaries separately from deployable-service boundaries | Proposed | Avoid premature microservices; runtime topology is not decided. |
+| ADR-0005 | AI DIAL integration strategy: adopt, adapter, or custom gateway | Open | Run a small compatibility/licensing/operational evaluation before choosing. |
+| ADR-0006 | Frontend/backend technology stack | Open | DIAL Chat is a reference, not a binding stack choice. Decide based on maintainability and existing package compatibility. |
+| ADR-0007 | Database, queue, cache, vector/search engine | Open | Compare data model, operations, cost, tenancy, backup, and licensing before selection. |
+| ADR-0008 | Identity provider and session model | Open | Need threat model, user/tenant requirements, and deployment assumptions. |
+| ADR-0009 | Provider/model list and fallback policy | Open | Compare supported features, cost, privacy, streaming, tool calls, and model terms. |
+| ADR-0010 | Project name and public branding | Open | Aether AI is provisional; check GitHub/domain/trademark availability before public launch. |
+| ADR-0011 | Monorepo vs multi-repo package management and CI | Open | Avoid duplicate release/version complexity; document ownership and cross-repo CI before coding. |
+| ADR-0012 | Prompt/file/memory retention and telemetry policy | Open | Privacy/security requirement; define defaults and user controls before persistence features. |
+
+## ADR format for new decisions
+
+Each accepted ADR must include: context/problem, options considered, chosen option, reasons, consequences/tradeoffs, security/license implications, migration plan, affected repositories, date, and reviewer. If a decision changes, supersede it with a new ADR rather than silently rewriting history.
