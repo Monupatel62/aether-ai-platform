@@ -73,3 +73,8 @@ Date; repository; exact paths changed; purpose; why this design was chosen; depe
 ## Latest continuation point — identity and tenant security (2026-10-22)
 
 Continue from `docs/IDENTITY_AND_TENANT_SECURITY_EVALUATION.md`. The next decision work is to compare one managed OIDC provider and one self-hosted OIDC option with a common scorecard, then resolve browser sessions, authorization model, tenant hierarchy, workload/API-key identity, MFA/recovery and RLS testing. Do not start application coding; no provider or policy architecture has been accepted. See `docs/OPEN_DECISIONS_RESEARCH.md` and `docs/DECISION_LOG.md` for open ADRs.
+
+
+## Latest continuation point — identity provider shortlist (2026-10-22)
+
+The next file to read is `docs/IDENTITY_PROVIDER_SHORTLIST_AND_SCORECARD.md`. Candidates are ZITADEL, Keycloak and Auth0 as different managed/self-hosted operating models. Do not treat the initial shortlist as a decision. Populate the scorecard only from tests and verified commercial/operational evidence; security acceptance gates are mandatory. No POC has run and application coding remains blocked pending explicit review.
