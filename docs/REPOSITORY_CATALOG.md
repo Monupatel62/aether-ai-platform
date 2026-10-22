@@ -165,3 +165,8 @@ This is a proposed logical graph, not a claim that all 33 repositories must beco
 ## Cross-repository consistency audit — 2026-10-22
 
 - [Cross-repository consistency audit](CROSS_REPOSITORY_CONSISTENCY_AUDIT.md) records semantic contract conflicts and dependency-direction risks found after the structural audit. It is the next required gate before implementation; it does not claim automated cycle detection or runtime verification.
+
+
+## Typed dependency edges — 2026-10-22
+
+- [Dependency edge register](DEPENDENCY_EDGE_REGISTER.md) classifies logical relationships and records explicit non-edges to prevent known dependency cycles. Its preliminary manually transcribed package graph reported no cycles, but the graph still needs machine-readable normalization and reproducible rechecking before implementation.
