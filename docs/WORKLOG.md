@@ -177,3 +177,13 @@ For each future change, record: date; exact files; why the change is needed; alt
 - Updated the contract registry README with these draft artifacts and current limitations.
 - No schema validator, OpenAPI validator, fixture suite, application code, or runtime security tests were run. Catalog and schemas remain unapproved.
 - Next: resolve contract ownership/versioning and tenant/ACL/event semantics; then prepare a versioned OpenAPI baseline and valid/invalid fixtures for review. Keep implementation gated on explicit approval.
+
+
+## 2026-10-22 — Draft versioned OpenAPI baseline
+
+- Added [openapi.v1.yaml](contracts/openapi.v1.yaml), a provisional OpenAPI 3.1.0 baseline for health, synchronous text completion, durable run creation/status, and cancellation.
+- Added [OPENAPI_V1_BASELINE.md](contracts/OPENAPI_V1_BASELINE.md) documenting provisional scope, security invariants, review blockers, and verification limits.
+- Linked both artifacts from the contract registry README.
+- Route names and fields are candidates for review, not approved or implemented endpoints. JWT bearer is a placeholder, not a selected identity design.
+- No OpenAPI parser/validator, generated client, API implementation, contract fixtures, or runtime security tests were run.
+- Next: review route scope and auth/tenant ownership, settle idempotency and lifecycle semantics, then validate OpenAPI and add positive/negative fixtures. Keep coding gated on explicit approval.
