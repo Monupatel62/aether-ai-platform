@@ -50,3 +50,22 @@ Environment isolation, state protection, least-privilege IAM, secret injection, 
 - [AI DIAL Chat architecture](https://github.com/epam/ai-dial-chat/blob/development/docs/architecture.md)
 
 External source code is not copied by this specification. Verify exact versions, licenses, and security posture before any reuse.
+
+## Security and privacy
+
+Infrastructure changes can expose every service through misconfigured networks, IAM, state files, or public storage. Use least-privilege roles, protected state, network segmentation, encrypted backups, runtime secret management, environment isolation, and reviewed plans before applying changes.
+
+## Test plan
+
+Test policy-as-code, public exposure defaults, IAM least privilege, encrypted/protected state, environment isolation, backup/restore, drift detection, and safe plan review before apply.
+
+Before release, add unit tests, contract tests for direct dependencies, negative authorization/input tests, and failure/recovery tests for the behavior this component owns. Use synthetic or sanitized data only.
+
+## Related documentation
+
+- [Master repository catalog](../REPOSITORY_CATALOG.md)
+- [Master architecture](../MASTER_ARCHITECTURE.md)
+- [Architecture audit](../ARCHITECTURE_AUDIT.md)
+- [Security threat model](../SECURITY_THREAT_MODEL.md)
+- [Open decisions and research](../OPEN_DECISIONS_RESEARCH.md)
+- [Continuity handoff](../WORK_HANDOFF.md)
