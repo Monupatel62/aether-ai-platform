@@ -55,3 +55,10 @@ Each accepted ADR must include: context/problem, options considered, chosen opti
 - Added `docs/IDENTITY_PROVIDER_SHORTLIST_AND_SCORECARD.md` comparing ZITADEL, Keycloak and Auth0 using official documentation and a weighted POC scorecard.
 - No identity provider was selected. The scorecard must be populated with observed POC evidence; unknowns remain N/T rather than guessed scores.
 - Next gate: run equivalent protocol, tenant authorization, lifecycle, audit, operations and migration tests. No POC was executed in this research step.
+
+
+## 2026-10-22 — Browser session and authorization architecture research
+
+- Added `docs/BROWSER_SESSION_AND_AUTHORIZATION_ARCHITECTURE.md` using IETF RFC 10017 (August 2026), RFC 9700, OWASP guidance and PostgreSQL RLS documentation.
+- BFF with server-side sessions is the preferred candidate for the first-party web POC, not an accepted ADR. RBAC plus resource-level checks is the baseline candidate; ABAC/ReBAC/policy-engine scope remains open.
+- ADR-0019, ADR-0020 and related ADRs remain open. No POC tests or application code were run.
