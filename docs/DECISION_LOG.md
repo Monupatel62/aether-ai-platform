@@ -24,3 +24,12 @@ Each accepted ADR must include: context/problem, options considered, chosen opti
 | ADR-0014 | AI security baseline | Proposed | Map the threat model and tests to OWASP GenAI LLM Top 10 2026; prompt text alone is not a security control. |
 | ADR-0015 | GenAI observability and privacy | Proposed | Use OpenTelemetry conventions where useful, but keep raw prompt/completion capture disabled by default and define retention/redaction first. |
 | ADR-0016 | CI action and release supply-chain policy | Proposed | Pin Actions to full commit SHAs unless an approved lockfile/policy gives equivalent immutability; use least-privilege workflow tokens and protected releases. |
+
+## Architecture review update — 2026-10-22
+
+| ID | Decision | Status | Evidence / next action |
+|---|---|---|---|
+| ADR-0003 | Plan 33 Aether repositories | Accepted | User explicitly chose 33. This is a repository organization target, not a requirement to deploy 33 services. Remaining 23 can be created after the documentation phase. |
+| ADR-0004 | Repository boundaries are separate from service boundaries | Accepted | Dependency matrix requires a modular runtime/package map first. Create a separate network service only for a documented scaling, isolation, ownership or release reason. |
+| ADR-0005 | DIAL Core vs DevKit gateway path vs hybrid | Open | [DIAL adoption evaluation](DIAL_ADOPTION_EVALUATION.md) compares the options. Run a controlled proof-of-concept and then decide. |
+| ADR-0017 | WoHo DevKit package integration boundary | Proposed | [DevKit compatibility review](DEVKIT_COMPATIBILITY_REVIEW.md) records current package versions and source-level findings. Pin verified artifacts, use public exports/adapters, and keep Aether authorization/orchestration policy outside DevKit. |
