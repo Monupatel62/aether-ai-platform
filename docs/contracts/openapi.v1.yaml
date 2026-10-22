@@ -114,6 +114,10 @@ paths:
               description: Relative URL of the created run resource.
               schema:
                 type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateRunAcceptedResponse'
         '400':
           $ref: '#/components/responses/InvalidArgument'
         '401':
@@ -179,7 +183,11 @@ paths:
             maxLength: 200
       responses:
         '202':
-          description: Cancellation request accepted; final state may be observed through GET run.
+          description: Cancellation request accepted; final state may be observed through GET run. This response acknowledges the request and does not guarantee that cancellation has completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CancelRunAcceptedResponse'
         '401':
           $ref: '#/components/responses/Unauthenticated'
         '403':
@@ -431,6 +439,40 @@ components:
           type: object
           maxProperties: 50
           description: Non-authoritative client metadata only; must not grant roles, tenant access, or approvals.
+    CreateRunAcceptedResponse:
+      type: object
+      additionalProperties: false
+      required: [run_id, status, request_id]
+      description: Provisional acknowledgement body. Field semantics and identifier formats require review before approval.
+      properties:
+        run_id:
+          type: string
+          minLength: 8
+          maxLength: 128
+        status:
+          type: string
+          const: queued
+        request_id:
+          type: string
+          minLength: 8
+          maxLength: 128
+    CancelRunAcceptedResponse:
+      type: object
+      additionalProperties: false
+      required: [run_id, status, request_id]
+      description: Provisional acknowledgement of a cancellation request, not confirmation of a terminal cancelled state.
+      properties:
+        run_id:
+          type: string
+          minLength: 8
+          maxLength: 128
+        status:
+          type: string
+          const: cancellation_requested
+        request_id:
+          type: string
+          minLength: 8
+          maxLength: 128
     RunStatus:
       type: object
       additionalProperties: false
