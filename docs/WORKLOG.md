@@ -75,3 +75,10 @@ For each future change, record: date; exact files; why the change is needed; alt
 
 - Added `docs/IDENTITY_PROVIDER_SHORTLIST_AND_SCORECARD.md` with official-source-based candidate comparison, weighted scorecard, POC phases, mandatory acceptance gates and migration checks.
 - Updated handoff and architecture-decision notes. No vendor was selected and no POC tests or application code were run.
+
+
+## 2026-10-22 — Browser session and authorization research
+
+- Added `docs/BROWSER_SESSION_AND_AUTHORIZATION_ARCHITECTURE.md`, based on current IETF browser OAuth guidance and OWASP authorization/session guidance.
+- Documented BFF/session options, CSRF defenses, tenant enforcement, authorization model trade-offs and POC acceptance tests.
+- Updated handoff/decision documentation. No POC was run and no application code was written.
