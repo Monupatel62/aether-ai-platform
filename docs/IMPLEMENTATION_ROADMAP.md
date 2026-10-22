@@ -142,3 +142,12 @@ The preliminary result does not prove the Markdown edge register is complete or 
 - [ ] Before implementation, validate the graph against actual source imports/build manifests once packages exist; keep proposed-graph checks separate from code-derived checks.
 
 This result only establishes that the proposed JSON graph has no cycles; it does not establish that future or existing source imports conform to it.
+
+
+### Tenant membership and ACL consistency gate — 2026-10-22
+
+- [x] Compare tenant/workspace membership ownership options and record recommendation/risks in [TENANT_MEMBERSHIP_AND_ACL_CONSISTENCY_DECISION.md](TENANT_MEMBERSHIP_AND_ACL_CONSISTENCY_DECISION.md).
+- [x] Specify revocation safety invariants and POC failure cases across API, sessions, workers, caches, files, search/RAG indexes and citations.
+- [ ] Product owner confirms universal tenant-domain ownership versus an approved change to the 33-repository plan.
+- [ ] Approve retention/deletion semantics and numeric projection-cleanup SLOs after workload requirements and benchmarks are available.
+- [ ] Run identity/authorization POC only after explicit approval; no code or POC was run in this checkpoint.
