@@ -91,3 +91,8 @@ Research record: `docs/IDENTITY_AND_TENANT_SECURITY_EVALUATION.md`.
 - Proposed ADR-0024: tenant isolation and PostgreSQL RLS rollout/test ownership.
 
 Evidence baseline includes IETF RFC 9700, NIST SP 800-63B-4, OpenID Connect Core and PostgreSQL RLS documentation. These references inform evaluation; they do not select a vendor. No proof-of-concept tests have run yet. See the evaluation document for acceptance criteria.
+
+
+## Identity-provider shortlist and scorecard — 2026-10-22
+
+See `docs/IDENTITY_PROVIDER_SHORTLIST_AND_SCORECARD.md`. Current candidates: ZITADEL (cloud/self-hosted), Keycloak (self-hosted control) and Auth0 (managed benchmark). Official documentation supports advertised capabilities but does not establish fit, security effectiveness, pricing or plan eligibility for Aether. Current Keycloak passkey maturity must be checked against the exact release used; the reviewed 26.0.8 guide labels passkeys preview. No vendor is selected. The common POC scorecard and mandatory acceptance gates must be completed before ADR-0008 is accepted.
