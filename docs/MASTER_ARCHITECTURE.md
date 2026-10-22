@@ -4,7 +4,7 @@
 
 ## 1. Product intent
 
-Aether AI is a proposed AI platform combining multi-provider model access, chat/workspaces, agents, workflows, tools/MCP, retrieval and knowledge, developer SDKs, evaluations, enterprise controls, and deployment/operations. WoHoTech remains a separate project. WoHo AI DevKit remains a separate existing dependency.
+Aether AI is a proposed AI platform combining multi-provider model access, chat/workspaces, agents, workflows, tools/MCP, retrieval and knowledge, developer SDKs, evaluations, enterprise controls, and deployment/operations. Aether AI is a standalone project; no external project is assumed as a dependency.
 
 ## 2. Layered architecture
 
