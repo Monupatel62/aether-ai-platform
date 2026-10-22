@@ -20,6 +20,7 @@ Use this file as the handoff context when work continues in a new ChatGPT conver
 
 1. [Master catalog](REPOSITORY_CATALOG.md)
 2. [Dependency matrix](DEPENDENCY_MATRIX.md)
+3. [Repository specification audit matrix](REPOSITORY_SPEC_AUDIT_MATRIX.md)
 3. [Architecture audit](ARCHITECTURE_AUDIT.md)
 4. [Security threat model](SECURITY_THREAT_MODEL.md)
 5. [Open decisions and research](OPEN_DECISIONS_RESEARCH.md)
