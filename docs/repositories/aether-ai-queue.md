@@ -53,3 +53,22 @@ Delivery semantics, idempotency, ordering assumptions, visibility/lease timeouts
 - [WoHo AI DevKit](https://github.com/Monupatel62/woho-ai-devkit)
 
 All external projects are references or candidate dependencies only. Verify exact version, license, dependency tree, and security posture before reuse.
+
+## Security and privacy
+
+Queue messages are untrusted input even when delivered by internal infrastructure. Authenticate producers, validate schema/version, apply tenant scoping, bound message size and retries, prevent replay where relevant, and ensure duplicate delivery cannot repeat non-idempotent side effects.
+
+## Test plan
+
+Test duplicate/out-of-order messages, invalid schema versions, oversized messages, retry exhaustion, dead-letter behavior, tenant mismatch, replay, and crash recovery.
+
+Before release, add unit tests, contract tests for direct dependencies, negative authorization/input tests, and failure/recovery tests for the behavior this component owns. Use synthetic or sanitized data only.
+
+## Related documentation
+
+- [Master repository catalog](../REPOSITORY_CATALOG.md)
+- [Master architecture](../MASTER_ARCHITECTURE.md)
+- [Architecture audit](../ARCHITECTURE_AUDIT.md)
+- [Security threat model](../SECURITY_THREAT_MODEL.md)
+- [Open decisions and research](../OPEN_DECISIONS_RESEARCH.md)
+- [Continuity handoff](../WORK_HANDOFF.md)
