@@ -230,3 +230,14 @@ For each future change, record: date; exact files; why the change is needed; alt
 - Each repository now has the standard ten documentation files. Files were fetched back from GitHub for verification where checked; authentication's ten files were individually verified. Security's remaining docs were committed after the initial multi-file operation was interrupted.
 - Updated the master catalog: 27 canonical repositories visible, 22 with documentation foundations, five existing repositories still empty, and six planned canonical names not found.
 - No application code, production configuration, deployment or runtime tests were added or claimed.
+
+
+## 2026-10-22 — Repository inventory refresh and admin documentation
+
+- Re-listed repositories visible to the connected GitHub account and compared exact canonical names with the 33-repository catalog.
+- Found 32 of 33 canonical repositories. The only canonical name not found is aether-ai-memory; do not assume it exists under another name without confirmation.
+- Five newly visible repositories are aether-ai-integrations, aether-ai-testing, aether-ai-ui-components, aether-ai-enterprise, and aether-ai-infrastructure. They are present but empty on the default branch.
+- Added the 10-file documentation foundation to aether-ai-admin and fetched all 10 files back from GitHub to verify their presence.
+- Updated the master repository catalog with current observed counts: 32 repositories visible, 23 with documentation foundations, 9 empty, and 1 canonical name not found.
+- Documentation only. No application code, runtime tests, deployment, or security certification was added or claimed.
+- Next: verify/create aether-ai-memory only after confirming its exact repository identity; then add documentation to the nine repositories currently empty, starting with billing.
