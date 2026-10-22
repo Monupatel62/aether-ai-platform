@@ -212,7 +212,8 @@ Manual text review only; no OpenAPI parser or runtime security test has been run
 - [x] Replace the shared chat message schema with separate request and response schemas in the draft OpenAPI.
 - [x] Constrain client request message role to `user` and generated response message role to `assistant` in the draft contract.
 - [x] Add [OPENAPI_V1_CONTRACT_TEST_PLAN.md](contracts/OPENAPI_V1_CONTRACT_TEST_PLAN.md) and record remediation in the review matrix.
-- [ ] Validate the OpenAPI document with a parser/validator; this correction has not yet been validated.
+- [x] Add provisional response schemas for accepted run creation and cancellation, with explicit acknowledgement semantics.
+- [ ] Validate the OpenAPI document with a parser/validator; these changes have not yet been validated.
 - [ ] Implement positive/negative contract fixtures only after review and explicit approval; no runtime tests have run.
 - [ ] Resolve remaining tenant, agent-input, output-retention, cancellation, limits, streaming, and identity decisions.
 
