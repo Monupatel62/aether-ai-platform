@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wohotech.in/aether/contracts/tool-invocation.schema.json",
+  "title": "Aether Tool Invocation Request",
+  "description": "Draft invocation envelope. The server must re-authorize the principal, resource and action at execution time; approval references must be validated and bound to the exact action and arguments.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["invocation_id", "run_id", "tool_id", "tool_version", "arguments", "requested_by", "requested_at", "idempotency_key"],
+  "properties": {
+    "invocation_id": {
+      "type": "string",
+      "minLength": 16,
+      "maxLength": 128
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128
+    },
+    "tool_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9._-]{1,127}$"
+    },
+    "tool_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "arguments": {
+      "type": "object"
+    },
+    "requested_by": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "requested_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "tenant_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "resource_refs": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["resource_type", "resource_id", "action"],
+        "properties": {
+          "resource_type": {"type": "string", "maxLength": 80},
+          "resource_id": {"type": "string", "maxLength": 128},
+          "action": {"type": "string", "maxLength": 128}
+        }
+      }
+    },
+    "approval_ref": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 16,
+      "maxLength": 200
+    }
+  }
+}
