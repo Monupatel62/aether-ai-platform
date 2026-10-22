@@ -108,3 +108,6 @@ Each has an individual specification in [docs/repositories/](repositories/) befo
 - The DevKit MCP package has useful generic JSON-RPC-like/stdio primitives, limits and allowlists, but this source review does not prove full MCP `2026-07-28` conformance. A protocol compatibility harness is required; do not alter DevKit to fit Aether.
 - ADR-0003 (33 repositories) and ADR-0004 (repository boundaries do not imply 33 services) are recorded as accepted. ADR-0005 (DIAL Core vs DevKit gateway vs hybrid) remains open until a proof-of-concept produces evidence.
 - No Aether application code was written and no DevKit source code was modified.
+
+- Added [Data Infrastructure Evaluation](DATA_INFRASTRUCTURE_EVALUATION.md): PostgreSQL/pgvector, Qdrant, BullMQ, NATS JetStream, Valkey-compatible cache, and dedicated search alternatives, with acceptance tests and unresolved operational decisions.
+- ADR-0007 remains open. The proposed initial benchmark baseline is PostgreSQL + pgvector/full-text, BullMQ, and a cache limited to reconstructible data; no production vendors are selected.
