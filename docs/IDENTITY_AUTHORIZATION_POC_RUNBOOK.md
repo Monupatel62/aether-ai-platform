@@ -13,7 +13,7 @@ Hard constraints:
 - Use synthetic users, tenants, files and content only.
 - Use isolated test tenants/projects and non-production credentials.
 - Do not use real customer data, production signing keys, production OAuth clients or live customer integrations.
-- Do not modify WoHo AI DevKit source, main branch, package versions or release pipeline.
+- Keep the proof of concept isolated to approved Aether AI repositories and synthetic test data.
 - Do not expose tokens, cookies, authorization codes, secrets or prompt content in logs.
 - Do not create or add Aether repositories during the POC.
 - No provider is selected by the existence of this runbook.
@@ -157,7 +157,7 @@ Scoring scale after evidence: 1 = unacceptable/high burden; 2 = weak; 3 = meets 
 
 ## 10. Current result
 
-No candidate has been tested, scored, selected or rejected. This document is a reproducible plan, not test evidence. Do not start implementation, create repositories, or change WoHo AI DevKit as a consequence of this plan.
+No candidate has been tested, scored, selected or rejected. This document is a reproducible plan, not test evidence. Do not start implementation or create repositories as a consequence of this plan.
 
 ## References
 - [Identity Provider Shortlist and Scorecard](IDENTITY_PROVIDER_SHORTLIST_AND_SCORECARD.md)
