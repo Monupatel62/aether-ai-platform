@@ -1,6 +1,6 @@
 # Repository specification: aether-ai-orchestration
 
-**Status:** Repository created; documentation phase only. No implementation code is planned in this file yet.
+**Status:** Repository exists; documentation-only on the inspected `main` branch. No application implementation is present in the audited tree.
 
 ## Mission
 
@@ -12,7 +12,7 @@ Owns execution state machine and idempotency; no provider-specific logic or tool
 
 ## Dependencies and connections
 
-Versioned workflow schema/validation contract; agent runtime contract; neutral queue contract; database persistence tooling/contracts; security policy contract; observability interface. Workflow schema code and queue implementation must not import orchestration.
+aether-ai-workflows, aether-ai-agents, aether-ai-queue, aether-ai-database, aether-ai-security, and aether-ai-observability.
 
 ## Owned capabilities
 
