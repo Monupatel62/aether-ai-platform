@@ -8,11 +8,11 @@ Retrieval-augmented generation pipeline for ingestion hooks, chunking, embedding
 
 ## Dependencies and connections
 
-Files, knowledge, search, providers, security.
+Files lifecycle contract; knowledge metadata/ACL/deletion contracts; search indexing/query contract; providers embedding contract; security policy contract. Knowledge and Search must not import RAG implementation.
 
 ## Owned capabilities
 
-Authorized-source filtering, chunk provenance, embedding model/version metadata, citation links, prompt-injection resistance, retrieval evaluation.
+Ingestion/chunking orchestration, embedding model/version metadata, source provenance, citation links, retrieval-time ACL filter propagation, prompt-injection resistance and retrieval evaluation. RAG consumes authoritative source/ACL state; it does not own the source ACL authority.
 
 ## Must not own
 
@@ -60,7 +60,7 @@ These links are research inputs, not proof that the Aether implementation exists
 
 ## Retrieval baseline and acceptance gate
 
-See [Data Infrastructure Evaluation](../DATA_INFRASTRUCTURE_EVALUATION.md). PostgreSQL full-text search + pgvector is the proposed baseline for the first benchmark; Qdrant is an alternative only if representative evaluation justifies it. Keep chunking, embedding model/version, source ACL, tenant ID, document version and deletion status attached to each indexed chunk. Compare against labeled relevance data using recall@k, precision/nDCG where applicable, latency and cost. Test access revocation, tenant crossover, re-indexing, stale embeddings and partial failures. Never trust vector metadata alone as the final authorization decision.
+See [Data Infrastructure Evaluation](../DATA_INFRASTRUCTURE_EVALUATION.md). PostgreSQL full-text search + pgvector is the proposed baseline for the first benchmark; Qdrant is an alternative only if representative evaluation justifies it. Keep chunking, embedding model/version, source ACL/policy version, tenant/resource IDs, document version and deletion status attached to each indexed chunk. Compare against labeled relevance data using recall@k, precision/nDCG where applicable, latency and cost. Test access revocation, tenant crossover, re-indexing, stale embeddings and partial failures. Never trust vector metadata alone as the final authorization decision. Fresh authorization must be checked through the agreed policy/domain contract before protected content is returned.
 
 ## Related documentation
 
