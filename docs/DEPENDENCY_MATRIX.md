@@ -21,13 +21,13 @@
 |---:|---|---|---|
 | 1 | [`aether-ai-platform`](repositories/aether-ai-platform.md) | None at runtime | System docs/ADRs/catalog only; must not be imported by runtime components. |
 | 2 | [`aether-ai-web`](repositories/aether-ai-web.md) | aether-ai-api; aether-ai-ui-components; aether-ai-sdk public types | Browser calls API only; never provider/gateway directly. |
-| 3 | [`aether-ai-api`](repositories/aether-ai-api.md) | aether-ai-auth; aether-ai-gateway; aether-ai-orchestration; aether-ai-files; aether-ai-knowledge; aether-ai-billing entitlement contract; aether-ai-database contracts; aether-ai-observability | Product API composes services; use public contracts, not private tables. Decide whether API talks to orchestration or agents directly in an ADR. |
+| 3 | [`aether-ai-api`](repositories/aether-ai-api.md) | aether-ai-auth; aether-ai-gateway; aether-ai-orchestration; aether-ai-files; aether-ai-knowledge; aether-ai-billing entitlement contract; aether-ai-database contracts; aether-ai-observability | Product API composes services; use public contracts, not private tables. Proposed: API delegates durable runs to orchestration, which invokes agents. |
 | 4 | [`aether-ai-gateway`](repositories/aether-ai-gateway.md) | aether-ai-providers (provider interface/capability registry); aether-ai-security; aether-ai-observability | Gateway depends on provider abstraction; provider adapters must not import gateway implementation. |
 | 5 | [`aether-ai-providers`](repositories/aether-ai-providers.md) | Shared provider contract owned here; compatible WoHo DevKit provider packages optionally | Owns provider interface/adapters; avoid importing gateway/API/agents. |
 | 6 | [`aether-ai-agents`](repositories/aether-ai-agents.md) | aether-ai-gateway; aether-ai-tools; aether-ai-memory; aether-ai-security; aether-ai-observability; compatible WoHo DevKit core/agents where selected | Agent uses gateway and tool policy; orchestration owns durable run state for long-running tasks. |
 | 7 | [`aether-ai-workflows`](repositories/aether-ai-workflows.md) | Schema/contracts only; no runtime dependency on orchestration | Defines workflow schemas/validation; orchestration consumes versioned workflow definitions. |
 | 8 | [`aether-ai-orchestration`](repositories/aether-ai-orchestration.md) | aether-ai-workflows contracts; aether-ai-agents; aether-ai-queue; aether-ai-database; aether-ai-security; aether-ai-observability | Owns durable run state, retries and recovery; workflow definitions remain separate. |
-| 9 | [`aether-ai-tools`](repositories/aether-ai-tools.md) | aether-ai-security; aether-ai-observability; aether-ai-mcp adapter interface where needed; compatible WoHo DevKit tools optionally | All tools pass through this policy boundary; MCP adapters cannot bypass it. |
+| 9 | [`aether-ai-tools`](repositories/aether-ai-tools.md) | aether-ai-security; aether-ai-observability; compatible WoHo DevKit tools optionally | All tools pass through this policy boundary; MCP adapters cannot bypass it. |
 | 10 | [`aether-ai-mcp`](repositories/aether-ai-mcp.md) | aether-ai-tools contract; aether-ai-security; aether-ai-observability; compatible WoHo DevKit MCP only after compatibility test | MCP discovers/invokes external tools, but policy enforcement remains in tool registry. |
 | 11 | [`aether-ai-memory`](repositories/aether-ai-memory.md) | aether-ai-database contracts; aether-ai-security; compatible WoHo DevKit memory optionally | Memory retrieval must be scoped to user/session/tenant. |
 | 12 | [`aether-ai-rag`](repositories/aether-ai-rag.md) | aether-ai-files; aether-ai-knowledge; aether-ai-search; aether-ai-providers embedding contract; aether-ai-security | Retrieval pipeline composes indexing and search; do not own file lifecycle. |
@@ -36,7 +36,7 @@
 | 15 | [`aether-ai-auth`](repositories/aether-ai-auth.md) | Selected identity provider adapter (TBD); aether-ai-security policy primitives | Identity primitives; domain services still authorize individual resources. |
 | 16 | [`aether-ai-security`](repositories/aether-ai-security.md) | No higher-level runtime dependency; shared policy contracts only | Lowest-level security library/policy service; avoid importing API, agents, or UI. |
 | 17 | [`aether-ai-admin`](repositories/aether-ai-admin.md) | aether-ai-api; aether-ai-auth; aether-ai-ui-components | UI only; privileged action authorization and audit happen server-side. |
-| 18 | [`aether-ai-billing`](repositories/aether-ai-billing.md) | aether-ai-database; aether-ai-queue; trusted usage events from API/gateway; aether-ai-security | Never trust browser-supplied usage totals. |
+| 18 | [`aether-ai-billing`](repositories/aether-ai-billing.md) | aether-ai-database; aether-ai-queue; trusted usage events from API/gateway via versioned queue/event contract; aether-ai-security | Never trust browser-supplied usage totals. |
 | 19 | [`aether-ai-sdk`](repositories/aether-ai-sdk.md) | Generated/public schemas from aether-ai-api; stable event schemas | Public client SDK; API should not import its own client SDK. |
 | 20 | [`aether-ai-evaluations`](repositories/aether-ai-evaluations.md) | aether-ai-agents; aether-ai-gateway; aether-ai-testing; aether-ai-observability | Use synthetic/sanitized datasets by default; no production prompt corpus without approval. |
 | 21 | [`aether-ai-observability`](repositories/aether-ai-observability.md) | OpenTelemetry interfaces/exporters selected later; no dependency on domain business logic | Cross-cutting telemetry library/adapter; sensitive payload capture off by default. |
@@ -55,8 +55,8 @@
 
 ## Important architecture decisions still open
 
-- Whether `aether-ai-api` delegates long-running work to orchestration directly or uses an agents API; avoid two owners for run state.
-- Whether `aether-ai-knowledge` calls RAG as a library/package or through a service API.
+- Confirm ADR acceptance for the proposed API → orchestration → agents path; avoid two owners for run state.
+- Whether knowledge/RAG communication is an in-process package contract or service API; ownership direction remains knowledge → RAG events/contracts.
 - The composition root and registration strategy for provider adapters, tools, plugins, and MCP servers.
 - Which infrastructure adapters (database, queue, cache, object storage, vector/search) are selected.
 - Whether any repositories are consolidated into one runtime/package during the first release.
