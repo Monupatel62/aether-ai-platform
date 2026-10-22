@@ -96,3 +96,11 @@ For each future change, record: date; exact files; why the change is needed; alt
 - Added [CROSS_REPOSITORY_CONSISTENCY_AUDIT.md](CROSS_REPOSITORY_CONSISTENCY_AUDIT.md) with ten findings, severity, evidence, proposed corrections and implementation gates.
 - Key mismatches: workflow dependency direction, identity/policy/enterprise ownership overlap, knowledge↔RAG dependency cycle risk, API→agents versus API→orchestration ambiguity, queue dependencies versus consumers, database/domain schema ownership, and overlapping ACL enforcement.
 - No source code changed. No automated graph-cycle detector, build, integration/security test or POC was run. The graph is not certified cycle-free.
+
+
+## 2026-10-22 — Dependency-boundary remediation
+
+- Updated the master dependency matrix and 10 repository specifications following the cross-repository audit: workflows, API, knowledge, queue, database, auth, security, enterprise, RAG, Search and orchestration.
+- Reconciled workflow schema direction, durable run ownership, knowledge-to-RAG/Search contract direction, queue producer/consumer semantics, database tooling/domain schema boundaries, and authentication/policy/enterprise ownership.
+- Updated the consistency audit with remediation progress and remaining gates.
+- No application code was written. Edge classification and automated package-cycle detection remain incomplete; no claim of cycle-free architecture is made. Tenant/workspace membership owner and ACL revocation/deletion targets remain open.
