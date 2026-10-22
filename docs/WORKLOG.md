@@ -104,3 +104,11 @@ For each future change, record: date; exact files; why the change is needed; alt
 - Reconciled workflow schema direction, durable run ownership, knowledge-to-RAG/Search contract direction, queue producer/consumer semantics, database tooling/domain schema boundaries, and authentication/policy/enterprise ownership.
 - Updated the consistency audit with remediation progress and remaining gates.
 - No application code was written. Edge classification and automated package-cycle detection remain incomplete; no claim of cycle-free architecture is made. Tenant/workspace membership owner and ACL revocation/deletion targets remain open.
+
+
+## 2026-10-22 — Typed dependency edge register and preliminary cycle check
+
+- Added [DEPENDENCY_EDGE_REGISTER.md](DEPENDENCY_EDGE_REGISTER.md), classifying logical relationships as package imports, synchronous network APIs, asynchronous events/queues, generated/public artifacts, infrastructure provisioning, or documentation-only.
+- Ran a DFS cycle detector over a manually transcribed candidate package graph: 33 nodes, 61 directed edges, zero cycles reported.
+- Limitation: the graph was not generated from machine-readable edge data. The result is preliminary; normalize the register, generate the graph, rerun cycle detection, and review runtime call/event loops separately.
+- Tenant/workspace membership ownership and ACL revocation/deletion consistency targets remain open. No application code was written.
