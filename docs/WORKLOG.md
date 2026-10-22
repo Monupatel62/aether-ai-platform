@@ -202,6 +202,6 @@ For each future change, record: date; exact files; why the change is needed; alt
 
 - Revised `contracts/openapi.v1.yaml` to separate `RequestChatMessage` and `ResponseChatMessage`; client messages are constrained to role `user`, generated messages to `assistant`. This addresses the previously identified schema-level P0 role issue in the draft.
 - Added [OPENAPI_V1_CONTRACT_TEST_PLAN.md](contracts/OPENAPI_V1_CONTRACT_TEST_PLAN.md) with positive/negative message-role cases plus authorization, tenant isolation, idempotency, run revocation, cancellation, redaction, and limits scenarios.
-- Updated [OPENAPI_V1_REVIEW_MATRIX.md](contracts/OPENAPI_V1_REVIEW_MATRIX.md) to record the draft correction and remaining validation requirements.
+- Added provisional JSON response schemas for accepted run creation and cancellation (`CreateRunAcceptedResponse`, `CancelRunAcceptedResponse`) and updated the review matrix and test plan. These shapes still require contract review.
 - No OpenAPI parser/validator, fixtures runner, generated client, endpoint implementation, or runtime security test was run. The correction is not yet validated.
 - Next: validate OpenAPI 3.1, convert the plan into executable fixtures after review, and address remaining tenant/input/output/lifecycle decisions. Documentation only; no application code or DevKit changes.
