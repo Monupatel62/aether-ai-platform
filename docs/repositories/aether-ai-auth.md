@@ -4,15 +4,15 @@
 
 ## Mission
 
-Identity provider integration, sessions/token validation, user identity mapping, roles, and authorization primitives.
+Identity provider integration, session/token validation, user identity mapping, and principal lifecycle.
 
 ## Dependencies and connections
 
-API, security, selected identity provider.
+Selected identity provider adapter (TBD) and a narrow shared principal/policy contract where needed. API and domain services consume the public authentication/session contract. Auth does not import API or domain consumers.
 
 ## Owned capabilities
 
-Provider choice remains open; document session lifecycle, CSRF/OAuth/OIDC needs, token rotation, account linking, role/tenant model.
+Provider choice remains open; document session lifecycle, CSRF/OAuth/OIDC needs, token rotation, account linking and external-to-Aether principal mapping. Canonical ownership of tenant/workspace membership and role grants remains an explicit product decision under ADR-0021; do not create a parallel membership/ACL store here.
 
 ## Must not own
 
@@ -20,6 +20,10 @@ Provider choice remains open; document session lifecycle, CSRF/OAuth/OIDC needs,
 - Secrets, identity decisions, or authorization bypasses outside its documented boundary.
 - Private database tables owned by another service.
 - Unversioned contracts or undocumented side effects.
+
+## Authorization boundary
+
+Authentication establishes the principal and session; it does not grant access to a resource by itself. Resource authorization is enforced by the owning API/domain boundary using the shared policy contract. Auth may provide principal and session claims, but tenant membership/role-grant authority must be assigned once through a reviewed ADR.
 
 ## Required contracts
 
