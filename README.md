@@ -12,12 +12,12 @@ System-of-record for architecture and repository specifications.
 
 ## Dependencies
 
-None at runtime; references every other Aether repository and the separate WoHo AI DevKit.
+None at runtime; references the Aether AI repositories only.
 
 ## Project rules
 
-- Keep WoHoTech separate; this repository belongs to the new Aether AI project.
-- Treat the existing [WoHo AI DevKit](https://github.com/Monupatel62/woho-ai-devkit) as a separate dependency. Do not copy or rewrite it without a reviewed technical reason.
+- Aether AI is a standalone project with its own repositories, architecture, branding, and roadmap.
+- Do not assume dependencies on external projects; add one only after an explicit architecture decision and compatibility review.
 - No implementation starts until the documentation and cross-repository contracts are reviewed.
 - Do not commit secrets, API keys, user data, or production credentials.
 - Public interfaces, security decisions, and non-obvious implementation choices must be documented.
