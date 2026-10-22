@@ -72,3 +72,10 @@ Do not move forward because files were created. Move only when the previous phas
 - [x] Research data-layer options and define tenant-isolation, durability, recovery and retrieval acceptance tests in [DATA_INFRASTRUCTURE_EVALUATION.md](DATA_INFRASTRUCTURE_EVALUATION.md).
 - [ ] Confirm data residency, budget, RPO/RTO, expected tenant/corpus scale and retention requirements.
 - [ ] Run representative database restore, vector retrieval, queue recovery and cache outage tests before accepting ADR-0007.
+
+
+## Research checkpoint — identity and tenant security (2026-10-22)
+
+Completed the documentation evaluation for authentication, identity, sessions, authorization, multi-tenancy and repository boundaries. The evaluation document is `docs/IDENTITY_AND_TENANT_SECURITY_EVALUATION.md`.
+
+Next gate: compare managed and self-hosted OIDC options and define the proof-of-concept scorecard; resolve the related open ADRs before implementation. No application code was written and no POC results are claimed.
