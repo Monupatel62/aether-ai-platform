@@ -58,6 +58,10 @@ Unit tests, contract tests, authorization/tenant isolation tests, malformed-inpu
 
 These links are research inputs, not proof that the Aether implementation exists or that all referenced code is reusable under one license.
 
+## Retrieval baseline and acceptance gate
+
+See [Data Infrastructure Evaluation](../DATA_INFRASTRUCTURE_EVALUATION.md). PostgreSQL full-text search + pgvector is the proposed baseline for the first benchmark; Qdrant is an alternative only if representative evaluation justifies it. Keep chunking, embedding model/version, source ACL, tenant ID, document version and deletion status attached to each indexed chunk. Compare against labeled relevance data using recall@k, precision/nDCG where applicable, latency and cost. Test access revocation, tenant crossover, re-indexing, stale embeddings and partial failures. Never trust vector metadata alone as the final authorization decision.
+
 ## Related documentation
 
 - [Master repository catalog](../REPOSITORY_CATALOG.md)
