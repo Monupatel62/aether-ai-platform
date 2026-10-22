@@ -12,7 +12,6 @@ Owns cross-repository decisions; not a runtime service.
 
 ## Dependencies and connections
 
-All 33 Aether repositories; WoHo AI DevKit remains external.
 
 ## Owned capabilities
 
@@ -64,7 +63,6 @@ Master docs, architecture decisions, dependency/contract map, release gates, and
 
 ## Research references
 
-- [WoHo AI DevKit](https://github.com/Monupatel62/woho-ai-devkit) — separate project; verify package APIs/version before integration.
 - [AI DIAL Core](https://github.com/epam/ai-dial-core) — model gateway reference; repository includes Apache-2.0 LICENSE.
 - [AI DIAL Chat](https://github.com/epam/ai-dial-chat) — modular UI/BFF reference; check file-level license notices before reuse.
 - [AI DIAL documentation](https://github.com/epam/ai-dial) and [MCP specification](https://modelcontextprotocol.io/) where relevant.
