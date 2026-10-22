@@ -196,3 +196,12 @@ For each future change, record: date; exact files; why the change is needed; alt
 - Recorded further P0/P1 decisions around tenant resolution, agent-specific input schemas, run output authorization/retention, cancellation races, accepted response shapes, error-schema drift, limits, streaming and identity token validation.
 - No OpenAPI parser/validator, generated client, endpoint implementation, or runtime security test was run. This is a manual design review, not evidence of a running exploit.
 - Next: revise the draft schema after reviewing the role policy and endpoint semantics, then validate OpenAPI 3.1 and add negative contract fixtures. Documentation only; no implementation or DevKit changes.
+
+
+## 2026-10-22 — OpenAPI message-role remediation and contract test plan
+
+- Revised `contracts/openapi.v1.yaml` to separate `RequestChatMessage` and `ResponseChatMessage`; client messages are constrained to role `user`, generated messages to `assistant`. This addresses the previously identified schema-level P0 role issue in the draft.
+- Added [OPENAPI_V1_CONTRACT_TEST_PLAN.md](contracts/OPENAPI_V1_CONTRACT_TEST_PLAN.md) with positive/negative message-role cases plus authorization, tenant isolation, idempotency, run revocation, cancellation, redaction, and limits scenarios.
+- Updated [OPENAPI_V1_REVIEW_MATRIX.md](contracts/OPENAPI_V1_REVIEW_MATRIX.md) to record the draft correction and remaining validation requirements.
+- No OpenAPI parser/validator, fixtures runner, generated client, endpoint implementation, or runtime security test was run. The correction is not yet validated.
+- Next: validate OpenAPI 3.1, convert the plan into executable fixtures after review, and address remaining tenant/input/output/lifecycle decisions. Documentation only; no application code or DevKit changes.
