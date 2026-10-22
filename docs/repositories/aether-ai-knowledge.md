@@ -8,11 +8,11 @@ Knowledge collections, source ownership, permissions, ingestion status, and inde
 
 ## Dependencies and connections
 
-Files, RAG, search, database, auth.
+Files public lifecycle contract; database persistence/migration conventions; auth principal/session contract; security policy contract. Knowledge must not import RAG or Search implementation. RAG and Search consume versioned knowledge metadata/ACL/indexing contracts or events.
 
 ## Owned capabilities
 
-Collection schema, ownership/access rules, source connectors, indexing status transitions, deletion propagation, source provenance.
+Collection/source metadata, source ACL references and lifecycle, ingestion/indexing status contract, deletion/revocation events, and source provenance. This repository owns authoritative source/collection permissions; it does not own search-index filtering code.
 
 ## Must not own
 
@@ -56,7 +56,11 @@ Unit tests, contract tests, authorization/tenant isolation tests, malformed-inpu
 - [AI DIAL Chat](https://github.com/epam/ai-dial-chat) — UI/BFF reference; verify file-level notices before reuse.
 - [Model Context Protocol](https://modelcontextprotocol.io/) — relevant for MCP/tool integration.
 
-These links are research inputs, not proof that the Aether implementation exists or that all referenced code is reusable under one license.## Related documentation
+These links are research inputs, not proof that the Aether implementation exists or that all referenced code is reusable under one license.## ACL and indexing contract
+
+Every source/collection contract must carry stable tenant/resource identifiers, ACL or policy version, source/document version and deletion state. RAG/Search are projections/consumers and must not become the final ACL authority. Publish versioned lifecycle events/contracts; avoid importing their implementation packages. Revocation/deletion propagation latency remains an explicit open requirement.
+
+## Related documentation
 
 - [Master repository catalog](../REPOSITORY_CATALOG.md)
 - [Master architecture](../MASTER_ARCHITECTURE.md)
