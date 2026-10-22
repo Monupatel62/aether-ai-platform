@@ -171,3 +171,15 @@ This result only establishes that the proposed JSON graph has no cycles; it does
 - [ ] Approve membership/ACL ownership and versioning policy before treating schemas as stable.
 - [ ] Draft the canonical versioned OpenAPI baseline and stable error-code catalog.
 - Note: JSON parsing is not schema validation, contract testing, or runtime security verification.
+
+
+### Contract semantic review checkpoint — 2026-10-22
+
+- [x] Record semantic gaps and runtime-only invariants in [SCHEMA_SEMANTIC_REVIEW.md](contracts/SCHEMA_SEMANTIC_REVIEW.md).
+- [x] Add proposed public codes and HTTP/retry mappings in [ERROR_CODE_CATALOG.md](contracts/ERROR_CODE_CATALOG.md).
+- [x] Link draft artifacts from the contract registry README.
+- [ ] Resolve tenant-context requirements, tool argument bounds, event-specific required fields, ordering/replay/idempotency semantics, and contract owners/versioning.
+- [ ] Draft and review the versioned OpenAPI baseline.
+- [ ] Run a Draft 2020-12 validator with format assertions and add positive/negative fixtures after semantics are agreed.
+
+These additions remain documentation proposals. No schema validation, runtime tests, or application implementation occurred in this checkpoint.
