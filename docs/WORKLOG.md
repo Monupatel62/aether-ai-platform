@@ -143,3 +143,10 @@ For each future change, record: date; exact files; why the change is needed; alt
 - Added [DATA_RETENTION_DELETION_EXPORT_TELEMETRY_POLICY.md](DATA_RETENTION_DELETION_EXPORT_TELEMETRY_POLICY.md) covering data categories, proposed safe defaults, lifecycle semantics, exports, observability, backups and planned acceptance tests.
 - Numeric retention periods and SLOs, legal hold, residency, export rights, backup recovery targets and telemetry retention remain undecided; no compliance claims are made.
 - Documentation only; no code or tests were run.
+
+
+## 2026-10-22 — Identity and authorization POC runbook
+
+- Added [IDENTITY_AUTHORIZATION_POC_RUNBOOK.md](IDENTITY_AUTHORIZATION_POC_RUNBOOK.md) with 24 reproducible scenarios covering OIDC/PKCE, browser sessions, CSRF, tenant isolation, revocation, workload identity, RLS, support access, audit, privacy and lifecycle behavior.
+- Defined hard security gates, measurement rules and weighted comparison template; no candidate scores are filled because no POC has run.
+- POC execution remains gated on explicit user approval; no application code or tests were run.
