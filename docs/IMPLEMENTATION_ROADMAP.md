@@ -183,3 +183,14 @@ This result only establishes that the proposed JSON graph has no cycles; it does
 - [ ] Run a Draft 2020-12 validator with format assertions and add positive/negative fixtures after semantics are agreed.
 
 These additions remain documentation proposals. No schema validation, runtime tests, or application implementation occurred in this checkpoint.
+
+
+### Draft OpenAPI v1 baseline checkpoint — 2026-10-22
+
+- [x] Add provisional OpenAPI 3.1.0 document for health, text completion, durable run creation/status, and cancellation in [openapi.v1.yaml](contracts/openapi.v1.yaml).
+- [x] Record scope, security constraints, unresolved decisions, and validation limits in [OPENAPI_V1_BASELINE.md](contracts/OPENAPI_V1_BASELINE.md).
+- [x] Link the baseline from the contract registry README.
+- [ ] Review route surface, endpoint ownership, identity/tenant authorization, limits, idempotency, run lifecycle, and cancellation semantics.
+- [ ] Run an OpenAPI 3.1 validator and add positive/negative contract fixtures after review.
+
+This baseline is documentation-only. No API endpoint or runtime behavior is implemented or verified.
