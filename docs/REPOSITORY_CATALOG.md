@@ -6,8 +6,8 @@
 
 - Aether AI repositories in this plan: **33**.
 - Target Aether AI repositories in this plan: **33**.
-- Verified through the connected GitHub listing on 2026-10-22: **27 canonical-name repositories visible**; 22 now contain the documentation foundation and 5 remain empty on the default branch.
-- Canonical-name repositories not found in this listing: **6** (`aether-ai-memory`, `aether-ai-integrations`, `aether-ai-testing`, `aether-ai-ui-components`, `aether-ai-enterprise`, `aether-ai-infrastructure`). The earlier user-reported count of 22 is superseded by the current listing of 27 canonical-name repositories; reconcile any noncanonical names before finalizing the inventory.
+- Verified through the connected GitHub listing on 2026-10-22: **32 of 33 canonical-name repositories visible**; 23 contain the documentation foundation and 9 are empty on the default branch.
+- Canonical-name repository not found in this listing: **1** (`aether-ai-memory`). Five names previously absent from the listing are now visible: `aether-ai-integrations`, `aether-ai-testing`, `aether-ai-ui-components`, `aether-ai-enterprise`, and `aether-ai-infrastructure`; all five are currently empty on the default branch. The earlier inventory counts are superseded by this latest connected GitHub listing.
 - See [Cross-Repository Contract Audit](CROSS_REPOSITORY_CONTRACT_AUDIT.md) for the evidence and limitations.
 - Existing external dependency: [Monupatel62/woho-ai-devkit](https://github.com/Monupatel62/woho-ai-devkit), currently separate.
 - Current work: **documentation only**. No Aether application code, service deployment, or production configuration is included in this documentation phase.
@@ -44,11 +44,11 @@
 | 26 | [`aether-ai-cache`](https://github.com/Monupatel62/aether-ai-cache) | Created; documentation foundation | Cache interfaces, key conventions, TTL/invalidation, tenant-aware helpers |
 | 27 | [`aether-ai-search`](https://github.com/Monupatel62/aether-ai-search) | Created; documentation foundation | Lexical/vector search, indexing, filters, ranking and access-aware queries |
 | 28 | [`aether-ai-plugins`](https://github.com/Monupatel62/aether-ai-plugins) | Created; documentation foundation | Plugin manifests, discovery, versions, lifecycle and compatibility |
-| 29 | [`aether-ai-integrations`](https://github.com/Monupatel62/aether-ai-integrations) | Planned; not created yet | First-party connectors to external systems and credential handoff |
-| 30 | [`aether-ai-testing`](https://github.com/Monupatel62/aether-ai-testing) | Planned; not created yet | Shared fixtures, contract/integration/smoke tests and quality gates |
-| 31 | [`aether-ai-ui-components`](https://github.com/Monupatel62/aether-ai-ui-components) | Planned; not created yet | Accessible reusable UI components, theme tokens, interactions |
-| 32 | [`aether-ai-enterprise`](https://github.com/Monupatel62/aether-ai-enterprise) | Planned; not created yet | Tenant controls, SSO policy, audit export, organization features |
-| 33 | [`aether-ai-infrastructure`](https://github.com/Monupatel62/aether-ai-infrastructure) | Planned; not created yet | Infrastructure-as-code, environment provisioning, networking, managed services |
+| 29 | [`aether-ai-integrations`](https://github.com/Monupatel62/aether-ai-integrations) | Created; empty on default branch | First-party connectors to external systems and credential handoff |
+| 30 | [`aether-ai-testing`](https://github.com/Monupatel62/aether-ai-testing) | Created; empty on default branch | Shared fixtures, contract/integration/smoke tests and quality gates |
+| 31 | [`aether-ai-ui-components`](https://github.com/Monupatel62/aether-ai-ui-components) | Created; empty on default branch | Accessible reusable UI components, theme tokens, interactions |
+| 32 | [`aether-ai-enterprise`](https://github.com/Monupatel62/aether-ai-enterprise) | Created; empty on default branch | Tenant controls, SSO policy, audit export, organization features |
+| 33 | [`aether-ai-infrastructure`](https://github.com/Monupatel62/aether-ai-infrastructure) | Created; empty on default branch | Infrastructure-as-code, environment provisioning, networking, managed services |
 
 ## End-to-end architecture (proposed)
 
