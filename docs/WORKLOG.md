@@ -150,3 +150,12 @@ For each future change, record: date; exact files; why the change is needed; alt
 - Added [IDENTITY_AUTHORIZATION_POC_RUNBOOK.md](IDENTITY_AUTHORIZATION_POC_RUNBOOK.md) with 24 reproducible scenarios covering OIDC/PKCE, browser sessions, CSRF, tenant isolation, revocation, workload identity, RLS, support access, audit, privacy and lifecycle behavior.
 - Defined hard security gates, measurement rules and weighted comparison template; no candidate scores are filled because no POC has run.
 - POC execution remains gated on explicit user approval; no application code or tests were run.
+
+
+## 2026-10-22 — Cross-repository contract audit
+
+- Added [CROSS_REPOSITORY_CONTRACT_AUDIT.md](CROSS_REPOSITORY_CONTRACT_AUDIT.md), documenting contract maturity gaps, required machine-readable schemas, priority order and repository visibility evidence.
+- Corrected `aether-ai-api/docs/DEPENDENCIES_AND_CONTRACTS.md`: durable runs go through orchestration; API no longer declares direct agents/database implementation dependencies.
+- Corrected `aether-ai-workflows/docs/DEPENDENCIES_AND_CONTRACTS.md`: workflow schema/validation no longer declares runtime dependencies on orchestration, agents or database.
+- Reconciled master catalog with connected GitHub listing: 20 canonical-name repositories visible, 10 documentation-populated and 10 empty; 13 planned canonical names not found in that listing. User reports 22; two additional names/URLs remain unreconciled.
+- Documentation-only. No source code, API schemas, event schemas, CI or runtime tests were created/run.
