@@ -61,6 +61,10 @@ The routes and fields are review candidates only. No OpenAPI validation or runti
 - [OpenAPI v1 semantic review matrix](OPENAPI_V1_REVIEW_MATRIX.md) records P0/P1 review findings. Important: the current draft reuses a message schema that permits client-supplied system/developer roles; separate request/response schemas are required before approval.
 
 
+## Tenant context and authorization contract
+
+- [Tenant Context Resolution Contract](TENANT_CONTEXT_RESOLUTION_CONTRACT.md): proposed trusted tenant-resolution sequence, fail-closed behavior, versioning requirements, and negative acceptance cases. Membership ownership and cache/revocation thresholds remain open; no tests have been executed.
+
 ## OpenAPI role-schema remediation and test plan
 
 - [OpenAPI v1 contract test plan](OPENAPI_V1_CONTRACT_TEST_PLAN.md): proposed positive/negative message-role, authorization, idempotency, revocation, cancellation, and limit cases; none have been executed.
