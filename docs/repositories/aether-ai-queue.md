@@ -64,6 +64,10 @@ Test duplicate/out-of-order messages, invalid schema versions, oversized message
 
 Before release, add unit tests, contract tests for direct dependencies, negative authorization/input tests, and failure/recovery tests for the behavior this component owns. Use synthetic or sanitized data only.
 
+## Queue selection and delivery gate
+
+See [Data Infrastructure Evaluation](../DATA_INFRASTRUCTURE_EVALUATION.md). BullMQ is the first Node.js queue candidate to benchmark; NATS JetStream remains an alternative if durable replay, multiple independent consumers, or event fan-out is a demonstrated need. Neither has been selected. Assume at-least-once delivery and require idempotent handlers, bounded retries, backpressure, poison-message handling and crash/recovery tests. Queue payloads should contain opaque IDs and schema versions, not full prompts, files, secrets, or large outputs. Durable run/step state belongs to orchestration and the database, not the broker.
+
 ## Related documentation
 
 - [Master repository catalog](../REPOSITORY_CATALOG.md)
