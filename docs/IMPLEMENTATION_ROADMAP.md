@@ -106,3 +106,18 @@ Added `docs/AUTHORIZATION_PERMISSION_MATRIX.md`. It defines a proposed role/acti
 - [ ] Resolve tenant/workspace membership ownership and resource ACL/revocation authority before implementation.
 
 The manual review is not an automated cycle check. Do not advance to application implementation until the open findings are dispositioned and the user explicitly approves.
+
+
+### Consistency-audit remediation update — 2026-10-22
+
+- [x] Reconcile workflow schema dependencies and durable execution ownership.
+- [x] Align API durable runs with orchestration and remove direct agent-runtime dependency from the API specification.
+- [x] Align knowledge/RAG/Search ownership and describe indexes as projections rather than permission authorities.
+- [x] Clarify queue producer/consumer direction and database tooling versus domain schema ownership.
+- [x] Separate authentication/session lifecycle from resource authorization and narrow security package dependencies.
+- [x] Clarify enterprise membership/role ownership as unresolved pending ADR-0021.
+- [ ] Classify every matrix edge as package import, synchronous API, event/queue, generated artifact, infrastructure, or documentation-only.
+- [ ] Run automated cycle detection on an explicit package-import graph and record evidence; separately review runtime call/event loops.
+- [ ] Resolve membership/role-grant ownership and ACL revocation/deletion targets.
+
+See [Cross-Repository Consistency Audit](CROSS_REPOSITORY_CONSISTENCY_AUDIT.md). Documentation corrections reduce known conflicts but do not prove the graph is cycle-free.
