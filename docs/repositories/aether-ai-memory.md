@@ -56,7 +56,11 @@ Unit tests, contract tests, authorization/tenant isolation tests, malformed-inpu
 - [AI DIAL Chat](https://github.com/epam/ai-dial-chat) — UI/BFF reference; verify file-level notices before reuse.
 - [Model Context Protocol](https://modelcontextprotocol.io/) — relevant for MCP/tool integration.
 
-These links are research inputs, not proof that the Aether implementation exists or that all referenced code is reusable under one license.## Related documentation
+These links are research inputs, not proof that the Aether implementation exists or that all referenced code is reusable under one license.## Memory persistence and retrieval gate
+
+See [Data Infrastructure Evaluation](../DATA_INFRASTRUCTURE_EVALUATION.md). A durable relational store is the proposed baseline for memory metadata and policy, while vector search can initially use pgvector if the measured retrieval quality is sufficient. Define per-user/session/tenant scope, retention, export/deletion, summarization provenance and embedding-version migration before implementation. Memory retrieval is untrusted context: filter by authorization before assembling model context, do not treat memory text as policy, and test cross-tenant access, stale/deleted memories and prompt-injection content.
+
+## Related documentation
 
 - [Master repository catalog](../REPOSITORY_CATALOG.md)
 - [Master architecture](../MASTER_ARCHITECTURE.md)
