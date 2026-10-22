@@ -20,7 +20,7 @@
 
 **New official evidence:** MCP published spec revision `2026-07-28`. It introduces a stateless protocol core, header-based routing, authorization hardening, Tasks as an extension, and other changes. The TypeScript SDK v2 implements the 2026-07-28 revision; v1.x is a separate maintenance line for the 2025-11-25 spec.
 
-**Proposed decision:** build an adapter with an explicit protocol version and capability matrix. Select the SDK major only after checking the actual `@woho/mcp` package compatibility and testing both desired server types. Do not silently force all external servers onto one revision.
+**Proposed decision:** build an adapter with an explicit protocol version and capability matrix. Select the SDK version after checking official protocol compatibility and testing the intended server types. Do not silently force all external servers onto one revision.
 
 **Questions:** required transports (stdio, Streamable HTTP, or both); whether legacy servers are supported; auth/token storage; server allowlisting; extension/Tasks support; minimum security policy; upgrade/deprecation window.
 
