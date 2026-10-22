@@ -110,3 +110,11 @@ This is a proposed logical graph, not a claim that all 33 repositories must beco
 - **Planned; not created yet:** name and responsibility are part of the architecture; repository still needs to be created.
 - **Implemented:** must only be used after code and tests are present and verified.
 - **Production:** must only be used after explicit release and operational verification.
+
+## Audit and security documents
+
+- [Architecture audit, pass 1](ARCHITECTURE_AUDIT.md)
+- [Security threat model](SECURITY_THREAT_MODEL.md)
+- [Open decisions and research](OPEN_DECISIONS_RESEARCH.md)
+- [Engineering and commenting standard](ENGINEERING_AND_COMMENTING_STANDARD.md)
+- [New-chat work handoff](WORK_HANDOFF.md)
