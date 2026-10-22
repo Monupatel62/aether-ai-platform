@@ -32,3 +32,33 @@ AI DIAL Core's official README describes a unified model/API proxy, Java 21, and
 ## Open questions
 
 Hosting topology, model provider selection, database, queue, cache, vector store, identity provider, and deployment target remain undecided. They must be resolved in an ADR, not silently assumed.
+
+## Additional official references reviewed on 2026-10-22
+
+### MCP protocol
+
+- The official MCP project announced specification revision `2026-07-28`, including a stateless core, header-based routing, authorization hardening, Tasks as an extension, and a deprecation policy: https://blog.modelcontextprotocol.io/posts/2026-07-28/.
+- The official TypeScript SDK v2 is the current stable line for the 2026-07-28 revision; v1.x implements 2025-11-25 and is a separate maintenance line: https://ts.sdk.modelcontextprotocol.io/v2/ and https://ts.sdk.modelcontextprotocol.io/.
+- Action: verify the exact `@woho/mcp` package version, exports, supported protocol revisions, transports, and tests before integration. Do not infer support from the package name or README feature list.
+
+### OWASP GenAI security
+
+- OWASP announced its 2026 Top 10 for LLM Applications and new agent-control guidance in September 2026: https://genai.owasp.org/2026/09/01/owasp-genai-security-project-unveils-2026-top-10-for-llm-applications-new-agent-control-standard-and-sponsors-as-community-tops-30000-members/.
+- Action: maintain a threat model and negative-test matrix against the canonical 2026 release. Prompt instructions are not an authorization control.
+
+### OpenTelemetry GenAI conventions
+
+- The official attribute registry describes GenAI telemetry attributes, including fields that may contain sensitive data such as retrieval query text and system instructions: https://opentelemetry.io/docs/specs/semconv/registry/attributes/gen-ai/.
+- Action: use standard conventions where useful, but keep prompt/completion capture disabled by default and define access, redaction, and retention before any sensitive field is recorded.
+
+### GitHub Actions supply-chain security
+
+- GitHub's secure-use guidance recommends full-length commit SHA pins as immutable action references, or an approved dependency-locking approach where available: https://docs.github.com/en/actions/reference/security/secure-use.
+- Action: use least-privilege workflow permissions, protect release environments, and scan dependencies/secrets before implementing CI.
+
+### AI DIAL Core
+
+- Official repository: https://github.com/epam/ai-dial-core. The current README describes a unified API for chat-completion and embedding models/applications, Java 21 and Eclipse Vert.x; it exposes generated OpenAPI and includes an Apache-2.0 license.
+- Action: evaluate integration, operational complexity, authentication/tenant policy, provider capabilities, release cadence, and license/dependency tree before adopting it as the gateway.
+
+These are source-based design findings, not a completed legal review, SBOM, security audit, or proof that any external code has been reused.
