@@ -80,17 +80,17 @@ The DevKit README and root package metadata provide a useful starting point, but
 - Reviewed the current 33-repository catalog and individual specification index.
 - Researched official MCP, OWASP GenAI, OpenTelemetry, GitHub Actions, and AI DIAL Core sources.
 - Did not run code, build, tests, license scanner, SBOM, security scanner, or deployment checks because this is a documentation-only stage and application code is not present.
-- This is Pass 1. The next audit pass must validate all 33 specifications against a common checklist and produce a dependency-cycle/ownership review before coding.
+- Pass 1 was followed by the consistency review documented below. The specification checklist is now complete; the proposed dependency matrix still requires architecture approval and has not been mechanically cycle-checked.
 
 ## 5. Exit criteria for the documentation phase
 
 - [ ] MCP protocol/SDK compatibility ADR accepted.
-- [ ] 2026 OWASP threat model mapped to controls and tests.
+- [x] Initial threat model mapped to all ten official OWASP GenAI LLM Top 10 2026 categories and component tests; [ ] review agentic-specific controls in detail.
 - [ ] Privacy/retention and observability policy approved.
 - [ ] Runtime/module boundaries selected without assuming 33 services.
 - [ ] WoHo DevKit compatibility spike plan is complete and license review requirements are explicit.
 - [ ] API, event, tool, workflow, and run-state contracts are reviewed together.
-- [ ] Every planned repository spec passes the same checklist.
+- [x] Every planned repository spec passes the common required-section checklist; [ ] review the semantic correctness of all dependency edges and accept the matrix.
 - [ ] User approves the transition to implementation.
 
 ## Pass 2 — 33-spec consistency check (2026-10-22)
