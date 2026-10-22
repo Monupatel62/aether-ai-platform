@@ -21,7 +21,7 @@
 |---:|---|---|---|
 | 1 | [`aether-ai-platform`](repositories/aether-ai-platform.md) | None at runtime | System docs/ADRs/catalog only; must not be imported by runtime components. |
 | 2 | [`aether-ai-web`](repositories/aether-ai-web.md) | aether-ai-api; aether-ai-ui-components; aether-ai-sdk public types | Browser calls API only; never provider/gateway directly. |
-| 3 | [`aether-ai-api`](repositories/aether-ai-api.md) | aether-ai-auth; aether-ai-gateway; aether-ai-agents or aether-ai-orchestration; aether-ai-files; aether-ai-knowledge; aether-ai-billing; aether-ai-database contracts; aether-ai-observability | Product API composes services; use public contracts, not private tables. Decide whether API talks to orchestration or agents directly in an ADR. |
+| 3 | [`aether-ai-api`](repositories/aether-ai-api.md) | aether-ai-auth; aether-ai-gateway; aether-ai-orchestration; aether-ai-files; aether-ai-knowledge; aether-ai-billing entitlement contract; aether-ai-database contracts; aether-ai-observability | Product API composes services; use public contracts, not private tables. Decide whether API talks to orchestration or agents directly in an ADR. |
 | 4 | [`aether-ai-gateway`](repositories/aether-ai-gateway.md) | aether-ai-providers (provider interface/capability registry); aether-ai-security; aether-ai-observability | Gateway depends on provider abstraction; provider adapters must not import gateway implementation. |
 | 5 | [`aether-ai-providers`](repositories/aether-ai-providers.md) | Shared provider contract owned here; compatible WoHo DevKit provider packages optionally | Owns provider interface/adapters; avoid importing gateway/API/agents. |
 | 6 | [`aether-ai-agents`](repositories/aether-ai-agents.md) | aether-ai-gateway; aether-ai-tools; aether-ai-memory; aether-ai-security; aether-ai-observability; compatible WoHo DevKit core/agents where selected | Agent uses gateway and tool policy; orchestration owns durable run state for long-running tasks. |
@@ -32,7 +32,7 @@
 | 11 | [`aether-ai-memory`](repositories/aether-ai-memory.md) | aether-ai-database contracts; aether-ai-security; compatible WoHo DevKit memory optionally | Memory retrieval must be scoped to user/session/tenant. |
 | 12 | [`aether-ai-rag`](repositories/aether-ai-rag.md) | aether-ai-files; aether-ai-knowledge; aether-ai-search; aether-ai-providers embedding contract; aether-ai-security | Retrieval pipeline composes indexing and search; do not own file lifecycle. |
 | 13 | [`aether-ai-files`](repositories/aether-ai-files.md) | aether-ai-database contracts; aether-ai-security; aether-ai-observability; object storage adapter to be selected | File lifecycle and download authorization live here. |
-| 14 | [`aether-ai-knowledge`](repositories/aether-ai-knowledge.md) | aether-ai-files; aether-ai-rag indexing contract; aether-ai-search; aether-ai-database; aether-ai-auth | Knowledge owns collection/source metadata and permissions. |
+| 14 | [`aether-ai-knowledge`](repositories/aether-ai-knowledge.md) | aether-ai-files; aether-ai-search; aether-ai-database; aether-ai-auth | Knowledge owns collection/source metadata and permissions. |
 | 15 | [`aether-ai-auth`](repositories/aether-ai-auth.md) | Selected identity provider adapter (TBD); aether-ai-security policy primitives | Identity primitives; domain services still authorize individual resources. |
 | 16 | [`aether-ai-security`](repositories/aether-ai-security.md) | No higher-level runtime dependency; shared policy contracts only | Lowest-level security library/policy service; avoid importing API, agents, or UI. |
 | 17 | [`aether-ai-admin`](repositories/aether-ai-admin.md) | aether-ai-api; aether-ai-auth; aether-ai-ui-components | UI only; privileged action authorization and audit happen server-side. |
@@ -46,11 +46,11 @@
 | 25 | [`aether-ai-queue`](repositories/aether-ai-queue.md) | Selected queue adapter (TBD); versioned event contracts | Delivery semantics and envelope schema; no hidden business workflows. |
 | 26 | [`aether-ai-cache`](repositories/aether-ai-cache.md) | Selected cache adapter (TBD); shared key/TTL contracts | Never source of truth for auth, billing or durable run state. |
 | 27 | [`aether-ai-search`](repositories/aether-ai-search.md) | Selected lexical/vector backend (TBD); aether-ai-database metadata contract; aether-ai-security access filters | Access filters must be enforced before snippets are returned. |
-| 28 | [`aether-ai-plugins`](repositories/aether-ai-plugins.md) | aether-ai-tools manifest/policy; aether-ai-auth; aether-ai-security; aether-ai-admin API contracts | Plugins receive explicit capability grants; cannot self-authorize. |
+| 28 | [`aether-ai-plugins`](repositories/aether-ai-plugins.md) | aether-ai-tools manifest/policy; aether-ai-auth; aether-ai-security | Plugins receive explicit capability grants; cannot self-authorize. |
 | 29 | [`aether-ai-integrations`](repositories/aether-ai-integrations.md) | aether-ai-tools; aether-ai-auth; aether-ai-security; aether-ai-mcp only where protocol use is justified | Connector logic uses narrow credentials and passes calls through tool policy. |
 | 30 | [`aether-ai-testing`](repositories/aether-ai-testing.md) | Shared test fixtures/contracts and CI policy; no production runtime dependency | Provides reusable fixtures/contract harness; test repos use synthetic data. |
 | 31 | [`aether-ai-ui-components`](repositories/aether-ai-ui-components.md) | No runtime dependency on product APIs; shared UI primitives only | UI-only package; no business authorization. |
-| 32 | [`aether-ai-enterprise`](repositories/aether-ai-enterprise.md) | aether-ai-auth; aether-ai-security; aether-ai-admin; aether-ai-billing; aether-ai-observability | Enterprise controls extend core auth/tenant policies rather than creating a parallel identity system. |
+| 32 | [`aether-ai-enterprise`](repositories/aether-ai-enterprise.md) | aether-ai-auth; aether-ai-security; aether-ai-billing; aether-ai-observability | Enterprise controls extend core auth/tenant policies rather than creating a parallel identity system. |
 | 33 | [`aether-ai-infrastructure`](repositories/aether-ai-infrastructure.md) | Selected infrastructure providers/modules (TBD); no application service dependency | Infrastructure-as-code and environment foundations; deployment repo consumes its modules. |
 
 ## Important architecture decisions still open
@@ -68,3 +68,12 @@ Before coding, represent runtime package imports and service calls as separate g
 ## External dependency policy
 
 [WoHo AI DevKit](https://github.com/Monupatel62/woho-ai-devkit) remains separate. Any package integration requires exact version/export/license verification and contract tests. [AI DIAL Core](https://github.com/epam/ai-dial-core) is a candidate gateway option, not an accepted architecture choice. Current MCP protocol compatibility is tracked in [Open Decisions and Research](OPEN_DECISIONS_RESEARCH.md).
+
+## Cycle-prevention clarifications
+
+- **MCP/tool registry:** `aether-ai-mcp` depends on the public tool manifest/invocation contract owned by `aether-ai-tools`. The tools repository must not import the MCP adapter. A composition root registers MCP-backed tools into the registry; this avoids a package cycle.
+- **Knowledge/RAG:** `aether-ai-rag` consumes knowledge collection/source metadata and access rules. The knowledge repository must not depend on the RAG implementation; indexing events/contracts flow from knowledge/files toward RAG.
+- **API/agent execution:** `aether-ai-api` delegates long-running agent runs to `aether-ai-orchestration`; orchestration invokes `aether-ai-agents`. Direct synchronous model completion can use the gateway. Do not create parallel API-to-agent and API-to-orchestration ownership for durable run state.
+- **Billing/usage:** API/gateway publish trusted, versioned usage events; billing consumes them. API may read an entitlement contract, but billing must not synchronously call back into API to validate usage. Use queue/event contracts to avoid a service-call cycle.
+- **Plugins/admin:** the admin UI consumes plugin registry APIs; the plugin registry must not depend on the admin UI.
+- **Enterprise/admin:** enterprise domain contracts are consumed by admin/API. The enterprise domain must not depend on the admin frontend.
