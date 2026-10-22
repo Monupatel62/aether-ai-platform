@@ -64,6 +64,10 @@ Test cross-tenant queries, missing filters, revoked/deleted documents, poisoned 
 
 Before release, add unit tests, contract tests for direct dependencies, negative authorization/input tests, and failure/recovery tests for the behavior this component owns. Use synthetic or sanitized data only.
 
+## Search engine decision gate
+
+See [Data Infrastructure Evaluation](../DATA_INFRASTRUCTURE_EVALUATION.md). Start the benchmark with PostgreSQL full-text search plus pgvector hybrid retrieval. A dedicated search/vector service is conditional on evidence from representative latency, recall, indexing throughput, filters and operational-cost tests. Search indexes are rebuildable projections; source documents, ACLs, deletion state and tenant permissions remain authoritative in their owning domains. Enforce tenant/ACL filters before results leave the search boundary and test revoked access, stale indexes, deletions, poisoned content and unauthorized snippet leakage.
+
 ## Related documentation
 
 - [Master repository catalog](../REPOSITORY_CATALOG.md)
