@@ -267,3 +267,6 @@ Next: document aether-ai-sdk, then evaluations, observability, integrations, tes
 
 
 - Completed an additional documentation scan across the component repositories. Removed unrelated project/package assumptions from affected README, project-specification, work-log, research/license, architecture, dependency, technical-design, and implementation-plan files. The inspected README/spec files for all 33 repositories and the additional standard docs inspected now return zero matches for the unrelated-project markers.
+
+
+- Added [Implementation Gate Blockers](IMPLEMENTATION_GATE_BLOCKERS.md) to consolidate the remaining P0 contract/security blockers and P1 product/operations decisions. This is a review checklist, not an implementation approval.
