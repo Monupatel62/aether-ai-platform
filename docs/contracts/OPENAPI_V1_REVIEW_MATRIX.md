@@ -6,7 +6,7 @@
 
 | Area | Current draft observation | Risk | Required decision/remediation |
 |---|---|---|---|
-| Chat request roles | ChatMessage permits `system` and `developer` roles in the same schema used for client-supplied request messages. | A client may attempt to inject privileged instructions by submitting a system/developer message. | Split request and response message schemas. Client request roles should be limited to the explicitly allowed client roles (normally user, and possibly assistant only for a defined history-replay contract); trusted system/developer instructions must be server-owned. |
+| Chat request roles | Draft now separates `RequestChatMessage` (role `user` only) from `ResponseChatMessage` (role `assistant` only). | Schema-level role injection is constrained in the draft, but runtime validation and server-owned instruction handling are untested. | Validate OpenAPI 3.1 and add negative fixtures proving `system`, `developer`, and `assistant` are rejected in client request messages; verify runtime enforcement before approval. |
 | Tenant resolution | No tenant field is required in request bodies, which is preferable to trusting client tenant IDs, but the identity/membership resolver is unspecified. | Services may disagree on which tenant context is authoritative or accidentally infer it from untrusted metadata. | Define a trusted tenant-resolution contract and require the API to validate membership/role for every tenant-scoped operation. Never accept body metadata as a grant. |
 | Run creation | `CreateRunRequest.input` is an arbitrary object and agent-specific validation is deferred. | Oversized, unexpected, or unsafe data may reach an agent/tool boundary. | Require a versioned input schema per registered agent, payload size/depth limits, and server-side validation before scheduling. |
 | Run status/result | `result` is an arbitrary object and may contain sensitive tool output or tenant data. | Output could leak data or expose internal execution details. | Define result/output schema, current authorization checks, redaction policy, and retention/deletion behavior before returning output. |
@@ -18,7 +18,7 @@
 |---|---|---|
 | Accepted run response | The draft now defines `CreateRunAcceptedResponse` with `run_id`, `status: queued`, and `request_id`, plus a `Location` header. | Provisional shape only; confirm identifier semantics, request ID generation, retry/idempotency replay behavior, and canonical Location format before approval. |
 | Cancellation response | The draft now defines `CancelRunAcceptedResponse` with `run_id`, `status: cancellation_requested`, and `request_id`. | Provisional acknowledgement only; confirm repeated-request behavior, races with terminal states, and whether response status reflects durable state before approval. |
-| Chat response roles | The response reuses the request ChatMessage schema, which permits system/developer roles. | Use a response-specific schema and constrain the role to assistant for generated choices. |
+| Chat response roles | Draft now references `ResponseChatMessage`, constrained to role `assistant`. | Parser validation and runtime response conformance remain untested. |
 | Error contract duplication | ErrorEnvelope is copied inline instead of referencing a single canonical contract source. | Decide whether the OpenAPI component is generated from the canonical JSON Schema or kept synchronized by a contract test; avoid manual drift. |
 | Rate and size limits | Limits are mostly described as future decisions and are not represented as concrete bounds. | Decide endpoint-specific request byte, message count, input/output token, timeout, concurrency, and rate limits before implementation. |
 | Streaming | The draft explicitly excludes streaming. | Confirm whether synchronous non-streaming chat is an intentional first vertical slice; if streaming is required, define SSE framing, terminal errors, disconnect and cancellation behavior before implementation. |
@@ -29,7 +29,7 @@
 
 - **Do not approve as-is.** The message-role defect has been corrected in the draft, but tenant resolution, agent input validation, run output authorization/retention, cancellation semantics, identity rules, limits, and contract validation remain unresolved.
 - Preserve the existing baseline as a review artifact until route and identity semantics are reviewed; do not infer that the presence of the file makes it canonical.
-- After decisions, revise the OpenAPI, validate it with an OpenAPI 3.1 validator, and add negative tests proving client messages cannot override server-owned instructions.
+- The message-role and accepted-run-response draft corrections are present, but still require OpenAPI 3.1 validation and executable contract fixtures. Reconcile the tenant-context contract and internal authorization-context schema before approval.
 - Contract tests should also cover cross-tenant run reads, hidden-resource 404 behavior where required, invalid agent input, duplicate idempotency keys with matching/different payload fingerprints, and cancellation races.
 
 ## Verification status
