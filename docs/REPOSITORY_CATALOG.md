@@ -1,6 +1,6 @@
 # Aether AI — Master Repository Catalog
 
-**Research/design snapshot:** 2026-10-22. **Scope:** 33 Aether AI repositories; the existing `woho-ai-devkit` is a separate upstream dependency and is not included in this count.
+**Research/design snapshot:** 2026-10-22. **Scope:** 33 Aether AI repositories. Aether AI is a standalone project; no external project is assumed to be a dependency.
 
 ## Current status
 
@@ -9,7 +9,6 @@
 - Verified during the documentation pass on 2026-10-23: **33 of 33 canonical-name repositories are present**. A repository-specific `docs/REPOSITORY_SPECIFICATION.md` has been committed to each repository. README entry points were added to repositories where creation succeeded; existing README files were preserved.
 - `aether-ai-memory` is present and now has its repository specification. Earlier inventory snapshots that reported it missing or other repositories as empty are historical and superseded by this documentation pass.
 - See [Cross-Repository Contract Audit](CROSS_REPOSITORY_CONTRACT_AUDIT.md) for the evidence and limitations.
-- Existing external dependency: [Monupatel62/woho-ai-devkit](https://github.com/Monupatel62/woho-ai-devkit), currently separate.
 - Current work: **documentation only**. No Aether application code, service deployment, or production configuration is included in this documentation phase.
 
 ## Repository list
@@ -62,7 +61,6 @@ flowchart TD
   API --> FILES[aether-ai-files]
   API --> BILL[aether-ai-billing]
   GW --> PROV[aether-ai-providers]
-  GW -. optional adapter .-> DIAL[AI DIAL Core]
   AG --> TOOLS[aether-ai-tools]
   AG --> MEM[aether-ai-memory]
   AG --> ORCH[aether-ai-orchestration]
@@ -81,7 +79,6 @@ flowchart TD
   OBS -. telemetry .-> GW
   OBS -. telemetry .-> ORCH
   DEP[aether-ai-deployment] --> INF[aether-ai-infrastructure]
-  DEVKIT[WoHo AI DevKit - separate repo] -. package integration after compatibility review .-> AG
 ```
 
 This is a proposed logical graph, not a claim that all 33 repositories must become separate deployed services. Repository boundaries are for ownership; deployable boundaries are a later architecture decision.
@@ -95,7 +92,7 @@ This is a proposed logical graph, not a claim that all 33 repositories must beco
 5. **Idempotent execution.** Retried jobs and tool actions must declare side-effect behavior and use idempotency keys or equivalent safeguards.
 6. **Documentation before implementation.** Public interfaces, state machines, failure behavior, test plans, and dependency licenses must be reviewed before coding.
 7. **No premature microservices.** A repository does not automatically equal a separately deployed service. Start with the smallest testable modules and split runtime services only for a concrete reason.
-8. **Keep WoHoTech separate.** Aether AI has its own brand, repos, and product decisions.
+8. **Standalone project boundary.** Aether AI owns its branding, repositories, architecture, and product decisions; external dependencies require an explicit approved decision.
 
 ## Documentation index
 
@@ -135,7 +132,6 @@ This is a proposed logical graph, not a claim that all 33 repositories must beco
 
 - [AI DIAL adoption evaluation](DIAL_ADOPTION_EVALUATION.md)
 - [Gateway proof-of-concept plan](GATEWAY_PROOF_OF_CONCEPT.md)
-- [WoHo AI DevKit compatibility review](DEVKIT_COMPATIBILITY_REVIEW.md)
 
 - [Data infrastructure evaluation](DATA_INFRASTRUCTURE_EVALUATION.md)
 
