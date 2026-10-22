@@ -140,3 +140,10 @@ Read `docs/AUTHORIZATION_PERMISSION_MATRIX.md`. It proposes roles, resource clas
 Read [Cross-Repository Consistency Audit](CROSS_REPOSITORY_CONSISTENCY_AUDIT.md) before further architecture work. The manual review found conflicts in workflow dependencies, auth/security/enterprise ownership, knowledge↔RAG direction, API→agent execution, queue dependency direction, database/domain schema ownership, ACL enforcement across search/RAG/knowledge, and overly broad security dependencies. It also found that repository edges are not consistently typed as package/API/event/artifact/infrastructure/docs.
 
 This is a documentation-level review only. No automated cycle detector, build, runtime test, or security test was run. Do not claim the graph is cycle-free. Next: reconcile the affected specs and dependency matrix, preserve open ADRs, type the graph edges, and only then run an explicit graph check. Application coding remains blocked until documentation review and explicit user approval.
+
+
+## Remediation checkpoint — cross-repository consistency (2026-10-22)
+
+Committed coordinated documentation corrections to the dependency matrix and affected specs: workflows, API, knowledge, queue, database, auth, security, enterprise, RAG, Search and orchestration. The audit document records which contradictions were addressed and what remains open.
+
+Still required: type every dependency edge, construct separate package-import and runtime-call/event graphs, run and record automated package-cycle detection, and decide the canonical tenant/workspace membership/role-grant owner plus ACL revocation/deletion consistency targets. The graph is not certified cycle-free. Documentation-only work continues; no application code without explicit approval.
