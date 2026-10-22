@@ -53,3 +53,22 @@ Synthetic fixtures, consumer/provider contracts, test pyramid, flaky-test policy
 - [WoHo AI DevKit](https://github.com/Monupatel62/woho-ai-devkit)
 
 All external projects are references or candidate dependencies only. Verify exact version, license, dependency tree, and security posture before reuse.
+
+## Security and privacy
+
+Test harnesses must not use production credentials or real customer data by default. Protect secrets in CI, isolate destructive/integration tests, sanitize artifacts, and ensure adversarial fixtures are synthetic. Avoid tests that accidentally call real tools or send external messages.
+
+## Test plan
+
+Test secret scanning and synthetic-data enforcement; verify fixtures are deterministic, cleanup runs after failure, external calls are mocked by default, and CI permissions are least-privilege.
+
+Before release, add unit tests, contract tests for direct dependencies, negative authorization/input tests, and failure/recovery tests for the behavior this component owns. Use synthetic or sanitized data only.
+
+## Related documentation
+
+- [Master repository catalog](../REPOSITORY_CATALOG.md)
+- [Master architecture](../MASTER_ARCHITECTURE.md)
+- [Architecture audit](../ARCHITECTURE_AUDIT.md)
+- [Security threat model](../SECURITY_THREAT_MODEL.md)
+- [Open decisions and research](../OPEN_DECISIONS_RESEARCH.md)
+- [Continuity handoff](../WORK_HANDOFF.md)
