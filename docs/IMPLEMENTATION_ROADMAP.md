@@ -59,3 +59,11 @@ Exit criteria: reproducible build, passing CI/security checks, successful stagin
 ## Rule for moving phases
 
 Do not move forward because files were created. Move only when the previous phase's acceptance criteria are evidenced in the work log and reviewed.
+
+### Architecture research additions — 2026-10-22
+
+- [x] Compare DIAL Core, DIAL Chat, DevKit gateway path and hybrid options in [DIAL adoption evaluation](DIAL_ADOPTION_EVALUATION.md).
+- [x] Inspect DevKit public package manifests and selected source-level integration boundaries in [DevKit compatibility review](DEVKIT_COMPATIBILITY_REVIEW.md).
+- [ ] Verify exact registry package artifacts, integrity, exports and transitive licenses.
+- [ ] Run a mock-based protocol compatibility harness for `@woho/mcp` against the selected official MCP spec/transport matrix.
+- [ ] Run the gateway proof-of-concept and accept/reject ADR-0005 based on recorded evidence.
