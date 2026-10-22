@@ -53,3 +53,12 @@ For each future change, record: date; exact files; why the change is needed; alt
 - ADR-0005 remains open until the proof-of-concept is run; no gateway option has been selected.
 - Updated gateway, agents, providers, MCP, and platform technical-design documents with the integration boundaries and links.
 - No Aether application code was written. No DevKit code, version, main branch, or release pipeline was changed. No compatibility tests or proof-of-concept were run yet.
+
+## 2026-10-22 — Data infrastructure research
+
+- Added `docs/DATA_INFRASTRUCTURE_EVALUATION.md` with official-source research on PostgreSQL/RLS/PITR/full-text search, pgvector, Qdrant multitenancy, BullMQ retries/rate limiting, NATS JetStream durability/replay, and Valkey/Redis license considerations.
+- Recorded a proposed baseline to benchmark: PostgreSQL as transactional source of truth; PostgreSQL full-text + pgvector for initial retrieval; BullMQ for Node.js background jobs; cache limited to reconstructible data. This is not an accepted production stack.
+- Added ADR-0018 proposal for data-layer source-of-truth ownership and updated open-decision research, roadmap, handoff and continuity documents.
+- Updated the 8 master repository specifications for database, queue, cache, search, RAG, orchestration, files and memory with concrete boundaries and acceptance tests.
+- Key gates: RLS must be tested under non-owner runtime roles; queue consumers must be idempotent; vector/search indexes are rebuildable projections; tenant and ACL filters must be tested against revocation and deletion; cache must not authorize access or own durable records.
+- No application code was written. No stack/vendor decision was accepted and no runtime benchmark or restore test was run.
