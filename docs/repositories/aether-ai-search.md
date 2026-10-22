@@ -8,11 +8,11 @@ Lexical/vector search abstraction, indexing lifecycle, filters, ranking, and acc
 
 ## Dependencies and connections
 
-RAG, knowledge, database, security.
+Selected lexical/vector backend (TBD), neutral index/document metadata contract, and security policy contract. RAG and knowledge publish/consume versioned contracts; Search must not import either domain implementation.
 
 ## Owned capabilities
 
-Index schema/versioning, tenant filters, ranking, deletion propagation, result provenance, stale index handling, query abuse limits.
+Index schema/versioning, tenant/ACL filters, ranking, deletion propagation, result provenance, stale index handling and query-abuse limits. Search is a rebuildable projection, not the authoritative source for resource permissions.
 
 ## Non-goals
 
@@ -56,7 +56,7 @@ All external projects are references or candidate dependencies only. Verify exac
 
 ## Security and privacy
 
-Search must apply tenant and document permissions before returning result snippets or IDs. Treat queries and indexed content as untrusted, limit expensive queries, prevent filter bypass, and propagate deletions/revocations to indexes and caches.
+Search must apply tenant and document permission filters before returning result snippets or IDs. Treat queries and indexed content as untrusted, limit expensive queries, prevent filter bypass, and propagate deletions/revocations to indexes and caches. A search filter is defense-in-depth; the caller must still perform fresh resource authorization against the agreed policy/domain contract.
 
 ## Test plan
 
@@ -66,7 +66,7 @@ Before release, add unit tests, contract tests for direct dependencies, negative
 
 ## Search engine decision gate
 
-See [Data Infrastructure Evaluation](../DATA_INFRASTRUCTURE_EVALUATION.md). Start the benchmark with PostgreSQL full-text search plus pgvector hybrid retrieval. A dedicated search/vector service is conditional on evidence from representative latency, recall, indexing throughput, filters and operational-cost tests. Search indexes are rebuildable projections; source documents, ACLs, deletion state and tenant permissions remain authoritative in their owning domains. Enforce tenant/ACL filters before results leave the search boundary and test revoked access, stale indexes, deletions, poisoned content and unauthorized snippet leakage.
+See [Data Infrastructure Evaluation](../DATA_INFRASTRUCTURE_EVALUATION.md). Start the benchmark with PostgreSQL full-text search plus pgvector hybrid retrieval. A dedicated search/vector service is conditional on evidence from representative latency, recall, indexing throughput, filters and operational-cost tests. Search indexes are rebuildable projections; source documents, ACL references, deletion state and tenant permissions remain authoritative in their owning domains. Revocation/deletion propagation targets must be defined before implementation. Enforce tenant/ACL filters before results leave the search boundary and test revoked access, stale indexes, deletions, poisoned content and unauthorized snippet leakage.
 
 ## Related documentation
 
