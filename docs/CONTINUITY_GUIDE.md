@@ -19,6 +19,10 @@ Use this file as the handoff context when work continues in a new ChatGPT conver
 ## First read order
 
 1. [Master catalog](REPOSITORY_CATALOG.md)
+2. [Dependency matrix](DEPENDENCY_MATRIX.md)
+3. [Architecture audit](ARCHITECTURE_AUDIT.md)
+4. [Security threat model](SECURITY_THREAT_MODEL.md)
+5. [Open decisions and research](OPEN_DECISIONS_RESEARCH.md)
 2. [Master architecture](MASTER_ARCHITECTURE.md)
 3. [Roadmap](IMPLEMENTATION_ROADMAP.md)
 4. [Decision log](DECISION_LOG.md)
