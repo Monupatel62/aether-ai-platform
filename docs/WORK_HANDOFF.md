@@ -152,3 +152,10 @@ Still required: type every dependency edge, construct separate package-import an
 ## Latest checkpoint — typed dependency edges (2026-10-22)
 
 Added [DEPENDENCY_EDGE_REGISTER.md](DEPENDENCY_EDGE_REGISTER.md), with proposed classifications for package imports, synchronous API calls, events/queues, generated artifacts, infrastructure provisioning and documentation-only relationships. A preliminary DFS check over a manually transcribed candidate package graph reported 0 cycles across 33 nodes and 61 edges. Because the graph was not generated from a machine-readable register, this is preliminary evidence only. Next: normalize the edge register to machine-readable data, generate and rerun cycle detection, then separately review runtime call/event loops. Tenant/workspace membership ownership and ACL revocation/deletion targets remain open. No application code without explicit approval.
+
+
+## Latest checkpoint — machine-readable package graph verified (2026-10-22)
+
+Created [dependency-package-graph.json](dependency-package-graph.json) and fetched it back from GitHub. The JSON was parsed, its 33 nodes and 61 package-import edges were validated, and a DFS cycle detector reported **0 cycles in the proposed encoded graph**. See [Dependency Edge Register](DEPENDENCY_EDGE_REGISTER.md) and [Cross-Repository Consistency Audit](CROSS_REPOSITORY_CONSISTENCY_AUDIT.md).
+
+This is a check of the proposed graph data, not a scan of actual source imports. Next: compare each JSON edge against the typed Markdown register, record intentional differences, and review runtime API/event loops. Tenant/workspace membership ownership and ACL revocation/deletion targets remain open. No application code without explicit approval.
