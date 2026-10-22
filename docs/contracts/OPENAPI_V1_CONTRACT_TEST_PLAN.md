@@ -14,6 +14,16 @@
 | MSG-006 | Generated response message with role `system` or `developer` | Schema rejects | Output role remains constrained |
 | MSG-007 | Missing content, empty content, extra message properties | Schema rejects | Enforce required fields and reject unknown fields |
 
+## Accepted-response contract tests
+
+| ID | Scenario | Expected behavior |
+|---|---|---|
+| RESP-001 | Run creation accepted | HTTP 202 includes `run_id`, `status: queued`, and `request_id`; `Location` identifies the run resource. |
+| RESP-002 | Cancellation accepted | HTTP 202 includes `run_id`, `status: cancellation_requested`, and `request_id`; response does not imply cancellation has completed. |
+| RESP-003 | Accepted response has missing or unexpected fields | Schema rejects missing required fields and extra properties. |
+
+These response shapes are provisional draft proposals and require review; tests are not executed.
+
 ## API authorization and lifecycle tests
 
 | ID | Scenario | Expected behavior |
