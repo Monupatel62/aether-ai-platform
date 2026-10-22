@@ -7,6 +7,7 @@
 - [x] Create the first 10 Aether repositories.
 - [x] Add initial repository-specific purpose and documentation structure.
 - [x] Create master catalog and 33 individual repository specifications.
+- [x] Structural audit of all 33 repository specifications; see [audit matrix](REPOSITORY_SPEC_AUDIT_MATRIX.md).
 - [x] Verify all 10 existing repositories contain the required documentation and security review checklist.
 - [ ] Resolve project name availability and final branding.
 - [ ] Confirm license/SBOM approach and exact reused package versions.
