@@ -144,3 +144,8 @@ This result is preliminary: the graph was manually transcribed, not generated fr
 Created [dependency-package-graph.json](dependency-package-graph.json) with 33 repository nodes and 61 proposed package-import edges. The JSON was fetched back from GitHub, parsed, validated for edge types and node references, then passed to a DFS cycle detector. **Result: 0 directed cycles reported in the encoded candidate graph.**
 
 This is stronger than the earlier manually transcribed check, but it remains a proposed graph authored from documentation, not a scan of source imports/build manifests. It does not certify the actual code graph or runtime API/event flows. Next verification must compare the JSON edges against every typed row in [DEPENDENCY_EDGE_REGISTER.md](DEPENDENCY_EDGE_REGISTER.md), review intentional differences, and separately analyze runtime call/event loops.
+
+
+## Edge register reconciliation result — 2026-10-22
+
+Compared the latest [Dependency Edge Register](DEPENDENCY_EDGE_REGISTER.md) with [dependency-package-graph.json](dependency-package-graph.json). All **61 internal package-import edges** match exactly: no missing/extra edges and no duplicates. Five external-tool/backend/test-fixture package relationships are intentionally excluded from the internal 33-repository graph. Cycle detection was rerun on the latest fetched JSON and reported 0 cycles. This verifies the authored register and candidate graph agree; it does not validate actual source imports or runtime call/event topology.
