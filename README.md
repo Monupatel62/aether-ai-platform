@@ -34,6 +34,10 @@ None at runtime; references every other Aether repository and the separate WoHo 
 - [Engineering and commenting standard](docs/ENGINEERING_STANDARD.md)
 - [Work log and decisions](docs/WORKLOG.md)
 - [Master 33-repository catalog](https://github.com/Monupatel62/aether-ai-platform/blob/main/docs/REPOSITORY_CATALOG.md)
+- [Dependency matrix](docs/DEPENDENCY_MATRIX.md)
+- [Architecture audit](docs/ARCHITECTURE_AUDIT.md)
+- [Security threat model](docs/SECURITY_THREAT_MODEL.md)
+- [Open decisions and research](docs/OPEN_DECISIONS_RESEARCH.md)
 - [Continuity handoff for new chats](https://github.com/Monupatel62/aether-ai-platform/blob/main/docs/WORK_HANDOFF.md)
 
 ## Before coding
