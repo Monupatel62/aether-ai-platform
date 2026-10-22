@@ -62,3 +62,10 @@ Each accepted ADR must include: context/problem, options considered, chosen opti
 - Added `docs/BROWSER_SESSION_AND_AUTHORIZATION_ARCHITECTURE.md` using IETF RFC 10017 (August 2026), RFC 9700, OWASP guidance and PostgreSQL RLS documentation.
 - BFF with server-side sessions is the preferred candidate for the first-party web POC, not an accepted ADR. RBAC plus resource-level checks is the baseline candidate; ABAC/ReBAC/policy-engine scope remains open.
 - ADR-0019, ADR-0020 and related ADRs remain open. No POC tests or application code were run.
+
+
+## 2026-10-22 — Authorization permission matrix research
+
+- Added `docs/AUTHORIZATION_PERMISSION_MATRIX.md` defining proposed principal/resource/action vocabulary, a baseline role matrix, mandatory security invariants, policy decision contract and negative-test plan.
+- Role permissions are a proposal and need product-owner review; they are not implemented or accepted as final product policy.
+- ADR-0020, ADR-0021, ADR-0022, ADR-0023 and ADR-0024 remain open. No application code or tests were added/run.
