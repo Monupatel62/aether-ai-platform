@@ -36,4 +36,3 @@ This index links the full specification for each of the 33 planned Aether AI rep
 32. [`aether-ai-enterprise`](repositories/aether-ai-enterprise.md) — [GitHub](https://github.com/Monupatel62/aether-ai-enterprise)
 33. [`aether-ai-infrastructure`](repositories/aether-ai-infrastructure.md) — [GitHub](https://github.com/Monupatel62/aether-ai-infrastructure)
 
-**Count:** 33 Aether repositories. The separate `Monupatel62/woho-ai-devkit` dependency is not part of this count.
