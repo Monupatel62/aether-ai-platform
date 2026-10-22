@@ -26,6 +26,10 @@
 - Error messages, event payloads, arguments, traces, and logs must follow data minimization and redaction policy.
 - Schema validity does not establish correct runtime behavior, tenant isolation, privacy compliance, or security certification.
 
+## Fixture coverage (draft)
+
+`contract-fixtures.v1.json` contains 14 author-defined examples: one expected-valid and one expected-invalid case for each of the seven schema files. The invalid examples target a required-field omission, unknown property, unsupported enum value, or conditional requirement. These are fixture definitions only; no JSON Schema validator has executed them yet. Before treating this set as a gate, run it with a Draft 2020-12 validator configured to assert `format`, review each validator result, and add boundary cases for malformed timestamps, unknown nested fields, and conditional event semantics.
+
 ## Review gate
 
 Before approval, assign an owner and consumer list to every contract; decide tenant/ACL authority and event semantics; add valid and invalid fixtures; run a Draft 2020-12 validator with format assertions; and run consumer compatibility tests in CI after explicit implementation approval.
@@ -34,6 +38,6 @@ Before approval, assign an owner and consumer list to every contract; decide ten
 
 - JSON syntax: parsed successfully for all seven schema files in the current focused check; this is not JSON Schema validation.
 - JSON Schema semantic validation: not run.
-- Positive/negative fixtures: not added.
+- Positive/negative fixtures: 14 author-defined cases added in `contract-fixtures.v1.json`; not executed or validator-verified.
 - Runtime enforcement and security tests: not run.
 - Production contract approval: none.
