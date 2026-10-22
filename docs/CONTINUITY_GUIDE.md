@@ -59,3 +59,10 @@ Date; repository; exact paths changed; purpose; why this design was chosen; depe
 - All 10 existing Aether repositories have a repository-specific `docs/SECURITY_REVIEW.md`.
 - Read [Dependency Matrix](DEPENDENCY_MATRIX.md) before making architecture changes. It documents one-way ownership rules and known cycle risks; it is still proposed and has not been mechanically cycle-checked.
 - Do not claim the security controls are implemented. Only design requirements/checklists have been added.
+
+## Latest architecture research — 2026-10-22
+
+- Read [DIAL adoption evaluation](DIAL_ADOPTION_EVALUATION.md) and [DevKit compatibility review](DEVKIT_COMPATIBILITY_REVIEW.md) before deciding the gateway/runtime stack.
+- User-selected target: 33 repositories. This does not mean 33 separately deployed services; ADR-0004 accepts modular runtime boundaries.
+- Current source versions observed in DevKit `main`: `@woho/core 0.2.24`, `@woho/provider-openai 0.2.22`, `@woho/agents 0.3.28`, `@woho/tools 0.4.25`, `@woho/memory 0.6.18`, `@woho/mcp 0.6.28`. Confirm published artifacts before installation.
+- DIAL Core is a candidate upstream model gateway; DIAL Chat is a full application. Neither has been selected for adoption. ADR-0005 remains open pending a small proof-of-concept.
