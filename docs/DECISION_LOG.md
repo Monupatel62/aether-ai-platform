@@ -84,3 +84,9 @@ Each accepted ADR must include: context/problem, options considered, chosen opti
 - Added [AUTHORIZATION_POLICY_GAP_AUDIT.md](AUTHORIZATION_POLICY_GAP_AUDIT.md) after semantic review of the draft permission matrix.
 - Recorded high-risk ambiguities involving workspace creation defaults, support-operator modeling, admin access to conversations/memory, ownership transfer/grant ceilings, action-level permissions, approval tiers, membership/ACL versioning, workload identity and billing permissions.
 - These are policy gaps and proposed dispositions, not accepted product decisions. ADR-0012, ADR-0015 and ADR-0020 through ADR-0024 remain open as applicable. No code or tests were run.
+
+
+## 2026-10-22 — Retention, deletion, export and telemetry policy proposal
+
+- Added [DATA_RETENTION_DELETION_EXPORT_TELEMETRY_POLICY.md](DATA_RETENTION_DELETION_EXPORT_TELEMETRY_POLICY.md) with data-category ownership candidates, metadata-first telemetry defaults, deletion/revocation distinctions, backup restore reconciliation, export controls and acceptance tests.
+- Numeric retention periods, legal-hold rules, residency, export entitlements, backup targets and telemetry retention remain open for product/privacy/legal review. ADR-0012 and ADR-0015 remain open; no compliance claim or implementation was made.
