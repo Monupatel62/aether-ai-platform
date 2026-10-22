@@ -1,0 +1,233 @@
+{
+  "format_version": 1,
+  "status": "draft-fixtures-not-executed",
+  "note": "Expected outcomes are author-defined. These fixtures have not been run through a JSON Schema Draft 2020-12 validator; format assertion, cross-field time ordering, trust, authorization freshness, replay protection and runtime behavior are not proven.",
+  "cases": [
+    {
+      "case_id": "ERR-VALID-001",
+      "schema": "error.schema.json",
+      "expected_valid": true,
+      "description": "Minimal safe public error envelope.",
+      "payload": {
+        "error": {
+          "code": "UNAUTHENTICATED",
+          "message": "Authentication is required.",
+          "retryable": false
+        },
+        "request_id": "req-00000001"
+      }
+    },
+    {
+      "case_id": "ERR-INVALID-001",
+      "schema": "error.schema.json",
+      "expected_valid": false,
+      "description": "Unknown top-level property must be rejected.",
+      "payload": {
+        "error": {
+          "code": "UNAUTHENTICATED",
+          "message": "Authentication is required.",
+          "retryable": false
+        },
+        "request_id": "req-00000001",
+        "debug": "internal"
+      }
+    },
+    {
+      "case_id": "EVENT-VALID-001",
+      "schema": "event-envelope.schema.json",
+      "expected_valid": true,
+      "description": "Minimal event envelope with a bounded object payload.",
+      "payload": {
+        "schema_version": 1,
+        "event_id": "evt-00000000000001",
+        "event_type": "run.queued",
+        "occurred_at": "2026-10-22T12:00:00Z",
+        "producer": "aether-ai-api",
+        "correlation_id": "corr-000001",
+        "payload": {
+          "run_id": "run-000001"
+        }
+      }
+    },
+    {
+      "case_id": "EVENT-INVALID-001",
+      "schema": "event-envelope.schema.json",
+      "expected_valid": false,
+      "description": "Missing required producer field.",
+      "payload": {
+        "schema_version": 1,
+        "event_id": "evt-00000000000001",
+        "event_type": "run.queued",
+        "occurred_at": "2026-10-22T12:00:00Z",
+        "correlation_id": "corr-000001",
+        "payload": {}
+      }
+    },
+    {
+      "case_id": "AUTHN-VALID-001",
+      "schema": "auth-context.schema.json",
+      "expected_valid": true,
+      "description": "Minimal internal authenticated user context.",
+      "payload": {
+        "principal_id": "user-123",
+        "principal_type": "user",
+        "authn_method": "oidc",
+        "authenticated_at": "2026-10-22T12:00:00Z",
+        "session_id": "session-0001",
+        "request_id": "request-0001"
+      }
+    },
+    {
+      "case_id": "AUTHN-INVALID-001",
+      "schema": "auth-context.schema.json",
+      "expected_valid": false,
+      "description": "Client-supplied role is not a permitted context property.",
+      "payload": {
+        "principal_id": "user-123",
+        "principal_type": "user",
+        "authn_method": "oidc",
+        "authenticated_at": "2026-10-22T12:00:00Z",
+        "session_id": "session-0001",
+        "request_id": "request-0001",
+        "role": "admin"
+      }
+    },
+    {
+      "case_id": "AUTHZ-VALID-001",
+      "schema": "authorization-context.schema.json",
+      "expected_valid": true,
+      "description": "Minimal scoped allow-decision context; freshness and trust are not established by shape.",
+      "payload": {
+        "principal_id": "user-123",
+        "principal_type": "user",
+        "tenant_id": "tenant-123",
+        "resource_type": "document",
+        "resource_id": "doc-123",
+        "action": "read",
+        "decision": "allow",
+        "decision_id": "decision-0001",
+        "membership_version": "m-7",
+        "resource_acl_version": "acl-4",
+        "policy_version": "policy-2",
+        "issued_at": "2026-10-22T12:00:00Z",
+        "expires_at": "2026-10-22T12:01:00Z",
+        "request_id": "request-0001"
+      }
+    },
+    {
+      "case_id": "AUTHZ-INVALID-001",
+      "schema": "authorization-context.schema.json",
+      "expected_valid": false,
+      "description": "A deny value cannot be represented as an allow context.",
+      "payload": {
+        "principal_id": "user-123",
+        "principal_type": "user",
+        "tenant_id": "tenant-123",
+        "resource_type": "document",
+        "resource_id": "doc-123",
+        "action": "read",
+        "decision": "deny",
+        "decision_id": "decision-0001",
+        "membership_version": "m-7",
+        "resource_acl_version": "acl-4",
+        "policy_version": "policy-2",
+        "issued_at": "2026-10-22T12:00:00Z",
+        "expires_at": "2026-10-22T12:01:00Z",
+        "request_id": "request-0001"
+      }
+    },
+    {
+      "case_id": "TOOL-VALID-001",
+      "schema": "tool-invocation.schema.json",
+      "expected_valid": true,
+      "description": "Minimal tool invocation envelope with idempotency key.",
+      "payload": {
+        "invocation_id": "invoke-0000000001",
+        "run_id": "run-000001",
+        "tool_id": "files.read",
+        "tool_version": "1.0.0",
+        "arguments": {
+          "file_id": "file-123"
+        },
+        "requested_by": "user-123",
+        "requested_at": "2026-10-22T12:00:00Z",
+        "idempotency_key": "idem-key-00000001"
+      }
+    },
+    {
+      "case_id": "TOOL-INVALID-001",
+      "schema": "tool-invocation.schema.json",
+      "expected_valid": false,
+      "description": "Missing required idempotency key.",
+      "payload": {
+        "invocation_id": "invoke-0000000001",
+        "run_id": "run-000001",
+        "tool_id": "files.read",
+        "tool_version": "1.0.0",
+        "arguments": {
+          "file_id": "file-123"
+        },
+        "requested_by": "user-123",
+        "requested_at": "2026-10-22T12:00:00Z"
+      }
+    },
+    {
+      "case_id": "RUN-VALID-001",
+      "schema": "run-event.schema.json",
+      "expected_valid": true,
+      "description": "Minimal run queued lifecycle event.",
+      "payload": {
+        "event_id": "evt-00000000000002",
+        "run_id": "run-000001",
+        "run_version": 1,
+        "event_type": "run.queued",
+        "occurred_at": "2026-10-22T12:00:00Z",
+        "idempotency_key": "idem-key-00000001"
+      }
+    },
+    {
+      "case_id": "RUN-INVALID-001",
+      "schema": "run-event.schema.json",
+      "expected_valid": false,
+      "description": "Unsupported lifecycle event type.",
+      "payload": {
+        "event_id": "evt-00000000000002",
+        "run_id": "run-000001",
+        "run_version": 1,
+        "event_type": "run.unknown",
+        "occurred_at": "2026-10-22T12:00:00Z",
+        "idempotency_key": "idem-key-00000001"
+      }
+    },
+    {
+      "case_id": "RESOURCE-VALID-001",
+      "schema": "resource-change-event.schema.json",
+      "expected_valid": true,
+      "description": "Minimal resource deletion-request event.",
+      "payload": {
+        "event_id": "evt-00000000000003",
+        "event_type": "resource.deletion_requested",
+        "resource_type": "document",
+        "resource_id": "doc-123",
+        "resource_version": 1,
+        "occurred_at": "2026-10-22T12:00:00Z",
+        "change_id": "change-0000000001"
+      }
+    },
+    {
+      "case_id": "RESOURCE-INVALID-001",
+      "schema": "resource-change-event.schema.json",
+      "expected_valid": false,
+      "description": "ACL change requires acl_version.",
+      "payload": {
+        "event_id": "evt-00000000000003",
+        "event_type": "resource.acl_changed",
+        "resource_type": "document",
+        "resource_id": "doc-123",
+        "resource_version": 2,
+        "occurred_at": "2026-10-22T12:00:00Z",
+        "change_id": "change-0000000001"
+      }
+    }
+  ]
+}
