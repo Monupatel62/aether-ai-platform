@@ -176,3 +176,8 @@ Read [Tenant Membership, Resource ACL and Revocation Consistency Decision](TENAN
 ## Latest checkpoint — authorization policy gap audit (2026-10-22)
 
 Read [Authorization Policy Gap Audit](AUTHORIZATION_POLICY_GAP_AUDIT.md) before implementation planning. The semantic review found 14 gaps, including an inconsistency between the Member workspace-creation cell and its default-deny footnote; the missing Support Operator role in the matrix; ambiguous tenant-admin access to conversation/memory content; incomplete ownership-transfer and grant-ceiling rules; broad action bundles; and undefined high-risk approval tiers. These are not accepted decisions. Next, review the high-severity findings, approve/reject proposed clarifications, then revise the matrix and repository contracts. Data retention/deletion, audit policy and ADR-0020–0024 remain open. No code/tests were run; do not start implementation without explicit approval.
+
+
+## Latest checkpoint — retention, deletion, export and telemetry policy (2026-10-22)
+
+Read [DATA_RETENTION_DELETION_EXPORT_TELEMETRY_POLICY.md](DATA_RETENTION_DELETION_EXPORT_TELEMETRY_POLICY.md). It defines proposed metadata-first telemetry defaults, data-category ownership candidates, immediate access revocation versus asynchronous physical deletion, export controls, backup restore reconciliation, and planned acceptance tests. Numeric retention, residency, legal hold, export rights, backup RPO/RTO and telemetry retention remain open; this is not a compliance certification. Review with product/privacy/legal owners before implementing persistence or deletion workflows. No code/tests were run.
