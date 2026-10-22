@@ -84,3 +84,8 @@ These are proposals, not approved HTTP semantics. They must be reconciled with t
 ## 8. Approval and verification status
 
 No implementation or tests were run. The acceptance cases are proposed test requirements, not passing test results. This document must be reviewed alongside the membership/ACL decision and authorization matrix before the OpenAPI contract is approved.
+
+
+## Internal authorization context schema
+
+See [authorization-context.schema.json](authorization-context.schema.json) for the proposed short-lived internal allow context. It binds principal, resolved tenant, resource/action, decision ID, membership/ACL/policy versions, timestamps and request ID. It is not an authentication token and must never be accepted from an external client as proof of authorization. Schema validation cannot prove trusted origin, integrity, expiry enforcement, or freshness; authenticated service-to-service transport and execution-time reauthorization remain required.
