@@ -111,3 +111,9 @@ For each future change, record the date, exact files, rationale, alternatives co
 - Reviewed documentation in the component repositories and corrected remaining scope/dependency notes.
 - Re-fetched changed files. README and repository-specification checks across all 33 repositories returned zero matches for the unrelated-project markers; inspected technical, architecture, dependency, implementation, research, work-log, security, and engineering documents were also clear after cleanup.
 - No application code was written and no tests or builds were run.
+
+
+## 2026-10-23 — Implementation gate consolidation
+
+- Added `docs/IMPLEMENTATION_GATE_BLOCKERS.md` to gather P0 contract/security blockers and P1 product/operations decisions in one reviewable checklist.
+- The checklist links to existing detailed evidence and preserves the rule that documentation completion is not implementation approval.
