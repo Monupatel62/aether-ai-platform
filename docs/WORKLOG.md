@@ -187,3 +187,12 @@ For each future change, record: date; exact files; why the change is needed; alt
 - Route names and fields are candidates for review, not approved or implemented endpoints. JWT bearer is a placeholder, not a selected identity design.
 - No OpenAPI parser/validator, generated client, API implementation, contract fixtures, or runtime security tests were run.
 - Next: review route scope and auth/tenant ownership, settle idempotency and lifecycle semantics, then validate OpenAPI and add positive/negative fixtures. Keep coding gated on explicit approval.
+
+
+## 2026-10-22 — OpenAPI v1 semantic review
+
+- Added [OPENAPI_V1_REVIEW_MATRIX.md](contracts/OPENAPI_V1_REVIEW_MATRIX.md) after manually reviewing the draft OpenAPI YAML.
+- Flagged a P0 contract defect: the client request message schema permits system/developer roles, and the response reuses the same schema. The proposed remediation is to split request and response schemas and keep privileged instructions server-owned.
+- Recorded further P0/P1 decisions around tenant resolution, agent-specific input schemas, run output authorization/retention, cancellation races, accepted response shapes, error-schema drift, limits, streaming and identity token validation.
+- No OpenAPI parser/validator, generated client, endpoint implementation, or runtime security test was run. This is a manual design review, not evidence of a running exploit.
+- Next: revise the draft schema after reviewing the role policy and endpoint semantics, then validate OpenAPI 3.1 and add negative contract fixtures. Documentation only; no implementation or DevKit changes.
