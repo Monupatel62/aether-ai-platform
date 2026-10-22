@@ -1,0 +1,353 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-10-22",
+  "status": "proposed",
+  "graph_type": "candidate_package_import_graph",
+  "notes": [
+    "Only proposed package-import edges are included; network API, queue/event, generated artifact, infrastructure and documentation-only edges are excluded.",
+    "This graph is a candidate design artifact, not proof that these package imports have been implemented.",
+    "Review edge classifications and tenant/security ownership before implementation."
+  ],
+  "nodes": [
+    "aether-ai-platform",
+    "aether-ai-web",
+    "aether-ai-api",
+    "aether-ai-gateway",
+    "aether-ai-providers",
+    "aether-ai-agents",
+    "aether-ai-workflows",
+    "aether-ai-orchestration",
+    "aether-ai-tools",
+    "aether-ai-mcp",
+    "aether-ai-memory",
+    "aether-ai-rag",
+    "aether-ai-files",
+    "aether-ai-knowledge",
+    "aether-ai-auth",
+    "aether-ai-security",
+    "aether-ai-admin",
+    "aether-ai-billing",
+    "aether-ai-sdk",
+    "aether-ai-evaluations",
+    "aether-ai-observability",
+    "aether-ai-deployment",
+    "aether-ai-docs",
+    "aether-ai-database",
+    "aether-ai-queue",
+    "aether-ai-cache",
+    "aether-ai-search",
+    "aether-ai-plugins",
+    "aether-ai-integrations",
+    "aether-ai-testing",
+    "aether-ai-ui-components",
+    "aether-ai-enterprise",
+    "aether-ai-infrastructure"
+  ],
+  "edges": [
+    {
+      "from": "aether-ai-web",
+      "to": "aether-ai-ui-components",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-admin",
+      "to": "aether-ai-auth",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-admin",
+      "to": "aether-ai-ui-components",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-api",
+      "to": "aether-ai-auth",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-api",
+      "to": "aether-ai-billing",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-api",
+      "to": "aether-ai-security",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-api",
+      "to": "aether-ai-observability",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-gateway",
+      "to": "aether-ai-providers",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-gateway",
+      "to": "aether-ai-security",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-gateway",
+      "to": "aether-ai-observability",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-agents",
+      "to": "aether-ai-gateway",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-agents",
+      "to": "aether-ai-tools",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-agents",
+      "to": "aether-ai-memory",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-agents",
+      "to": "aether-ai-security",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-agents",
+      "to": "aether-ai-observability",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-orchestration",
+      "to": "aether-ai-workflows",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-orchestration",
+      "to": "aether-ai-agents",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-orchestration",
+      "to": "aether-ai-queue",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-orchestration",
+      "to": "aether-ai-database",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-orchestration",
+      "to": "aether-ai-security",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-orchestration",
+      "to": "aether-ai-observability",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-tools",
+      "to": "aether-ai-security",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-tools",
+      "to": "aether-ai-observability",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-mcp",
+      "to": "aether-ai-tools",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-mcp",
+      "to": "aether-ai-security",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-mcp",
+      "to": "aether-ai-observability",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-memory",
+      "to": "aether-ai-database",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-memory",
+      "to": "aether-ai-security",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-rag",
+      "to": "aether-ai-files",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-rag",
+      "to": "aether-ai-knowledge",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-rag",
+      "to": "aether-ai-search",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-rag",
+      "to": "aether-ai-providers",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-rag",
+      "to": "aether-ai-security",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-files",
+      "to": "aether-ai-database",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-files",
+      "to": "aether-ai-security",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-files",
+      "to": "aether-ai-observability",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-knowledge",
+      "to": "aether-ai-files",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-knowledge",
+      "to": "aether-ai-database",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-knowledge",
+      "to": "aether-ai-auth",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-knowledge",
+      "to": "aether-ai-security",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-auth",
+      "to": "aether-ai-security",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-billing",
+      "to": "aether-ai-database",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-billing",
+      "to": "aether-ai-queue",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-billing",
+      "to": "aether-ai-security",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-evaluations",
+      "to": "aether-ai-agents",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-evaluations",
+      "to": "aether-ai-gateway",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-evaluations",
+      "to": "aether-ai-testing",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-evaluations",
+      "to": "aether-ai-observability",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-search",
+      "to": "aether-ai-database",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-search",
+      "to": "aether-ai-security",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-plugins",
+      "to": "aether-ai-tools",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-plugins",
+      "to": "aether-ai-auth",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-plugins",
+      "to": "aether-ai-security",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-integrations",
+      "to": "aether-ai-tools",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-integrations",
+      "to": "aether-ai-auth",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-integrations",
+      "to": "aether-ai-security",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-integrations",
+      "to": "aether-ai-mcp",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-enterprise",
+      "to": "aether-ai-auth",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-enterprise",
+      "to": "aether-ai-security",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-enterprise",
+      "to": "aether-ai-billing",
+      "type": "package_import"
+    },
+    {
+      "from": "aether-ai-enterprise",
+      "to": "aether-ai-observability",
+      "type": "package_import"
+    }
+  ]
+}
