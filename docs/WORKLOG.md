@@ -88,3 +88,11 @@ For each future change, record: date; exact files; why the change is needed; alt
 
 - Added `docs/AUTHORIZATION_PERMISSION_MATRIX.md` with proposed role matrix, resource/action vocabulary, tenant and service-principal invariants, policy decision contract and negative-test plan.
 - Updated handoff and decision/research notes. Permissions remain draft; no code or tests were written/run.
+
+
+## 2026-10-22 — Cross-repository consistency audit
+
+- Reviewed the dependency matrix, structural audit matrix, authorization permission matrix, and selected repository specifications covering workflow validation, identity/security, queue, database, API/orchestration, knowledge/RAG/search, and enterprise controls.
+- Added [CROSS_REPOSITORY_CONSISTENCY_AUDIT.md](CROSS_REPOSITORY_CONSISTENCY_AUDIT.md) with ten findings, severity, evidence, proposed corrections and implementation gates.
+- Key mismatches: workflow dependency direction, identity/policy/enterprise ownership overlap, knowledge↔RAG dependency cycle risk, API→agents versus API→orchestration ambiguity, queue dependencies versus consumers, database/domain schema ownership, and overlapping ACL enforcement.
+- No source code changed. No automated graph-cycle detector, build, integration/security test or POC was run. The graph is not certified cycle-free.
