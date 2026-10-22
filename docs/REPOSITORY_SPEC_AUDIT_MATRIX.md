@@ -1,6 +1,6 @@
 # Aether AI — Repository Specification Audit Matrix
 
-**Audit date:** 2026-10-22. **Scope:** structural review of all 33 individual specification files. This is not a code, legal, or penetration-test report.
+**Audit date:** 2026-10-23. **Scope:** structural review of all 33 individual specification files. This is not a code, legal, or penetration-test report.
 
 ## Required headings
 
@@ -66,3 +66,8 @@ The 10 existing Aether repositories were checked for a repository-specific `docs
 ## Next step
 
 Review [Dependency Matrix](DEPENDENCY_MATRIX.md), resolve the remaining architecture decisions in [Decision Log](DECISION_LOG.md), then record the user's explicit approval before Phase 1 implementation.
+
+
+## Repository-level documentation rollout — 2026-10-23
+
+A follow-up GitHub write pass added `docs/REPOSITORY_SPECIFICATION.md` to all 33 canonical Aether AI repositories and corrected relative links to the master documentation. README documentation entry points were added where missing and writable; existing README content was preserved. This is a documentation rollout, not a code, security, legal, or penetration-test pass. Each repository still needs implementation-specific API schemas, tests, and operational runbooks before release.
