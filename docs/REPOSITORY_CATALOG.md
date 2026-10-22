@@ -132,4 +132,5 @@ This is a proposed logical graph, not a claim that all 33 repositories must beco
 ## Architecture review resources
 
 - [AI DIAL adoption evaluation](DIAL_ADOPTION_EVALUATION.md)
+- [Gateway proof-of-concept plan](GATEWAY_PROOF_OF_CONCEPT.md)
 - [WoHo AI DevKit compatibility review](DEVKIT_COMPATIBILITY_REVIEW.md)
