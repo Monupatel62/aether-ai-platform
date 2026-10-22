@@ -136,11 +136,13 @@ enterprise -> auth, security, billing, observability
 - `aether-ai-database` and `aether-ai-security` do not import their domain/runtime consumers.
 - `aether-ai-tools` does **not** import MCP; the composition root registers MCP-backed tools.
 
-## Initial package graph cycle check
+## Machine-readable package graph and cycle check
 
-**Result:** a depth-first-search cycle detector was executed against a manually transcribed candidate package-import graph: **33 nodes, 61 directed edges, 0 cycles reported**.
+The candidate package-import graph is stored in [dependency-package-graph.json](dependency-package-graph.json). The JSON file was fetched back from GitHub, parsed, validated for known nodes and `package_import` edge types, and passed to a depth-first-search cycle detector.
 
-**Important limitation:** the graph was transcribed from the proposed register for this check; it was not parsed or generated from a machine-readable source, and the edge classifications remain proposed. This is a preliminary check, not a proof that every edge in the Markdown register is correctly classified or that the runtime/service-call/event graph is cycle-free. Before implementation, normalize the edge inventory into machine-readable data, generate the graph from that data, rerun cycle detection, and preserve the graph plus tool output/revision as evidence.
+**Result:** 33 nodes, 61 directed package-import edges, **0 cycles reported**.
+
+**Limitations:** the JSON graph is still a human-authored proposed design, not extracted from actual source imports or build manifests. This verifies only that the candidate graph encoded in the JSON file contains no directed cycles. It does not prove that implementation imports match the proposal, that every Markdown relationship was classified correctly, or that runtime synchronous-call/event loops are absent. Re-run the check whenever the JSON graph changes and separately review runtime call/event loops.
 
 ## Open items
 
@@ -148,4 +150,4 @@ enterprise -> auth, security, billing, observability
 - Confirm the tenant/workspace membership and role-grant source of truth (ADR-0021).
 - Define ACL revocation/deletion consistency targets and the canonical authorization check (ADR-0020/0024).
 - Validate external package imports, versioned contracts and licenses before implementation.
-- Convert this table to machine-readable data, then run and record automated cycle detection.
+- Compare the JSON edge inventory against every typed relationship in this register; retain a review record for any intentional mismatch.
