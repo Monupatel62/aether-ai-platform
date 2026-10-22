@@ -12,6 +12,7 @@ This directory holds machine-readable starting points for cross-repository contr
 - `event-envelope.schema.json`: common event metadata for asynchronous integration.
 - `auth-context.schema.json`: verified principal/authentication context created by trusted middleware; it is not a client-supplied grant.
 - `authorization-context.schema.json`: proposed short-lived internal allow context bound to principal, tenant, resource/action, decision ID, membership/ACL/policy versions and expiry; never accept it from an external client.
+- [Authorization Context Trust Profile](AUTHORIZATION_CONTEXT_TRUST_PROFILE.md): proposed issuer, transport integrity, audience/scope binding, expiry, freshness, replay and revocation requirements with 14 acceptance cases; no implementation or tests have run.
 - `tool-invocation.schema.json`: bounded tool invocation request with explicit scope and approval references; execution must still re-authorize at the policy boundary.
 - `run-event.schema.json`: draft durable run/step lifecycle events and idempotency metadata.
 - `resource-change-event.schema.json`: draft ACL/revocation/deletion lifecycle events for search, RAG, cache and other projections.
