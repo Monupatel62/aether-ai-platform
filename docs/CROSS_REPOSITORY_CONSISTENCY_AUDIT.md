@@ -137,3 +137,10 @@ The following documentation corrections have now been committed to the master re
 Added [DEPENDENCY_EDGE_REGISTER.md](DEPENDENCY_EDGE_REGISTER.md), assigning proposed types to logical repository relationships and listing explicit non-edges for the known cycle risks. A DFS cycle detector was run against a manually transcribed candidate package graph: 33 nodes, 61 directed edges, and zero cycles reported.
 
 This result is preliminary: the graph was manually transcribed, not generated from machine-readable edge data, and edge classifications remain proposals. Normalize the register, generate the graph from the normalized source, repeat the check, and separately review runtime call/event loops. Do not claim the whole architecture is certified cycle-free.
+
+
+## Machine-readable package graph verification — 2026-10-22
+
+Created [dependency-package-graph.json](dependency-package-graph.json) with 33 repository nodes and 61 proposed package-import edges. The JSON was fetched back from GitHub, parsed, validated for edge types and node references, then passed to a DFS cycle detector. **Result: 0 directed cycles reported in the encoded candidate graph.**
+
+This is stronger than the earlier manually transcribed check, but it remains a proposed graph authored from documentation, not a scan of source imports/build manifests. It does not certify the actual code graph or runtime API/event flows. Next verification must compare the JSON edges against every typed row in [DEPENDENCY_EDGE_REGISTER.md](DEPENDENCY_EDGE_REGISTER.md), review intentional differences, and separately analyze runtime call/event loops.
