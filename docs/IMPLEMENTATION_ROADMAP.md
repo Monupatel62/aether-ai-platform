@@ -205,3 +205,15 @@ This baseline is documentation-only. No API endpoint or runtime behavior is impl
 - [ ] Run OpenAPI 3.1 validation and add positive/negative contract fixtures after decisions are reviewed.
 
 Manual text review only; no OpenAPI parser or runtime security test has been run.
+
+
+### OpenAPI message-role remediation checkpoint — 2026-10-22
+
+- [x] Replace the shared chat message schema with separate request and response schemas in the draft OpenAPI.
+- [x] Constrain client request message role to `user` and generated response message role to `assistant` in the draft contract.
+- [x] Add [OPENAPI_V1_CONTRACT_TEST_PLAN.md](contracts/OPENAPI_V1_CONTRACT_TEST_PLAN.md) and record remediation in the review matrix.
+- [ ] Validate the OpenAPI document with a parser/validator; this correction has not yet been validated.
+- [ ] Implement positive/negative contract fixtures only after review and explicit approval; no runtime tests have run.
+- [ ] Resolve remaining tenant, agent-input, output-retention, cancellation, limits, streaming, and identity decisions.
+
+Documentation-only correction; no implementation or security certification is implied.
