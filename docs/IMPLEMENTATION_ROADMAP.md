@@ -79,3 +79,8 @@ Do not move forward because files were created. Move only when the previous phas
 Completed the documentation evaluation for authentication, identity, sessions, authorization, multi-tenancy and repository boundaries. The evaluation document is `docs/IDENTITY_AND_TENANT_SECURITY_EVALUATION.md`.
 
 Next gate: compare managed and self-hosted OIDC options and define the proof-of-concept scorecard; resolve the related open ADRs before implementation. No application code was written and no POC results are claimed.
+
+
+## Research checkpoint — identity-provider shortlist (2026-10-22)
+
+Added `docs/IDENTITY_PROVIDER_SHORTLIST_AND_SCORECARD.md`, which defines candidate options and a common proof-of-concept scorecard. Next gate is evidence collection via equivalent tests, pricing/plan confirmation, operations review and migration rehearsal. ADR-0008 remains open; no provider has been selected and no implementation has begun.
