@@ -84,3 +84,8 @@ Next gate: compare managed and self-hosted OIDC options and define the proof-of-
 ## Research checkpoint — identity-provider shortlist (2026-10-22)
 
 Added `docs/IDENTITY_PROVIDER_SHORTLIST_AND_SCORECARD.md`, which defines candidate options and a common proof-of-concept scorecard. Next gate is evidence collection via equivalent tests, pricing/plan confirmation, operations review and migration rehearsal. ADR-0008 remains open; no provider has been selected and no implementation has begun.
+
+
+## Research checkpoint — browser session and authorization architecture (2026-10-22)
+
+Added `docs/BROWSER_SESSION_AND_AUTHORIZATION_ARCHITECTURE.md`. It evaluates the browser BFF/session approach and an RBAC + resource-level authorization baseline, with CSRF, tenant enforcement and session revocation requirements. Next gate: review the proposed architecture and align it with the identity-provider shortlist before running a POC. ADR-0019/0020 remain open; no code or tests have been run.
