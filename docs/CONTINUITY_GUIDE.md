@@ -83,3 +83,8 @@ The next file to read is `docs/IDENTITY_PROVIDER_SHORTLIST_AND_SCORECARD.md`. Ca
 ## Latest continuation point — browser session and authorization design (2026-10-22)
 
 Read `docs/BROWSER_SESSION_AND_AUTHORIZATION_ARCHITECTURE.md`. It uses IETF RFC 10017 (August 2026), RFC 9700 and OWASP guidance. The current candidate for first-party web is BFF + server-side sessions; the authorization baseline candidate is RBAC plus resource-level checks with deny-by-default. Both remain unapproved. Continue by checking how these choices interact with the shortlisted identity providers and writing a concrete POC test matrix. No implementation should start until the documentation gate is explicitly approved.
+
+
+## Latest continuation point — authorization permission matrix (2026-10-22)
+
+Read `docs/AUTHORIZATION_PERMISSION_MATRIX.md`. This is a draft permission specification, not accepted policy. It covers Owner/Admin/Member/Viewer, scoped Resource Manager, Service Principal, Platform Operator and controlled Support Operator access. Continue by checking consistency with the 33 repo contracts, identifying role conflicts/overbroad grants and refining the launch resource inventory. Keep implementation blocked until explicit documentation-gate approval.
