@@ -133,3 +133,10 @@ Read `docs/BROWSER_SESSION_AND_AUTHORIZATION_ARCHITECTURE.md`. It evaluates BFF/
 ## Latest research checkpoint — authorization permission matrix (2026-10-22)
 
 Read `docs/AUTHORIZATION_PERMISSION_MATRIX.md`. It proposes roles, resource classes, action vocabulary, baseline permissions, mandatory invariants, repository ownership and a POC test plan. Treat all permissions as draft product policy requiring review; none are implemented. Next: refine first-launch resources and risk tiers, then define revocation/consistency targets and turn the negative cases into POC tests after architecture review. Do not start application code without explicit approval.
+
+
+## Latest checkpoint — cross-repository consistency audit (2026-10-22)
+
+Read [Cross-Repository Consistency Audit](CROSS_REPOSITORY_CONSISTENCY_AUDIT.md) before further architecture work. The manual review found conflicts in workflow dependencies, auth/security/enterprise ownership, knowledge↔RAG direction, API→agent execution, queue dependency direction, database/domain schema ownership, ACL enforcement across search/RAG/knowledge, and overly broad security dependencies. It also found that repository edges are not consistently typed as package/API/event/artifact/infrastructure/docs.
+
+This is a documentation-level review only. No automated cycle detector, build, runtime test, or security test was run. Do not claim the graph is cycle-free. Next: reconcile the affected specs and dependency matrix, preserve open ADRs, type the graph edges, and only then run an explicit graph check. Application coding remains blocked until documentation review and explicit user approval.
