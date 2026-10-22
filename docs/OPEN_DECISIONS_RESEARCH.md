@@ -101,3 +101,8 @@ See `docs/IDENTITY_PROVIDER_SHORTLIST_AND_SCORECARD.md`. Current candidates: ZIT
 ## Browser sessions and authorization architecture — 2026-10-22
 
 See `docs/BROWSER_SESSION_AND_AUTHORIZATION_ARCHITECTURE.md`. Candidate for the first-party web app: BFF + server-side session to keep OAuth tokens out of browser JavaScript, with explicit CSRF controls, secure cookies, server-side revocation and per-request authorization. Candidate authorization baseline: RBAC plus resource-level checks, deny-by-default; only add ABAC, ReBAC or a dedicated policy engine when use cases justify the complexity. RFC 10017 (August 2026) is the current IETF browser-based OAuth BCP reviewed for this evaluation. ADR-0019 and ADR-0020 remain open; no implementation or POC is claimed.
+
+
+## Authorization permission matrix — 2026-10-22
+
+See `docs/AUTHORIZATION_PERMISSION_MATRIX.md`. It proposes a deny-by-default role/resource/action matrix, tenant isolation invariants, service-principal boundaries, policy decision contract and minimum negative tests. Product roles and access grants are not final until reviewed. Key unresolved topics: RBAC vs ABAC/ReBAC/policy engine; tenant/workspace hierarchy; privileged support access; workload/API-key identity; step-up and revocation targets; database tenant isolation. No implementation or POC is claimed.
