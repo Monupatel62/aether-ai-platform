@@ -12,7 +12,7 @@ Owns workflow shape/validation, not durable scheduling or step execution.
 
 ## Dependencies and connections
 
-aether-ai-orchestration, aether-ai-agents, aether-ai-database.
+No runtime dependency on orchestration, agents, or database. This repository owns versioned workflow schema/types and pure validation. Orchestration consumes the public workflow contract; agent step types are represented by stable identifiers/schemas rather than imports of the agent runtime. Any minimal shared schema utility requires a separate reviewed edge.
 
 ## Owned capabilities
 
@@ -30,7 +30,7 @@ Workflow schema, allowed step types, version migration, cycle detection, secret 
 - A typed/versioned interface with documented inputs, outputs, error cases, limits, and compatibility policy.
 - Explicit auth/tenant context where data or actions are user-scoped.
 - Correlation/run identifiers and structured, redacted lifecycle events.
-- Timeouts, retry behavior, cancellation, idempotency, and partial-failure semantics where applicable.
+- Workflow schema validation limits, version compatibility and validation errors. Execution timeout, retry, cancellation, idempotency and partial-failure semantics are owned by orchestration, not by schema validation.
 
 ## Security and privacy
 
