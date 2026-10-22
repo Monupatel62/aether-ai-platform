@@ -56,7 +56,11 @@ Unit tests, contract tests, authorization/tenant isolation tests, malformed-inpu
 - [AI DIAL Chat](https://github.com/epam/ai-dial-chat) — UI/BFF reference; verify file-level notices before reuse.
 - [Model Context Protocol](https://modelcontextprotocol.io/) — relevant for MCP/tool integration.
 
-These links are research inputs, not proof that the Aether implementation exists or that all referenced code is reusable under one license.## Related documentation
+These links are research inputs, not proof that the Aether implementation exists or that all referenced code is reusable under one license.## Storage and indexing boundary
+
+See [Data Infrastructure Evaluation](../DATA_INFRASTRUCTURE_EVALUATION.md). File bytes should use a separately selected object-storage adapter; this evaluation does not choose a provider. The files domain owns file metadata, ownership, scanning status, retention/deletion and signed-access policy. Database metadata and search/vector indexes are distinct: index jobs should use versioned opaque IDs and be safely replayable. File deletion and access revocation must propagate to every derived index/cache, with tombstones/reconciliation to cover partial failures. Never put raw file bytes in queue messages or routine logs.
+
+## Related documentation
 
 - [Master repository catalog](../REPOSITORY_CATALOG.md)
 - [Master architecture](../MASTER_ARCHITECTURE.md)
