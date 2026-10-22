@@ -164,3 +164,10 @@ This is a check of the proposed graph data, not a scan of actual source imports.
 ## Latest verification — dependency register reconciled (2026-10-22)
 
 Compared [DEPENDENCY_EDGE_REGISTER.md](DEPENDENCY_EDGE_REGISTER.md) with [dependency-package-graph.json](dependency-package-graph.json): 61 internal package-import edges match exactly, with no duplicates, missing edges or extras. Five external backend/library/test-fixture relationships are intentionally excluded from the internal graph. Re-running DFS on the latest fetched JSON reported 0 cycles. This verifies consistency of the proposed docs graph only; actual source imports and runtime API/event loops are not verified. Remaining product decisions include tenant/workspace membership ownership and ACL revocation/deletion targets.
+
+
+## Latest checkpoint — tenant membership and ACL consistency (2026-10-22)
+
+Read [Tenant Membership, Resource ACL and Revocation Consistency Decision](TENANT_MEMBERSHIP_AND_ACL_CONSISTENCY_DECISION.md). It compares three membership-owner options and defines the safety contract for revoking access across API reads, files, queues/workers, caches, search/RAG indexes, chunks and citations. The preferred candidate is `aether-ai-enterprise` only if it is intended to be the universal tenant domain; otherwise a dedicated `aether-ai-tenancy` repo would change the approved 33-repo scope and requires explicit approval. No owner or numeric projection-cleanup SLO has been accepted. Immediate protected-operation denial must rely on authoritative re-authorization, never on eventual index/cache cleanup.
+
+**Next:** confirm the tenant/workspace product model and membership owner; review the draft permission matrix; define data retention/deletion requirements and realistic freshness/availability targets; then plan the identity/authorization POC. Continue documentation/research only. Do not write application code or create another repository without explicit approval.
