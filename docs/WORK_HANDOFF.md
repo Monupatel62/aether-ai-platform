@@ -147,3 +147,8 @@ This is a documentation-level review only. No automated cycle detector, build, r
 Committed coordinated documentation corrections to the dependency matrix and affected specs: workflows, API, knowledge, queue, database, auth, security, enterprise, RAG, Search and orchestration. The audit document records which contradictions were addressed and what remains open.
 
 Still required: type every dependency edge, construct separate package-import and runtime-call/event graphs, run and record automated package-cycle detection, and decide the canonical tenant/workspace membership/role-grant owner plus ACL revocation/deletion consistency targets. The graph is not certified cycle-free. Documentation-only work continues; no application code without explicit approval.
+
+
+## Latest checkpoint — typed dependency edges (2026-10-22)
+
+Added [DEPENDENCY_EDGE_REGISTER.md](DEPENDENCY_EDGE_REGISTER.md), with proposed classifications for package imports, synchronous API calls, events/queues, generated artifacts, infrastructure provisioning and documentation-only relationships. A preliminary DFS check over a manually transcribed candidate package graph reported 0 cycles across 33 nodes and 61 edges. Because the graph was not generated from a machine-readable register, this is preliminary evidence only. Next: normalize the edge register to machine-readable data, generate and rerun cycle detection, then separately review runtime call/event loops. Tenant/workspace membership ownership and ACL revocation/deletion targets remain open. No application code without explicit approval.
