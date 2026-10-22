@@ -8,7 +8,11 @@ Queue abstraction, versioned message envelopes, retry/dead-letter semantics, and
 
 ## Dependencies and connections
 
-Orchestration, workflows, billing, observability.
+Selected queue adapter (TBD), versioned neutral message envelopes, and an optional low-level telemetry interface. Orchestration, workflows and billing are producers/consumers of queue contracts; the queue implementation must not import their domain packages.
+
+## Direction and ownership rule
+
+Queue owns transport abstraction, envelope/schema validation, delivery semantics, retry/backoff, dead-letter behavior and broker health signals. Domain producers and consumers own business decisions and idempotent handlers. Queue messages should carry opaque identifiers and versioned metadata, not raw prompts, secrets or large customer payloads.
 
 ## Owned capabilities
 
