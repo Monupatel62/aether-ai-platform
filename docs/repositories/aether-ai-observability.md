@@ -53,3 +53,22 @@ Signal taxonomy, correlation IDs, redaction, retention, sampling, dashboards, he
 - [WoHo AI DevKit](https://github.com/Monupatel62/woho-ai-devkit)
 
 All external projects are references or candidate dependencies only. Verify exact version, license, dependency tree, and security posture before reuse.
+
+## Security and privacy
+
+Logs/traces can leak prompts, completions, retrieval queries, credentials, and personal data. Default to metadata-only telemetry, redact secrets, restrict access, cap retention, avoid high-cardinality identifiers, and make sensitive payload capture explicit opt-in with a documented purpose.
+
+## Test plan
+
+Inject canary secrets and synthetic personal data into requests/results and verify they do not appear in default logs/traces. Test access control, retention expiry, sampling, redaction, and trace correlation.
+
+Before release, add unit tests, contract tests for direct dependencies, negative authorization/input tests, and failure/recovery tests for the behavior this component owns. Use synthetic or sanitized data only.
+
+## Related documentation
+
+- [Master repository catalog](../REPOSITORY_CATALOG.md)
+- [Master architecture](../MASTER_ARCHITECTURE.md)
+- [Architecture audit](../ARCHITECTURE_AUDIT.md)
+- [Security threat model](../SECURITY_THREAT_MODEL.md)
+- [Open decisions and research](../OPEN_DECISIONS_RESEARCH.md)
+- [Continuity handoff](../WORK_HANDOFF.md)
