@@ -8,11 +8,11 @@ Shared policy definitions, prompt/tool guardrails, secret-handling, redaction, a
 
 ## Dependencies and connections
 
-All runtime components; observability for security audit events.
+Low-level cryptographic/policy utilities and an optional low-level telemetry interface. Higher-level runtime components consume versioned security contracts; this repository must not import API, agents, UI, or other consumers. Whether policy evaluation is a library or a separately deployed service remains open.
 
 ## Owned capabilities
 
-Threat model, policy evaluation API, input/output filtering, PII redaction, secret management, tool risk classes, security event schema.
+Shared policy request/decision contracts, reusable enforcement primitives, input/output filtering guidance, PII redaction utilities, tool risk classifications and security event schema. Identity/session state and authoritative tenant/workspace membership are owned elsewhere; do not create a parallel identity or membership database.
 
 ## Must not own
 
@@ -20,6 +20,10 @@ Threat model, policy evaluation API, input/output filtering, PII redaction, secr
 - Secrets, identity decisions, or authorization bypasses outside its documented boundary.
 - Private database tables owned by another service.
 - Unversioned contracts or undocumented side effects.
+
+## Policy contract boundary
+
+Define versioned principal, action, resource, tenant/workspace context, decision, reason-code and obligation fields. Fail closed on missing/invalid context for protected actions. Callers remain responsible for invoking the policy contract at every resource/action boundary; a shared library or policy service does not replace domain enforcement. Security must not import its callers.
 
 ## Required contracts
 
