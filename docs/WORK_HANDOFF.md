@@ -198,3 +198,10 @@ GitHub visibility check found 20 canonical-name Aether repos: 10 with docs and 1
 ## Latest checkpoint — draft contract schemas (2026-10-22)
 
 Added [docs/contracts/README.md](contracts/README.md) plus six draft JSON Schemas: `error.schema.json`, `event-envelope.schema.json`, `auth-context.schema.json`, `tool-invocation.schema.json`, `run-event.schema.json`, and `resource-change-event.schema.json`. All six were parsed as valid JSON after creation; JSON Schema semantics and runtime behavior have not been validated. These are draft artifacts, not approved public contracts. Next: review schema semantics and decisions, add a versioned API/OpenAPI baseline and positive/negative fixtures only after approval. Keep documentation-only; no code/tests or DevKit changes.
+
+
+## Latest checkpoint — contract semantic review and error catalog (2026-10-22)
+
+Added [draft schema semantic review](contracts/SCHEMA_SEMANTIC_REVIEW.md) and [draft public error-code catalog](contracts/ERROR_CODE_CATALOG.md). Review highlights: tool arguments and generic event payloads are currently unconstrained objects; tenant/actor/step/failure fields may need event-specific required rules; format assertion and event ordering/replay/deduplication semantics remain unresolved; JSON Schema cannot enforce trusted authentication, current authorization, approval binding, or revocation behavior. The error catalog proposes codes and HTTP/retry mappings but is not approved for implementation.
+
+Verified status remains limited: the six schemas were previously parsed as JSON; no Draft 2020-12 validator, OpenAPI validation, positive/negative fixtures, runtime tests, or security tests have been run. Next: resolve ownership/versioning and tenant/ACL/event semantics, then draft the versioned OpenAPI baseline. Documentation only; no application code, POC, new repository, or WoHo AI DevKit changes.
