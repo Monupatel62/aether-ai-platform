@@ -56,4 +56,11 @@ Unit tests, contract tests, authorization/tenant isolation tests, malformed-inpu
 - [AI DIAL Chat](https://github.com/epam/ai-dial-chat) — UI/BFF reference; verify file-level notices before reuse.
 - [Model Context Protocol](https://modelcontextprotocol.io/) — relevant for MCP/tool integration.
 
-These links are research inputs, not proof that the Aether implementation exists or that all referenced code is reusable under one license.
+These links are research inputs, not proof that the Aether implementation exists or that all referenced code is reusable under one license.## Related documentation
+
+- [Master repository catalog](../REPOSITORY_CATALOG.md)
+- [Master architecture](../MASTER_ARCHITECTURE.md)
+- [Architecture audit](../ARCHITECTURE_AUDIT.md)
+- [Security threat model](../SECURITY_THREAT_MODEL.md)
+- [Open decisions and research](../OPEN_DECISIONS_RESEARCH.md)
+- [Continuity handoff](../WORK_HANDOFF.md)
