@@ -1,6 +1,6 @@
 # Repository specification: aether-ai-platform
 
-**Status:** Documentation baseline copied from the Aether AI master specification. Implementation status must be verified separately.
+**Status:** Repository exists; documentation-only on the inspected `main` branch. No application implementation is present in the audited tree.
 
 ## Mission
 
@@ -12,6 +12,7 @@ Owns cross-repository decisions; not a runtime service.
 
 ## Dependencies and connections
 
+All 33 Aether repositories link to this catalog for documentation and decisions only; no runtime imports.
 
 ## Owned capabilities
 
