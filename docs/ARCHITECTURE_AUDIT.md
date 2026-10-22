@@ -8,13 +8,12 @@
 
 The GitHub contents API was checked for all 10 existing repositories. Each is on the `main` branch and currently has a documentation-only footprint. The 9 component repositories each have eight files under `docs/`: project specification, architecture, dependencies/contracts, implementation plan, research/licenses, work log, engineering standard, and technical design. The platform repository has the master docs and repository-spec directory. This check confirms files exist; it does not independently prove every statement in every file is correct.
 
-The catalog contains 33 planned Aether repositories. Ten exist; 23 remain planned. The separate `Monupatel62/woho-ai-devkit` project is not part of that count.
+The catalog contains 33 canonical Aether AI repositories. Repository existence and documentation status are tracked in the current catalog; this audit's older inventory snapshot is historical.
 
 ## 2. Findings that must be resolved before coding
 
 ### A-01 — MCP version assumption is now time-sensitive
 
-The official MCP project announced specification version `2026-07-28`. It introduces a stateless protocol core, header-based routing, updated authorization, Tasks as an extension, and other changes. The TypeScript SDK v2 is the current stable release line for that revision; SDK v1.x implements the 2025-11-25 specification and is a separate maintenance line. Therefore, Aether must not silently assume that existing DevKit MCP primitives support the latest spec.
 
 **Required action:** add an MCP compatibility ADR and a matrix covering spec revision, SDK major/version, supported transports, auth, capability discovery, task/long-running behavior, backward compatibility, and deprecation policy. Use an adapter boundary so older servers can be supported intentionally rather than accidentally.
 
@@ -58,11 +57,8 @@ The design correctly says repository boundaries are ownership boundaries, not au
 
 **Required action:** decide a modular runtime/package map first. Only split a component into a network service for an explicit scaling, isolation, ownership, or release reason.
 
-### A-07 — WoHo AI DevKit integration is unverified at the package/API level
 
-The DevKit README and root package metadata provide a useful starting point, but do not prove that every feature or export is present in every published package. MCP spec changes make this especially important.
 
-**Required action:** before choosing direct dependencies, inspect the exact npm package versions, export maps, types, changelogs, test coverage, transitive licenses, and protocol versions. Run a mock-based compatibility spike. Do not modify the DevKit main branch or release pipeline for Aether.
 
 ## 3. Ownership/contract risks to check
 
@@ -88,7 +84,6 @@ The DevKit README and root package metadata provide a useful starting point, but
 - [x] Initial threat model mapped to all ten official OWASP GenAI LLM Top 10 2026 categories and component tests; [ ] review agentic-specific controls in detail.
 - [ ] Privacy/retention and observability policy approved.
 - [ ] Runtime/module boundaries selected without assuming 33 services.
-- [ ] WoHo DevKit compatibility spike plan is complete and license review requirements are explicit.
 - [ ] API, event, tool, workflow, and run-state contracts are reviewed together.
 - [x] Every planned repository spec passes the common required-section checklist; [ ] review the semantic correctness of all dependency edges and accept the matrix.
 - [ ] User approves the transition to implementation.
@@ -105,7 +100,6 @@ All 10 existing repositories were also checked for their new `docs/SECURITY_REVI
 
 - [ ] Review every dependency edge against the actual planned package/service boundary and accept the matrix through ADR.
 - [ ] Decide the final runtime/module layout; do not deploy 33 services by default.
-- [ ] Complete package-level WoHo DevKit compatibility review and license/SBOM work when exact dependencies are selected.
 - [ ] Review the canonical OWASP 2026 Top 10 and agent-control guidance in detail and map each applicable category to test cases.
 - [ ] Resolve product/technology decisions and privacy/retention requirements.
 - [ ] Obtain user approval before coding.
