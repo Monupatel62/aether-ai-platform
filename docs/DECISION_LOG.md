@@ -69,3 +69,11 @@ Each accepted ADR must include: context/problem, options considered, chosen opti
 - Added `docs/AUTHORIZATION_PERMISSION_MATRIX.md` defining proposed principal/resource/action vocabulary, a baseline role matrix, mandatory security invariants, policy decision contract and negative-test plan.
 - Role permissions are a proposal and need product-owner review; they are not implemented or accepted as final product policy.
 - ADR-0020, ADR-0021, ADR-0022, ADR-0023 and ADR-0024 remain open. No application code or tests were added/run.
+
+
+## 2026-10-22 — Tenant membership and ACL revocation consistency
+
+- Added [TENANT_MEMBERSHIP_AND_ACL_CONSISTENCY_DECISION.md](TENANT_MEMBERSHIP_AND_ACL_CONSISTENCY_DECISION.md) to compare membership ownership options and define proposed access-revocation safety invariants.
+- Recommendation for review: `aether-ai-enterprise` may own universal tenant/workspace membership only if its contract works for all customer tiers; otherwise a dedicated tenancy repository requires explicit approval to revise the 33-repository plan. `aether-ai-auth` remains identity/session owner, not automatically the membership authority.
+- Protected operations must re-check authoritative authorization; search/RAG/cache/index cleanup is asynchronous projection work and cannot be the access-denial barrier. Numeric projection-cleanup SLOs remain unapproved pending requirements and measurement.
+- ADR-0020, ADR-0021, ADR-0023 and ADR-0024 remain open. No code, provider selection, repository creation, or numeric SLO commitment was made.
