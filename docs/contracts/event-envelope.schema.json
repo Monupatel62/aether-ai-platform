@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://wohotech.in/aether/contracts/event-envelope.schema.json",
+  "$id": "https://aether-ai.invalid/contracts/event-envelope.schema.json",
   "title": "Aether Event Envelope",
   "description": "Draft envelope for asynchronous events. Consumer idempotency and authorization checks remain mandatory.",
   "type": "object",
