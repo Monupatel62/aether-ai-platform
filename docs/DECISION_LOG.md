@@ -48,3 +48,10 @@ Each accepted ADR must include: context/problem, options considered, chosen opti
 - ADR-0008 (identity provider/session) remains open; this research does not select a vendor.
 - New proposed ADRs: ADR-0019 browser session architecture; ADR-0020 authorization model/policy engine scope; ADR-0021 tenant hierarchy and support access; ADR-0022 API-key/workload identity; ADR-0023 MFA/recovery/session/revocation SLOs; ADR-0024 tenant isolation and RLS rollout.
 - No application code or security control implementation was added.
+
+
+## 2026-10-22 — Identity-provider shortlist research
+
+- Added `docs/IDENTITY_PROVIDER_SHORTLIST_AND_SCORECARD.md` comparing ZITADEL, Keycloak and Auth0 using official documentation and a weighted POC scorecard.
+- No identity provider was selected. The scorecard must be populated with observed POC evidence; unknowns remain N/T rather than guessed scores.
+- Next gate: run equivalent protocol, tenant authorization, lifecycle, audit, operations and migration tests. No POC was executed in this research step.
