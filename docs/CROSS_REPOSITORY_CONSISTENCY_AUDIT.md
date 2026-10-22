@@ -130,3 +130,10 @@ The following documentation corrections have now been committed to the master re
 - Orchestration spec: made durable run/step state ownership explicit.
 
 **Not yet complete:** all dependency edges have not been classified individually; no automated package-cycle detection has been run; the canonical tenant/workspace membership owner and resource ACL revocation/deletion SLOs remain open. These corrections reduce documented contradictions but do not prove a cycle-free graph or authorize implementation.
+
+
+## Initial edge-typing and cycle-check checkpoint — 2026-10-22
+
+Added [DEPENDENCY_EDGE_REGISTER.md](DEPENDENCY_EDGE_REGISTER.md), assigning proposed types to logical repository relationships and listing explicit non-edges for the known cycle risks. A DFS cycle detector was run against a manually transcribed candidate package graph: 33 nodes, 61 directed edges, and zero cycles reported.
+
+This result is preliminary: the graph was manually transcribed, not generated from machine-readable edge data, and edge classifications remain proposals. Normalize the register, generate the graph from the normalized source, repeat the check, and separately review runtime call/event loops. Do not claim the whole architecture is certified cycle-free.
