@@ -322,17 +322,33 @@ components:
           type: string
           minLength: 8
           maxLength: 128
-    ChatMessage:
+    RequestChatMessage:
       type: object
       additionalProperties: false
       required: [role, content]
+      description: Client-supplied message. Privileged system/developer instructions are server-owned and cannot be supplied through this request schema.
       properties:
         role:
           type: string
-          enum: [system, developer, user, assistant]
+          const: user
         content:
           type: string
           minLength: 1
+          maxLength: 100000
+          description: Plain text only in this draft; multimodal payloads are not defined. The service must also enforce a byte-size limit.
+    ResponseChatMessage:
+      type: object
+      additionalProperties: false
+      required: [role, content]
+      description: Generated assistant message only.
+      properties:
+        role:
+          type: string
+          const: assistant
+        content:
+          type: string
+          minLength: 1
+          maxLength: 100000
           description: Plain text only in this draft; multimodal payloads are not defined.
     ChatCompletionRequest:
       type: object
@@ -349,7 +365,7 @@ components:
           minItems: 1
           maxItems: 200
           items:
-            $ref: '#/components/schemas/ChatMessage'
+            $ref: '#/components/schemas/RequestChatMessage'
         temperature:
           type: number
           minimum: 0
@@ -385,7 +401,7 @@ components:
                 type: integer
                 const: 0
               message:
-                $ref: '#/components/schemas/ChatMessage'
+                $ref: '#/components/schemas/ResponseChatMessage'
               finish_reason:
                 type: string
                 enum: [stop, length, content_filter, tool_calls]
