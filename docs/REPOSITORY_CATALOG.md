@@ -118,3 +118,11 @@ This is a proposed logical graph, not a claim that all 33 repositories must beco
 - [Open decisions and research](OPEN_DECISIONS_RESEARCH.md)
 - [Engineering and commenting standard](ENGINEERING_AND_COMMENTING_STANDARD.md)
 - [New-chat work handoff](WORK_HANDOFF.md)
+
+## Current audit and security references
+
+- [Architecture audit — Pass 1](ARCHITECTURE_AUDIT.md)
+- [Security threat model](SECURITY_THREAT_MODEL.md)
+- [Open decisions and research](OPEN_DECISIONS_RESEARCH.md)
+- [Engineering/commenting standard](ENGINEERING_AND_COMMENTING_STANDARD.md)
+- [Work handoff for future chats](WORK_HANDOFF.md)
