@@ -40,3 +40,11 @@ Each accepted ADR must include: context/problem, options considered, chosen opti
 |---|---|---|---|
 | ADR-0007 | Database, queue, cache, vector/search engine | Open; baseline proposed | [Data infrastructure evaluation](DATA_INFRASTRUCTURE_EVALUATION.md) recommends benchmarking PostgreSQL + pgvector/full-text, BullMQ, and a Valkey-compatible cache first. No final provider, queue, vector DB, or cache vendor selected. |
 | ADR-0018 | Data-layer ownership and source-of-truth rules | Proposed | PostgreSQL candidate is the transactional source of truth; search/vector indexes are rebuildable projections; queue payloads carry opaque IDs; orchestration persists durable run state; cache is reconstructible only. Validate via failure, isolation, restore and benchmark tests. |
+
+
+## 2026-10-22 — Identity and tenant security research
+
+- Added `docs/IDENTITY_AND_TENANT_SECURITY_EVALUATION.md` covering identity-provider options, OIDC/OAuth session design, tenant isolation, authorization contracts, threat scenarios and POC acceptance criteria.
+- ADR-0008 (identity provider/session) remains open; this research does not select a vendor.
+- New proposed ADRs: ADR-0019 browser session architecture; ADR-0020 authorization model/policy engine scope; ADR-0021 tenant hierarchy and support access; ADR-0022 API-key/workload identity; ADR-0023 MFA/recovery/session/revocation SLOs; ADR-0024 tenant isolation and RLS rollout.
+- No application code or security control implementation was added.
