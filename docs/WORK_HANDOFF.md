@@ -244,3 +244,12 @@ This was a manual review of the YAML text. No OpenAPI validator, generated clien
 Updated `contracts/openapi.v1.yaml` to use separate `RequestChatMessage` and `ResponseChatMessage` schemas (`user` input, `assistant` output), and added provisional JSON bodies for accepted run creation and cancellation. Added [OPENAPI_V1_CONTRACT_TEST_PLAN.md](contracts/OPENAPI_V1_CONTRACT_TEST_PLAN.md) and updated [OPENAPI_V1_REVIEW_MATRIX.md](contracts/OPENAPI_V1_REVIEW_MATRIX.md). This addresses the schema-level P0 role finding in the draft but has not been validated by an OpenAPI parser or runtime test. Other blockers remain: trusted tenant resolution, agent-specific input schemas and limits, run output authorization/retention, cancellation races/idempotency semantics, streaming decisions, identity token validation, and formal OpenAPI validation.
 
 Next: validate OpenAPI 3.1, add positive/negative fixtures, and resolve the remaining contract decisions before approval. No app code, runtime tests, POC, or WoHo AI DevKit changes.
+
+
+## Latest checkpoint — repository inventory refreshed (2026-10-22)
+
+The connected GitHub listing now shows **32 of the 33 canonical Aether AI repository names**. The only name not found is [aether-ai-memory](https://github.com/Monupatel62/aether-ai-memory); verify its exact identity before assuming it exists or creating it. Five formerly unlisted names are now present but empty: aether-ai-integrations, aether-ai-testing, aether-ai-ui-components, aether-ai-enterprise, and aether-ai-infrastructure.
+
+Current documented status: **23 repositories have documentation foundations; 9 existing repositories are empty on the default branch; 1 canonical name was not found**. The aether-ai-admin repository now has its 10-file documentation foundation, and all 10 files were fetched back successfully.
+
+Continue documentation-only. Next document the remaining empty repositories, starting with aether-ai-billing. Do not write application code, deploy, or modify WoHo AI DevKit without explicit approval.
