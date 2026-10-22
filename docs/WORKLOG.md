@@ -129,3 +129,10 @@ For each future change, record: date; exact files; why the change is needed; alt
 - Compared `aether-ai-enterprise` ownership against adding a dedicated `aether-ai-tenancy` repository; no owner chosen and the 33-repository scope was not changed.
 - Defined fail-closed revocation invariants and POC tests for stale sessions, caches, queued jobs, search/vector indexes, citations, event replay and tenant suspension. Numeric cleanup targets remain open pending requirements and benchmarks.
 - Documentation only; no implementation code or POC tests run.
+
+
+## 2026-10-22 — Authorization policy gap audit
+
+- Added [AUTHORIZATION_POLICY_GAP_AUDIT.md](AUTHORIZATION_POLICY_GAP_AUDIT.md) with 14 semantic findings, severity, impact and proposed disposition.
+- Identified an internal contradiction in the workspace-creation row/footnote and unresolved high-risk policy around support access, admin access to conversation/memory content, ownership transfer, approval tiers and action-level permissions.
+- Kept policy decisions open rather than treating draft matrix values as accepted. Documentation only; no application code or tests run.
