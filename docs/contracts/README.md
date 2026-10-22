@@ -54,3 +54,8 @@ This directory holds machine-readable starting points for cross-repository contr
 - [OpenAPI baseline review notes](OPENAPI_V1_BASELINE.md): endpoint scope, unresolved security/product decisions, and verification limitations.
 
 The routes and fields are review candidates only. No OpenAPI validation or runtime implementation is claimed.
+
+
+## OpenAPI review findings
+
+- [OpenAPI v1 semantic review matrix](OPENAPI_V1_REVIEW_MATRIX.md) records P0/P1 review findings. Important: the current draft reuses a message schema that permits client-supplied system/developer roles; separate request/response schemas are required before approval.
