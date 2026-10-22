@@ -121,3 +121,14 @@ The manual review is not an automated cycle check. Do not advance to application
 - [ ] Resolve membership/role-grant ownership and ACL revocation/deletion targets.
 
 See [Cross-Repository Consistency Audit](CROSS_REPOSITORY_CONSISTENCY_AUDIT.md). Documentation corrections reduce known conflicts but do not prove the graph is cycle-free.
+
+
+### Dependency edge register and preliminary graph check — 2026-10-22
+
+- [x] Create [DEPENDENCY_EDGE_REGISTER.md](DEPENDENCY_EDGE_REGISTER.md) with proposed edge types and explicit cycle-prevention non-edges.
+- [x] Run a preliminary DFS cycle detector on a manually transcribed candidate package graph: 33 nodes, 61 edges, 0 cycles reported.
+- [ ] Normalize the register into machine-readable data and generate the graph directly from it.
+- [ ] Repeat cycle detection against generated graph data and retain reproducible evidence.
+- [ ] Review runtime synchronous call loops and asynchronous event feedback loops separately.
+
+The preliminary result does not prove the Markdown edge register is complete or the runtime architecture cycle-free. Implementation remains gated on these checks and explicit user approval.
