@@ -261,3 +261,6 @@ Next: document aether-ai-sdk, then evaluations, observability, integrations, tes
 
 
 - Local documentation-link validation is complete for the master documentation set and all 33 master repository specifications: no unresolved relative links were found. External URLs and heading anchors remain unverified.
+
+
+- Added root README entry points to `aether-ai-memory` and `aether-ai-observability`. Audited README files across all 33 repositories: no broken local relative links and no unrelated-project/package markers remained in the inspected READMEs.
