@@ -62,3 +62,9 @@ Hosting topology, model provider selection, database, queue, cache, vector store
 - Action: evaluate integration, operational complexity, authentication/tenant policy, provider capabilities, release cadence, and license/dependency tree before adopting it as the gateway.
 
 These are source-based design findings, not a completed legal review, SBOM, security audit, or proof that any external code has been reused.
+
+### OWASP 2026 primary document and agent control
+
+- [OWASP GenAI LLM Top 10 2026 — official resource](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/). Its category names include **Hidden Context Exposure** (broader than the former “System Prompt Leakage”) and **Data and Model Poisoning**, **Unbounded Consumption**, and **Improper Output Handling** under the 2026 ranking.
+- [OWASP Top 10 for Agentic Applications](https://genai.owasp.org/initiatives/top-10-for-llm-and-genai/) and [Agent Control Standard](https://genai.owasp.org/resource/agent-control-standard-acs/) are relevant companion references because Aether plans tool-using agents.
+- Use the 2026 canonical names in threat matrices and map each to Aether components and negative tests. Keep this as a living review rather than treating a checklist as proof of security.
