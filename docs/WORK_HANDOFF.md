@@ -111,3 +111,10 @@ Each has an individual specification in [docs/repositories/](repositories/) befo
 
 - Added [Data Infrastructure Evaluation](DATA_INFRASTRUCTURE_EVALUATION.md): PostgreSQL/pgvector, Qdrant, BullMQ, NATS JetStream, Valkey-compatible cache, and dedicated search alternatives, with acceptance tests and unresolved operational decisions.
 - ADR-0007 remains open. The proposed initial benchmark baseline is PostgreSQL + pgvector/full-text, BullMQ, and a cache limited to reconstructible data; no production vendors are selected.
+
+
+## Current stage — identity and tenant security research (2026-10-22)
+
+Read `docs/IDENTITY_AND_TENANT_SECURITY_EVALUATION.md` next. It documents the identity-provider comparison criteria, OIDC/OAuth safety baseline, tenant-aware authorization model, session lifecycle, repository responsibilities, threat scenarios and POC acceptance tests.
+
+Hard constraints remain: documentation/research only; do not write application code or choose a vendor until the comparison and explicit review are complete. ADR-0008 remains open; ADR-0019 through ADR-0024 are proposed open decisions. POC tests listed in the document are planned, not executed.
