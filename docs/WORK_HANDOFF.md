@@ -4,8 +4,6 @@
 
 ## User intent and hard constraints
 
-- Build a new AI platform separate from WoHoTech.
-- Use the existing WoHo AI DevKit where it fits; do not rewrite it.
 - Plan 33 Aether AI repositories. The first 10 have been created; 23 remain planned.
 - Documentation first. Do not start application coding until the full docs and dependency contracts are reviewed.
 - Every component needs a clear purpose, scope, connections, APIs/contracts, implementation order, license notes, and work log.
@@ -69,10 +67,7 @@ Create no new repositories without explicit approval. Continue documentation-fir
 - [Engineering/commenting standard](ENGINEERING_AND_COMMENTING_STANDARD.md)
 - [Continuity guide](CONTINUITY_GUIDE.md)
 
-## Separate WoHo AI DevKit integration note
 
-- Repository: https://github.com/Monupatel62/woho-ai-devkit
-- Documentation-only draft PR: https://github.com/Monupatel62/woho-ai-devkit/pull/139
 - Branch: `docs/aether-ai-integration-plan`
 - PR is open and draft, not merged. It changes only `docs/aether-ai-integration-plan.md`; no source code or release metadata changed.
 - Inspected root metadata: version 0.8.37, Apache-2.0, Node >=20. Verify exact package versions/exports before consuming them.
@@ -81,7 +76,6 @@ Create no new repositories without explicit approval. Continue documentation-fir
 
 - AI DIAL Core official repository: https://github.com/epam/ai-dial-core. Its README describes a unified API/proxy for chat-completion and embedding models/apps, Java 21 + Vert.x; repository has Apache-2.0 LICENSE.
 - AI DIAL Chat: https://github.com/epam/ai-dial-chat. Current architecture describes React/TypeScript frontend and NestJS backend-for-frontend; inspect file-level license notices before reuse.
-- ELITEA SDK: https://github.com/EliteaAI/elitea-sdk. It expects an active ELITEA deployment and project credentials; not a drop-in DevKit replacement.
 - MCP specification: https://modelcontextprotocol.io/.
 
 ## Next work
@@ -95,14 +89,11 @@ Create no new repositories without explicit approval. Continue documentation-fir
 ## Explicit no-go items until approved
 
 - No application code, no provider secrets, no production deployment, no billing integrations, and no automatic high-impact tools.
-- Do not rename or modify WoHoTech.
-- Do not rewrite or release WoHo AI DevKit as part of Aether work.
 - Do not claim the project is implemented or production-ready; it is still in the documentation phase.
 
 ## Latest audit update — 2026-10-22
 
 - Added [Architecture audit](ARCHITECTURE_AUDIT.md), [Security threat model](SECURITY_THREAT_MODEL.md), and [Open decisions research](OPEN_DECISIONS_RESEARCH.md).
-- Key research findings: MCP `2026-07-28` is published and materially changes protocol behavior; MCP TypeScript SDK v2 is the current stable line for that spec while v1.x targets `2025-11-25`. Verify `@woho/mcp` exact package support before integration.
 - OWASP GenAI announced its 2026 LLM Top 10 in September 2026. Update the security control/test matrix to that edition.
 - OpenTelemetry GenAI attributes can contain sensitive data; telemetry must be metadata-only by default.
 - GitHub recommends full-length commit SHA pins for immutable Action references (or an approved dependency lockfile approach).
@@ -120,12 +111,7 @@ Create no new repositories without explicit approval. Continue documentation-fir
 
 ## Architecture decision review — 2026-10-22
 
-- Added [AI DIAL adoption evaluation](DIAL_ADOPTION_EVALUATION.md), comparing DIAL Core, DevKit provider path, a hybrid gateway, and DIAL Chat as a product.
 - Added [Gateway proof-of-concept plan](GATEWAY_PROOF_OF_CONCEPT.md) with 14 test scenarios, measurement requirements, and decision rules. It is a plan only; no gateway code has been created.
-- Added [WoHo AI DevKit compatibility review](DEVKIT_COMPATIBILITY_REVIEW.md) from the current GitHub `main` manifests and selected source files. Current observed versions: `@woho/core 0.2.24`, `@woho/provider-openai 0.2.22`, `@woho/agents 0.3.28`, `@woho/tools 0.4.25`, `@woho/memory 0.6.18`, `@woho/mcp 0.6.28`; verify exact registry tarballs before use.
-- The DevKit MCP package has useful generic JSON-RPC-like/stdio primitives, limits and allowlists, but this source review does not prove full MCP `2026-07-28` conformance. A protocol compatibility harness is required; do not alter DevKit to fit Aether.
-- ADR-0003 (33 repositories) and ADR-0004 (repository boundaries do not imply 33 services) are recorded as accepted. ADR-0005 (DIAL Core vs DevKit gateway vs hybrid) remains open until a proof-of-concept produces evidence.
-- No Aether application code was written and no DevKit source code was modified.
 
 - Added [Data Infrastructure Evaluation](DATA_INFRASTRUCTURE_EVALUATION.md): PostgreSQL/pgvector, Qdrant, BullMQ, NATS JetStream, Valkey-compatible cache, and dedicated search alternatives, with acceptance tests and unresolved operational decisions.
 - ADR-0007 remains open. The proposed initial benchmark baseline is PostgreSQL + pgvector/full-text, BullMQ, and a cache limited to reconstructible data; no production vendors are selected.
@@ -210,40 +196,34 @@ Read [IDENTITY_AUTHORIZATION_POC_RUNBOOK.md](IDENTITY_AUTHORIZATION_POC_RUNBOOK.
 
 Read [CROSS_REPOSITORY_CONTRACT_AUDIT.md](CROSS_REPOSITORY_CONTRACT_AUDIT.md). It found two real contract contradictions and corrected them: API now routes durable runs through orchestration instead of declaring direct agents/database implementation dependencies; workflows no longer depend at runtime on orchestration, agents or database. The other main finding is that current contracts are mostly governance prose; machine-readable OpenAPI, event envelopes, provider capabilities, tool invocation and lifecycle schemas remain to be authored before implementation.
 
-GitHub visibility check found 20 canonical-name Aether repos: 10 with docs and 10 empty. Thirteen canonical planned names were not found in the connected listing. The user reports 22 created; two additional names/URLs are not yet reconciled. Catalog updated to state the observed evidence without claiming those two do not exist elsewhere. Next: reconcile the two names, populate documentation in empty repos after confirming their identities, then draft P0 machine-readable contracts. Continue docs-only; no code/tests run and do not alter WoHo AI DevKit.
 
 
 ## Latest checkpoint — draft contract schemas (2026-10-22)
 
-Added [docs/contracts/README.md](contracts/README.md) plus six draft JSON Schemas: `error.schema.json`, `event-envelope.schema.json`, `auth-context.schema.json`, `tool-invocation.schema.json`, `run-event.schema.json`, and `resource-change-event.schema.json`. All six were parsed as valid JSON after creation; JSON Schema semantics and runtime behavior have not been validated. These are draft artifacts, not approved public contracts. Next: review schema semantics and decisions, add a versioned API/OpenAPI baseline and positive/negative fixtures only after approval. Keep documentation-only; no code/tests or DevKit changes.
 
 
 ## Latest checkpoint — contract semantic review and error catalog (2026-10-22)
 
 Added [draft schema semantic review](contracts/SCHEMA_SEMANTIC_REVIEW.md) and [draft public error-code catalog](contracts/ERROR_CODE_CATALOG.md). Review highlights: tool arguments and generic event payloads are currently unconstrained objects; tenant/actor/step/failure fields may need event-specific required rules; format assertion and event ordering/replay/deduplication semantics remain unresolved; JSON Schema cannot enforce trusted authentication, current authorization, approval binding, or revocation behavior. The error catalog proposes codes and HTTP/retry mappings but is not approved for implementation.
 
-Verified status remains limited: the six schemas were previously parsed as JSON; no Draft 2020-12 validator, OpenAPI validation, positive/negative fixtures, runtime tests, or security tests have been run. Next: resolve ownership/versioning and tenant/ACL/event semantics, then draft the versioned OpenAPI baseline. Documentation only; no application code, POC, new repository, or WoHo AI DevKit changes.
 
 
 ## Latest checkpoint — draft OpenAPI v1 baseline (2026-10-22)
 
 Added [openapi.v1.yaml](contracts/openapi.v1.yaml) and [OPENAPI_V1_BASELINE.md](contracts/OPENAPI_V1_BASELINE.md), linked from the contract registry README. The provisional API surfaces are health, synchronous text completion, durable run creation, run-status reads, and cancellation. Streaming, multimodal input, tool APIs, conversation persistence, files/knowledge, model catalog, approvals, usage, and admin APIs remain out of scope for this draft. Route and schema shapes are proposals, not approved or implemented contracts. Bearer/JWT is only a placeholder; identity issuer/audience, tenant/membership authority, limits, streaming, idempotency retention, cancellation races, and output retention remain unresolved.
 
-No OpenAPI validator, generated client, endpoint implementation, contract fixtures, or runtime security tests have been run. Next: review route ownership and semantics, resolve auth/tenant/idempotency decisions, then validate the OpenAPI document and add fixtures after approval. Documentation only; do not begin application code or change WoHo AI DevKit.
 
 
 ## Latest checkpoint — OpenAPI semantic review findings (2026-10-22)
 
 Added [OPENAPI_V1_REVIEW_MATRIX.md](contracts/OPENAPI_V1_REVIEW_MATRIX.md) and linked it from the contract registry. A P0 design defect was found: the current request message schema permits client-supplied `system` and `developer` roles, and the response reuses that same schema. Before approval, separate request/response message schemas and keep privileged instructions server-owned. Other blockers include trusted tenant resolution, per-agent input schemas and size limits, run output authorization/retention, cancellation races, response schemas for 202 accepted operations, error schema drift, streaming decisions, and token validation rules.
 
-This was a manual review of the YAML text. No OpenAPI validator, generated client, endpoint implementation, or runtime security test was run. Do not claim exploitability in a running service. Next: review and remediate the message-role contract and other endpoint semantics, then validate OpenAPI and add negative fixtures. Documentation only; no app code or DevKit changes.
 
 
 ## Latest checkpoint — OpenAPI message-role remediation (2026-10-22)
 
 Updated `contracts/openapi.v1.yaml` to use separate `RequestChatMessage` and `ResponseChatMessage` schemas (`user` input, `assistant` output), and added provisional JSON bodies for accepted run creation and cancellation. Added [OPENAPI_V1_CONTRACT_TEST_PLAN.md](contracts/OPENAPI_V1_CONTRACT_TEST_PLAN.md) and updated [OPENAPI_V1_REVIEW_MATRIX.md](contracts/OPENAPI_V1_REVIEW_MATRIX.md). This addresses the schema-level P0 role finding in the draft but has not been validated by an OpenAPI parser or runtime test. Other blockers remain: trusted tenant resolution, agent-specific input schemas and limits, run output authorization/retention, cancellation races/idempotency semantics, streaming decisions, identity token validation, and formal OpenAPI validation.
 
-Next: validate OpenAPI 3.1, add positive/negative fixtures, and resolve the remaining contract decisions before approval. No app code, runtime tests, POC, or WoHo AI DevKit changes.
 
 
 ## Latest checkpoint — repository inventory refreshed (2026-10-22)
@@ -252,7 +232,6 @@ The connected GitHub listing now shows **32 of the 33 canonical Aether AI reposi
 
 Current documented status: **23 repositories have documentation foundations; 9 existing repositories are empty on the default branch; 1 canonical name was not found**. The aether-ai-admin repository now has its 10-file documentation foundation, and all 10 files were fetched back successfully.
 
-Continue documentation-only. Next document the remaining empty repositories, starting with aether-ai-billing. Do not write application code, deploy, or modify WoHo AI DevKit without explicit approval.
 
 
 ## Latest checkpoint — billing docs verified (2026-10-22)
