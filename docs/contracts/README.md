@@ -59,7 +59,7 @@ The routes and fields are review candidates only. No OpenAPI validation or runti
 
 ## OpenAPI review findings
 
-- [OpenAPI v1 semantic review matrix](OPENAPI_V1_REVIEW_MATRIX.md) records P0/P1 review findings. Important: the current draft reuses a message schema that permits client-supplied system/developer roles; separate request/response schemas are required before approval.
+- [OpenAPI v1 semantic review matrix](OPENAPI_V1_REVIEW_MATRIX.md) records P0/P1 review findings. The message-role schema defect has been corrected in the draft; OpenAPI validation, negative fixtures, and runtime enforcement remain unverified.
 
 
 ## Tenant context and authorization contract
