@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wohotech.in/aether/contracts/auth-context.schema.json",
+  "title": "Aether Verified Authentication Context",
+  "description": "Draft internal context created by trusted authentication middleware, never accepted as a client-authored grant or role assertion.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["principal_id", "principal_type", "authn_method", "authenticated_at", "session_id", "request_id"],
+  "properties": {
+    "principal_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "principal_type": {
+      "type": "string",
+      "enum": ["user", "service"]
+    },
+    "authn_method": {
+      "type": "string",
+      "enum": ["oidc", "api_key", "workload_identity"]
+    },
+    "authenticated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128
+    },
+    "tenant_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "credential_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "scopes": {
+      "description": "Credential scopes are a ceiling, not proof of access to any particular resource.",
+      "type": "array",
+      "uniqueItems": true,
+      "maxItems": 100,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      }
+    }
+  }
+}
