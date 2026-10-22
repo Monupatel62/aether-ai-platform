@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aether-ai.invalid/contracts/resource-change-event.schema.json",
+  "title": "Aether Resource ACL or Lifecycle Change Event",
+  "description": "Draft notification for ACL changes, revocation, deletion and reindexing. Search/RAG/cache projections are not authorization sources; current policy must be rechecked before serving results.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["event_id", "event_type", "resource_type", "resource_id", "resource_version", "occurred_at", "change_id"],
+  "properties": {
+    "event_id": {"type": "string", "minLength": 16, "maxLength": 128},
+    "event_type": {
+      "type": "string",
+      "enum": ["resource.acl_changed", "resource.access_revoked", "resource.deletion_requested", "resource.deleted", "resource.restore_requested", "resource.restored"]
+    },
+    "resource_type": {"type": "string", "minLength": 1, "maxLength": 80},
+    "resource_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "resource_version": {"type": "integer", "minimum": 1},
+    "acl_version": {"type": "integer", "minimum": 1},
+    "tenant_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "changed_by": {"type": "string", "minLength": 1, "maxLength": 128},
+    "occurred_at": {"type": "string", "format": "date-time"},
+    "change_id": {"type": "string", "minLength": 16, "maxLength": 128},
+    "reason_code": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]{2,63}$"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"event_type": {"const": "resource.acl_changed"}}, "required": ["event_type"]},
+      "then": {"required": ["acl_version"]}
+    },
+    {
+      "if": {"properties": {"event_type": {"const": "resource.access_revoked"}}, "required": ["event_type"]},
+      "then": {"required": ["acl_version"]}
+    }
+  ]
+}
