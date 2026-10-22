@@ -12,11 +12,11 @@ Owns execution state machine and idempotency; no provider-specific logic or tool
 
 ## Dependencies and connections
 
-Workflows, agents, queue, database, observability.
+Versioned workflow schema/validation contract; agent runtime contract; neutral queue contract; database persistence tooling/contracts; security policy contract; observability interface. Workflow schema code and queue implementation must not import orchestration.
 
 ## Owned capabilities
 
-State transition rules, outbox/idempotency, queue delivery assumptions, lease/recovery semantics, cancellation contract.
+Single authoritative durable run/step state machine, state transition rules, outbox/idempotency, queue delivery assumptions, lease/recovery semantics, cancellation contract and reconciliation after crashes. API submits durable work through this repository; the API must not create a second durable execution state machine.
 
 ## Must not own
 
