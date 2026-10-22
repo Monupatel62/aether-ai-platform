@@ -1,6 +1,6 @@
 # Repository specification: aether-ai-queue
 
-**Status:** Planned; repository not created yet. This specification must be copied into the repository when it is created and then maintained with implementation changes.
+**Status:** Repository exists; documentation-only on the inspected `main` branch. No application implementation is present in the audited tree.
 
 ## Mission
 
