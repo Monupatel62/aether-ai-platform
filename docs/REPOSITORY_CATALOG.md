@@ -6,7 +6,7 @@
 
 - Aether AI repositories in this plan: **33**.
 - Target Aether AI repositories in this plan: **33**.
-- Verified during the documentation pass on 2026-10-23: **33 of 33 canonical-name repositories are present**. A repository-specific `docs/REPOSITORY_SPECIFICATION.md` has been committed to each repository. README entry points were added to repositories where creation succeeded; existing README files were preserved.
+- Verified during the documentation pass on 2026-10-23: **33 of 33 canonical-name repositories are present**. A repository-specific `docs/REPOSITORY_SPECIFICATION.md` has been committed to each repository. All 33 repositories now have README entry points; existing README files were preserved and two missing README files were added.
 - `aether-ai-memory` is present and now has its repository specification. Earlier inventory snapshots that reported it missing or other repositories as empty are historical and superseded by this documentation pass.
 - See [Cross-Repository Contract Audit](CROSS_REPOSITORY_CONTRACT_AUDIT.md) for the evidence and limitations.
 - Current work: **documentation only**. No Aether application code, service deployment, or production configuration is included in this documentation phase.
@@ -35,7 +35,7 @@
 | 18 | [`aether-ai-billing`](https://github.com/Monupatel62/aether-ai-billing) | Created; documentation foundation | Plans, entitlements, usage metering, quotas and billing records |
 | 19 | [`aether-ai-sdk`](https://github.com/Monupatel62/aether-ai-sdk) | Created; documentation baseline added | Typed public client SDK and shared API schemas |
 | 20 | [`aether-ai-evaluations`](https://github.com/Monupatel62/aether-ai-evaluations) | Created; documentation baseline added | Repeatable model/agent eval datasets, runners, scoring, regressions |
-| 21 | [`aether-ai-observability`](https://github.com/Monupatel62/aether-ai-observability) | Exists; empty on default branch | Structured logs, metrics, traces, run correlation and alerts |
+| 21 | [`aether-ai-observability`](https://github.com/Monupatel62/aether-ai-observability) | Created; documentation-only | Structured logs, metrics, traces, run correlation and alerts |
 | 22 | [`aether-ai-deployment`](https://github.com/Monupatel62/aether-ai-deployment) | Created; documentation foundation | Container packaging, environment manifests, releases and rollback docs |
 | 23 | [`aether-ai-docs`](https://github.com/Monupatel62/aether-ai-docs) | Created; documentation foundation | Published guides, API manuals, tutorials, operations and release notes |
 | 24 | [`aether-ai-database`](https://github.com/Monupatel62/aether-ai-database) | Created; documentation foundation | Schemas, migrations, persistence helpers, retention and backup contracts |
@@ -109,7 +109,7 @@ This is a proposed logical graph, not a claim that all 33 repositories must beco
 ## Status vocabulary
 
 - **Created; documentation phase:** GitHub repository exists but implementation is not started.
-- **Planned; not created yet:** name and responsibility are part of the architecture; repository still needs to be created.
+- All 33 canonical repositories are present; implementation status is documented in [Implementation Status Audit](IMPLEMENTATION_STATUS_AUDIT.md).
 - **Implemented:** must only be used after code and tests are present and verified.
 - **Production:** must only be used after explicit release and operational verification.
 
