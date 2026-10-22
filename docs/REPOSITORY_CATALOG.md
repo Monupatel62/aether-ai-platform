@@ -6,7 +6,7 @@
 
 - Aether AI repositories in this plan: **33**.
 - Target Aether AI repositories in this plan: **33**.
-- Verified through the connected GitHub listing on 2026-10-22: **32 of 33 canonical-name repositories visible**; 23 contain the documentation foundation and 9 are empty on the default branch.
+- Verified through the connected GitHub listing on 2026-10-22: **32 of 33 canonical-name repositories visible**; 24 contain the documentation foundation and 8 are empty on the default branch.
 - Canonical-name repository not found in this listing: **1** (`aether-ai-memory`). Five names previously absent from the listing are now visible: `aether-ai-integrations`, `aether-ai-testing`, `aether-ai-ui-components`, `aether-ai-enterprise`, and `aether-ai-infrastructure`; all five are currently empty on the default branch. The earlier inventory counts are superseded by this latest connected GitHub listing.
 - See [Cross-Repository Contract Audit](CROSS_REPOSITORY_CONTRACT_AUDIT.md) for the evidence and limitations.
 - Existing external dependency: [Monupatel62/woho-ai-devkit](https://github.com/Monupatel62/woho-ai-devkit), currently separate.
@@ -33,7 +33,7 @@
 | 15 | [`aether-ai-auth`](https://github.com/Monupatel62/aether-ai-auth) | Created; documentation foundation | Identity provider integration, sessions, role and authorization primitives |
 | 16 | [`aether-ai-security`](https://github.com/Monupatel62/aether-ai-security) | Created; documentation foundation | Shared security policies, redaction, guardrails, secret-handling rules |
 | 17 | [`aether-ai-admin`](https://github.com/Monupatel62/aether-ai-admin) | Exists; empty on default branch | Privileged operator dashboard for models, users, policies, quotas |
-| 18 | [`aether-ai-billing`](https://github.com/Monupatel62/aether-ai-billing) | Exists; empty on default branch | Plans, entitlements, usage metering, quotas and billing records |
+| 18 | [`aether-ai-billing`](https://github.com/Monupatel62/aether-ai-billing) | Created; documentation foundation | Plans, entitlements, usage metering, quotas and billing records |
 | 19 | [`aether-ai-sdk`](https://github.com/Monupatel62/aether-ai-sdk) | Exists; empty on default branch | Typed public client SDK and shared API schemas |
 | 20 | [`aether-ai-evaluations`](https://github.com/Monupatel62/aether-ai-evaluations) | Exists; empty on default branch | Repeatable model/agent eval datasets, runners, scoring, regressions |
 | 21 | [`aether-ai-observability`](https://github.com/Monupatel62/aether-ai-observability) | Exists; empty on default branch | Structured logs, metrics, traces, run correlation and alerts |
