@@ -159,3 +159,8 @@ Added [DEPENDENCY_EDGE_REGISTER.md](DEPENDENCY_EDGE_REGISTER.md), with proposed 
 Created [dependency-package-graph.json](dependency-package-graph.json) and fetched it back from GitHub. The JSON was parsed, its 33 nodes and 61 package-import edges were validated, and a DFS cycle detector reported **0 cycles in the proposed encoded graph**. See [Dependency Edge Register](DEPENDENCY_EDGE_REGISTER.md) and [Cross-Repository Consistency Audit](CROSS_REPOSITORY_CONSISTENCY_AUDIT.md).
 
 This is a check of the proposed graph data, not a scan of actual source imports. Next: compare each JSON edge against the typed Markdown register, record intentional differences, and review runtime API/event loops. Tenant/workspace membership ownership and ACL revocation/deletion targets remain open. No application code without explicit approval.
+
+
+## Latest verification — dependency register reconciled (2026-10-22)
+
+Compared [DEPENDENCY_EDGE_REGISTER.md](DEPENDENCY_EDGE_REGISTER.md) with [dependency-package-graph.json](dependency-package-graph.json): 61 internal package-import edges match exactly, with no duplicates, missing edges or extras. Five external backend/library/test-fixture relationships are intentionally excluded from the internal graph. Re-running DFS on the latest fetched JSON reported 0 cycles. This verifies consistency of the proposed docs graph only; actual source imports and runtime API/event loops are not verified. Remaining product decisions include tenant/workspace membership ownership and ACL revocation/deletion targets.
