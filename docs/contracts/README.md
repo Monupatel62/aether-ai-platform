@@ -12,6 +12,8 @@ This directory holds machine-readable starting points for cross-repository contr
 - `event-envelope.schema.json`: common event metadata for asynchronous integration.
 - `auth-context.schema.json`: verified principal and request context passed after authentication; it is not a client-supplied authorization assertion.
 - `tool-invocation.schema.json`: bounded tool invocation request with explicit scope and approval references; execution must still re-authorize at the policy boundary.
+- `run-event.schema.json`: draft durable run/step lifecycle events and idempotency metadata.
+- `resource-change-event.schema.json`: draft ACL/revocation/deletion lifecycle events for search, RAG, cache and other projections.
 
 ## Mandatory implementation rules
 
