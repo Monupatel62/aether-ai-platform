@@ -160,3 +160,8 @@ This is a proposed logical graph, not a claim that all 33 repositories must beco
 
 - Added `docs/AUTHORIZATION_PERMISSION_MATRIX.md` as the draft source for principal/resource/action vocabulary, baseline roles, authorization invariants and policy test cases.
 - The matrix spans auth/security/API/gateway/orchestration/tools/MCP/database/observability contracts. It is a proposed policy baseline, not implementation or a final role commitment.
+
+
+## Cross-repository consistency audit — 2026-10-22
+
+- [Cross-repository consistency audit](CROSS_REPOSITORY_CONSISTENCY_AUDIT.md) records semantic contract conflicts and dependency-direction risks found after the structural audit. It is the next required gate before implementation; it does not claim automated cycle detection or runtime verification.
