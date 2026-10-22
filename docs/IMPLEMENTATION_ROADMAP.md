@@ -161,3 +161,13 @@ This result only establishes that the proposed JSON graph has no cycles; it does
 - [ ] Confirm the two additional repositories reported by the user by name/URL.
 - [ ] Populate documentation in existing empty repositories after identity/status is confirmed.
 - [ ] Draft P0 machine-readable API, authorization, tool invocation, durable run/event, and source ACL/deletion schemas; no schemas or tests were created in this audit.
+
+
+### Draft machine-readable contract schemas — 2026-10-22
+
+- [x] Add draft JSON Schemas for error envelope, event envelope, verified auth context, tool invocation, durable run events and resource ACL/lifecycle events.
+- [x] Parse the six files as JSON after writing.
+- [ ] Run a JSON Schema Draft 2020-12 validator and add valid/invalid fixtures after the contract semantics are reviewed.
+- [ ] Approve membership/ACL ownership and versioning policy before treating schemas as stable.
+- [ ] Draft the canonical versioned OpenAPI baseline and stable error-code catalog.
+- Note: JSON parsing is not schema validation, contract testing, or runtime security verification.
