@@ -154,3 +154,9 @@ This is a proposed logical graph, not a claim that all 33 repositories must beco
 
 - Added `docs/BROWSER_SESSION_AND_AUTHORIZATION_ARCHITECTURE.md` to specify candidate browser-session and authorization patterns across web, auth, security, API, gateway, orchestration and database boundaries.
 - BFF/server-side sessions and RBAC + resource-level checks are proposals for evaluation only. No accepted technology decision or application implementation resulted from this research.
+
+
+## Authorization permission matrix update — 2026-10-22
+
+- Added `docs/AUTHORIZATION_PERMISSION_MATRIX.md` as the draft source for principal/resource/action vocabulary, baseline roles, authorization invariants and policy test cases.
+- The matrix spans auth/security/API/gateway/orchestration/tools/MCP/database/observability contracts. It is a proposed policy baseline, not implementation or a final role commitment.
