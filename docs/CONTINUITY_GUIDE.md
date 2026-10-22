@@ -23,11 +23,11 @@ Use this file as the handoff context when work continues in a new ChatGPT conver
 3. [Architecture audit](ARCHITECTURE_AUDIT.md)
 4. [Security threat model](SECURITY_THREAT_MODEL.md)
 5. [Open decisions and research](OPEN_DECISIONS_RESEARCH.md)
-2. [Master architecture](MASTER_ARCHITECTURE.md)
-3. [Roadmap](IMPLEMENTATION_ROADMAP.md)
-4. [Decision log](DECISION_LOG.md)
-5. Individual repository specification in `docs/repositories/`
-6. Local repo README, PROJECT_SPEC, ARCHITECTURE, DEPENDENCIES_AND_CONTRACTS, IMPLEMENTATION_PLAN, RESEARCH_AND_LICENSES, WORKLOG
+6. [Master architecture](MASTER_ARCHITECTURE.md)
+7. [Roadmap](IMPLEMENTATION_ROADMAP.md)
+8. [Decision log](DECISION_LOG.md)
+9. Individual repository specification in `repositories/`
+10. For an existing repository, read its README and docs: PROJECT_SPEC, ARCHITECTURE, DEPENDENCIES_AND_CONTRACTS, IMPLEMENTATION_PLAN, RESEARCH_AND_LICENSES, TECHNICAL_DESIGN, SECURITY_REVIEW, ENGINEERING_STANDARD, and WORKLOG.
 
 ## How to continue safely
 
