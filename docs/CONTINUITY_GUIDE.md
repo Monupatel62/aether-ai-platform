@@ -62,7 +62,7 @@ Date; repository; exact paths changed; purpose; why this design was chosen; depe
 
 ## Latest architecture research — 2026-10-22
 
-- Read [DIAL adoption evaluation](DIAL_ADOPTION_EVALUATION.md) and [DevKit compatibility review](DEVKIT_COMPATIBILITY_REVIEW.md) before deciding the gateway/runtime stack.
+- Read [DIAL adoption evaluation](DIAL_ADOPTION_EVALUATION.md), [DevKit compatibility review](DEVKIT_COMPATIBILITY_REVIEW.md), and [Gateway proof-of-concept plan](GATEWAY_PROOF_OF_CONCEPT.md) before deciding the gateway/runtime stack.
 - User-selected target: 33 repositories. This does not mean 33 separately deployed services; ADR-0004 accepts modular runtime boundaries.
 - Current source versions observed in DevKit `main`: `@woho/core 0.2.24`, `@woho/provider-openai 0.2.22`, `@woho/agents 0.3.28`, `@woho/tools 0.4.25`, `@woho/memory 0.6.18`, `@woho/mcp 0.6.28`. Confirm published artifacts before installation.
 - DIAL Core is a candidate upstream model gateway; DIAL Chat is a full application. Neither has been selected for adoption. ADR-0005 remains open pending a small proof-of-concept.
