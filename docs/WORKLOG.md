@@ -159,3 +159,12 @@ For each future change, record: date; exact files; why the change is needed; alt
 - Corrected `aether-ai-workflows/docs/DEPENDENCIES_AND_CONTRACTS.md`: workflow schema/validation no longer declares runtime dependencies on orchestration, agents or database.
 - Reconciled master catalog with connected GitHub listing: 20 canonical-name repositories visible, 10 documentation-populated and 10 empty; 13 planned canonical names not found in that listing. User reports 22; two additional names/URLs remain unreconciled.
 - Documentation-only. No source code, API schemas, event schemas, CI or runtime tests were created/run.
+
+
+## 2026-10-22 — Draft machine-readable contract schemas
+
+- Added `docs/contracts/README.md` and six draft JSON Schema files: error envelope, event envelope, verified auth context, tool invocation, durable run event, and resource ACL/lifecycle change event.
+- Parsed all six files as JSON after writing. This checks JSON syntax only; no JSON Schema validator, contract tests, API implementation, or runtime security tests were run.
+- Kept schema status explicitly draft. The tenant-membership owner, authorization contract, API error catalog, retry/ordering semantics and public versioning policy remain open.
+- Identifiers use the reserved `aether-ai.invalid` namespace to avoid implying a live product endpoint or coupling Aether to WoHoTech's domain.
+- No application code or DevKit changes.
