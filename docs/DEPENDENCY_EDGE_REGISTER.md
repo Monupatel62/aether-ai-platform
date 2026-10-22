@@ -152,3 +152,10 @@ The candidate package-import graph is stored in [dependency-package-graph.json](
 - Define ACL revocation/deletion consistency targets and the canonical authorization check (ADR-0020/0024).
 - Validate external package imports, versioned contracts and licenses before implementation.
 - Compare the JSON edge inventory against every typed relationship in this register; retain a review record for any intentional mismatch.
+
+
+## Register-to-graph reconciliation — 2026-10-22
+
+A comparison script fetched both this register and `dependency-package-graph.json`, matched every internal package-import row whose source and target are among the 33 Aether nodes, and compared the resulting edge set. **Result: 61 internal package-import rows, 61 JSON edges, no duplicates, no missing edges, and no extra edges.** Five package-import rows target external backends/libraries or generic test fixtures and are intentionally excluded from the internal 33-repository graph. The JSON graph was then fetched again and cycle detection rerun: **0 cycles reported**.
+
+This establishes consistency between the current human-authored register and the candidate JSON edge set, not consistency with source code. Both remain proposed architecture artifacts.
