@@ -64,6 +64,10 @@ Test tenant isolation, migration upgrade/rollback limits, backup restore, retent
 
 Before release, add unit tests, contract tests for direct dependencies, negative authorization/input tests, and failure/recovery tests for the behavior this component owns. Use synthetic or sanitized data only.
 
+## Data-layer research gate
+
+See [Data Infrastructure Evaluation](../DATA_INFRASTRUCTURE_EVALUATION.md). PostgreSQL is the proposed transactional-store candidate, not yet an accepted deployment choice. This repository should own migration conventions, schema contracts, connection/security configuration guidance, backup/PITR verification and restore drills—not every domain's business rules. Domain owners own their data and schema. Test RLS under non-owner runtime roles, pooled-connection tenant context reset, migration compatibility, backup restore and outbox consistency. Never make the cache or vector index the authority for billing, permissions, or durable run state.
+
 ## Related documentation
 
 - [Master repository catalog](../REPOSITORY_CATALOG.md)
