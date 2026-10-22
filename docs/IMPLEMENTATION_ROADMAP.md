@@ -7,12 +7,23 @@
 - [x] Create the first 10 Aether repositories.
 - [x] Add initial repository-specific purpose and documentation structure.
 - [x] Create master catalog and 33 individual repository specifications.
-- [ ] Verify every existing repository contains the complete documentation set.
+- [x] Verify all 10 existing repositories contain the required documentation and security review checklist.
 - [ ] Resolve project name availability and final branding.
 - [ ] Confirm license/SBOM approach and exact reused package versions.
-- [ ] Review dependency graph for cycles and over-splitting.
+- [x] Create proposed dependency matrix and identify likely cycle risks; [ ] accept the matrix and complete a formal package/service cycle review.
 - [ ] Decide API style, runtime stack, database, queue, identity provider, model gateway strategy, and hosting through ADRs.
-- [ ] Review threat model, data retention, and user privacy requirements.
+- [x] Create initial threat model mapped to OWASP GenAI LLM Top 10 2026 and component security checklists; [ ] approve retention, deletion, export, and telemetry policy.
+
+
+
+### Phase 0 audit deliverables added on 2026-10-22
+
+- [x] [Architecture audit pass 1 and 2](ARCHITECTURE_AUDIT.md)
+- [x] [33-repository dependency matrix (proposed)](DEPENDENCY_MATRIX.md)
+- [x] [Security threat model](SECURITY_THREAT_MODEL.md)
+- [x] [Open decisions and official-source research](OPEN_DECISIONS_RESEARCH.md)
+- [x] [Repository-specific security review checklists](repositories/)
+- [ ] Final architecture decision review and explicit user approval before application coding
 
 ## Phase 1 — foundation vertical slice
 
