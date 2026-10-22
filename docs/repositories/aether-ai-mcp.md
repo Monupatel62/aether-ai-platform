@@ -1,6 +1,6 @@
 # Repository specification: aether-ai-mcp
 
-**Status:** Repository created; documentation phase only. No implementation code is planned in this file yet.
+**Status:** Repository exists; documentation-only on the inspected `main` branch. No application implementation is present in the audited tree.
 
 ## Mission
 
@@ -12,6 +12,7 @@ Protocol adapter only; external metadata and results are untrusted, and remote a
 
 ## Dependencies and connections
 
+aether-ai-tools, aether-ai-security, and aether-ai-observability.
 
 ## Owned capabilities
 
