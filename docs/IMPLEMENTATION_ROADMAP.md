@@ -68,3 +68,7 @@ Do not move forward because files were created. Move only when the previous phas
 - [ ] Verify exact registry package artifacts, integrity, exports and transitive licenses.
 - [ ] Run a mock-based protocol compatibility harness for `@woho/mcp` against the selected official MCP spec/transport matrix.
 - [ ] Run the gateway proof-of-concept and accept/reject ADR-0005 based on recorded evidence.
+
+- [x] Research data-layer options and define tenant-isolation, durability, recovery and retrieval acceptance tests in [DATA_INFRASTRUCTURE_EVALUATION.md](DATA_INFRASTRUCTURE_EVALUATION.md).
+- [ ] Confirm data residency, budget, RPO/RTO, expected tenant/corpus scale and retention requirements.
+- [ ] Run representative database restore, vector retrieval, queue recovery and cache outage tests before accepting ADR-0007.
