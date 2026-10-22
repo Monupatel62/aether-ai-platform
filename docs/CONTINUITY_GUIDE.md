@@ -51,3 +51,10 @@ Date; repository; exact paths changed; purpose; why this design was chosen; depe
 - OWASP GenAI announced the 2026 LLM Top 10 on 2026-09-01; use the canonical current edition for the threat/control matrix.
 - Raw prompts/completions and sensitive GenAI trace attributes must not be captured by default.
 - GitHub Actions policy should cover full-SHA pinning or an approved equivalent lockfile, least-privilege workflow permissions, and protected releases.
+
+## Documentation audit pass 2 — 2026-10-22
+
+- All 33 repository specifications now contain the required sections: mission, dependencies/connections, security/privacy, test plan, implementation gates, and related documentation.
+- All 10 existing Aether repositories have a repository-specific `docs/SECURITY_REVIEW.md`.
+- Read [Dependency Matrix](DEPENDENCY_MATRIX.md) before making architecture changes. It documents one-way ownership rules and known cycle risks; it is still proposed and has not been mechanically cycle-checked.
+- Do not claim the security controls are implemented. Only design requirements/checklists have been added.
