@@ -64,4 +64,4 @@ The routes and fields are review candidates only. No OpenAPI validation or runti
 ## OpenAPI role-schema remediation and test plan
 
 - [OpenAPI v1 contract test plan](OPENAPI_V1_CONTRACT_TEST_PLAN.md): proposed positive/negative message-role, authorization, idempotency, revocation, cancellation, and limit cases; none have been executed.
-- The draft OpenAPI now uses separate request/response message schemas: client messages are constrained to `user`, and generated messages to `assistant`. This fixes the identified schema-level role defect in the draft only; parser validation and runtime enforcement remain unverified.
+- The draft OpenAPI uses separate request/response message schemas (`user` input, `assistant` output) and now defines provisional JSON bodies for accepted run creation and cancellation. These are draft-only changes; parser validation and runtime enforcement remain unverified.
