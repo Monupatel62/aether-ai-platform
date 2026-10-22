@@ -34,7 +34,7 @@ Exit criteria: a single authorized user can make a model request through the bac
 
 ## Phase 2 — agent execution
 
-Implement minimal agent/tool contracts, bounded run lifecycle, approval checkpoints, orchestration state machine, queue semantics, and run history. Integrate WoHo AI DevKit packages only after API/compatibility review. No autonomous high-impact actions without policy and approval.
+Implement minimal agent/tool contracts, bounded run lifecycle, approval checkpoints, orchestration state machine, queue semantics, and run history. Use Aether-owned agent and tool contracts; external packages require an explicit architecture decision and compatibility review. No autonomous high-impact actions without policy and approval.
 
 Exit criteria: deterministic test agent can run with mock model/tools, enforce limits, emit trace/run IDs, cancel safely, and recover from simulated failures.
 
@@ -62,11 +62,8 @@ Do not move forward because files were created. Move only when the previous phas
 
 ### Architecture research additions — 2026-10-22
 
-- [x] Compare DIAL Core, DIAL Chat, DevKit gateway path and hybrid options in [DIAL adoption evaluation](DIAL_ADOPTION_EVALUATION.md).
 - [x] Define a reproducible gateway proof-of-concept plan and acceptance tests in [GATEWAY_PROOF_OF_CONCEPT.md](GATEWAY_PROOF_OF_CONCEPT.md).
-- [x] Inspect DevKit public package manifests and selected source-level integration boundaries in [DevKit compatibility review](DEVKIT_COMPATIBILITY_REVIEW.md).
 - [ ] Verify exact registry package artifacts, integrity, exports and transitive licenses.
-- [ ] Run a mock-based protocol compatibility harness for `@woho/mcp` against the selected official MCP spec/transport matrix.
 - [ ] Run the gateway proof-of-concept and accept/reject ADR-0005 based on recorded evidence.
 
 - [x] Research data-layer options and define tenant-isolation, durability, recovery and retrieval acceptance tests in [DATA_INFRASTRUCTURE_EVALUATION.md](DATA_INFRASTRUCTURE_EVALUATION.md).
