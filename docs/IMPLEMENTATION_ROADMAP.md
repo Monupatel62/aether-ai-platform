@@ -89,3 +89,8 @@ Added `docs/IDENTITY_PROVIDER_SHORTLIST_AND_SCORECARD.md`, which defines candida
 ## Research checkpoint — browser session and authorization architecture (2026-10-22)
 
 Added `docs/BROWSER_SESSION_AND_AUTHORIZATION_ARCHITECTURE.md`. It evaluates the browser BFF/session approach and an RBAC + resource-level authorization baseline, with CSRF, tenant enforcement and session revocation requirements. Next gate: review the proposed architecture and align it with the identity-provider shortlist before running a POC. ADR-0019/0020 remain open; no code or tests have been run.
+
+
+## Research checkpoint — authorization permission matrix (2026-10-22)
+
+Added `docs/AUTHORIZATION_PERMISSION_MATRIX.md`. It defines a proposed role/action matrix, mandatory invariants and testable negative cases. The next gate is a semantic audit of permissions against all protected resource classes and the repository contracts; product-owner approval is still required. No application code or POC tests have been run.
