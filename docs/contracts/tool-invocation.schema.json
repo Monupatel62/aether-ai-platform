@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://wohotech.in/aether/contracts/tool-invocation.schema.json",
+  "$id": "https://aether-ai.invalid/contracts/tool-invocation.schema.json",
   "title": "Aether Tool Invocation Request",
   "description": "Draft invocation envelope. The server must re-authorize the principal, resource and action at execution time; approval references must be validated and bound to the exact action and arguments.",
   "type": "object",
