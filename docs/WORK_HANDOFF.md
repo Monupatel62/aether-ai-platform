@@ -186,3 +186,10 @@ Read [DATA_RETENTION_DELETION_EXPORT_TELEMETRY_POLICY.md](DATA_RETENTION_DELETIO
 ## Latest checkpoint — identity and authorization POC runbook (2026-10-22)
 
 Read [IDENTITY_AUTHORIZATION_POC_RUNBOOK.md](IDENTITY_AUTHORIZATION_POC_RUNBOOK.md). It defines 24 scenarios, synthetic tenant fixtures, hard security gates, measurement protocol and a weighted scorecard for ZITADEL, Keycloak and an optional Auth0 benchmark. No provider has been tested, scored or selected. Do not run until the user explicitly approves scope, environment, operators and budget. Hard-gate failures in auth/session safety, tenant isolation, revocation, secret redaction or fail-closed behavior block selection regardless of score. No application code or tests were run.
+
+
+## Latest checkpoint — cross-repository contract audit (2026-10-22)
+
+Read [CROSS_REPOSITORY_CONTRACT_AUDIT.md](CROSS_REPOSITORY_CONTRACT_AUDIT.md). It found two real contract contradictions and corrected them: API now routes durable runs through orchestration instead of declaring direct agents/database implementation dependencies; workflows no longer depend at runtime on orchestration, agents or database. The other main finding is that current contracts are mostly governance prose; machine-readable OpenAPI, event envelopes, provider capabilities, tool invocation and lifecycle schemas remain to be authored before implementation.
+
+GitHub visibility check found 20 canonical-name Aether repos: 10 with docs and 10 empty. Thirteen canonical planned names were not found in the connected listing. The user reports 22 created; two additional names/URLs are not yet reconciled. Catalog updated to state the observed evidence without claiming those two do not exist elsewhere. Next: reconcile the two names, populate documentation in empty repos after confirming their identities, then draft P0 machine-readable contracts. Continue docs-only; no code/tests run and do not alter WoHo AI DevKit.
