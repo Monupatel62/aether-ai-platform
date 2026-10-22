@@ -6,19 +6,19 @@ Use this file as the handoff context when work continues in a new ChatGPT conver
 
 - Proposed name: **Aether AI** (not yet verified for domain/trademark availability).
 
-## Repository count/status at documentation start
+## Current repository count/status — 2026-10-23
 
-- 33 Aether repositories are in the plan.
-- The first 10 repositories exist: `aether-ai-platform`, `aether-ai-web`, `aether-ai-api`, `aether-ai-gateway`, `aether-ai-providers`, `aether-ai-agents`, `aether-ai-workflows`, `aether-ai-orchestration`, `aether-ai-tools`, `aether-ai-mcp`.
-- 23 additional repositories are planned but not yet created.
-- Current stage is documentation-only. Do not start application coding until documentation is complete and the user approves the next phase.
+- All 33 canonical Aether repositories exist on GitHub.
+- Recursive trees for all 33 default branches were inspected and contained documentation only; no application source, manifests, test suites, or CI workflows were present in the audited trees.
+- All 33 repositories now have a README and `docs/REPOSITORY_SPECIFICATION.md`; the README/spec audit found no broken local links and no unrelated-project/package markers in those files.
+- Current stage is still documentation-only. Resolve implementation-blocking contracts and obtain explicit documentation-gate approval before application coding.
 
 ## First read order
 
 1. [Master catalog](REPOSITORY_CATALOG.md)
 2. [Dependency matrix](DEPENDENCY_MATRIX.md)
 3. [Repository specification audit matrix](REPOSITORY_SPEC_AUDIT_MATRIX.md)
-3. [Architecture audit](ARCHITECTURE_AUDIT.md)
+4. [Architecture audit](ARCHITECTURE_AUDIT.md)
 4. [Security threat model](SECURITY_THREAT_MODEL.md)
 5. [Open decisions and research](OPEN_DECISIONS_RESEARCH.md)
 6. [Master architecture](MASTER_ARCHITECTURE.md)
@@ -51,7 +51,7 @@ Date; repository; exact paths changed; purpose; why this design was chosen; depe
 ## Documentation audit pass 2 — 2026-10-22
 
 - All 33 repository specifications now contain the required sections: mission, dependencies/connections, security/privacy, test plan, implementation gates, and related documentation.
-- All 10 existing Aether repositories have a repository-specific `docs/SECURITY_REVIEW.md`.
+- Historical snapshot: the first 10 repositories had repository-specific `docs/SECURITY_REVIEW.md` files at this audit point. The later 33-repository tree audit is documented in [Implementation Status Audit](IMPLEMENTATION_STATUS_AUDIT.md).
 - Read [Dependency Matrix](DEPENDENCY_MATRIX.md) before making architecture changes. It documents one-way ownership rules and known cycle risks; it is still proposed and has not been mechanically cycle-checked.
 - Do not claim the security controls are implemented. Only design requirements/checklists have been added.
 
