@@ -96,3 +96,5 @@ Each has an individual specification in [docs/repositories/](repositories/) befo
 - Added a component-specific `docs/SECURITY_REVIEW.md` to each of the 10 existing Aether repositories.
 - This validates document presence and consistency only. It is not a code audit, automated cycle proof, legal review, SBOM, or penetration test.
 - Next: review and accept the dependency matrix through ADRs, resolve runtime boundaries and open decisions, then ask the user to approve the transition to implementation.
+
+- The security threat model now maps all ten official OWASP GenAI LLM Top 10 2026 categories by name to Aether components and required tests. Pair it with OWASP's Top 10 for Agentic Applications and Agent Control Standard.
