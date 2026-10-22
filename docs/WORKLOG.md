@@ -120,3 +120,12 @@ For each future change, record: date; exact files; why the change is needed; alt
 - Fetched the JSON back from GitHub, parsed it, validated edge types and node references, and ran DFS cycle detection against that parsed file: 0 directed cycles reported.
 - Updated the edge register, cross-repository audit, handoff and roadmap with the result and limitations.
 - This is a check of the proposed graph data, not source-import analysis. The next gate is reconciliation of JSON edges against the Markdown edge register and separate review of runtime API/event loops. No application code was written.
+
+
+## 2026-10-22 — Tenant membership and ACL consistency design
+
+- Added [TENANT_MEMBERSHIP_AND_ACL_CONSISTENCY_DECISION.md](TENANT_MEMBERSHIP_AND_ACL_CONSISTENCY_DECISION.md).
+- Separated identity/session ownership, tenant membership/role grants, shared policy evaluation, resource ACLs, and search/RAG projections.
+- Compared `aether-ai-enterprise` ownership against adding a dedicated `aether-ai-tenancy` repository; no owner chosen and the 33-repository scope was not changed.
+- Defined fail-closed revocation invariants and POC tests for stale sessions, caches, queued jobs, search/vector indexes, citations, event replay and tenant suspension. Numeric cleanup targets remain open pending requirements and benchmarks.
+- Documentation only; no implementation code or POC tests run.
