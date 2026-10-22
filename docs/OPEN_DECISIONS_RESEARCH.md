@@ -61,3 +61,7 @@ Source: [GitHub Actions secure-use reference](https://docs.github.com/en/actions
 - Hosting and deployment model.
 - Retention/export/deletion rules for chats, files, memory, traces, and evaluation data.
 - Whether all 33 repositories remain separate repos or some are consolidated before implementation (without changing the user's target count unless approved).
+
+### OWASP 2026 source review completed
+
+The canonical [OWASP GenAI LLM Top 10 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/) lists: Prompt Injection; Sensitive Information Disclosure; Excessive Agency; Supply Chain; Data and Model Poisoning; Unbounded Consumption; Misinformation; Hidden Context Exposure; Vector and Embedding Weaknesses; Improper Output Handling. This differs from some 2025 labels/order, so Aether's threat model now uses the 2026 names. Because Aether includes agents and tool execution, also review the [OWASP Top 10 for Agentic Applications](https://genai.owasp.org/initiatives/top-10-for-llm-and-genai/) and [Agent Control Standard](https://genai.owasp.org/resource/agent-control-standard-acs/).
