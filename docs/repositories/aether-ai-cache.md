@@ -53,3 +53,22 @@ Cache key isolation, stale-data rules, invalidation strategy, stampede control, 
 - [WoHo AI DevKit](https://github.com/Monupatel62/woho-ai-devkit)
 
 All external projects are references or candidate dependencies only. Verify exact version, license, dependency tree, and security posture before reuse.
+
+## Security and privacy
+
+Cache keys must include the correct tenant/resource scope. Never treat cache contents as authoritative permissions, billing, or durable run state. Define TTL/invalidation, prevent cross-tenant cache hits, and avoid caching sensitive responses unless policy permits it.
+
+## Test plan
+
+Test tenant key isolation, stale permission invalidation, TTL expiration, cache stampede behavior, malformed values, and that cache outages fail safely without granting access.
+
+Before release, add unit tests, contract tests for direct dependencies, negative authorization/input tests, and failure/recovery tests for the behavior this component owns. Use synthetic or sanitized data only.
+
+## Related documentation
+
+- [Master repository catalog](../REPOSITORY_CATALOG.md)
+- [Master architecture](../MASTER_ARCHITECTURE.md)
+- [Architecture audit](../ARCHITECTURE_AUDIT.md)
+- [Security threat model](../SECURITY_THREAT_MODEL.md)
+- [Open decisions and research](../OPEN_DECISIONS_RESEARCH.md)
+- [Continuity handoff](../WORK_HANDOFF.md)
