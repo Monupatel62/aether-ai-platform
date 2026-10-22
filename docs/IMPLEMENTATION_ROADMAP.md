@@ -23,7 +23,7 @@
 - [x] [33-repository dependency matrix (proposed)](DEPENDENCY_MATRIX.md)
 - [x] [Security threat model](SECURITY_THREAT_MODEL.md)
 - [x] [Open decisions and official-source research](OPEN_DECISIONS_RESEARCH.md)
-- [x] [Repository-specific security review checklists](repositories/)
+- [x] [Repository-specific security review checklists](repositories/)\n- [x] [Consolidated implementation gate blockers](IMPLEMENTATION_GATE_BLOCKERS.md)
 - [ ] Final architecture decision review and explicit user approval before application coding
 
 
