@@ -77,3 +77,10 @@ Each accepted ADR must include: context/problem, options considered, chosen opti
 - Recommendation for review: `aether-ai-enterprise` may own universal tenant/workspace membership only if its contract works for all customer tiers; otherwise a dedicated tenancy repository requires explicit approval to revise the 33-repository plan. `aether-ai-auth` remains identity/session owner, not automatically the membership authority.
 - Protected operations must re-check authoritative authorization; search/RAG/cache/index cleanup is asynchronous projection work and cannot be the access-denial barrier. Numeric projection-cleanup SLOs remain unapproved pending requirements and measurement.
 - ADR-0020, ADR-0021, ADR-0023 and ADR-0024 remain open. No code, provider selection, repository creation, or numeric SLO commitment was made.
+
+
+## 2026-10-22 — Authorization policy gap audit
+
+- Added [AUTHORIZATION_POLICY_GAP_AUDIT.md](AUTHORIZATION_POLICY_GAP_AUDIT.md) after semantic review of the draft permission matrix.
+- Recorded high-risk ambiguities involving workspace creation defaults, support-operator modeling, admin access to conversations/memory, ownership transfer/grant ceilings, action-level permissions, approval tiers, membership/ACL versioning, workload identity and billing permissions.
+- These are policy gaps and proposed dispositions, not accepted product decisions. ADR-0012, ADR-0015 and ADR-0020 through ADR-0024 remain open as applicable. No code or tests were run.
