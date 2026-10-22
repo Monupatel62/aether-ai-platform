@@ -62,3 +62,10 @@ For each future change, record: date; exact files; why the change is needed; alt
 - Updated the 8 master repository specifications for database, queue, cache, search, RAG, orchestration, files and memory with concrete boundaries and acceptance tests.
 - Key gates: RLS must be tested under non-owner runtime roles; queue consumers must be idempotent; vector/search indexes are rebuildable projections; tenant and ACL filters must be tested against revocation and deletion; cache must not authorize access or own durable records.
 - No application code was written. No stack/vendor decision was accepted and no runtime benchmark or restore test was run.
+
+
+## 2026-10-22 — Identity and tenant security research
+
+- Added `docs/IDENTITY_AND_TENANT_SECURITY_EVALUATION.md` covering identity provider choices, OIDC/OAuth baseline, session lifecycle, authorization, tenant isolation, repository contracts, threat scenarios and POC acceptance criteria.
+- Updated decision/research and continuity documentation to keep ADR-0008 and proposed ADR-0019–ADR-0024 open.
+- No application code was added; no proof-of-concept tests were run.
