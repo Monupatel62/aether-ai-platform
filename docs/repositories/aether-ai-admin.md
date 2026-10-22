@@ -1,6 +1,6 @@
 # Repository specification: aether-ai-admin
 
-**Status:** Planned; repository not created yet. This document is the design contract to carry into that repository when it is created.
+**Status:** Repository exists; documentation-only on the inspected `main` branch. No application implementation is present in the audited tree.
 
 ## Mission
 
@@ -8,7 +8,7 @@ Privileged operator UI for model/provider configuration, users, policies, quotas
 
 ## Dependencies and connections
 
-API, auth, UI components.
+aether-ai-api, aether-ai-auth, and aether-ai-ui-components.
 
 ## Owned capabilities
 
