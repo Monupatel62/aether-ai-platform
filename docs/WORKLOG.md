@@ -33,3 +33,13 @@ For each future change, record: date; exact files; why the change is needed; alt
 - Reviewed official MCP 2026-07-28 release notes, OWASP GenAI 2026 Top 10 announcement, OpenTelemetry GenAI conventions, GitHub Actions secure-use guidance, and AI DIAL Core documentation.
 - Master audit and threat model are linked from the platform repository.
 - No application code, production config, or security implementation was added; these are design requirements, not claims of implemented controls.
+
+## 2026-10-22 — Architecture audit pass 2
+
+- Enumerated all 33 individual repository specifications and checked required section coverage.
+- Added missing security/privacy, test-plan, and related-documentation sections where the initial specs were inconsistent; rechecked all 33 and confirmed the required headings are present.
+- Added a repository-specific security review checklist to each of the 10 existing repositories.
+- Added the proposed 33-repository dependency matrix and clarified one-way ownership rules to avoid package/service cycles.
+- Updated MCP research to the official 2026-07-28 spec and current TypeScript SDK v2/v1 support split; recorded OWASP 2026, OpenTelemetry GenAI privacy, and GitHub Actions supply-chain references.
+- No application source code was written. No code tests, automated graph-cycle detection, SBOM, license scan, or penetration test was run.
+- Next: review and accept the dependency matrix and resolve open runtime, provider, data, identity, and privacy decisions before implementation.
