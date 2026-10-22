@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://wohotech.in/aether/contracts/auth-context.schema.json",
+  "$id": "https://aether-ai.invalid/contracts/auth-context.schema.json",
   "title": "Aether Verified Authentication Context",
   "description": "Draft internal context created by trusted authentication middleware, never accepted as a client-authored grant or role assertion.",
   "type": "object",
