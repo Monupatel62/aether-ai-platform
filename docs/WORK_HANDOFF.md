@@ -123,3 +123,8 @@ Hard constraints remain: documentation/research only; do not write application c
 ## Latest identity-provider research checkpoint — 2026-10-22
 
 Read `docs/IDENTITY_PROVIDER_SHORTLIST_AND_SCORECARD.md`. A shortlist and weighted scorecard now compare ZITADEL, Keycloak and Auth0. Treat this as candidate research only: no vendor selected, no POC executed, no code written. Next work should test the same OIDC/PKCE, tenant-isolation, revocation, audit, operations and migration scenarios across candidates, then record evidence and costs before deciding ADR-0008.
+
+
+## Latest architecture research checkpoint — browser sessions and authorization (2026-10-22)
+
+Read `docs/BROWSER_SESSION_AND_AUTHORIZATION_ARCHITECTURE.md`. It evaluates BFF/server-side sessions, CSRF and cookie controls, session lifecycle, RBAC/resource-level checks, alternatives, repository boundaries and POC tests. BFF and RBAC are candidates only, not accepted decisions. No application code or POC tests were run. Keep ADR-0019 and ADR-0020 open pending review.
