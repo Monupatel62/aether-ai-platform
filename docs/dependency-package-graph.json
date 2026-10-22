@@ -6,7 +6,8 @@
   "notes": [
     "Only proposed package-import edges are included; network API, queue/event, generated artifact, infrastructure and documentation-only edges are excluded.",
     "This graph is a candidate design artifact, not proof that these package imports have been implemented.",
-    "Review edge classifications and tenant/security ownership before implementation."
+    "Review edge classifications and tenant/security ownership before implementation.",
+    "External third-party backends and generic shared test fixtures are listed in the Markdown edge register but are not Aether repository nodes; they are excluded from this internal 33-repository cycle graph."
   ],
   "nodes": [
     "aether-ai-platform",
