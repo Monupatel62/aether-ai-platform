@@ -13,26 +13,39 @@
 
 ## Repository state
 
-### Existing Aether repositories (10)
+**Latest connected GitHub check (2026-10-22):** 27 canonical-name Aether AI repositories are visible. Seventeen have documentation foundations; ten remain empty on the default branch. Six canonical names are not found. The earlier user-reported count of 22 is superseded by this current listing; reconcile any noncanonical repository names separately.
 
-1. https://github.com/Monupatel62/aether-ai-platform
-2. https://github.com/Monupatel62/aether-ai-web
-3. https://github.com/Monupatel62/aether-ai-api
-4. https://github.com/Monupatel62/aether-ai-gateway
-5. https://github.com/Monupatel62/aether-ai-providers
-6. https://github.com/Monupatel62/aether-ai-agents
-7. https://github.com/Monupatel62/aether-ai-workflows
-8. https://github.com/Monupatel62/aether-ai-orchestration
-9. https://github.com/Monupatel62/aether-ai-tools
-10. https://github.com/Monupatel62/aether-ai-mcp
+### Repositories with documentation foundations (17)
 
-Each existing repository has documentation-only files: README, PROJECT_SPEC, ARCHITECTURE, DEPENDENCIES_AND_CONTRACTS, IMPLEMENTATION_PLAN, RESEARCH_AND_LICENSES, WORKLOG, ENGINEERING_STANDARD, and repository-specific TECHNICAL_DESIGN. No application source code has been added as part of this work.
+1. `aether-ai-platform` — master architecture, ADRs, roadmap and contracts.
+2. `aether-ai-web`
+3. `aether-ai-api`
+4. `aether-ai-gateway`
+5. `aether-ai-providers`
+6. `aether-ai-agents`
+7. `aether-ai-workflows`
+8. `aether-ai-orchestration`
+9. `aether-ai-tools`
+10. `aether-ai-mcp`
+11. `aether-ai-deployment`
+12. `aether-ai-docs`
+13. `aether-ai-database`
+14. `aether-ai-queue`
+15. `aether-ai-cache`
+16. `aether-ai-search`
+17. `aether-ai-plugins`
 
-### Remaining planned repositories (23)
+The seven newly documented repositories have README plus project specification, architecture, dependencies/contracts, implementation plan, technical design, security review, research/licenses, engineering standard and work log. This is documentation only, not implementation evidence.
 
-`aether-ai-memory`, `aether-ai-rag`, `aether-ai-files`, `aether-ai-knowledge`, `aether-ai-auth`, `aether-ai-security`, `aether-ai-admin`, `aether-ai-billing`, `aether-ai-sdk`, `aether-ai-evaluations`, `aether-ai-observability`, `aether-ai-deployment`, `aether-ai-docs`, `aether-ai-database`, `aether-ai-queue`, `aether-ai-cache`, `aether-ai-search`, `aether-ai-plugins`, `aether-ai-integrations`, `aether-ai-testing`, `aether-ai-ui-components`, `aether-ai-enterprise`, `aether-ai-infrastructure`.
+### Existing repositories still empty on the default branch (10)
 
-Each has an individual specification in [docs/repositories/](repositories/) before the repo is created.
+`aether-ai-rag`, `aether-ai-files`, `aether-ai-knowledge`, `aether-ai-auth`, `aether-ai-security`, `aether-ai-admin`, `aether-ai-billing`, `aether-ai-sdk`, `aether-ai-evaluations`, `aether-ai-observability`.
+
+### Canonical repositories not found in the latest listing (6)
+
+`aether-ai-memory`, `aether-ai-integrations`, `aether-ai-testing`, `aether-ai-ui-components`, `aether-ai-enterprise`, `aether-ai-infrastructure`.
+
+Create no new repositories without explicit approval. Continue documentation-first work in existing repositories and do not start application coding until the full docs and dependency contracts are reviewed.
 
 ## Master docs
 
