@@ -151,3 +151,13 @@ This result only establishes that the proposed JSON graph has no cycles; it does
 - [ ] Product owner confirms universal tenant-domain ownership versus an approved change to the 33-repository plan.
 - [ ] Approve retention/deletion semantics and numeric projection-cleanup SLOs after workload requirements and benchmarks are available.
 - [ ] Run identity/authorization POC only after explicit approval; no code or POC was run in this checkpoint.
+
+
+### Cross-repository contract audit — 2026-10-22
+
+- [x] Audit dependency contract prose against master dependency matrix.
+- [x] Correct API → orchestration → agents durable-run contract and remove workflow runtime dependencies on orchestration/agents/database.
+- [x] Reconcile master catalog with connected GitHub repository visibility; see [CROSS_REPOSITORY_CONTRACT_AUDIT.md](CROSS_REPOSITORY_CONTRACT_AUDIT.md).
+- [ ] Confirm the two additional repositories reported by the user by name/URL.
+- [ ] Populate documentation in existing empty repositories after identity/status is confirmed.
+- [ ] Draft P0 machine-readable API, authorization, tool invocation, durable run/event, and source ACL/deletion schemas; no schemas or tests were created in this audit.
