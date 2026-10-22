@@ -128,3 +128,8 @@ This is a proposed logical graph, not a claim that all 33 repositories must beco
 - [Open decisions and research](OPEN_DECISIONS_RESEARCH.md)
 - [Engineering/commenting standard](ENGINEERING_AND_COMMENTING_STANDARD.md)
 - [Work handoff for future chats](WORK_HANDOFF.md)
+
+## Architecture review resources
+
+- [AI DIAL adoption evaluation](DIAL_ADOPTION_EVALUATION.md)
+- [WoHo AI DevKit compatibility review](DEVKIT_COMPATIBILITY_REVIEW.md)
