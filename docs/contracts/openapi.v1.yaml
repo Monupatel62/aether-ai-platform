@@ -1,0 +1,440 @@
+openapi: 3.1.0
+info:
+  title: Aether AI Product API
+  version: 1.0.0-draft
+  summary: Draft versioned API contract for review
+  description: |
+    DESIGN DRAFT ONLY — no endpoint in this document is implemented or approved.
+    Authentication provider, tenant membership authority, conversation persistence,
+    streaming protocol, rate limits, payload limits, and final endpoint semantics remain
+    open. This baseline exists to make those decisions reviewable before implementation.
+servers:
+  - url: https://api.example.invalid
+    description: Reserved placeholder; not a real service endpoint
+security:
+  - bearerAuth: []
+tags:
+  - name: Health
+  - name: Chat
+  - name: Runs
+paths:
+  /v1/health:
+    get:
+      operationId: getHealth
+      tags: [Health]
+      summary: Readiness/liveness contract placeholder
+      description: |
+        Provisional endpoint. Decide whether liveness and readiness should be separate
+        endpoints and whether this route is public before implementation.
+      security: []
+      responses:
+        '200':
+          description: Service reports that this endpoint can respond.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  /v1/chat/completions:
+    post:
+      operationId: createChatCompletion
+      tags: [Chat]
+      summary: Request a model completion
+      description: |
+        Provisional synchronous JSON request only. Streaming, conversation storage,
+        file attachments, tool calls, provider-specific options, model capability
+        negotiation, and exact token/size limits are intentionally not specified here.
+        The server must derive identity and tenant context from trusted authentication
+        and membership state; request fields must not grant access.
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatCompletionRequest'
+      responses:
+        '200':
+          description: Completion generated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatCompletionResponse'
+        '400':
+          $ref: '#/components/responses/InvalidArgument'
+        '401':
+          $ref: '#/components/responses/Unauthenticated'
+        '403':
+          $ref: '#/components/responses/PermissionDenied'
+        '404':
+          $ref: '#/components/responses/ResourceNotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '413':
+          $ref: '#/components/responses/PayloadTooLarge'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  /v1/runs:
+    post:
+      operationId: createRun
+      tags: [Runs]
+      summary: Request creation of a durable agent run
+      description: |
+        Provisional asynchronous run-creation contract. The API delegates durable
+        execution through orchestration; it does not directly own agent execution or
+        another repository's private persistence. The server must re-authorize each
+        protected action at execution time. Idempotency-key scope and retention are open.
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+        - name: Idempotency-Key
+          in: header
+          required: true
+          description: Opaque client key for deduplicating equivalent create requests; exact scope and retention remain undecided.
+          schema:
+            type: string
+            minLength: 16
+            maxLength: 200
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRunRequest'
+      responses:
+        '202':
+          description: Run accepted for asynchronous processing.
+          headers:
+            Location:
+              description: Relative URL of the created run resource.
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/InvalidArgument'
+        '401':
+          $ref: '#/components/responses/Unauthenticated'
+        '403':
+          $ref: '#/components/responses/PermissionDenied'
+        '409':
+          description: State conflict or idempotency key reused with a different request fingerprint.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+        '413':
+          $ref: '#/components/responses/PayloadTooLarge'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  /v1/runs/{run_id}:
+    get:
+      operationId: getRun
+      tags: [Runs]
+      summary: Read run status
+      description: |
+        The API must check current authorization before exposing run metadata or output.
+        Resource-not-found responses may conceal unauthorized resources to reduce enumeration.
+      parameters:
+        - $ref: '#/components/parameters/RunId'
+        - $ref: '#/components/parameters/RequestId'
+      responses:
+        '200':
+          description: Current run status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunStatus'
+        '401':
+          $ref: '#/components/responses/Unauthenticated'
+        '403':
+          $ref: '#/components/responses/PermissionDenied'
+        '404':
+          $ref: '#/components/responses/ResourceNotFound'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  /v1/runs/{run_id}/cancel:
+    post:
+      operationId: cancelRun
+      tags: [Runs]
+      summary: Request run cancellation
+      description: |
+        Cancellation is a request, not proof that already-started external side effects
+        have been rolled back. Define terminal-state and race behavior before approval.
+      parameters:
+        - $ref: '#/components/parameters/RunId'
+        - $ref: '#/components/parameters/RequestId'
+        - name: Idempotency-Key
+          in: header
+          required: true
+          description: Opaque key to deduplicate cancellation requests; exact scope and retention remain undecided.
+          schema:
+            type: string
+            minLength: 16
+            maxLength: 200
+      responses:
+        '202':
+          description: Cancellation request accepted; final state may be observed through GET run.
+        '401':
+          $ref: '#/components/responses/Unauthenticated'
+        '403':
+          $ref: '#/components/responses/PermissionDenied'
+        '404':
+          $ref: '#/components/responses/ResourceNotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Placeholder only. Token issuer, audience, claims, session model, and validation rules are not selected.
+  parameters:
+    RequestId:
+      name: X-Request-ID
+      in: header
+      required: false
+      description: Optional client correlation hint; server must validate or replace it and must never treat it as a credential.
+      schema:
+        type: string
+        minLength: 8
+        maxLength: 128
+    RunId:
+      name: run_id
+      in: path
+      required: true
+      schema:
+        type: string
+        minLength: 8
+        maxLength: 128
+  responses:
+    InvalidArgument:
+      description: Request is malformed or contains invalid values.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+    Unauthenticated:
+      description: Authentication is absent, invalid, or expired.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+    PermissionDenied:
+      description: Caller is not authorized for the action.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+    ResourceNotFound:
+      description: Resource is absent or intentionally concealed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+    Conflict:
+      description: Request conflicts with current resource state.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+    PayloadTooLarge:
+      description: Request exceeds a limit to be defined before implementation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+    RateLimited:
+      description: Rate limit exceeded; Retry-After may be supplied at the HTTP layer.
+      headers:
+        Retry-After:
+          description: Optional delay in seconds before retrying.
+          schema:
+            type: integer
+            minimum: 0
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+    InternalError:
+      description: Unexpected failure; response must not expose internal details.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+    ServiceUnavailable:
+      description: Service or dependency is temporarily unavailable.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+  schemas:
+    HealthResponse:
+      type: object
+      additionalProperties: false
+      required: [status]
+      properties:
+        status:
+          type: string
+          enum: [ok]
+    ErrorEnvelope:
+      type: object
+      additionalProperties: false
+      required: [error, request_id]
+      properties:
+        error:
+          type: object
+          additionalProperties: false
+          required: [code, message, retryable]
+          properties:
+            code:
+              type: string
+              pattern: '^[A-Z][A-Z0-9_]{2,63}$'
+            message:
+              type: string
+              minLength: 1
+              maxLength: 500
+            retryable:
+              type: boolean
+            details:
+              type: array
+              maxItems: 20
+              items:
+                type: object
+                additionalProperties: false
+                required: [field, reason]
+                properties:
+                  field:
+                    type: string
+                    maxLength: 200
+                  reason:
+                    type: string
+                    maxLength: 200
+        request_id:
+          type: string
+          minLength: 8
+          maxLength: 128
+    ChatMessage:
+      type: object
+      additionalProperties: false
+      required: [role, content]
+      properties:
+        role:
+          type: string
+          enum: [system, developer, user, assistant]
+        content:
+          type: string
+          minLength: 1
+          description: Plain text only in this draft; multimodal payloads are not defined.
+    ChatCompletionRequest:
+      type: object
+      additionalProperties: false
+      required: [model, messages]
+      properties:
+        model:
+          type: string
+          minLength: 1
+          maxLength: 128
+          description: Public model or deployment identifier; catalog semantics remain open.
+        messages:
+          type: array
+          minItems: 1
+          maxItems: 200
+          items:
+            $ref: '#/components/schemas/ChatMessage'
+        temperature:
+          type: number
+          minimum: 0
+          maximum: 2
+          description: Optional common parameter; supported range must be capability-checked per model.
+        max_output_tokens:
+          type: integer
+          minimum: 1
+          description: Upper bound must be checked against model capabilities and service limits.
+    ChatCompletionResponse:
+      type: object
+      additionalProperties: false
+      required: [id, model, choices]
+      properties:
+        id:
+          type: string
+          minLength: 8
+          maxLength: 128
+        model:
+          type: string
+          minLength: 1
+          maxLength: 128
+        choices:
+          type: array
+          minItems: 1
+          maxItems: 1
+          items:
+            type: object
+            additionalProperties: false
+            required: [index, message, finish_reason]
+            properties:
+              index:
+                type: integer
+                const: 0
+              message:
+                $ref: '#/components/schemas/ChatMessage'
+              finish_reason:
+                type: string
+                enum: [stop, length, content_filter, tool_calls]
+        usage:
+          type: object
+          additionalProperties: false
+          properties:
+            input_tokens:
+              type: integer
+              minimum: 0
+            output_tokens:
+              type: integer
+              minimum: 0
+    CreateRunRequest:
+      type: object
+      additionalProperties: false
+      required: [agent_id, input]
+      properties:
+        agent_id:
+          type: string
+          minLength: 1
+          maxLength: 128
+        input:
+          type: object
+          description: Agent-specific input; a versioned schema per agent must be defined before production.
+        metadata:
+          type: object
+          maxProperties: 50
+          description: Non-authoritative client metadata only; must not grant roles, tenant access, or approvals.
+    RunStatus:
+      type: object
+      additionalProperties: false
+      required: [run_id, status, created_at, updated_at]
+      properties:
+        run_id:
+          type: string
+          minLength: 8
+          maxLength: 128
+        status:
+          type: string
+          enum: [queued, running, waiting_approval, cancellation_requested, cancelled, succeeded, failed]
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        result:
+          type: object
+          description: Present only when authorized and available; result schema and retention policy remain open.
+        error:
+          $ref: '#/components/schemas/ErrorEnvelope'
