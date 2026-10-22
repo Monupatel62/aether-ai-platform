@@ -53,3 +53,22 @@ Connector registry, scoped OAuth/token storage, webhook verification, rate limit
 - [WoHo AI DevKit](https://github.com/Monupatel62/woho-ai-devkit)
 
 All external projects are references or candidate dependencies only. Verify exact version, license, dependency tree, and security posture before reuse.
+
+## Security and privacy
+
+External connectors can overreach through broad OAuth scopes, webhook spoofing, token leakage, or malicious external content. Use least-privilege scopes, verified webhook signatures, token revocation, per-connector authorization, outbound network controls, rate limits, and redaction of third-party payloads.
+
+## Test plan
+
+Test OAuth scope boundaries, token revocation, webhook signature failures/replay, SSRF restrictions, rate limits, external outage/retry behavior, and secret/payload redaction.
+
+Before release, add unit tests, contract tests for direct dependencies, negative authorization/input tests, and failure/recovery tests for the behavior this component owns. Use synthetic or sanitized data only.
+
+## Related documentation
+
+- [Master repository catalog](../REPOSITORY_CATALOG.md)
+- [Master architecture](../MASTER_ARCHITECTURE.md)
+- [Architecture audit](../ARCHITECTURE_AUDIT.md)
+- [Security threat model](../SECURITY_THREAT_MODEL.md)
+- [Open decisions and research](../OPEN_DECISIONS_RESEARCH.md)
+- [Continuity handoff](../WORK_HANDOFF.md)
