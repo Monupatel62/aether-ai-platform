@@ -45,6 +45,7 @@ This directory holds machine-readable starting points for cross-repository contr
 ## Current semantic review highlights
 
 - Tool arguments and generic event payloads remain unconstrained nested objects until concrete per-tool and per-event schemas are designed.
+- Authorization-context trust is outside JSON Schema; the issuer, integrity, audience, expiry, freshness, replay and revocation profile remains unapproved.
 - Tenant, actor, step, retry and failure metadata may need conditional requirements by operation/event type.
 - Format assertions, event authentication, deduplication, ordering, replay resistance and execution-time authorization require explicit validation or runtime controls beyond JSON syntax.
 - These findings are proposals, not final contract decisions.
