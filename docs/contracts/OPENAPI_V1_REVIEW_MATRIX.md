@@ -16,8 +16,8 @@
 
 | Area | Current draft observation | Required action |
 |---|---|---|
-| Accepted run response | `POST /v1/runs` returns 202 without a JSON response schema. | Define the accepted response body, stable run identifier, and canonical Location semantics. |
-| Cancellation response | `POST /v1/runs/{run_id}/cancel` returns 202 without a response schema. | Define whether the response returns current state, request ID, or only headers; document repeat behavior. |
+| Accepted run response | The draft now defines `CreateRunAcceptedResponse` with `run_id`, `status: queued`, and `request_id`, plus a `Location` header. | Provisional shape only; confirm identifier semantics, request ID generation, retry/idempotency replay behavior, and canonical Location format before approval. |
+| Cancellation response | The draft now defines `CancelRunAcceptedResponse` with `run_id`, `status: cancellation_requested`, and `request_id`. | Provisional acknowledgement only; confirm repeated-request behavior, races with terminal states, and whether response status reflects durable state before approval. |
 | Chat response roles | The response reuses the request ChatMessage schema, which permits system/developer roles. | Use a response-specific schema and constrain the role to assistant for generated choices. |
 | Error contract duplication | ErrorEnvelope is copied inline instead of referencing a single canonical contract source. | Decide whether the OpenAPI component is generated from the canonical JSON Schema or kept synchronized by a contract test; avoid manual drift. |
 | Rate and size limits | Limits are mostly described as future decisions and are not represented as concrete bounds. | Decide endpoint-specific request byte, message count, input/output token, timeout, concurrency, and rate limits before implementation. |
@@ -27,7 +27,7 @@
 
 ## Review decision log
 
-- **Do not approve as-is.** The client-controlled `system`/`developer` message-role issue is a concrete P0 contract defect.
+- **Do not approve as-is.** The message-role defect has been corrected in the draft, but tenant resolution, agent input validation, run output authorization/retention, cancellation semantics, identity rules, limits, and contract validation remain unresolved.
 - Preserve the existing baseline as a review artifact until route and identity semantics are reviewed; do not infer that the presence of the file makes it canonical.
 - After decisions, revise the OpenAPI, validate it with an OpenAPI 3.1 validator, and add negative tests proving client messages cannot override server-owned instructions.
 - Contract tests should also cover cross-tenant run reads, hidden-resource 404 behavior where required, invalid agent input, duplicate idempotency keys with matching/different payload fingerprints, and cancellation races.
