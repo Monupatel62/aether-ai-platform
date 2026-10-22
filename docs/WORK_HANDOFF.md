@@ -219,3 +219,10 @@ No OpenAPI validator, generated client, endpoint implementation, contract fixtur
 Added [OPENAPI_V1_REVIEW_MATRIX.md](contracts/OPENAPI_V1_REVIEW_MATRIX.md) and linked it from the contract registry. A P0 design defect was found: the current request message schema permits client-supplied `system` and `developer` roles, and the response reuses that same schema. Before approval, separate request/response message schemas and keep privileged instructions server-owned. Other blockers include trusted tenant resolution, per-agent input schemas and size limits, run output authorization/retention, cancellation races, response schemas for 202 accepted operations, error schema drift, streaming decisions, and token validation rules.
 
 This was a manual review of the YAML text. No OpenAPI validator, generated client, endpoint implementation, or runtime security test was run. Do not claim exploitability in a running service. Next: review and remediate the message-role contract and other endpoint semantics, then validate OpenAPI and add negative fixtures. Documentation only; no app code or DevKit changes.
+
+
+## Latest checkpoint — OpenAPI message-role remediation (2026-10-22)
+
+Updated `contracts/openapi.v1.yaml` to use separate `RequestChatMessage` and `ResponseChatMessage` schemas: client-supplied messages are restricted to role `user`; generated responses are restricted to role `assistant`. Added [OPENAPI_V1_CONTRACT_TEST_PLAN.md](contracts/OPENAPI_V1_CONTRACT_TEST_PLAN.md) and updated [OPENAPI_V1_REVIEW_MATRIX.md](contracts/OPENAPI_V1_REVIEW_MATRIX.md). This addresses the schema-level P0 role finding in the draft but has not been validated by an OpenAPI parser or runtime test. Other blockers remain: trusted tenant resolution, agent-specific input schemas and limits, run output authorization/retention, cancellation races, accepted response bodies, streaming decisions, and identity token validation.
+
+Next: validate OpenAPI 3.1, add positive/negative fixtures, and resolve the remaining contract decisions before approval. No app code, runtime tests, POC, or WoHo AI DevKit changes.
