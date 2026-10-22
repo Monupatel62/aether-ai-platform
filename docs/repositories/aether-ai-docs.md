@@ -53,3 +53,22 @@ Versioned docs, link checking, navigation, tutorials tested against current rele
 - [WoHo AI DevKit](https://github.com/Monupatel62/woho-ai-devkit)
 
 All external projects are references or candidate dependencies only. Verify exact version, license, dependency tree, and security posture before reuse.
+
+## Security and privacy
+
+Documentation can accidentally expose credentials, internal endpoints, or unsafe copy-paste examples. Scan examples for secrets, mark illustrative code clearly, document security-sensitive defaults, and ensure operator guidance matches actual tested behavior.
+
+## Test plan
+
+Run link checking, example lint/compile checks where practical, secret-pattern scans, versioned documentation checks, and review that warnings and security instructions match the current design.
+
+Before release, add unit tests, contract tests for direct dependencies, negative authorization/input tests, and failure/recovery tests for the behavior this component owns. Use synthetic or sanitized data only.
+
+## Related documentation
+
+- [Master repository catalog](../REPOSITORY_CATALOG.md)
+- [Master architecture](../MASTER_ARCHITECTURE.md)
+- [Architecture audit](../ARCHITECTURE_AUDIT.md)
+- [Security threat model](../SECURITY_THREAT_MODEL.md)
+- [Open decisions and research](../OPEN_DECISIONS_RESEARCH.md)
+- [Continuity handoff](../WORK_HANDOFF.md)
