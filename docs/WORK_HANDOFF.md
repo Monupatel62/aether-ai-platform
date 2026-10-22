@@ -68,10 +68,6 @@ Create no new repositories without explicit approval. Continue documentation-fir
 - [Continuity guide](CONTINUITY_GUIDE.md)
 
 
-- Branch: `docs/aether-ai-integration-plan`
-- PR is open and draft, not merged. It changes only `docs/aether-ai-integration-plan.md`; no source code or release metadata changed.
-- Inspected root metadata: version 0.8.37, Apache-2.0, Node >=20. Verify exact package versions/exports before consuming them.
-
 ## Research notes
 
 - AI DIAL Core official repository: https://github.com/epam/ai-dial-core. Its README describes a unified API/proxy for chat-completion and embedding models/apps, Java 21 + Vert.x; repository has Apache-2.0 LICENSE.
@@ -239,3 +235,13 @@ Current documented status: **23 repositories have documentation foundations; 9 e
 Added and fetched back all 10 standard documentation files in [aether-ai-billing](https://github.com/Monupatel62/aether-ai-billing). Current inventory: 32/33 canonical names visible, 24 repositories with documentation foundations, 8 existing repositories still empty, and aether-ai-memory not found in the connected GitHub listing. Billing/payment technology and pricing remain undecided; no application code or tests were run.
 
 Next: document aether-ai-sdk, then evaluations, observability, integrations, testing, UI components, enterprise, and infrastructure. Do not create or rename a repository until the exact identity of aether-ai-memory is confirmed.
+
+
+## Repository-tree audit — 2026-10-23
+
+- Inspected the recursive Git trees of all 33 canonical repositories on their `main` branches.
+- All 33 repository names are present. The inspected trees contain documentation files only; no application source, package manifest, test suite, CI workflow, or runtime implementation appeared in those trees.
+- The master repository contains architecture, security and authorization reviews, a proposed dependency graph, API schemas, implementation plans, and research documents. These are design artifacts, not proof of working software.
+- The earlier repository inventory notes in this handoff are historical snapshots and are superseded by this audit.
+- The next gate is to finish the cross-repository contract/security review and close implementation-blocking decisions. Do not invent a stack or start implementation against unresolved contracts. Once the design gate is satisfied, implement the smallest vertical slice with tests, then expand repository by repository.
+- Aether AI is standalone. Do not introduce unrelated brands, repositories, packages, or assumed dependencies into Aether AI documentation or implementation.
