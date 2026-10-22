@@ -113,3 +113,8 @@ This audit did not inspect or test application source code, run CI, validate gen
 5. Add schema validation and contract tests only after explicit approval to move beyond documentation-only work.
 
 No application code, deployment, or changes to WoHo AI DevKit were made.
+ 
+
+## Follow-up status — 2026-10-23
+
+The repository visibility section above is a historical snapshot from 2026-10-22 and is superseded for repository-count purposes: the latest documentation pass confirmed all 33 canonical repository names are present and added a repository specification to each. The substantive contract-maturity findings above remain open unless explicitly corrected in a later audited artifact. The new repository specs do not by themselves establish machine-testable OpenAPI, event schemas, provider conformance fixtures, or runtime correctness.
