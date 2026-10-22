@@ -1,6 +1,6 @@
 # Repository specification: aether-ai-providers
 
-**Status:** Repository created; documentation phase only. No implementation code is planned in this file yet.
+**Status:** Repository exists; documentation-only on the inspected `main` branch. No application implementation is present in the audited tree.
 
 ## Mission
 
@@ -12,7 +12,7 @@ Provider protocol and credential handling only; no product business rules.
 
 ## Dependencies and connections
 
-aether-ai-gateway; provider interfaces owned by Aether AI.
+Public provider interface/capability contract consumed by aether-ai-gateway; optional vendor SDKs require explicit version/license review and an accepted ADR.
 
 ## Owned capabilities
 
