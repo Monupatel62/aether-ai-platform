@@ -90,3 +90,9 @@ Each accepted ADR must include: context/problem, options considered, chosen opti
 
 - Added [DATA_RETENTION_DELETION_EXPORT_TELEMETRY_POLICY.md](DATA_RETENTION_DELETION_EXPORT_TELEMETRY_POLICY.md) with data-category ownership candidates, metadata-first telemetry defaults, deletion/revocation distinctions, backup restore reconciliation, export controls and acceptance tests.
 - Numeric retention periods, legal-hold rules, residency, export entitlements, backup targets and telemetry retention remain open for product/privacy/legal review. ADR-0012 and ADR-0015 remain open; no compliance claim or implementation was made.
+
+
+## 2026-10-22 — Identity and authorization POC runbook
+
+- Added [IDENTITY_AUTHORIZATION_POC_RUNBOOK.md](IDENTITY_AUTHORIZATION_POC_RUNBOOK.md) with 24 scenarios, hard security gates, reproducible test-fixture guidance, measurement rules and an evidence-based weighted scorecard.
+- No provider was tested or selected. Running the POC remains gated on explicit approval of scope, environment, operators and budget. All hard-gate failures block candidate acceptance regardless of weighted score.
