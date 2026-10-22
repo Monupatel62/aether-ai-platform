@@ -20,3 +20,7 @@ This is the decision register. A decision is **proposed** until its status is ch
 ## ADR format for new decisions
 
 Each accepted ADR must include: context/problem, options considered, chosen option, reasons, consequences/tradeoffs, security/license implications, migration plan, affected repositories, date, and reviewer. If a decision changes, supersede it with a new ADR rather than silently rewriting history.
+| ADR-0013 | MCP protocol/SDK compatibility | Proposed | Official MCP revision 2026-07-28 changes lifecycle and authorization; use explicit adapter/version matrix after DevKit compatibility tests. |
+| ADR-0014 | AI security baseline | Proposed | Map the threat model and tests to OWASP GenAI LLM Top 10 2026; prompt text alone is not a security control. |
+| ADR-0015 | GenAI observability and privacy | Proposed | Use OpenTelemetry conventions where useful, but keep raw prompt/completion capture disabled by default and define retention/redaction first. |
+| ADR-0016 | CI action and release supply-chain policy | Proposed | Pin Actions to full commit SHAs unless an approved lockfile/policy gives equivalent immutability; use least-privilege workflow tokens and protected releases. |
