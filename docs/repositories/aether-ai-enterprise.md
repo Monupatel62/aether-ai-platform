@@ -8,11 +8,11 @@ Enterprise tenant controls, SSO policy, audit export, organization administratio
 
 ## Dependencies and connections
 
-Auth, security, admin, billing, observability.
+Auth principal/session contracts, security policy contracts, billing entitlement contracts, observability, and admin-facing public contracts where needed. Enterprise must not import the admin frontend or duplicate identity/session logic.
 
 ## Owned capabilities
 
-Tenant hierarchy, SSO/SCIM scope if required, audit exports, organization roles, data isolation, enterprise feature entitlements.
+Enterprise-specific SSO/SCIM administration (if required), enterprise policy configuration, audit exports, organization-level settings and enterprise feature entitlements. Canonical ownership of tenant/workspace membership and role grants remains open under ADR-0021; this repository must publish contracts and must not create a competing membership/identity authority.
 
 ## Non-goals
 
@@ -53,7 +53,7 @@ External source code is not copied by this specification. Verify exact versions,
 
 ## Security and privacy
 
-Tenant isolation, SSO configuration, organization roles, and audit exports are high-risk boundaries. Enforce organization-level authorization server-side, validate identity-provider configuration, prevent cross-tenant export, and audit changes to roles and security policy.
+Tenant isolation, SSO configuration, organization roles, and audit exports are high-risk boundaries. Enforce organization-level authorization server-side, validate identity-provider configuration, prevent cross-tenant export, and audit changes to roles and security policy. Until ADR-0021 assigns the canonical membership/role-grant owner, treat this specification's hierarchy/role scope as a proposal rather than an accepted source of truth.
 
 ## Test plan
 
