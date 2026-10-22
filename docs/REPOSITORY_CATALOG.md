@@ -6,7 +6,7 @@
 
 - Aether AI repositories in this plan: **33**.
 - Target Aether AI repositories in this plan: **33**.
-- Verified through the connected GitHub listing on 2026-10-22: **27 canonical-name repositories visible**; 21 now contain the documentation foundation and 6 remain empty on the default branch.
+- Verified through the connected GitHub listing on 2026-10-22: **27 canonical-name repositories visible**; 22 now contain the documentation foundation and 5 remain empty on the default branch.
 - Canonical-name repositories not found in this listing: **6** (`aether-ai-memory`, `aether-ai-integrations`, `aether-ai-testing`, `aether-ai-ui-components`, `aether-ai-enterprise`, `aether-ai-infrastructure`). The earlier user-reported count of 22 is superseded by the current listing of 27 canonical-name repositories; reconcile any noncanonical names before finalizing the inventory.
 - See [Cross-Repository Contract Audit](CROSS_REPOSITORY_CONTRACT_AUDIT.md) for the evidence and limitations.
 - Existing external dependency: [Monupatel62/woho-ai-devkit](https://github.com/Monupatel62/woho-ai-devkit), currently separate.
@@ -31,7 +31,7 @@
 | 13 | [`aether-ai-files`](https://github.com/Monupatel62/aether-ai-files) | Created; documentation foundation | Secure file validation, metadata, storage, download authorization |
 | 14 | [`aether-ai-knowledge`](https://github.com/Monupatel62/aether-ai-knowledge) | Created; documentation foundation | Knowledge collections, source ownership, permissions, indexing status |
 | 15 | [`aether-ai-auth`](https://github.com/Monupatel62/aether-ai-auth) | Created; documentation foundation | Identity provider integration, sessions, role and authorization primitives |
-| 16 | [`aether-ai-security`](https://github.com/Monupatel62/aether-ai-security) | Exists; empty on default branch | Shared security policies, redaction, guardrails, secret-handling rules |
+| 16 | [`aether-ai-security`](https://github.com/Monupatel62/aether-ai-security) | Created; documentation foundation | Shared security policies, redaction, guardrails, secret-handling rules |
 | 17 | [`aether-ai-admin`](https://github.com/Monupatel62/aether-ai-admin) | Exists; empty on default branch | Privileged operator dashboard for models, users, policies, quotas |
 | 18 | [`aether-ai-billing`](https://github.com/Monupatel62/aether-ai-billing) | Exists; empty on default branch | Plans, entitlements, usage metering, quotas and billing records |
 | 19 | [`aether-ai-sdk`](https://github.com/Monupatel62/aether-ai-sdk) | Exists; empty on default branch | Typed public client SDK and shared API schemas |
