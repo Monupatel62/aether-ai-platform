@@ -69,3 +69,9 @@ For each future change, record: date; exact files; why the change is needed; alt
 - Added `docs/IDENTITY_AND_TENANT_SECURITY_EVALUATION.md` covering identity provider choices, OIDC/OAuth baseline, session lifecycle, authorization, tenant isolation, repository contracts, threat scenarios and POC acceptance criteria.
 - Updated decision/research and continuity documentation to keep ADR-0008 and proposed ADR-0019–ADR-0024 open.
 - No application code was added; no proof-of-concept tests were run.
+
+
+## 2026-10-22 — Identity provider shortlist
+
+- Added `docs/IDENTITY_PROVIDER_SHORTLIST_AND_SCORECARD.md` with official-source-based candidate comparison, weighted scorecard, POC phases, mandatory acceptance gates and migration checks.
+- Updated handoff and architecture-decision notes. No vendor was selected and no POC tests or application code were run.
