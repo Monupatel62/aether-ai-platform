@@ -1,6 +1,6 @@
 # Repository specification: aether-ai-platform
 
-**Status:** Repository created; documentation phase only. No implementation code is planned in this file yet.
+**Status:** Repository exists; documentation-only on the inspected `main` branch. No application implementation is present in the audited tree.
 
 ## Mission
 
@@ -12,7 +12,7 @@ Owns cross-repository decisions; not a runtime service.
 
 ## Dependencies and connections
 
-All 33 Aether repositories; no external runtime dependency is assumed.
+All 33 Aether repositories link to this catalog for documentation and decisions only; no runtime imports.
 
 ## Owned capabilities
 
