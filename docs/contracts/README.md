@@ -34,3 +34,15 @@ This directory holds machine-readable starting points for cross-repository contr
 - [ ] Retry/idempotency behavior reviewed for events and side effects.
 - [ ] Privacy, retention, deletion and telemetry implications reviewed.
 - [ ] Validation is wired into CI only after explicit implementation approval.
+
+## Additional draft artifacts
+
+- [Schema semantic review](SCHEMA_SEMANTIC_REVIEW.md): prioritizes contract gaps and separates schema validation from runtime security invariants.
+- [Public error code catalog](ERROR_CODE_CATALOG.md): proposed codes and HTTP/retry mappings; not approved for service use.
+
+## Current semantic review highlights
+
+- Tool arguments and generic event payloads remain unconstrained nested objects until concrete per-tool and per-event schemas are designed.
+- Tenant, actor, step, retry and failure metadata may need conditional requirements by operation/event type.
+- Format assertions, event authentication, deduplication, ordering, replay resistance and execution-time authorization require explicit validation or runtime controls beyond JSON syntax.
+- These findings are proposals, not final contract decisions.
