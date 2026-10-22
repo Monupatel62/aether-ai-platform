@@ -128,3 +128,8 @@ Read `docs/IDENTITY_PROVIDER_SHORTLIST_AND_SCORECARD.md`. A shortlist and weight
 ## Latest architecture research checkpoint — browser sessions and authorization (2026-10-22)
 
 Read `docs/BROWSER_SESSION_AND_AUTHORIZATION_ARCHITECTURE.md`. It evaluates BFF/server-side sessions, CSRF and cookie controls, session lifecycle, RBAC/resource-level checks, alternatives, repository boundaries and POC tests. BFF and RBAC are candidates only, not accepted decisions. No application code or POC tests were run. Keep ADR-0019 and ADR-0020 open pending review.
+
+
+## Latest research checkpoint — authorization permission matrix (2026-10-22)
+
+Read `docs/AUTHORIZATION_PERMISSION_MATRIX.md`. It proposes roles, resource classes, action vocabulary, baseline permissions, mandatory invariants, repository ownership and a POC test plan. Treat all permissions as draft product policy requiring review; none are implemented. Next: refine first-launch resources and risk tiers, then define revocation/consistency targets and turn the negative cases into POC tests after architecture review. Do not start application code without explicit approval.
