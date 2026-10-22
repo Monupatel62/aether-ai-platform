@@ -1,6 +1,6 @@
 # Repository specification: aether-ai-ui-components
 
-**Status:** Planned; repository not created yet.
+**Status:** Repository exists; documentation-only on the inspected `main` branch. No application implementation is present in the audited tree.
 
 ## Mission
 
