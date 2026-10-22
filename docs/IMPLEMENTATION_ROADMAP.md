@@ -63,6 +63,7 @@ Do not move forward because files were created. Move only when the previous phas
 ### Architecture research additions — 2026-10-22
 
 - [x] Compare DIAL Core, DIAL Chat, DevKit gateway path and hybrid options in [DIAL adoption evaluation](DIAL_ADOPTION_EVALUATION.md).
+- [x] Define a reproducible gateway proof-of-concept plan and acceptance tests in [GATEWAY_PROOF_OF_CONCEPT.md](GATEWAY_PROOF_OF_CONCEPT.md).
 - [x] Inspect DevKit public package manifests and selected source-level integration boundaries in [DevKit compatibility review](DEVKIT_COMPATIBILITY_REVIEW.md).
 - [ ] Verify exact registry package artifacts, integrity, exports and transitive licenses.
 - [ ] Run a mock-based protocol compatibility harness for `@woho/mcp` against the selected official MCP spec/transport matrix.
