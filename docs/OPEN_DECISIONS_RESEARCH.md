@@ -96,3 +96,8 @@ Evidence baseline includes IETF RFC 9700, NIST SP 800-63B-4, OpenID Connect Core
 ## Identity-provider shortlist and scorecard — 2026-10-22
 
 See `docs/IDENTITY_PROVIDER_SHORTLIST_AND_SCORECARD.md`. Current candidates: ZITADEL (cloud/self-hosted), Keycloak (self-hosted control) and Auth0 (managed benchmark). Official documentation supports advertised capabilities but does not establish fit, security effectiveness, pricing or plan eligibility for Aether. Current Keycloak passkey maturity must be checked against the exact release used; the reviewed 26.0.8 guide labels passkeys preview. No vendor is selected. The common POC scorecard and mandatory acceptance gates must be completed before ADR-0008 is accepted.
+
+
+## Browser sessions and authorization architecture — 2026-10-22
+
+See `docs/BROWSER_SESSION_AND_AUTHORIZATION_ARCHITECTURE.md`. Candidate for the first-party web app: BFF + server-side session to keep OAuth tokens out of browser JavaScript, with explicit CSRF controls, secure cookies, server-side revocation and per-request authorization. Candidate authorization baseline: RBAC plus resource-level checks, deny-by-default; only add ABAC, ReBAC or a dedicated policy engine when use cases justify the complexity. RFC 10017 (August 2026) is the current IETF browser-based OAuth BCP reviewed for this evaluation. ADR-0019 and ADR-0020 remain open; no implementation or POC is claimed.
