@@ -245,3 +245,13 @@ Next: document aether-ai-sdk, then evaluations, observability, integrations, tes
 - The earlier repository inventory notes in this handoff are historical snapshots and are superseded by this audit.
 - The next gate is to finish the cross-repository contract/security review and close implementation-blocking decisions. Do not invent a stack or start implementation against unresolved contracts. Once the design gate is satisfied, implement the smallest vertical slice with tests, then expand repository by repository.
 - Aether AI is standalone. Do not introduce unrelated brands, repositories, packages, or assumed dependencies into Aether AI documentation or implementation.
+
+
+## Latest checkpoint — standalone boundary and repository-spec audit (2026-10-23)
+
+- Removed unrelated project/package references from the gateway proof-of-concept plan, identity/authorization POC runbook, technical design, dependency edge register, cross-repository contract audit, work log, repository spec index, and the affected individual repository specifications.
+- Scanned the master documentation set, all 33 master repository specifications, contract schemas, and the machine-readable dependency graph for unrelated-project markers. The updated inspected text files return zero matches for those markers.
+- Corrected all 33 master repository specification status lines: every canonical repository exists, and its inspected `main` tree is documentation-only. Filled missing dependency sections in the affected specs and reconciled their direction with the proposed dependency graph.
+- Enumerated recursive Git trees for all 33 repositories; every tree returned `truncated: false` and contained only README and/or `docs/` files. No source files, manifests, test suites, or CI workflows were present in those default-branch trees.
+- Updated [Implementation Status Audit](IMPLEMENTATION_STATUS_AUDIT.md) with the full-tree evidence. This is not a local clone, build, runtime test, security test, or audit of other branches.
+- No application code was written and no tests were run. Continue reviewing unresolved contracts and security decisions. Do not invent a stack or claim implementation readiness.
