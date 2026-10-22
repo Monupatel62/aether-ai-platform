@@ -38,3 +38,12 @@ Use this file as the handoff context when work continues in a new ChatGPT conver
 ## Required work-log entry for every future change
 
 Date; repository; exact paths changed; purpose; why this design was chosen; dependencies/connections affected; research links; tests/evidence; security/license impact; open questions; next step.
+
+## Audit updates — 2026-10-22
+
+- Read [Architecture audit, pass 1](ARCHITECTURE_AUDIT.md) before further design work.
+- Read [Security threat model](SECURITY_THREAT_MODEL.md) and [Open decisions/research](OPEN_DECISIONS_RESEARCH.md).
+- MCP spec revision 2026-07-28 is now published; do not assume current WoHo DevKit MCP primitives support it until the package-level compatibility spike is complete.
+- OWASP GenAI announced the 2026 LLM Top 10 on 2026-09-01; use the canonical current edition for the threat/control matrix.
+- Raw prompts/completions and sensitive GenAI trace attributes must not be captured by default.
+- GitHub Actions policy should cover full-SHA pinning or an approved equivalent lockfile, least-privilege workflow permissions, and protected releases.
