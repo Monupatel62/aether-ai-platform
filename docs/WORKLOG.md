@@ -136,3 +136,10 @@ For each future change, record: date; exact files; why the change is needed; alt
 - Added [AUTHORIZATION_POLICY_GAP_AUDIT.md](AUTHORIZATION_POLICY_GAP_AUDIT.md) with 14 semantic findings, severity, impact and proposed disposition.
 - Identified an internal contradiction in the workspace-creation row/footnote and unresolved high-risk policy around support access, admin access to conversation/memory content, ownership transfer, approval tiers and action-level permissions.
 - Kept policy decisions open rather than treating draft matrix values as accepted. Documentation only; no application code or tests run.
+
+
+## 2026-10-22 — Retention, deletion, export and telemetry policy proposal
+
+- Added [DATA_RETENTION_DELETION_EXPORT_TELEMETRY_POLICY.md](DATA_RETENTION_DELETION_EXPORT_TELEMETRY_POLICY.md) covering data categories, proposed safe defaults, lifecycle semantics, exports, observability, backups and planned acceptance tests.
+- Numeric retention periods and SLOs, legal hold, residency, export rights, backup recovery targets and telemetry retention remain undecided; no compliance claims are made.
+- Documentation only; no code or tests were run.
