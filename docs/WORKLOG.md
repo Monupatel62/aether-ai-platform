@@ -82,3 +82,9 @@ For each future change, record: date; exact files; why the change is needed; alt
 - Added `docs/BROWSER_SESSION_AND_AUTHORIZATION_ARCHITECTURE.md`, based on current IETF browser OAuth guidance and OWASP authorization/session guidance.
 - Documented BFF/session options, CSRF defenses, tenant enforcement, authorization model trade-offs and POC acceptance tests.
 - Updated handoff/decision documentation. No POC was run and no application code was written.
+
+
+## 2026-10-22 — Authorization permission matrix
+
+- Added `docs/AUTHORIZATION_PERMISSION_MATRIX.md` with proposed role matrix, resource/action vocabulary, tenant and service-principal invariants, policy decision contract and negative-test plan.
+- Updated handoff and decision/research notes. Permissions remain draft; no code or tests were written/run.
