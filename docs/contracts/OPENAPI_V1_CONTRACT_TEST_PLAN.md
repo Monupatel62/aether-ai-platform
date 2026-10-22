@@ -53,3 +53,8 @@ These response shapes are provisional draft proposals and require review; tests 
 
 - Message request/response schemas were revised in the draft OpenAPI to restrict client request messages to role `user` and generated response messages to role `assistant`.
 - No OpenAPI validator, schema fixture runner, generated client, endpoint test, or runtime security test has been run.
+
+
+## Internal authorization-context trust tests
+
+See [AUTHORIZATION_CONTEXT_TRUST_PROFILE.md](AUTHORIZATION_CONTEXT_TRUST_PROFILE.md) for the full proposed ACTX-001 through ACTX-014 acceptance set. These tests cover trusted issuer and consumer binding, integrity, exact principal/tenant/resource/action scope, expiry, version freshness, replay, approval revocation, fail-closed dependency behavior, model/tool boundary leakage, and safe audit logging. They are test requirements only and have not been executed.
