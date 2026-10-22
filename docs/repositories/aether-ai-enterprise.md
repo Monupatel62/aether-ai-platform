@@ -50,3 +50,22 @@ Tenant hierarchy, SSO/SCIM scope if required, audit exports, organization roles,
 - [AI DIAL Chat architecture](https://github.com/epam/ai-dial-chat/blob/development/docs/architecture.md)
 
 External source code is not copied by this specification. Verify exact versions, licenses, and security posture before any reuse.
+
+## Security and privacy
+
+Tenant isolation, SSO configuration, organization roles, and audit exports are high-risk boundaries. Enforce organization-level authorization server-side, validate identity-provider configuration, prevent cross-tenant export, and audit changes to roles and security policy.
+
+## Test plan
+
+Test cross-tenant access denial, SSO issuer/audience/signature failures, role escalation, audit export scope, organization membership changes, and admin audit records.
+
+Before release, add unit tests, contract tests for direct dependencies, negative authorization/input tests, and failure/recovery tests for the behavior this component owns. Use synthetic or sanitized data only.
+
+## Related documentation
+
+- [Master repository catalog](../REPOSITORY_CATALOG.md)
+- [Master architecture](../MASTER_ARCHITECTURE.md)
+- [Architecture audit](../ARCHITECTURE_AUDIT.md)
+- [Security threat model](../SECURITY_THREAT_MODEL.md)
+- [Open decisions and research](../OPEN_DECISIONS_RESEARCH.md)
+- [Continuity handoff](../WORK_HANDOFF.md)
