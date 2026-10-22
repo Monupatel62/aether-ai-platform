@@ -136,9 +136,11 @@ enterprise -> auth, security, billing, observability
 - `aether-ai-database` and `aether-ai-security` do not import their domain/runtime consumers.
 - `aether-ai-tools` does **not** import MCP; the composition root registers MCP-backed tools.
 
-## Cycle-check result
+## Initial package graph cycle check
 
-**Not yet executed.** The register is a proposed human-authored edge inventory. Automated cycle detection must be run against a machine-readable graph after this inventory is reviewed and normalized. Do not treat the candidate graph text above as proof of a cycle-free architecture.
+**Result:** a depth-first-search cycle detector was executed against a manually transcribed candidate package-import graph: **33 nodes, 61 directed edges, 0 cycles reported**.
+
+**Important limitation:** the graph was transcribed from the proposed register for this check; it was not parsed or generated from a machine-readable source, and the edge classifications remain proposed. This is a preliminary check, not a proof that every edge in the Markdown register is correctly classified or that the runtime/service-call/event graph is cycle-free. Before implementation, normalize the edge inventory into machine-readable data, generate the graph from that data, rerun cycle detection, and preserve the graph plus tool output/revision as evidence.
 
 ## Open items
 
