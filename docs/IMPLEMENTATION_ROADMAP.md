@@ -194,3 +194,14 @@ These additions remain documentation proposals. No schema validation, runtime te
 - [ ] Run an OpenAPI 3.1 validator and add positive/negative contract fixtures after review.
 
 This baseline is documentation-only. No API endpoint or runtime behavior is implemented or verified.
+
+
+### OpenAPI semantic review checkpoint — 2026-10-22
+
+- [x] Manually review the draft OpenAPI and record P0/P1 findings in [OPENAPI_V1_REVIEW_MATRIX.md](contracts/OPENAPI_V1_REVIEW_MATRIX.md).
+- [x] Identify client-supplied system/developer roles as a P0 contract defect requiring separate request/response message schemas.
+- [ ] Review and remediate message-role policy, trusted tenant resolution, agent input schemas, run result authorization/retention, and cancellation semantics.
+- [ ] Define accepted/cancellation response bodies, endpoint limits, streaming policy, and token-validation rules.
+- [ ] Run OpenAPI 3.1 validation and add positive/negative contract fixtures after decisions are reviewed.
+
+Manual text review only; no OpenAPI parser or runtime security test has been run.
