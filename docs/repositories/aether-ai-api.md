@@ -8,11 +8,18 @@ Authenticated product API/BFF for users, conversations, run submission/status, f
 
 ## Responsibility boundary
 
-Owns product API and authorization enforcement; delegates model and execution work.
+Owns product API, authentication integration and per-resource authorization enforcement; delegates bounded model requests to gateway and durable/long-running runs to orchestration.
 
 ## Dependencies and connections
 
-aether-ai-auth, aether-ai-gateway, aether-ai-agents, aether-ai-files, aether-ai-database, aether-ai-observability.
+aether-ai-auth, aether-ai-gateway (bounded synchronous model requests), aether-ai-orchestration (durable runs), aether-ai-files, aether-ai-knowledge public contracts, aether-ai-billing entitlement contract, aether-ai-security policy contract, aether-ai-observability. Do not depend directly on the agent runtime for durable execution.
+
+## Execution routing contract
+
+- Durable/long-running run submission, status, cancellation and recovery go through the orchestration public contract; orchestration is the sole owner of durable run/step state.
+- Bounded synchronous completion may call the gateway directly when it does not create a second durable run lifecycle.
+- API authorizes each requested resource/action using the shared security policy contract. Authentication alone is never treated as authorization.
+- Do not import another domain's private persistence schema; use its public API/contract.
 
 ## Owned capabilities
 
