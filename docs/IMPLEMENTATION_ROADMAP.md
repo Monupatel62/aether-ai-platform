@@ -132,3 +132,13 @@ See [Cross-Repository Consistency Audit](CROSS_REPOSITORY_CONSISTENCY_AUDIT.md).
 - [ ] Review runtime synchronous call loops and asynchronous event feedback loops separately.
 
 The preliminary result does not prove the Markdown edge register is complete or the runtime architecture cycle-free. Implementation remains gated on these checks and explicit user approval.
+
+
+### Machine-readable package graph verification — 2026-10-22
+
+- [x] Add [dependency-package-graph.json](dependency-package-graph.json) as the proposed machine-readable package-import graph.
+- [x] Fetch the JSON from GitHub, parse it, validate 33 nodes and 61 typed package-import edges, and run DFS cycle detection: **0 cycles reported in the encoded candidate graph**.
+- [ ] Compare the JSON graph against every typed relationship in [DEPENDENCY_EDGE_REGISTER.md](DEPENDENCY_EDGE_REGISTER.md), record intentional differences, and review runtime API/event loops.
+- [ ] Before implementation, validate the graph against actual source imports/build manifests once packages exist; keep proposed-graph checks separate from code-derived checks.
+
+This result only establishes that the proposed JSON graph has no cycles; it does not establish that future or existing source imports conform to it.
