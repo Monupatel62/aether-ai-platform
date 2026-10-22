@@ -228,3 +228,10 @@ Before implementation:
 - OWASP API Security Top 10 (2023), Broken Object Level Authorization: https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization/
 - IETF RFC 9700, OAuth 2.0 Security Best Current Practice: https://www.rfc-editor.org/rfc/rfc9700.html
 - PostgreSQL Row Security Policies: https://www.postgresql.org/docs/current/ddl-rowsecurity.html
+
+
+## Membership ownership and revocation consistency
+
+This matrix must be read together with [Tenant Membership, Resource ACL and Revocation Consistency Decision](TENANT_MEMBERSHIP_AND_ACL_CONSISTENCY_DECISION.md). The membership/role-grant owner is still unresolved; `aether-ai-enterprise` is only a candidate if it is intended to be the universal tenant domain, and adding `aether-ai-tenancy` requires explicit approval to change the 33-repository plan. `aether-ai-auth` owns identity/session integration but is not automatically the canonical membership owner.
+
+Access revocation is a safety boundary, not an eventual-index-cleanup task: protected operations must re-authorize against authoritative current state. Search/RAG, caches, queues, object storage and citations must suppress or deny stale access while asynchronous cleanup converges. Numeric cleanup SLOs remain open until product requirements and benchmarks are reviewed.
