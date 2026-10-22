@@ -19,13 +19,13 @@ Use this file as the handoff context when work continues in a new ChatGPT conver
 2. [Dependency matrix](DEPENDENCY_MATRIX.md)
 3. [Repository specification audit matrix](REPOSITORY_SPEC_AUDIT_MATRIX.md)
 4. [Architecture audit](ARCHITECTURE_AUDIT.md)
-4. [Security threat model](SECURITY_THREAT_MODEL.md)
-5. [Open decisions and research](OPEN_DECISIONS_RESEARCH.md)
-6. [Master architecture](MASTER_ARCHITECTURE.md)
-7. [Roadmap](IMPLEMENTATION_ROADMAP.md)
-8. [Decision log](DECISION_LOG.md)
-9. Individual repository specification in `repositories/`
-10. For an existing repository, read its README and docs: PROJECT_SPEC, ARCHITECTURE, DEPENDENCIES_AND_CONTRACTS, IMPLEMENTATION_PLAN, RESEARCH_AND_LICENSES, TECHNICAL_DESIGN, SECURITY_REVIEW, ENGINEERING_STANDARD, and WORKLOG.
+5. [Security threat model](SECURITY_THREAT_MODEL.md)
+6. [Open decisions and research](OPEN_DECISIONS_RESEARCH.md)
+7. [Master architecture](MASTER_ARCHITECTURE.md)
+8. [Roadmap](IMPLEMENTATION_ROADMAP.md)
+9. [Decision log](DECISION_LOG.md)
+10. Individual repository specification in `repositories/`
+11. For an existing repository, read its README and available docs: PROJECT_SPEC, ARCHITECTURE, DEPENDENCIES_AND_CONTRACTS, IMPLEMENTATION_PLAN, RESEARCH_AND_LICENSES, TECHNICAL_DESIGN, SECURITY_REVIEW, ENGINEERING_STANDARD, and WORKLOG.
 
 ## How to continue safely
 
