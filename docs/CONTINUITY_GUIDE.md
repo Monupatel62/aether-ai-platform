@@ -66,3 +66,5 @@ Date; repository; exact paths changed; purpose; why this design was chosen; depe
 - User-selected target: 33 repositories. This does not mean 33 separately deployed services; ADR-0004 accepts modular runtime boundaries.
 - Current source versions observed in DevKit `main`: `@woho/core 0.2.24`, `@woho/provider-openai 0.2.22`, `@woho/agents 0.3.28`, `@woho/tools 0.4.25`, `@woho/memory 0.6.18`, `@woho/mcp 0.6.28`. Confirm published artifacts before installation.
 - DIAL Core is a candidate upstream model gateway; DIAL Chat is a full application. Neither has been selected for adoption. ADR-0005 remains open pending a small proof-of-concept.
+
+- Read [Data Infrastructure Evaluation](DATA_INFRASTRUCTURE_EVALUATION.md) before choosing database, vector engine, queue, cache or search service. PostgreSQL/pgvector + BullMQ is only a benchmark baseline, not an accepted stack.
