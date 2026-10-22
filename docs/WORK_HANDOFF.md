@@ -26,7 +26,7 @@
 9. https://github.com/Monupatel62/aether-ai-tools
 10. https://github.com/Monupatel62/aether-ai-mcp
 
-Each existing repository has documentation-only files: README, PROJECT_SPEC, ARCHITECTURE, DEPENDENCIES_AND_CONTRACTS, IMPLEMENTATION_PLAN, RESEARCH_AND_LICENSES, WORKLOG, and ENGINEERING_STANDARD. No application source code has been added as part of this work.
+Each existing repository has documentation-only files: README, PROJECT_SPEC, ARCHITECTURE, DEPENDENCIES_AND_CONTRACTS, IMPLEMENTATION_PLAN, RESEARCH_AND_LICENSES, WORKLOG, ENGINEERING_STANDARD, and repository-specific TECHNICAL_DESIGN. No application source code has been added as part of this work.
 
 ### Remaining planned repositories (23)
 
@@ -38,6 +38,7 @@ Each has an individual specification in [docs/repositories/](repositories/) befo
 
 - [Repository catalog](REPOSITORY_CATALOG.md)
 - [Individual spec index](REPOSITORY_SPEC_INDEX.md)
+- [Engineering and commenting standard](ENGINEERING_AND_COMMENTING_STANDARD.md)
 - [Master architecture](MASTER_ARCHITECTURE.md)
 - [Implementation roadmap](IMPLEMENTATION_ROADMAP.md)
 - [Decision log](DECISION_LOG.md)
