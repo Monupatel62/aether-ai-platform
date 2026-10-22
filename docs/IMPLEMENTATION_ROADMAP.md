@@ -26,6 +26,16 @@
 - [x] [Repository-specific security review checklists](repositories/)
 - [ ] Final architecture decision review and explicit user approval before application coding
 
+
+### Repository-tree and specification audit — 2026-10-23
+
+- [x] Enumerate the recursive default-branch trees for all 33 canonical repositories; all trees returned without truncation and contained documentation only.
+- [x] Synchronize `docs/REPOSITORY_SPECIFICATION.md` across all 33 repositories: current documentation-only status and a non-empty dependency section aligned with the proposed graph.
+- [x] Scan the inspected Aether documentation/contracts for unrelated-project dependency markers and remove the remaining references.
+- [x] Record evidence and limitations in [Implementation Status Audit](IMPLEMENTATION_STATUS_AUDIT.md).
+- [ ] Finish semantic review of draft OpenAPI, event, authorization-context, and lifecycle contracts; close all P0 security/ownership blockers before implementation.
+- [ ] Resolve remaining product/operations ADRs with explicit rationale and evidence. A proposed stack is not an accepted decision.
+
 ## Phase 1 — foundation vertical slice
 
 Expected order: `aether-ai-platform` contracts → `aether-ai-security` and `aether-ai-auth` design → `aether-ai-providers` + `aether-ai-gateway` minimal model request → `aether-ai-api` authenticated endpoint → `aether-ai-web` minimal chat view → `aether-ai-observability` basics → `aether-ai-testing` smoke/contract tests.
