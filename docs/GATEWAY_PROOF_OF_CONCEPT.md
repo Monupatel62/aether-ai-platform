@@ -1,24 +1,24 @@
 # Aether AI — Gateway Proof of Concept Plan
 
 **Status:** plan only; no gateway code or production service has been created.  
-**Decision supported:** ADR-0005 — DIAL Core vs DevKit provider path vs hybrid.
+**Decision supported:** ADR-0005 — Aether-owned gateway vs AI DIAL Core vs a measured hybrid.
 
 ## Goal
 
-Use the same small set of test cases to compare an Aether-owned gateway contract backed by (A) DIAL Core and (B) WoHo AI DevKit/provider adapters. Decide whether one implementation is sufficient or whether a hybrid is justified by measured requirements.
+Compare an Aether-owned gateway implementation with AI DIAL Core behind the same Aether-owned contract. Decide whether one path meets the requirements or whether a hybrid is justified by measured evidence. Any provider adapter must be native to Aether AI or an independently reviewed, explicitly approved dependency.
 
 ## Non-goals
 
 - No production deployment, billing integration, user data, or production provider credentials.
-- No adoption of DIAL Chat as the product UI in this experiment.
-- No edits to WoHo AI DevKit source, main branch, release pipeline, or package versions.
+- No adoption of AI DIAL Chat as the product UI in this experiment.
 - No implementation of the full 33-repository system.
+- No assumption that an external project is a dependency merely because it is mentioned in research.
 
 ## Test environment
 
 - Aether-owned minimal test harness, isolated from production.
 - Mock provider for deterministic baseline; one non-production provider only if credentials and terms are approved.
-- DIAL Core launched only in an isolated local/dev environment with minimal test configuration.
+- AI DIAL Core launched only in an isolated local/dev environment with minimal test configuration, if selected for comparison.
 - Explicitly pinned package/container versions; record image/package digests, config and test commit.
 - Synthetic prompts and tool results only. No real user data.
 
@@ -50,7 +50,7 @@ The Aether gateway contract must define:
 | G-11 | Secret redaction | Canary API key never appears in logs/traces/errors/client output. |
 | G-12 | Provider outage | Bounded retries; fallback only if privacy, tool capability and cost constraints are equivalent. |
 | G-13 | Embeddings | If needed for initial RAG scope, vector dimensions, batching, usage and errors are normalized. |
-| G-14 | MCP interaction boundary | Gateway is not permitted to bypass the Aether tool registry; MCP tests are handled by the separate MCP compatibility harness. |
+| G-14 | MCP interaction boundary | Gateway cannot bypass the Aether tool registry; protocol-specific tests remain in the Aether MCP compatibility harness. |
 
 ## Measurement record
 
@@ -58,7 +58,7 @@ For each path, record:
 
 - Setup steps and operator time.
 - Exact versions/digests and license inventory.
-- p50/p95 latency from repeated synthetic requests (do not invent values; capture measurements).
+- p50/p95 latency from repeated synthetic requests (capture measurements; do not invent values).
 - Streaming correctness and cancellation behavior.
 - Memory/CPU footprint and failure recovery behavior.
 - Supported features and unsupported cases.
@@ -68,9 +68,9 @@ For each path, record:
 
 ## Decision rule
 
-- Choose **DevKit path** if it meets the required capability matrix with materially lower integration/operational cost and Aether can enforce quotas, authorization and provider policies outside it.
-- Choose **DIAL Core** if its model/deployment governance and provider coverage solve requirements that outweigh the additional Java runtime and operations.
-- Choose **hybrid** only if measured, documented use cases need both and the stable contract prevents policy drift; otherwise do not pay the cost of two upstream paths.
+- Choose an **Aether-owned gateway** if it satisfies the required capability and security matrix at an acceptable maintenance and operational cost.
+- Choose **AI DIAL Core** if its model/deployment governance and provider coverage outweigh the additional runtime and operations, and the security/tenant policy boundary remains enforceable.
+- Choose a **hybrid** only if measured use cases need both and the stable contract prevents policy drift; otherwise avoid the additional operational cost.
 - Defer any option that fails authorization, secret-redaction, cancellation, or tenant-isolation tests regardless of latency.
 
 ## Deliverables
@@ -79,11 +79,10 @@ For each path, record:
 2. Test run logs with redacted configuration and versions/digests.
 3. Completed scenario table and measurement record.
 4. Dependency/license/SBOM report for exact artifacts.
-5. ADR-0005 with chosen option, rejected alternatives, consequences, affected repos, rollback/migration plan and reviewer.
+5. ADR-0005 with chosen option, rejected alternatives, consequences, affected Aether repositories, rollback/migration plan and reviewer.
 
 ## Links
 
 - [DIAL adoption evaluation](DIAL_ADOPTION_EVALUATION.md)
-- [DevKit compatibility review](DEVKIT_COMPATIBILITY_REVIEW.md)
 - [Dependency matrix](DEPENDENCY_MATRIX.md)
 - [Security threat model](SECURITY_THREAT_MODEL.md)
