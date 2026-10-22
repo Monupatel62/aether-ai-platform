@@ -94,3 +94,15 @@ Added `docs/BROWSER_SESSION_AND_AUTHORIZATION_ARCHITECTURE.md`. It evaluates the
 ## Research checkpoint — authorization permission matrix (2026-10-22)
 
 Added `docs/AUTHORIZATION_PERMISSION_MATRIX.md`. It defines a proposed role/action matrix, mandatory invariants and testable negative cases. The next gate is a semantic audit of permissions against all protected resource classes and the repository contracts; product-owner approval is still required. No application code or POC tests have been run.
+
+
+## Cross-repository consistency gate — 2026-10-22
+
+- [x] Perform manual consistency review across the dependency matrix, all 33 spec headings, and selected high-risk repository contracts.
+- [x] Record findings and proposed remediations in [CROSS_REPOSITORY_CONSISTENCY_AUDIT.md](CROSS_REPOSITORY_CONSISTENCY_AUDIT.md).
+- [ ] Reconcile workflow, auth/security/enterprise, knowledge/RAG, API/orchestration/agents, queue, database/domain-schema, and search/RAG ACL boundaries.
+- [ ] Type every dependency edge (package import, network API, event, generated artifact, infrastructure, documentation).
+- [ ] Run and record automated cycle detection on the explicit package-import graph; separately review runtime call loops.
+- [ ] Resolve tenant/workspace membership ownership and resource ACL/revocation authority before implementation.
+
+The manual review is not an automated cycle check. Do not advance to application implementation until the open findings are dispositioned and the user explicitly approves.
