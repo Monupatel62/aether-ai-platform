@@ -38,9 +38,6 @@ Aether AI is a proposed AI platform combining multi-provider model access, chat/
 
 ## 5. External integrations
 
-### WoHo AI DevKit
-
-Inspected README lists `@woho/core`, `@woho/provider-openai`, `@woho/agents`, `@woho/tools`, `@woho/memory`, and `@woho/mcp`. Inspected package metadata reports version 0.8.37, Apache-2.0, and Node.js >=20. Before coding, verify the exact published versions, package exports, license notices, compatibility, and current tests. Integrate through package boundaries; do not rewrite or copy the repository.
 
 ### AI DIAL
 
@@ -77,7 +74,6 @@ Every component must have formatting/lint, typecheck or equivalent static checks
 ## 10. References
 
 - [Master repository catalog](REPOSITORY_CATALOG.md)
-- [WoHo AI DevKit](https://github.com/Monupatel62/woho-ai-devkit)
 - [AI DIAL Core](https://github.com/epam/ai-dial-core)
 - [AI DIAL Chat architecture](https://github.com/epam/ai-dial-chat/blob/development/docs/architecture.md)
 - [AI DIAL docs](https://github.com/epam/ai-dial)
