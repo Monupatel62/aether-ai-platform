@@ -118,3 +118,8 @@ Each has an individual specification in [docs/repositories/](repositories/) befo
 Read `docs/IDENTITY_AND_TENANT_SECURITY_EVALUATION.md` next. It documents the identity-provider comparison criteria, OIDC/OAuth safety baseline, tenant-aware authorization model, session lifecycle, repository responsibilities, threat scenarios and POC acceptance tests.
 
 Hard constraints remain: documentation/research only; do not write application code or choose a vendor until the comparison and explicit review are complete. ADR-0008 remains open; ADR-0019 through ADR-0024 are proposed open decisions. POC tests listed in the document are planned, not executed.
+
+
+## Latest identity-provider research checkpoint — 2026-10-22
+
+Read `docs/IDENTITY_PROVIDER_SHORTLIST_AND_SCORECARD.md`. A shortlist and weighted scorecard now compare ZITADEL, Keycloak and Auth0. Treat this as candidate research only: no vendor selected, no POC executed, no code written. Next work should test the same OIDC/PKCE, tenant-isolation, revocation, audit, operations and migration scenarios across candidates, then record evidence and costs before deciding ADR-0008.
