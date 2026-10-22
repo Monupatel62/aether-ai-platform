@@ -241,3 +241,11 @@ For each future change, record: date; exact files; why the change is needed; alt
 - Updated the master repository catalog with current observed counts: 32 repositories visible, 23 with documentation foundations, 9 empty, and 1 canonical name not found.
 - Documentation only. No application code, runtime tests, deployment, or security certification was added or claimed.
 - Next: verify/create aether-ai-memory only after confirming its exact repository identity; then add documentation to the nine repositories currently empty, starting with billing.
+
+
+## 2026-10-22 — Billing documentation foundation
+
+- Added the 10-file documentation foundation to aether-ai-billing and fetched all 10 files back from GitHub to verify their presence.
+- Updated the master catalog: 32 of 33 canonical repositories visible; 24 documented; 8 empty; aether-ai-memory remains not found in the connected listing.
+- Billing remains documentation-only. No pricing decision, payment provider, application code, deployment, or runtime test was added or claimed.
+- Next: continue with aether-ai-sdk, then evaluations, observability, integrations, testing, UI components, enterprise, and infrastructure. Confirm the exact aether-ai-memory repository before creating or renaming anything.
