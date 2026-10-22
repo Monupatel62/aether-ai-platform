@@ -8,7 +8,6 @@ Conversation/session memory abstractions, safe summarization, retrieval interfac
 
 ## Dependencies and connections
 
-Database, security, compatible @woho/memory.
 
 ## Owned capabilities
 
@@ -51,7 +50,6 @@ Unit tests, contract tests, authorization/tenant isolation tests, malformed-inpu
 ## Research references
 
 - [Aether AI master catalog](../REPOSITORY_CATALOG.md)
-- [WoHo AI DevKit](https://github.com/Monupatel62/woho-ai-devkit) — separate dependency; verify exact package APIs and license.
 - [AI DIAL Core](https://github.com/epam/ai-dial-core) — model gateway reference; verify exact release/license before reuse.
 - [AI DIAL Chat](https://github.com/epam/ai-dial-chat) — UI/BFF reference; verify file-level notices before reuse.
 - [Model Context Protocol](https://modelcontextprotocol.io/) — relevant for MCP/tool integration.
