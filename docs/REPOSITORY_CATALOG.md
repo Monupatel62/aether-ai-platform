@@ -98,6 +98,7 @@ This is a proposed logical graph, not a claim that all 33 repositories must beco
 ## Documentation index
 
 - [Master architecture](MASTER_ARCHITECTURE.md)
+- [Dependency matrix for all 33 repositories](DEPENDENCY_MATRIX.md)
 - [Project-wide implementation roadmap](IMPLEMENTATION_ROADMAP.md)
 - [Decision log](DECISION_LOG.md)
 - [Continuity guide for new chats](CONTINUITY_GUIDE.md)
