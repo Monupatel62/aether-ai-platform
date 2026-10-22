@@ -8,11 +8,11 @@ Database schemas, migrations, persistence helpers, tenancy model, retention, bac
 
 ## Dependencies and connections
 
-API, orchestration, memory, files, billing.
+Selected database driver and migration tooling (TBD). Domain repositories consume the shared tooling/contracts; the database package must not import API, orchestration, memory, files, billing or other domain services.
 
 ## Owned capabilities
 
-Schema ownership, migration forward/rollback strategy, tenant keys, indexes, backup/restore objectives, retention/deletion.
+Shared persistence tooling, migration conventions, connection/security configuration guidance, low-level persistence contracts, tenant-isolation patterns, backup/restore/PITR verification and restore drills. Each domain owns its table semantics, domain constraints and migration intent; the physical migration packaging/composition strategy remains open.
 
 ## Non-goals
 
@@ -66,7 +66,7 @@ Before release, add unit tests, contract tests for direct dependencies, negative
 
 ## Data-layer research gate
 
-See [Data Infrastructure Evaluation](../DATA_INFRASTRUCTURE_EVALUATION.md). PostgreSQL is the proposed transactional-store candidate, not yet an accepted deployment choice. This repository should own migration conventions, schema contracts, connection/security configuration guidance, backup/PITR verification and restore drills—not every domain's business rules. Domain owners own their data and schema. Test RLS under non-owner runtime roles, pooled-connection tenant context reset, migration compatibility, backup restore and outbox consistency. Never make the cache or vector index the authority for billing, permissions, or durable run state.
+See [Data Infrastructure Evaluation](../DATA_INFRASTRUCTURE_EVALUATION.md). PostgreSQL is the proposed transactional-store candidate, not yet an accepted deployment choice. This repository should own migration conventions, schema contracts, connection/security configuration guidance, backup/PITR verification and restore drills—not every domain's business rules. Domain owners own their data semantics and schema changes. Test RLS under non-owner runtime roles, pooled-connection tenant context reset, migration compatibility, backup restore and outbox consistency. No domain service may access another domain's private tables. Never make the cache or vector index the authority for billing, permissions, or durable run state.
 
 ## Related documentation
 
