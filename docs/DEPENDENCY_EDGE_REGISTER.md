@@ -37,7 +37,6 @@ Where the same logical relationship could be either a package import or network 
 | aether-ai-gateway | aether-ai-providers | Package import | Provider interface/capability registry; provider adapters never import gateway implementation. |
 | aether-ai-gateway | aether-ai-security | Package import | Policy and secret-handling primitives. |
 | aether-ai-gateway | aether-ai-observability | Package import | Redacted tracing/metrics interface. |
-| aether-ai-providers | WoHo AI DevKit provider packages | Package import | Optional only after exact version/export/license and contract tests. |
 | aether-ai-agents | aether-ai-gateway | Package import | Stable model request contract; no provider-specific wire details. |
 | aether-ai-agents | aether-ai-tools | Package import | All tool invocation goes through policy boundary. |
 | aether-ai-agents | aether-ai-memory | Package import | Scoped memory retrieval and retention contract. |
@@ -150,7 +149,7 @@ The candidate package-import graph is stored in [dependency-package-graph.json](
 - Confirm whether logical API relationships become package calls or network APIs in the initial deployment.
 - Confirm the tenant/workspace membership and role-grant source of truth (ADR-0021).
 - Define ACL revocation/deletion consistency targets and the canonical authorization check (ADR-0020/0024).
-- Validate external package imports, versioned contracts and licenses before implementation.
+- Validate optional external package imports, versioned contracts and licenses before implementation; every such dependency requires an explicit accepted ADR.
 - Compare the JSON edge inventory against every typed relationship in this register; retain a review record for any intentional mismatch.
 
 
