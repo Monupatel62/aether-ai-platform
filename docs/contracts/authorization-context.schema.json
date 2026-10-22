@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aether-ai.invalid/contracts/authorization-context.schema.json",
+  "title": "Aether Internal Authorization Context",
+  "description": "Draft server-to-server context created only after trusted authentication, current tenant membership resolution, resource ownership validation, and an allow decision. Never accept this object from an external client as proof of authorization.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "principal_id",
+    "principal_type",
+    "tenant_id",
+    "resource_type",
+    "resource_id",
+    "action",
+    "decision",
+    "decision_id",
+    "membership_version",
+    "resource_acl_version",
+    "policy_version",
+    "issued_at",
+    "expires_at",
+    "request_id"
+  ],
+  "properties": {
+    "principal_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "principal_type": {
+      "type": "string",
+      "enum": ["user", "service"]
+    },
+    "tenant_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "description": "Resolved from trusted canonical membership state; never copied directly from client input."
+    },
+    "resource_type": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "resource_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "action": {
+      "type": "string",
+      "enum": ["create", "read", "list", "search", "update", "delete", "share", "execute", "configure", "export", "cancel", "approve"]
+    },
+    "decision": {
+      "type": "string",
+      "const": "allow",
+      "description": "Only an allow decision may produce this context. Denials use a separate safe error/audit path."
+    },
+    "decision_id": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128
+    },
+    "membership_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "description": "Version or revision returned by the canonical membership authority; exact version semantics remain a product decision."
+    },
+    "resource_acl_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "description": "Version of the authoritative resource ACL used for this decision."
+    },
+    "policy_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "issued_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Short-lived context expiry. Exact lifetime must be approved per operation class."
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128
+    },
+    "approval_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "description": "Optional reference to a separately verified approval bound to this exact action and resource."
+    }
+  }
+}
