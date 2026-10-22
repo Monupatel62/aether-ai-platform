@@ -99,3 +99,11 @@ Each has an individual specification in [docs/repositories/](repositories/) befo
 - Next: review and accept the dependency matrix through ADRs, resolve runtime boundaries and open decisions, then ask the user to approve the transition to implementation.
 
 - The security threat model now maps all ten official OWASP GenAI LLM Top 10 2026 categories by name to Aether components and required tests. Pair it with OWASP's Top 10 for Agentic Applications and Agent Control Standard.
+
+## Architecture decision review — 2026-10-22
+
+- Added [AI DIAL adoption evaluation](DIAL_ADOPTION_EVALUATION.md), comparing DIAL Core, DevKit provider path, a hybrid gateway, and DIAL Chat as a product.
+- Added [WoHo AI DevKit compatibility review](DEVKIT_COMPATIBILITY_REVIEW.md) from the current GitHub `main` manifests and selected source files. Current observed versions: `@woho/core 0.2.24`, `@woho/provider-openai 0.2.22`, `@woho/agents 0.3.28`, `@woho/tools 0.4.25`, `@woho/memory 0.6.18`, `@woho/mcp 0.6.28`; verify exact registry tarballs before use.
+- The DevKit MCP package has useful generic JSON-RPC-like/stdio primitives, limits and allowlists, but this source review does not prove full MCP `2026-07-28` conformance. A protocol compatibility harness is required; do not alter DevKit to fit Aether.
+- ADR-0003 (33 repositories) and ADR-0004 (repository boundaries do not imply 33 services) are recorded as accepted. ADR-0005 (DIAL Core vs DevKit gateway vs hybrid) remains open until a proof-of-concept produces evidence.
+- No Aether application code was written and no DevKit source code was modified.
