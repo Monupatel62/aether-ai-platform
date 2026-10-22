@@ -205,3 +205,12 @@ For each future change, record: date; exact files; why the change is needed; alt
 - Added provisional JSON response schemas for accepted run creation and cancellation (`CreateRunAcceptedResponse`, `CancelRunAcceptedResponse`) and updated the review matrix and test plan. These shapes still require contract review.
 - No OpenAPI parser/validator, fixtures runner, generated client, endpoint implementation, or runtime security test was run. The correction is not yet validated.
 - Next: validate OpenAPI 3.1, convert the plan into executable fixtures after review, and address remaining tenant/input/output/lifecycle decisions. Documentation only; no application code or DevKit changes.
+
+
+## 2026-10-22 — Newly visible repositories documented
+
+- Rechecked the connected GitHub repository listing. Seven additional canonical repositories exist and were empty on the default branch: `aether-ai-deployment`, `aether-ai-docs`, `aether-ai-database`, `aether-ai-queue`, `aether-ai-cache`, `aether-ai-search`, and `aether-ai-plugins`.
+- Added README plus nine documentation artifacts to each: project specification, architecture, dependencies/contracts, implementation plan, technical design, security review, research/licenses, engineering standard, and work log. The content is based on the corresponding master repository specification.
+- Updated the master repository catalog to 27 canonical-name repositories visible, 17 with documentation foundations, 10 still empty, and 6 planned canonical names not found.
+- Verification is limited to fetching files back from GitHub and checking presence/content. No application code, deployment, runtime tests, schema validator, or production readiness was added or claimed.
+- Remaining empty canonical repositories: `aether-ai-rag`, `aether-ai-files`, `aether-ai-knowledge`, `aether-ai-auth`, `aether-ai-security`, `aether-ai-admin`, `aether-ai-billing`, `aether-ai-sdk`, `aether-ai-evaluations`, and `aether-ai-observability`.
