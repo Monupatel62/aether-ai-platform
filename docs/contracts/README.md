@@ -40,6 +40,7 @@ This directory holds machine-readable starting points for cross-repository contr
 ## Additional draft artifacts
 
 - [Schema semantic review](SCHEMA_SEMANTIC_REVIEW.md): prioritizes contract gaps and separates schema validation from runtime security invariants.
+- [Contract fixture set](contract-fixtures.v1.json): 14 author-defined positive/negative examples across all seven schemas; expected outcomes are not yet validator-verified.
 - [Public error code catalog](ERROR_CODE_CATALOG.md): proposed codes and HTTP/retry mappings; not approved for service use.
 
 ## Current semantic review highlights
