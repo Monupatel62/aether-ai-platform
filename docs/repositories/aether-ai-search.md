@@ -53,3 +53,22 @@ Index schema/versioning, tenant filters, ranking, deletion propagation, result p
 - [WoHo AI DevKit](https://github.com/Monupatel62/woho-ai-devkit)
 
 All external projects are references or candidate dependencies only. Verify exact version, license, dependency tree, and security posture before reuse.
+
+## Security and privacy
+
+Search must apply tenant and document permissions before returning result snippets or IDs. Treat queries and indexed content as untrusted, limit expensive queries, prevent filter bypass, and propagate deletions/revocations to indexes and caches.
+
+## Test plan
+
+Test cross-tenant queries, missing filters, revoked/deleted documents, poisoned content, oversized queries, ranking ties, stale index/cache, and unauthorized snippet leakage.
+
+Before release, add unit tests, contract tests for direct dependencies, negative authorization/input tests, and failure/recovery tests for the behavior this component owns. Use synthetic or sanitized data only.
+
+## Related documentation
+
+- [Master repository catalog](../REPOSITORY_CATALOG.md)
+- [Master architecture](../MASTER_ARCHITECTURE.md)
+- [Architecture audit](../ARCHITECTURE_AUDIT.md)
+- [Security threat model](../SECURITY_THREAT_MODEL.md)
+- [Open decisions and research](../OPEN_DECISIONS_RESEARCH.md)
+- [Continuity handoff](../WORK_HANDOFF.md)
