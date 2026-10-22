@@ -46,3 +46,11 @@ This directory holds machine-readable starting points for cross-repository contr
 - Tenant, actor, step, retry and failure metadata may need conditional requirements by operation/event type.
 - Format assertions, event authentication, deduplication, ordering, replay resistance and execution-time authorization require explicit validation or runtime controls beyond JSON syntax.
 - These findings are proposals, not final contract decisions.
+
+
+## Versioned API baseline
+
+- [OpenAPI v1 baseline](openapi.v1.yaml): provisional OpenAPI 3.1.0 document for health, synchronous text completion, durable run creation/status, and cancellation.
+- [OpenAPI baseline review notes](OPENAPI_V1_BASELINE.md): endpoint scope, unresolved security/product decisions, and verification limitations.
+
+The routes and fields are review candidates only. No OpenAPI validation or runtime implementation is claimed.
