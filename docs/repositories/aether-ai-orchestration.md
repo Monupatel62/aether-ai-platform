@@ -55,6 +55,10 @@ State transition rules, outbox/idempotency, queue delivery assumptions, lease/re
 4. Add tests, observability, security checks, and operational instructions with the implementation.
 5. Update this specification and the master catalog in the same change when contracts or ownership change.
 
+## Data and queue ownership gate
+
+See [Data Infrastructure Evaluation](../DATA_INFRASTRUCTURE_EVALUATION.md). Orchestration owns durable run/step state, lease/heartbeat, approval state, recovery and terminal status. A queue transports wake-up/job messages but is not the source of truth. Design for at-least-once delivery, idempotency keys, outbox/inbox consistency, bounded retries and reconciliation after crashes. BullMQ is the initial candidate to test; NATS JetStream remains an option only if replay or independent event consumers are required. Do not claim exactly-once side effects based on broker semantics alone.
+
 ## Related documentation
 
 - [Master catalog](../REPOSITORY_CATALOG.md)
