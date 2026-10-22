@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://wohotech.in/aether/contracts/error.schema.json",
+  "$id": "https://aether-ai.invalid/contracts/error.schema.json",
   "title": "Aether API Error",
   "description": "Draft public error envelope. Never expose raw provider errors, stack traces, credentials, or sensitive upstream response bodies.",
   "type": "object",
