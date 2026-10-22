@@ -75,3 +75,12 @@ Each has an individual specification in [docs/repositories/](repositories/) befo
 - Do not rename or modify WoHoTech.
 - Do not rewrite or release WoHo AI DevKit as part of Aether work.
 - Do not claim the project is implemented or production-ready; it is still in the documentation phase.
+
+## Latest audit update — 2026-10-22
+
+- Added [Architecture audit](ARCHITECTURE_AUDIT.md), [Security threat model](SECURITY_THREAT_MODEL.md), and [Open decisions research](OPEN_DECISIONS_RESEARCH.md).
+- Key research findings: MCP `2026-07-28` is published and materially changes protocol behavior; MCP TypeScript SDK v2 is the current stable line for that spec while v1.x targets `2025-11-25`. Verify `@woho/mcp` exact package support before integration.
+- OWASP GenAI announced its 2026 LLM Top 10 in September 2026. Update the security control/test matrix to that edition.
+- OpenTelemetry GenAI attributes can contain sensitive data; telemetry must be metadata-only by default.
+- GitHub recommends full-length commit SHA pins for immutable Action references (or an approved dependency lockfile approach).
+- No application code has been written. The next work remains documentation audit and architecture decision closure.
