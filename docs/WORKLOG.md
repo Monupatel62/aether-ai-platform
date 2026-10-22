@@ -112,3 +112,11 @@ For each future change, record: date; exact files; why the change is needed; alt
 - Ran a DFS cycle detector over a manually transcribed candidate package graph: 33 nodes, 61 directed edges, zero cycles reported.
 - Limitation: the graph was not generated from machine-readable edge data. The result is preliminary; normalize the register, generate the graph, rerun cycle detection, and review runtime call/event loops separately.
 - Tenant/workspace membership ownership and ACL revocation/deletion consistency targets remain open. No application code was written.
+
+
+## 2026-10-22 — Machine-readable package graph check
+
+- Added `docs/dependency-package-graph.json` containing 33 proposed repository nodes and 61 typed package-import edges.
+- Fetched the JSON back from GitHub, parsed it, validated edge types and node references, and ran DFS cycle detection against that parsed file: 0 directed cycles reported.
+- Updated the edge register, cross-repository audit, handoff and roadmap with the result and limitations.
+- This is a check of the proposed graph data, not source-import analysis. The next gate is reconciliation of JSON edges against the Markdown edge register and separate review of runtime API/event loops. No application code was written.
