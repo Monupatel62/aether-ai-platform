@@ -112,3 +112,21 @@ These are proposed consistency corrections, not silently accepted ADRs. Update t
 - [Decision log](DECISION_LOG.md)
 - [Implementation roadmap](IMPLEMENTATION_ROADMAP.md)
 - [Work handoff](WORK_HANDOFF.md)
+
+
+## Remediation progress — 2026-10-22
+
+The following documentation corrections have now been committed to the master repository:
+
+- Dependency matrix: clarified low-level workflow contracts, API → orchestration → agents for durable runs, knowledge → RAG/Search contract direction, domain-neutral queue, domain-owned data semantics, narrow security contracts, and explicit edge-type vocabulary.
+- Workflow spec: removed orchestration/agent/database dependencies from workflow schema validation.
+- API spec: removed direct agent-runtime dependency for durable execution and documented routing/authorization boundaries.
+- Knowledge spec: removed RAG/Search implementation dependencies and defined ACL/indexing contract expectations.
+- Queue spec: clarified that orchestration/workflows/billing are producers or consumers, not queue package dependencies.
+- Database spec: separated shared persistence tooling from domain schema ownership.
+- Auth/security specs: separated principal/session lifecycle from resource authorization and prevented security from importing its consumers.
+- Enterprise spec: clarified that tenant/workspace membership and role-grant ownership remains open pending ADR-0021.
+- RAG/Search specs: made them ACL-aware consumers/projections rather than the authoritative permission source.
+- Orchestration spec: made durable run/step state ownership explicit.
+
+**Not yet complete:** all dependency edges have not been classified individually; no automated package-cycle detection has been run; the canonical tenant/workspace membership owner and resource ACL revocation/deletion SLOs remain open. These corrections reduce documented contradictions but do not prove a cycle-free graph or authorize implementation.
