@@ -75,3 +75,22 @@
 - [MCP TypeScript SDK v2](https://ts.sdk.modelcontextprotocol.io/v2/)
 - [OpenTelemetry GenAI attributes](https://opentelemetry.io/docs/specs/semconv/registry/attributes/gen-ai/)
 - [GitHub Actions secure use](https://docs.github.com/en/actions/reference/security/secure-use)
+
+## 8. OWASP GenAI LLM Top 10 — 2026 mapping
+
+The official 2026 document uses the following category names. This mapping is an Aether design checklist, not a claim that any control has already passed testing.
+
+| OWASP 2026 category | Aether components most affected | Required Aether design/test focus |
+|---|---|---|
+| **LLM01 Prompt Injection** | web, agents, RAG, knowledge, memory, tools, MCP, integrations | Test direct, indirect, multimodal, retrieved-content, tool-output, and persistent-memory injection. Assume model instruction boundaries can fail; bound what tools can do and what output can reach. |
+| **LLM02 Sensitive Information Disclosure** | API, auth, memory, files, knowledge, RAG, gateway, observability | Tenant isolation, least privilege, secret redaction, memory/file access checks, safe outputs, default-off prompt logging, retention/deletion. |
+| **LLM03 Excessive Agency** | agents, orchestration, tools, workflows, MCP, plugins, integrations | Deterministic per-action authorization, tool risk classes, step/time/token/cost budgets, approval for privileged/irreversible/external actions, cancellation and audit. |
+| **LLM04 Supply Chain** | all repos, providers, MCP, plugins, integrations, CI/deployment | Pin dependencies and actions, verify provenance/versions, review licenses, scan vulnerabilities/secrets, constrain release credentials, review tool descriptions and packages. |
+| **LLM05 Data and Model Poisoning** | knowledge, RAG, search, memory, evaluations, providers | Source provenance, write permissions, ingestion review, poisoned-content fixtures, memory-write controls, dataset/model versioning, regression/evaluation controls. |
+| **LLM06 Unbounded Consumption** | gateway, agents, orchestration, queue, tools, API, billing | Request/context/output caps, concurrency and rate limits, bounded retries, token/cost budgets, backpressure, queue limits, oversized tool-output tests. |
+| **LLM07 Misinformation** | web, agents, RAG, knowledge, evaluations | Source grounding/citations, calibrated uncertainty, evaluation of factual claims, stale-source checks, safe handling of model-generated actions based on uncertain facts. |
+| **LLM08 Hidden Context Exposure** | API, agents, gateway, memory, observability, web | Do not treat system prompts or internal context as secrets that can be safely revealed by the model; keep credentials and authorization out of prompts; restrict trace/context visibility and test extraction attempts. |
+| **LLM09 Vector and Embedding Weaknesses** | RAG, search, knowledge, files, evaluations | Tenant filters before retrieval, embedding/index versioning, source provenance, poisoning and nearest-neighbor abuse tests, deletion propagation, retrieval permission checks. |
+| **LLM10 Improper Output Handling** | web, API, agents, tools, providers, MCP, integrations | Validate structured outputs in trusted code; encode for sink; avoid shell/SQL concatenation; constrain paths/network; test XSS, SSRF, command/path injection and schema-valid malicious payloads where relevant. |
+
+Official source: [OWASP GenAI LLM Top 10 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/). OWASP's 2026 document also points to the [Top 10 for Agentic Applications](https://genai.owasp.org/initiatives/top-10-for-llm-and-genai/) and the [Agent Control Standard](https://genai.owasp.org/resource/agent-control-standard-acs/). Because Aether includes tool-using agents, pair the LLM Top 10 with agentic-specific guidance rather than treating the LLM list as sufficient by itself.
