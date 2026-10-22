@@ -168,3 +168,12 @@ For each future change, record: date; exact files; why the change is needed; alt
 - Kept schema status explicitly draft. The tenant-membership owner, authorization contract, API error catalog, retry/ordering semantics and public versioning policy remain open.
 - Identifiers use the reserved `aether-ai.invalid` namespace to avoid implying a live product endpoint or coupling Aether to WoHoTech's domain.
 - No application code or DevKit changes.
+
+
+## 2026-10-22 — Contract semantic review and error-code proposal
+
+- Added [SCHEMA_SEMANTIC_REVIEW.md](contracts/SCHEMA_SEMANTIC_REVIEW.md) documenting P0/P1 gaps in the six draft schemas, including optional tenant context, unconstrained tool/event payload objects, event-specific required fields, format assertion, and runtime invariants that JSON Schema cannot enforce.
+- Added [ERROR_CODE_CATALOG.md](contracts/ERROR_CODE_CATALOG.md) with proposed public error identifiers and suggested HTTP/retry behavior.
+- Updated the contract registry README with these draft artifacts and current limitations.
+- No schema validator, OpenAPI validator, fixture suite, application code, or runtime security tests were run. Catalog and schemas remain unapproved.
+- Next: resolve contract ownership/versioning and tenant/ACL/event semantics; then prepare a versioned OpenAPI baseline and valid/invalid fixtures for review. Keep implementation gated on explicit approval.
