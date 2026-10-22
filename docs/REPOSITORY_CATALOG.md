@@ -6,8 +6,8 @@
 
 - Aether AI repositories in this plan: **33**.
 - Target Aether AI repositories in this plan: **33**.
-- Verified through the connected GitHub listing on 2026-10-22: **32 of 33 canonical-name repositories visible**; 24 contain the documentation foundation and 8 are empty on the default branch.
-- Canonical-name repository not found in this listing: **1** (`aether-ai-memory`). Five names previously absent from the listing are now visible: `aether-ai-integrations`, `aether-ai-testing`, `aether-ai-ui-components`, `aether-ai-enterprise`, and `aether-ai-infrastructure`; all five are currently empty on the default branch. The earlier inventory counts are superseded by this latest connected GitHub listing.
+- Verified during the documentation pass on 2026-10-23: **33 of 33 canonical-name repositories are present**. A repository-specific `docs/REPOSITORY_SPECIFICATION.md` has been committed to each repository. README entry points were added to repositories where creation succeeded; existing README files were preserved.
+- `aether-ai-memory` is present and now has its repository specification. Earlier inventory snapshots that reported it missing or other repositories as empty are historical and superseded by this documentation pass.
 - See [Cross-Repository Contract Audit](CROSS_REPOSITORY_CONTRACT_AUDIT.md) for the evidence and limitations.
 - Existing external dependency: [Monupatel62/woho-ai-devkit](https://github.com/Monupatel62/woho-ai-devkit), currently separate.
 - Current work: **documentation only**. No Aether application code, service deployment, or production configuration is included in this documentation phase.
@@ -26,16 +26,16 @@
 | 8 | [`aether-ai-orchestration`](https://github.com/Monupatel62/aether-ai-orchestration) | Created; documentation phase | Durable run state, step transitions, retries, cancellation |
 | 9 | [`aether-ai-tools`](https://github.com/Monupatel62/aether-ai-tools) | Created; documentation phase | Typed, permissioned first-party agent tools |
 | 10 | [`aether-ai-mcp`](https://github.com/Monupatel62/aether-ai-mcp) | Created; documentation phase | MCP client/server protocol adapters and safe invocation |
-| 11 | [`aether-ai-memory`](https://github.com/Monupatel62/aether-ai-memory) | Not found in connected listing; verify status | Conversation/session memory, retention, retrieval and summarization |
+| 11 | [`aether-ai-memory`](https://github.com/Monupatel62/aether-ai-memory) | Created; documentation baseline added | Conversation/session memory, retention, retrieval and summarization |
 | 12 | [`aether-ai-rag`](https://github.com/Monupatel62/aether-ai-rag) | Created; documentation foundation | Document ingestion hooks, chunking, embeddings, retrieval, citations |
 | 13 | [`aether-ai-files`](https://github.com/Monupatel62/aether-ai-files) | Created; documentation foundation | Secure file validation, metadata, storage, download authorization |
 | 14 | [`aether-ai-knowledge`](https://github.com/Monupatel62/aether-ai-knowledge) | Created; documentation foundation | Knowledge collections, source ownership, permissions, indexing status |
 | 15 | [`aether-ai-auth`](https://github.com/Monupatel62/aether-ai-auth) | Created; documentation foundation | Identity provider integration, sessions, role and authorization primitives |
 | 16 | [`aether-ai-security`](https://github.com/Monupatel62/aether-ai-security) | Created; documentation foundation | Shared security policies, redaction, guardrails, secret-handling rules |
-| 17 | [`aether-ai-admin`](https://github.com/Monupatel62/aether-ai-admin) | Exists; empty on default branch | Privileged operator dashboard for models, users, policies, quotas |
+| 17 | [`aether-ai-admin`](https://github.com/Monupatel62/aether-ai-admin) | Created; documentation baseline added | Privileged operator dashboard for models, users, policies, quotas |
 | 18 | [`aether-ai-billing`](https://github.com/Monupatel62/aether-ai-billing) | Created; documentation foundation | Plans, entitlements, usage metering, quotas and billing records |
-| 19 | [`aether-ai-sdk`](https://github.com/Monupatel62/aether-ai-sdk) | Exists; empty on default branch | Typed public client SDK and shared API schemas |
-| 20 | [`aether-ai-evaluations`](https://github.com/Monupatel62/aether-ai-evaluations) | Exists; empty on default branch | Repeatable model/agent eval datasets, runners, scoring, regressions |
+| 19 | [`aether-ai-sdk`](https://github.com/Monupatel62/aether-ai-sdk) | Created; documentation baseline added | Typed public client SDK and shared API schemas |
+| 20 | [`aether-ai-evaluations`](https://github.com/Monupatel62/aether-ai-evaluations) | Created; documentation baseline added | Repeatable model/agent eval datasets, runners, scoring, regressions |
 | 21 | [`aether-ai-observability`](https://github.com/Monupatel62/aether-ai-observability) | Exists; empty on default branch | Structured logs, metrics, traces, run correlation and alerts |
 | 22 | [`aether-ai-deployment`](https://github.com/Monupatel62/aether-ai-deployment) | Created; documentation foundation | Container packaging, environment manifests, releases and rollback docs |
 | 23 | [`aether-ai-docs`](https://github.com/Monupatel62/aether-ai-docs) | Created; documentation foundation | Published guides, API manuals, tutorials, operations and release notes |
@@ -44,11 +44,11 @@
 | 26 | [`aether-ai-cache`](https://github.com/Monupatel62/aether-ai-cache) | Created; documentation foundation | Cache interfaces, key conventions, TTL/invalidation, tenant-aware helpers |
 | 27 | [`aether-ai-search`](https://github.com/Monupatel62/aether-ai-search) | Created; documentation foundation | Lexical/vector search, indexing, filters, ranking and access-aware queries |
 | 28 | [`aether-ai-plugins`](https://github.com/Monupatel62/aether-ai-plugins) | Created; documentation foundation | Plugin manifests, discovery, versions, lifecycle and compatibility |
-| 29 | [`aether-ai-integrations`](https://github.com/Monupatel62/aether-ai-integrations) | Created; empty on default branch | First-party connectors to external systems and credential handoff |
-| 30 | [`aether-ai-testing`](https://github.com/Monupatel62/aether-ai-testing) | Created; empty on default branch | Shared fixtures, contract/integration/smoke tests and quality gates |
-| 31 | [`aether-ai-ui-components`](https://github.com/Monupatel62/aether-ai-ui-components) | Created; empty on default branch | Accessible reusable UI components, theme tokens, interactions |
-| 32 | [`aether-ai-enterprise`](https://github.com/Monupatel62/aether-ai-enterprise) | Created; empty on default branch | Tenant controls, SSO policy, audit export, organization features |
-| 33 | [`aether-ai-infrastructure`](https://github.com/Monupatel62/aether-ai-infrastructure) | Created; empty on default branch | Infrastructure-as-code, environment provisioning, networking, managed services |
+| 29 | [`aether-ai-integrations`](https://github.com/Monupatel62/aether-ai-integrations) | Created; documentation baseline added | First-party connectors to external systems and credential handoff |
+| 30 | [`aether-ai-testing`](https://github.com/Monupatel62/aether-ai-testing) | Created; documentation baseline added | Shared fixtures, contract/integration/smoke tests and quality gates |
+| 31 | [`aether-ai-ui-components`](https://github.com/Monupatel62/aether-ai-ui-components) | Created; documentation baseline added | Accessible reusable UI components, theme tokens, interactions |
+| 32 | [`aether-ai-enterprise`](https://github.com/Monupatel62/aether-ai-enterprise) | Created; documentation baseline added | Tenant controls, SSO policy, audit export, organization features |
+| 33 | [`aether-ai-infrastructure`](https://github.com/Monupatel62/aether-ai-infrastructure) | Created; documentation baseline added | Infrastructure-as-code, environment provisioning, networking, managed services |
 
 ## End-to-end architecture (proposed)
 
