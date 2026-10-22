@@ -148,3 +148,9 @@ This is a proposed logical graph, not a claim that all 33 repositories must beco
 
 - Added `docs/IDENTITY_PROVIDER_SHORTLIST_AND_SCORECARD.md` to compare ZITADEL, Keycloak and Auth0 and define measurable POC acceptance criteria.
 - This shortlist does not change the 33-repository architecture or establish a chosen vendor. Authentication integration remains behind `aether-ai-auth`; Aether-owned tenant membership and authorization remain separate concerns.
+
+
+## Browser session and authorization update — 2026-10-22
+
+- Added `docs/BROWSER_SESSION_AND_AUTHORIZATION_ARCHITECTURE.md` to specify candidate browser-session and authorization patterns across web, auth, security, API, gateway, orchestration and database boundaries.
+- BFF/server-side sessions and RBAC + resource-level checks are proposals for evaluation only. No accepted technology decision or application implementation resulted from this research.
