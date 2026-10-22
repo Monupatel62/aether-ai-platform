@@ -92,3 +92,20 @@ The DevKit README and root package metadata provide a useful starting point, but
 - [ ] API, event, tool, workflow, and run-state contracts are reviewed together.
 - [ ] Every planned repository spec passes the same checklist.
 - [ ] User approves the transition to implementation.
+
+## Pass 2 — 33-spec consistency check (2026-10-22)
+
+The 33 individual specification files under `docs/repositories/` were enumerated through the GitHub contents API. All 33 files exist. Each file was checked for these required headings: Mission; Dependencies and connections; Security and privacy; Test plan; Implementation gates; Related documentation. The first pass found inconsistent section coverage in a subset of template-generated specs; those missing sections were added and all 33 specs were rechecked. **Result: all 33 have the six required sections.** This validates presence/structure, not correctness of every proposed dependency or an automated graph-cycle proof.
+
+A proposed [Dependency Matrix](DEPENDENCY_MATRIX.md) was added. The review caught and documented cycle risks around MCP/tool registration, knowledge/RAG direction, API/agent execution, billing/usage events, plugins/admin, and enterprise/admin. The matrix now specifies one-way ownership rules and calls out the remaining ADRs. The dependency graph is still proposed and needs a final review; no automated cycle detector was run.
+
+All 10 existing repositories were also checked for their new `docs/SECURITY_REVIEW.md`; each exists. This is a design checklist only and does not mean security controls have been implemented or tested.
+
+### Pass 2 remaining gaps
+
+- [ ] Review every dependency edge against the actual planned package/service boundary and accept the matrix through ADR.
+- [ ] Decide the final runtime/module layout; do not deploy 33 services by default.
+- [ ] Complete package-level WoHo DevKit compatibility review and license/SBOM work when exact dependencies are selected.
+- [ ] Review the canonical OWASP 2026 Top 10 and agent-control guidance in detail and map each applicable category to test cases.
+- [ ] Resolve product/technology decisions and privacy/retention requirements.
+- [ ] Obtain user approval before coding.
