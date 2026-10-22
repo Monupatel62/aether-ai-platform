@@ -37,6 +37,10 @@ Each has an individual specification in [docs/repositories/](repositories/) befo
 ## Master docs
 
 - [Repository catalog](REPOSITORY_CATALOG.md)
+- [Dependency matrix](DEPENDENCY_MATRIX.md)
+- [Architecture audit](ARCHITECTURE_AUDIT.md)
+- [Security threat model](SECURITY_THREAT_MODEL.md)
+- [Open decisions and research](OPEN_DECISIONS_RESEARCH.md)
 - [Individual spec index](REPOSITORY_SPEC_INDEX.md)
 - [Engineering and commenting standard](ENGINEERING_AND_COMMENTING_STANDARD.md)
 - [Master architecture](MASTER_ARCHITECTURE.md)
