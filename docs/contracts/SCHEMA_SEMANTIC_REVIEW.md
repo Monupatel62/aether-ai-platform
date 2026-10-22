@@ -6,7 +6,8 @@
 
 | Priority | Schema | Finding | Proposed action |
 |---|---|---|---|
-| P0 | authorization-context.schema.json | The shape can express an allow decision and version strings, but cannot prove issuer trust, integrity, audience binding, expiry enforcement, freshness, replay resistance, or current authorization. | Review AUTHORIZATION_CONTEXT_TRUST_PROFILE.md alongside this schema; select and approve the transport/integrity, issuer/audience, lifetime, revision freshness, revocation and replay profiles before implementation. Never accept it as a client grant. |\n| P0 | auth-context.schema.json | tenant_id is optional, but some protected operations may require an unambiguous tenant context. | Define when tenant context is mandatory; validate membership server-side and do not treat this object as an authorization grant. |
+| P0 | authorization-context.schema.json | The shape can express an allow decision and version strings, but cannot prove issuer trust, integrity, audience binding, expiry enforcement, freshness, replay resistance, or current authorization. | Review AUTHORIZATION_CONTEXT_TRUST_PROFILE.md alongside this schema; select and approve the transport/integrity, issuer/audience, lifetime, revision freshness, revocation and replay profiles before implementation. Never accept it as a client grant. |
+| P0 | auth-context.schema.json | tenant_id is optional, but some protected operations may require an unambiguous tenant context. | Define when tenant context is mandatory; validate membership server-side and do not treat this object as an authorization grant. |
 | P0 | tool-invocation.schema.json | arguments accepts an arbitrary object with no size/depth bound; resource scope and approval reference are optional. | Define per-tool argument schemas and payload limits. Require resource scope/approval conditionally based on tool risk. Re-authorize at execution time. |
 | P0 | event-envelope.schema.json | Generic payload is an unconstrained object and tenant/principal metadata are optional. | Use event-type-specific payload schemas and classify which events require tenant scope. Never rely on envelope metadata alone for authorization. |
 | P0 | run-event.schema.json | step_id, attempt, and failure_code are optional for all event types; lifecycle-specific requirements are not encoded. | Add conditional requirements for step events, retry events, and failed events; define ordering and duplicate-delivery semantics. |
@@ -19,7 +20,8 @@
 
 ## Invariants JSON Schema cannot enforce by itself
 
-- A client cannot author trusted authentication context or self-assert a tenant, role, scope, authorization decision, or approval.\n- An authorization-context object is only a decision record; trust requires authenticated issuer/consumer binding, integrity, bounded lifetime, exact operation scope, current authorization versions and replay/revocation controls outside JSON Schema.
+- A client cannot author trusted authentication context or self-assert a tenant, role, scope, authorization decision, or approval.
+- An authorization-context object is only a decision record; trust requires authenticated issuer/consumer binding, integrity, bounded lifetime, exact operation scope, current authorization versions and replay/revocation controls outside JSON Schema.
 - Every tool execution must re-check current authorization, approval binding, resource version, and idempotency.
 - Event producers must be authenticated; consumers must deduplicate, handle out-of-order delivery, and reject stale state transitions.
 - Revocation must take effect at the authoritative authorization boundary before asynchronous cache/search/RAG cleanup completes.
