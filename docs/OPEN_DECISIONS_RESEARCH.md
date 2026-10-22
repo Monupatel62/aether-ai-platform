@@ -76,3 +76,18 @@ The new [Data Infrastructure Evaluation](DATA_INFRASTRUCTURE_EVALUATION.md) comp
 **Required evidence:** exact managed-service feature/license/region and cost review; restore/PITR drill; tenant isolation tests under real runtime roles; representative vector recall/latency benchmark with filters; worker crash/idempotency tests; outbox/inbox behavior; deletion and reindex tests; queue/cache outage behavior. RPO/RTO, retention, data residency, tenant volume, and budget remain open.
 
 Sources: [PostgreSQL RLS](https://www.postgresql.org/docs/current/ddl-rowsecurity.html), [PostgreSQL PITR](https://www.postgresql.org/docs/current/continuous-archiving.html), [pgvector](https://github.com/pgvector/pgvector), [Qdrant multitenancy](https://qdrant.tech/documentation/manage-data/multitenancy/), [BullMQ](https://docs.bullmq.io/), [NATS JetStream](https://docs.nats.io/concepts/jetstream), [Valkey](https://github.com/valkey-io/valkey), [Redis license information](https://redis.io/about/).
+
+
+## Identity, sessions, authorization and tenant isolation — 2026-10-22
+
+Research record: `docs/IDENTITY_AND_TENANT_SECURITY_EVALUATION.md`.
+
+- ADR-0008 remains open: compare managed and self-hosted OIDC identity providers using security, portability, data residency, cost and operational criteria.
+- Proposed ADR-0019: browser session architecture (BFF/server-side session versus direct SPA OAuth flow).
+- Proposed ADR-0020: RBAC baseline plus resource checks versus richer ABAC/ReBAC or a dedicated policy engine.
+- Proposed ADR-0021: tenant/workspace hierarchy and privileged support access.
+- Proposed ADR-0022: API keys and service-to-service/workload identity.
+- Proposed ADR-0023: MFA/passkeys, recovery, session duration and revocation propagation.
+- Proposed ADR-0024: tenant isolation and PostgreSQL RLS rollout/test ownership.
+
+Evidence baseline includes IETF RFC 9700, NIST SP 800-63B-4, OpenID Connect Core and PostgreSQL RLS documentation. These references inform evaluation; they do not select a vendor. No proof-of-concept tests have run yet. See the evaluation document for acceptance criteria.
