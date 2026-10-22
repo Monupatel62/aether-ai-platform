@@ -33,3 +33,10 @@ Each accepted ADR must include: context/problem, options considered, chosen opti
 | ADR-0004 | Repository boundaries are separate from service boundaries | Accepted | Dependency matrix requires a modular runtime/package map first. Create a separate network service only for a documented scaling, isolation, ownership or release reason. |
 | ADR-0005 | DIAL Core vs DevKit gateway path vs hybrid | Open | [DIAL adoption evaluation](DIAL_ADOPTION_EVALUATION.md) compares the options. Run a controlled proof-of-concept and then decide. |
 | ADR-0017 | WoHo DevKit package integration boundary | Proposed | [DevKit compatibility review](DEVKIT_COMPATIBILITY_REVIEW.md) records current package versions and source-level findings. Pin verified artifacts, use public exports/adapters, and keep Aether authorization/orchestration policy outside DevKit. |
+
+## Data infrastructure review — 2026-10-22
+
+| ID | Decision | Status | Evidence / next action |
+|---|---|---|---|
+| ADR-0007 | Database, queue, cache, vector/search engine | Open; baseline proposed | [Data infrastructure evaluation](DATA_INFRASTRUCTURE_EVALUATION.md) recommends benchmarking PostgreSQL + pgvector/full-text, BullMQ, and a Valkey-compatible cache first. No final provider, queue, vector DB, or cache vendor selected. |
+| ADR-0018 | Data-layer ownership and source-of-truth rules | Proposed | PostgreSQL candidate is the transactional source of truth; search/vector indexes are rebuildable projections; queue payloads carry opaque IDs; orchestration persists durable run state; cache is reconstructible only. Validate via failure, isolation, restore and benchmark tests. |
