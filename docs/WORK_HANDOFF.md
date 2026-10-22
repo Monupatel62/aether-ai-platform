@@ -13,9 +13,9 @@
 
 ## Repository state
 
-**Latest connected GitHub check (2026-10-22):** 27 canonical-name Aether AI repositories are visible. Seventeen have documentation foundations; ten remain empty on the default branch. Six canonical names are not found. The earlier user-reported count of 22 is superseded by this current listing; reconcile any noncanonical repository names separately.
+**Latest connected GitHub check (2026-10-22):** 27 canonical-name Aether AI repositories are visible. Twenty-two have documentation foundations; five remain empty on the default branch. Six canonical names are not found. The earlier user-reported count of 22 is superseded by this current listing; reconcile any noncanonical repository names separately.
 
-### Repositories with documentation foundations (17)
+### Repositories with documentation foundations (22)
 
 1. `aether-ai-platform` — master architecture, ADRs, roadmap and contracts.
 2. `aether-ai-web`
@@ -34,12 +34,17 @@
 15. `aether-ai-cache`
 16. `aether-ai-search`
 17. `aether-ai-plugins`
+18. `aether-ai-rag`
+19. `aether-ai-files`
+20. `aether-ai-knowledge`
+21. `aether-ai-auth`
+22. `aether-ai-security`
 
-The seven newly documented repositories have README plus project specification, architecture, dependencies/contracts, implementation plan, technical design, security review, research/licenses, engineering standard and work log. This is documentation only, not implementation evidence.
+The twelve repositories added in the latest documentation passes have README plus project specification, architecture, dependencies/contracts, implementation plan, technical design, security review, research/licenses, engineering standard and work log. This is documentation only, not implementation evidence.
 
-### Existing repositories still empty on the default branch (10)
+### Existing repositories still empty on the default branch (5)
 
-`aether-ai-rag`, `aether-ai-files`, `aether-ai-knowledge`, `aether-ai-auth`, `aether-ai-security`, `aether-ai-admin`, `aether-ai-billing`, `aether-ai-sdk`, `aether-ai-evaluations`, `aether-ai-observability`.
+`aether-ai-admin`, `aether-ai-billing`, `aether-ai-sdk`, `aether-ai-evaluations`, `aether-ai-observability`.
 
 ### Canonical repositories not found in the latest listing (6)
 
