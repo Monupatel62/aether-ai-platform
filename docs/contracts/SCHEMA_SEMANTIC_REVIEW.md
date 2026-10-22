@@ -1,0 +1,39 @@
+# Draft Contract Schema Semantic Review
+
+**Status:** Design review, not approval. This review is based on the six JSON files in docs/contracts/. Their JSON syntax was checked previously; a JSON Schema Draft 2020-12 validator and runtime contract tests have not been run.
+
+## Findings and required disposition
+
+| Priority | Schema | Finding | Proposed action |
+|---|---|---|---|
+| P0 | auth-context.schema.json | tenant_id is optional, but some protected operations may require an unambiguous tenant context. | Define when tenant context is mandatory; validate membership server-side and do not treat this object as an authorization grant. |
+| P0 | tool-invocation.schema.json | arguments accepts an arbitrary object with no size/depth bound; resource scope and approval reference are optional. | Define per-tool argument schemas and payload limits. Require resource scope/approval conditionally based on tool risk. Re-authorize at execution time. |
+| P0 | event-envelope.schema.json | Generic payload is an unconstrained object and tenant/principal metadata are optional. | Use event-type-specific payload schemas and classify which events require tenant scope. Never rely on envelope metadata alone for authorization. |
+| P0 | run-event.schema.json | step_id, attempt, and failure_code are optional for all event types; lifecycle-specific requirements are not encoded. | Add conditional requirements for step events, retry events, and failed events; define ordering and duplicate-delivery semantics. |
+| P0 | resource-change-event.schema.json | acl_version is conditional only for ACL-changed and access-revoked; actor/tenant metadata are optional. | Decide required audit metadata per event type and require monotonic version semantics for ACL changes. Deletion events must not imply access is already denied unless authoritative policy says so. |
+| P1 | error.schema.json | details.field and details.reason are unconstrained strings beyond length; there is no catalog constraint on error.code. | Adopt the draft error catalog, define field-path syntax, and keep reasons safe/non-sensitive. |
+| P1 | Date-time formats | Several schemas use format: date-time; JSON Schema implementations may treat format as annotation unless assertion is configured. | Require format assertion in the chosen validator and test malformed timestamps explicitly. |
+| P1 | Event identity | Length/pattern constraints do not establish uniqueness, authenticity, ordering, or replay resistance. | Define producer authentication, deduplication storage/window, replay handling, and aggregate/run version checks outside JSON Schema. |
+| P1 | Unknown fields | Top-level objects mostly reject additional properties, but generic nested payload/arguments objects allow arbitrary keys. | Reject unknown fields inside each concrete event/tool payload schema once those schemas are defined. |
+| P1 | Identifier semantics | IDs are plain strings with limited shape checks; tenant/resource IDs can be confused across systems if namespaces are not defined. | Define opaque ID ownership, normalization, case sensitivity, and cross-service namespace rules. |
+
+## Invariants JSON Schema cannot enforce by itself
+
+- A client cannot author trusted authentication context or self-assert a tenant, role, scope, or approval.
+- Every tool execution must re-check current authorization, approval binding, resource version, and idempotency.
+- Event producers must be authenticated; consumers must deduplicate, handle out-of-order delivery, and reject stale state transitions.
+- Revocation must take effect at the authoritative authorization boundary before asynchronous cache/search/RAG cleanup completes.
+- Error messages, event payloads, arguments, traces, and logs must follow data minimization and redaction policy.
+- Schema validity does not establish correct runtime behavior, tenant isolation, privacy compliance, or security certification.
+
+## Review gate
+
+Before approval, assign an owner and consumer list to every contract; decide tenant/ACL authority and event semantics; add valid and invalid fixtures; run a Draft 2020-12 validator with format assertions; and run consumer compatibility tests in CI after explicit implementation approval.
+
+## Current verification status
+
+- JSON syntax: previously parsed successfully for all six files.
+- JSON Schema semantic validation: not run.
+- Positive/negative fixtures: not added.
+- Runtime enforcement and security tests: not run.
+- Production contract approval: none.
