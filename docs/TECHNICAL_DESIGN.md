@@ -50,6 +50,6 @@ When implementation begins, explain security invariants, state transitions, retr
 ## Architecture review checkpoints
 
 - [Dependency matrix](DEPENDENCY_MATRIX.md) defines proposed one-way ownership rules for all 33 repositories.
-- [DIAL adoption evaluation](DIAL_ADOPTION_EVALUATION.md) compares DIAL Core, DevKit provider packages, a hybrid gateway and DIAL Chat.
-- [DevKit compatibility review](DEVKIT_COMPATIBILITY_REVIEW.md) records source-level package findings and required proof tests.
+- [DIAL adoption evaluation](DIAL_ADOPTION_EVALUATION.md) compares AI DIAL Core with an Aether-owned gateway and an optional hybrid approach.
+- [Gateway proof-of-concept plan](GATEWAY_PROOF_OF_CONCEPT.md) defines the scenarios and evidence required before ADR-0005 can be accepted.
 - ADR-0005 remains open until the gateway proof-of-concept is recorded. No implementation choice should be inferred from a proposed document.
