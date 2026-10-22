@@ -88,3 +88,11 @@ Each has an individual specification in [docs/repositories/](repositories/) befo
 - OpenTelemetry GenAI attributes can contain sensitive data; telemetry must be metadata-only by default.
 - GitHub recommends full-length commit SHA pins for immutable Action references (or an approved dependency lockfile approach).
 - No application code has been written. The next work remains documentation audit and architecture decision closure.
+
+## Documentation audit pass 2 — 2026-10-22
+
+- Verified all 33 individual repository specs exist under `docs/repositories/` and all include the required mission, dependency, security/privacy, test-plan, implementation-gate, and related-doc sections.
+- Added [Dependency Matrix](DEPENDENCY_MATRIX.md), including cycle-prevention rules for MCP/tools, knowledge/RAG, API/orchestration/agents, billing/usage, plugins/admin, and enterprise/admin.
+- Added a component-specific `docs/SECURITY_REVIEW.md` to each of the 10 existing Aether repositories.
+- This validates document presence and consistency only. It is not a code audit, automated cycle proof, legal review, SBOM, or penetration test.
+- Next: review and accept the dependency matrix through ADRs, resolve runtime boundaries and open decisions, then ask the user to approve the transition to implementation.
