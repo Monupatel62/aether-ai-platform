@@ -104,3 +104,11 @@ The following expected paths were also checked and not found in the first eight 
 - Inspected root README files across all 33 repositories. All 33 now have a README, and the inspected README files contain zero unrelated-project/package markers.
 - Checked each README's local relative links against that repository's recursive tree: no broken local links were found.
 - External links were not checked for reachability or content accuracy.
+
+
+## Cross-repository standalone-boundary audit — 2026-10-23
+
+- Extended the marker scan beyond the master repository into the documentation files of the canonical repositories.
+- Removed unrelated project/package assumptions from affected READMEs, project specifications, work logs, research/license notes, provider/agent/tool/MCP architecture documents, and implementation plans.
+- Re-fetched the affected files and scanned the standard documentation paths across the repositories. The inspected README and specification files for all 33 repositories returned zero matches for the unrelated-project/package markers. Additional technical-design, architecture, dependency, implementation, research, work-log, security, and engineering documents inspected in this pass also returned zero matches after cleanup.
+- This is a text/documentation audit, not a claim that external links are reachable or that software has been implemented.
