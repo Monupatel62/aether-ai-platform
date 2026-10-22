@@ -64,6 +64,10 @@ Test tenant key isolation, stale permission invalidation, TTL expiration, cache 
 
 Before release, add unit tests, contract tests for direct dependencies, negative authorization/input tests, and failure/recovery tests for the behavior this component owns. Use synthetic or sanitized data only.
 
+## Cache and licensing gate
+
+See [Data Infrastructure Evaluation](../DATA_INFRASTRUCTURE_EVALUATION.md). A Valkey-compatible cache is a candidate, not an accepted vendor choice. Review the exact server/managed-service license and compatibility, not only the client library. Cache only reconstructible, short-lived data; specify TTL, eviction, tenant-safe keying, invalidation and outage behavior. Never treat cached values as the authority for billing, authorization, audit history, approvals, or durable agent runs. A cache hit must not bypass fresh resource authorization where policy requires it.
+
 ## Related documentation
 
 - [Master repository catalog](../REPOSITORY_CATALOG.md)
