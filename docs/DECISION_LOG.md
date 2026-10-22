@@ -7,7 +7,7 @@ This is the decision register. A decision is **proposed** until its status is ch
 | ADR-0001 | Aether AI is a standalone project | Accepted | Own architecture, repository identity, and product decisions. |
 | ADR-0002 | Do not assume external runtime dependencies | Accepted | Add external dependencies only through an explicit, reviewed architecture decision. |
 | ADR-0003 | Plan 33 Aether repositories | Accepted | The 33 canonical repositories now exist. This is a repository-organization target, not a requirement to deploy 33 services. |
-| ADR-0004 | Treat repository boundaries separately from deployable-service boundaries | Proposed | Avoid premature microservices; runtime topology is not decided. |
+| ADR-0004 | Treat repository boundaries separately from deployable-service boundaries | Accepted | Use the smallest viable modular runtime first; create a separate service only for a documented scaling, isolation, ownership, or release reason. Runtime topology is still undecided. |
 | ADR-0005 | AI DIAL integration strategy: adopt, adapter, or custom gateway | Open | Run a small compatibility/licensing/operational evaluation before choosing. |
 | ADR-0006 | Frontend/backend technology stack | Open | DIAL Chat is a reference, not a binding stack choice. Decide based on maintainability and existing package compatibility. |
 | ADR-0007 | Database, queue, cache, vector/search engine | Open | Compare data model, operations, cost, tenancy, backup, and licensing before selection. |
