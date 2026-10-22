@@ -142,3 +142,9 @@ This is a proposed logical graph, not a claim that all 33 repositories must beco
 - Added `docs/IDENTITY_AND_TENANT_SECURITY_EVALUATION.md` for the authentication, identity, authorization, multi-tenancy, sessions and security boundary research stage.
 - Primary repositories affected by the design: `aether-ai-auth`, `aether-ai-security`, `aether-ai-api`, `aether-ai-gateway`, `aether-ai-database`, `aether-ai-admin`, `aether-ai-enterprise` and `aether-ai-observability`.
 - This is a design evaluation only. Identity provider, session strategy, policy-engine scope and tenant isolation implementation remain undecided.
+
+
+## Identity provider shortlist update — 2026-10-22
+
+- Added `docs/IDENTITY_PROVIDER_SHORTLIST_AND_SCORECARD.md` to compare ZITADEL, Keycloak and Auth0 and define measurable POC acceptance criteria.
+- This shortlist does not change the 33-repository architecture or establish a chosen vendor. Authentication integration remains behind `aether-ai-auth`; Aether-owned tenant membership and authorization remain separate concerns.
