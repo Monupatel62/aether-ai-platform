@@ -136,3 +136,9 @@ This is a proposed logical graph, not a claim that all 33 repositories must beco
 - [WoHo AI DevKit compatibility review](DEVKIT_COMPATIBILITY_REVIEW.md)
 
 - [Data infrastructure evaluation](DATA_INFRASTRUCTURE_EVALUATION.md)
+
+## Latest research update — identity and tenant security
+
+- Added `docs/IDENTITY_AND_TENANT_SECURITY_EVALUATION.md` for the authentication, identity, authorization, multi-tenancy, sessions and security boundary research stage.
+- Primary repositories affected by the design: `aether-ai-auth`, `aether-ai-security`, `aether-ai-api`, `aether-ai-gateway`, `aether-ai-database`, `aether-ai-admin`, `aether-ai-enterprise` and `aether-ai-observability`.
+- This is a design evaluation only. Identity provider, session strategy, policy-engine scope and tenant isolation implementation remain undecided.
