@@ -43,3 +43,13 @@ For each future change, record: date; exact files; why the change is needed; alt
 - Updated MCP research to the official 2026-07-28 spec and current TypeScript SDK v2/v1 support split; recorded OWASP 2026, OpenTelemetry GenAI privacy, and GitHub Actions supply-chain references.
 - No application source code was written. No code tests, automated graph-cycle detection, SBOM, license scan, or penetration test was run.
 - Next: review and accept the dependency matrix and resolve open runtime, provider, data, identity, and privacy decisions before implementation.
+
+## 2026-10-22 — Architecture decision review and DevKit compatibility
+
+- Inspected current WoHo AI DevKit `main` root/package manifests and selected MCP/agent source files. Recorded the declared package versions and source-level integration boundaries in `docs/DEVKIT_COMPATIBILITY_REVIEW.md`.
+- Added `docs/DIAL_ADOPTION_EVALUATION.md` comparing DIAL Core, DevKit provider adapters, a hybrid gateway, and DIAL Chat as a complete product.
+- Added `docs/GATEWAY_PROOF_OF_CONCEPT.md` defining 14 test scenarios, measurement requirements, and decision criteria for ADR-0005.
+- Marked ADR-0003 (33 repositories) and ADR-0004 (repository boundaries do not imply 33 deployable services) accepted, consistent with the user's target and the architecture review.
+- ADR-0005 remains open until the proof-of-concept is run; no gateway option has been selected.
+- Updated gateway, agents, providers, MCP, and platform technical-design documents with the integration boundaries and links.
+- No Aether application code was written. No DevKit code, version, main branch, or release pipeline was changed. No compatibility tests or proof-of-concept were run yet.
