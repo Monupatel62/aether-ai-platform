@@ -12,7 +12,7 @@
 - **Infrastructure provisioning:** IaC/module relationship, not an application runtime dependency.
 - **Documentation-only:** published documentation, catalog, or control-plane reference; no runtime edge.
 
-Where the same logical relationship could be either a package import or network API, the table selects the **initial modular-runtime package contract** unless an event or artifact is more appropriate. Revisit the type if a service boundary is accepted. All edges remain proposed until reviewed.
+Where the same logical relationship could be either a package import or network API, the table selects the **initial modular-runtime package contract** unless an event or artifact is more appropriate. Revisit the type if a service boundary is accepted. All edges remain proposed until reviewed. Package-import rows targeting external libraries/backends or generic test fixtures are listed for visibility but are excluded from the internal 33-repository package graph.
 
 ## Classified edges
 
@@ -26,6 +26,7 @@ Where the same logical relationship could be either a package import or network 
 | aether-ai-admin | aether-ai-auth | Package import | Public principal/session types only; no identity bypass. |
 | aether-ai-admin | aether-ai-ui-components | Package import | Shared presentation only. |
 | aether-ai-api | aether-ai-auth | Package import | Authentication/session/principal contract; does not imply authorization grant. |
+| aether-ai-auth | aether-ai-security | Package import | Shared principal/policy primitives only; identity/session lifecycle remains in Auth. |
 | aether-ai-api | aether-ai-gateway | Synchronous network API | Bounded synchronous model requests only; durable run lifecycle is not owned here. |
 | aether-ai-api | aether-ai-orchestration | Synchronous network API | Durable run submit/status/cancel; orchestration is sole run-state owner. |
 | aether-ai-api | aether-ai-files | Synchronous network API | File lifecycle/download authorization contract. |
