@@ -68,3 +68,8 @@ Date; repository; exact paths changed; purpose; why this design was chosen; depe
 - DIAL Core is a candidate upstream model gateway; DIAL Chat is a full application. Neither has been selected for adoption. ADR-0005 remains open pending a small proof-of-concept.
 
 - Read [Data Infrastructure Evaluation](DATA_INFRASTRUCTURE_EVALUATION.md) before choosing database, vector engine, queue, cache or search service. PostgreSQL/pgvector + BullMQ is only a benchmark baseline, not an accepted stack.
+
+
+## Latest continuation point — identity and tenant security (2026-10-22)
+
+Continue from `docs/IDENTITY_AND_TENANT_SECURITY_EVALUATION.md`. The next decision work is to compare one managed OIDC provider and one self-hosted OIDC option with a common scorecard, then resolve browser sessions, authorization model, tenant hierarchy, workload/API-key identity, MFA/recovery and RLS testing. Do not start application coding; no provider or policy architecture has been accepted. See `docs/OPEN_DECISIONS_RESEARCH.md` and `docs/DECISION_LOG.md` for open ADRs.
