@@ -9,6 +9,10 @@
 
 The authorization matrix is a useful deny-by-default baseline, but it is not yet ready to be treated as an implementation contract. Several rows are ambiguous or internally inconsistent, and multiple high-risk product policies remain undecided. This audit distinguishes clear document defects from choices that require product-owner approval.
 
+## Follow-up contract artifact — 2026-10-22
+
+Added [Tenant Context Resolution Contract](contracts/TENANT_CONTEXT_RESOLUTION_CONTRACT.md) to translate the audit's tenant authority, stale membership/ACL, and fail-closed concerns into a reviewable request-processing sequence and 12 proposed acceptance cases. This does not resolve the canonical membership-owner decision, approve cache/revocation thresholds, or demonstrate runtime enforcement. No implementation or tests were run.
+
 ## 2. Findings
 
 | ID | Severity | Finding | Why it matters | Proposed disposition |
