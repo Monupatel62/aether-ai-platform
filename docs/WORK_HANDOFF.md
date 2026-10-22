@@ -103,6 +103,7 @@ Each has an individual specification in [docs/repositories/](repositories/) befo
 ## Architecture decision review — 2026-10-22
 
 - Added [AI DIAL adoption evaluation](DIAL_ADOPTION_EVALUATION.md), comparing DIAL Core, DevKit provider path, a hybrid gateway, and DIAL Chat as a product.
+- Added [Gateway proof-of-concept plan](GATEWAY_PROOF_OF_CONCEPT.md) with 14 test scenarios, measurement requirements, and decision rules. It is a plan only; no gateway code has been created.
 - Added [WoHo AI DevKit compatibility review](DEVKIT_COMPATIBILITY_REVIEW.md) from the current GitHub `main` manifests and selected source files. Current observed versions: `@woho/core 0.2.24`, `@woho/provider-openai 0.2.22`, `@woho/agents 0.3.28`, `@woho/tools 0.4.25`, `@woho/memory 0.6.18`, `@woho/mcp 0.6.28`; verify exact registry tarballs before use.
 - The DevKit MCP package has useful generic JSON-RPC-like/stdio primitives, limits and allowlists, but this source review does not prove full MCP `2026-07-28` conformance. A protocol compatibility harness is required; do not alter DevKit to fit Aether.
 - ADR-0003 (33 repositories) and ADR-0004 (repository boundaries do not imply 33 services) are recorded as accepted. ADR-0005 (DIAL Core vs DevKit gateway vs hybrid) remains open until a proof-of-concept produces evidence.
