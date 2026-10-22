@@ -8,7 +8,9 @@
 - [x] Add initial repository-specific purpose and documentation structure.
 - [x] Create master catalog and 33 individual repository specifications.
 - [x] Structural audit of all 33 repository specifications; see [audit matrix](REPOSITORY_SPEC_AUDIT_MATRIX.md).
-- [x] Inspect all 33 canonical repositories and synchronize their specification status/dependency sections.\n- [x] Confirm the inspected default-branch trees are documentation-only; see [Implementation Status Audit](IMPLEMENTATION_STATUS_AUDIT.md).\n- [ ] Verify each repository's full documentation checklist, README navigation, and repository-local relative links.
+- [x] Inspect all 33 canonical repositories and synchronize their specification status/dependency sections.
+- [x] Confirm the inspected default-branch trees are documentation-only; see [Implementation Status Audit](IMPLEMENTATION_STATUS_AUDIT.md).
+- [ ] Verify each repository's full documentation checklist, README navigation, and repository-local relative links.
 - [ ] Resolve project name availability and final branding.
 - [ ] Confirm license/SBOM approach and exact reused package versions.
 - [x] Create proposed dependency matrix and identify likely cycle risks; [ ] accept the matrix and complete a formal package/service cycle review.
@@ -23,7 +25,8 @@
 - [x] [33-repository dependency matrix (proposed)](DEPENDENCY_MATRIX.md)
 - [x] [Security threat model](SECURITY_THREAT_MODEL.md)
 - [x] [Open decisions and official-source research](OPEN_DECISIONS_RESEARCH.md)
-- [x] [Repository-specific security review checklists](repositories/)\n- [x] [Consolidated implementation gate blockers](IMPLEMENTATION_GATE_BLOCKERS.md)
+- [x] [Repository-specific security review checklists](repositories/)
+- [x] [Consolidated implementation gate blockers](IMPLEMENTATION_GATE_BLOCKERS.md)
 - [ ] Final architecture decision review and explicit user approval before application coding
 
 
