@@ -50,3 +50,22 @@ Design tokens, accessibility contract, component props, keyboard behavior, themi
 - [AI DIAL Chat architecture](https://github.com/epam/ai-dial-chat/blob/development/docs/architecture.md)
 
 External source code is not copied by this specification. Verify exact versions, licenses, and security posture before any reuse.
+
+## Security and privacy
+
+Shared UI components can create security and accessibility problems if unsafe HTML, URLs, or focus behavior is reused widely. Sanitize rich content, validate link protocols, avoid raw HTML by default, and ensure keyboard/focus behavior for approval and destructive-action dialogs.
+
+## Test plan
+
+Test keyboard navigation, screen-reader labels, focus trapping/restoration, safe URL protocols, sanitization, dialog confirmation states, and accessible loading/error states.
+
+Before release, add unit tests, contract tests for direct dependencies, negative authorization/input tests, and failure/recovery tests for the behavior this component owns. Use synthetic or sanitized data only.
+
+## Related documentation
+
+- [Master repository catalog](../REPOSITORY_CATALOG.md)
+- [Master architecture](../MASTER_ARCHITECTURE.md)
+- [Architecture audit](../ARCHITECTURE_AUDIT.md)
+- [Security threat model](../SECURITY_THREAT_MODEL.md)
+- [Open decisions and research](../OPEN_DECISIONS_RESEARCH.md)
+- [Continuity handoff](../WORK_HANDOFF.md)
