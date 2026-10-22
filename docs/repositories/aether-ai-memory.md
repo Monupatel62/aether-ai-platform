@@ -1,6 +1,6 @@
 # Repository specification: aether-ai-memory
 
-**Status:** Planned; repository not created yet. This document is the design contract to carry into that repository when it is created.
+**Status:** Repository exists; documentation-only on the inspected `main` branch. No application implementation is present in the audited tree.
 
 ## Mission
 
@@ -8,6 +8,7 @@ Conversation/session memory abstractions, safe summarization, retrieval interfac
 
 ## Dependencies and connections
 
+aether-ai-database and aether-ai-security.
 
 ## Owned capabilities
 
