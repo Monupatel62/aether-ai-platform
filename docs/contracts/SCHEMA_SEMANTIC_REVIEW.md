@@ -1,12 +1,12 @@
 # Draft Contract Schema Semantic Review
 
-**Status:** Design review, not approval. This review is based on the six JSON files in docs/contracts/. Their JSON syntax was checked previously; a JSON Schema Draft 2020-12 validator and runtime contract tests have not been run.
+**Status:** Design review, not approval. This review covers the seven JSON schema files currently listed in docs/contracts/. Their JSON syntax has been parsed, but a JSON Schema Draft 2020-12 validator with format assertions and runtime contract tests have not been run.
 
 ## Findings and required disposition
 
 | Priority | Schema | Finding | Proposed action |
 |---|---|---|---|
-| P0 | auth-context.schema.json | tenant_id is optional, but some protected operations may require an unambiguous tenant context. | Define when tenant context is mandatory; validate membership server-side and do not treat this object as an authorization grant. |
+| P0 | authorization-context.schema.json | The shape can express an allow decision and version strings, but cannot prove issuer trust, integrity, audience binding, expiry enforcement, freshness, replay resistance, or current authorization. | Review AUTHORIZATION_CONTEXT_TRUST_PROFILE.md alongside this schema; select and approve the transport/integrity, issuer/audience, lifetime, revision freshness, revocation and replay profiles before implementation. Never accept it as a client grant. |\n| P0 | auth-context.schema.json | tenant_id is optional, but some protected operations may require an unambiguous tenant context. | Define when tenant context is mandatory; validate membership server-side and do not treat this object as an authorization grant. |
 | P0 | tool-invocation.schema.json | arguments accepts an arbitrary object with no size/depth bound; resource scope and approval reference are optional. | Define per-tool argument schemas and payload limits. Require resource scope/approval conditionally based on tool risk. Re-authorize at execution time. |
 | P0 | event-envelope.schema.json | Generic payload is an unconstrained object and tenant/principal metadata are optional. | Use event-type-specific payload schemas and classify which events require tenant scope. Never rely on envelope metadata alone for authorization. |
 | P0 | run-event.schema.json | step_id, attempt, and failure_code are optional for all event types; lifecycle-specific requirements are not encoded. | Add conditional requirements for step events, retry events, and failed events; define ordering and duplicate-delivery semantics. |
@@ -19,7 +19,7 @@
 
 ## Invariants JSON Schema cannot enforce by itself
 
-- A client cannot author trusted authentication context or self-assert a tenant, role, scope, or approval.
+- A client cannot author trusted authentication context or self-assert a tenant, role, scope, authorization decision, or approval.\n- An authorization-context object is only a decision record; trust requires authenticated issuer/consumer binding, integrity, bounded lifetime, exact operation scope, current authorization versions and replay/revocation controls outside JSON Schema.
 - Every tool execution must re-check current authorization, approval binding, resource version, and idempotency.
 - Event producers must be authenticated; consumers must deduplicate, handle out-of-order delivery, and reject stale state transitions.
 - Revocation must take effect at the authoritative authorization boundary before asynchronous cache/search/RAG cleanup completes.
@@ -32,7 +32,7 @@ Before approval, assign an owner and consumer list to every contract; decide ten
 
 ## Current verification status
 
-- JSON syntax: previously parsed successfully for all six files.
+- JSON syntax: parsed successfully for all seven schema files in the current focused check; this is not JSON Schema validation.
 - JSON Schema semantic validation: not run.
 - Positive/negative fixtures: not added.
 - Runtime enforcement and security tests: not run.
