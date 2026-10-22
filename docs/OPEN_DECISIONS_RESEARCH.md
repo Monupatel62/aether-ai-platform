@@ -65,3 +65,14 @@ Source: [GitHub Actions secure-use reference](https://docs.github.com/en/actions
 ### OWASP 2026 source review completed
 
 The canonical [OWASP GenAI LLM Top 10 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/) lists: Prompt Injection; Sensitive Information Disclosure; Excessive Agency; Supply Chain; Data and Model Poisoning; Unbounded Consumption; Misinformation; Hidden Context Exposure; Vector and Embedding Weaknesses; Improper Output Handling. This differs from some 2025 labels/order, so Aether's threat model now uses the 2026 names. Because Aether includes agents and tool execution, also review the [OWASP Top 10 for Agentic Applications](https://genai.owasp.org/initiatives/top-10-for-llm-and-genai/) and [Agent Control Standard](https://genai.owasp.org/resource/agent-control-standard-acs/).
+
+
+## ADR-0007 / ADR-0018 — Data infrastructure options
+
+The new [Data Infrastructure Evaluation](DATA_INFRASTRUCTURE_EVALUATION.md) compares PostgreSQL, pgvector, Qdrant, BullMQ, NATS JetStream, Valkey-compatible caching, and a possible dedicated search engine. This is a proposal, not a locked stack.
+
+**Provisional baseline to test:** PostgreSQL as transactional source of truth; PostgreSQL full-text search + pgvector for the first retrieval benchmark; BullMQ for a Node.js worker-queue spike; Valkey-compatible cache only for reconstructible data. Compare NATS JetStream only if replay, independent consumers, or event fan-out is a demonstrated requirement. Consider Qdrant/OpenSearch only if benchmark results justify another datastore.
+
+**Required evidence:** exact managed-service feature/license/region and cost review; restore/PITR drill; tenant isolation tests under real runtime roles; representative vector recall/latency benchmark with filters; worker crash/idempotency tests; outbox/inbox behavior; deletion and reindex tests; queue/cache outage behavior. RPO/RTO, retention, data residency, tenant volume, and budget remain open.
+
+Sources: [PostgreSQL RLS](https://www.postgresql.org/docs/current/ddl-rowsecurity.html), [PostgreSQL PITR](https://www.postgresql.org/docs/current/continuous-archiving.html), [pgvector](https://github.com/pgvector/pgvector), [Qdrant multitenancy](https://qdrant.tech/documentation/manage-data/multitenancy/), [BullMQ](https://docs.bullmq.io/), [NATS JetStream](https://docs.nats.io/concepts/jetstream), [Valkey](https://github.com/valkey-io/valkey), [Redis license information](https://redis.io/about/).
