@@ -96,3 +96,11 @@ For each future change, record the date, exact files, rationale, alternatives co
 - Confirmed 14 draft contract fixtures, two per schema, but did not execute them against a JSON Schema validator.
 - Re-ran cycle detection on the fetched package graph: 33 nodes, 61 package-import edges, no unknown targets and zero cycles in the proposed graph.
 - OpenAPI YAML validation, JSON Schema semantic validation, source-import analysis, and runtime tests remain unperformed.
+
+
+## 2026-10-23 — README entry-point and link audit
+
+- Added missing root README entry points to `aether-ai-memory` and `aether-ai-observability`.
+- Reconciled the root README project rules and dependencies for the affected repositories so they no longer describe unrelated projects as dependencies.
+- Fetched README files across all 33 repositories and checked local relative links against each repository's tree: no broken local links and no unrelated-project/package markers remained in the inspected READMEs.
+- External links were not checked for reachability. No application code or tests were run.
