@@ -1,6 +1,6 @@
 # Repository specification: aether-ai-files
 
-**Status:** Planned; repository not created yet. This document is the design contract to carry into that repository when it is created.
+**Status:** Repository exists; documentation-only on the inspected `main` branch. No application implementation is present in the audited tree.
 
 ## Mission
 
@@ -8,7 +8,7 @@ Secure upload validation, metadata, storage abstraction, download authorization,
 
 ## Dependencies and connections
 
-API, database, security, observability.
+aether-ai-database, aether-ai-security, and aether-ai-observability.
 
 ## Owned capabilities
 
