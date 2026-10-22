@@ -181,3 +181,8 @@ Read [Authorization Policy Gap Audit](AUTHORIZATION_POLICY_GAP_AUDIT.md) before 
 ## Latest checkpoint — retention, deletion, export and telemetry policy (2026-10-22)
 
 Read [DATA_RETENTION_DELETION_EXPORT_TELEMETRY_POLICY.md](DATA_RETENTION_DELETION_EXPORT_TELEMETRY_POLICY.md). It defines proposed metadata-first telemetry defaults, data-category ownership candidates, immediate access revocation versus asynchronous physical deletion, export controls, backup restore reconciliation, and planned acceptance tests. Numeric retention, residency, legal hold, export rights, backup RPO/RTO and telemetry retention remain open; this is not a compliance certification. Review with product/privacy/legal owners before implementing persistence or deletion workflows. No code/tests were run.
+
+
+## Latest checkpoint — identity and authorization POC runbook (2026-10-22)
+
+Read [IDENTITY_AUTHORIZATION_POC_RUNBOOK.md](IDENTITY_AUTHORIZATION_POC_RUNBOOK.md). It defines 24 scenarios, synthetic tenant fixtures, hard security gates, measurement protocol and a weighted scorecard for ZITADEL, Keycloak and an optional Auth0 benchmark. No provider has been tested, scored or selected. Do not run until the user explicitly approves scope, environment, operators and budget. Hard-gate failures in auth/session safety, tenant isolation, revocation, secret redaction or fail-closed behavior block selection regardless of score. No application code or tests were run.
