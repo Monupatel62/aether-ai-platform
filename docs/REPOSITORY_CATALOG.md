@@ -11,6 +11,10 @@
 - See [Cross-Repository Contract Audit](CROSS_REPOSITORY_CONTRACT_AUDIT.md) for the evidence and limitations.
 - Current work: **documentation only**. No Aether application code, service deployment, or production configuration is included in this documentation phase.
 
+## P0 decision register — 2026-10-23
+
+- [P0 Architecture Decision and Blocker Register](P0_ARCHITECTURE_DECISION_BLOCKER_REGISTER.md) maps the 10 current implementation-gate blockers to proposed owners, affected repositories, required evidence, acceptance criteria, and gate impact. Decision states remain unchanged; implementation is still gated.
+
 ## Repository list
 
 | # | Repository | Status | Responsibility |
