@@ -87,3 +87,23 @@ A limited live check fetched the repository root `package.json` and `pnpm-worksp
 | aether-ai-workflows | No | No | Yes |
 
 This is a path-level spot check only, not proof that no source code or manifests exist in subdirectories, and not a completed 33-repository source audit. It does mean package-import cycles, installed dependency versions, exports, buildability, and executable test status cannot be inferred from these root paths. Next source-audit pass must inspect repository trees and identify the actual implementation roots before classifying each repository as documentation-only or implemented.
+
+
+## Recursive repository-tree inspection — initial batch — 2026-10-23
+
+GitHub recursive tree responses were inspected for eight canonical repositories. All eight responses reported `truncated: false`.
+
+| Repository | Total tree entries | Non-documentation root-level entries | Source/config code files outside `docs/` |
+|---|---:|---|---:|
+| aether-ai-api | 12 | README.md, docs/ | 0 |
+| aether-ai-gateway | 12 | README.md, docs/ | 0 |
+| aether-ai-agents | 12 | README.md, docs/ | 0 |
+| aether-ai-workflows | 12 | README.md, docs/ | 0 |
+| aether-ai-platform | 97 | README.md, docs/ | 0 |
+| aether-ai-web | 12 | README.md, docs/ | 0 |
+| aether-ai-orchestration | 12 | README.md, docs/ | 0 |
+| aether-ai-tools | 12 | README.md, docs/ | 0 |
+
+For the seven component repositories in this batch, the complete returned tree consisted of `README.md`, `docs/`, and documentation files under `docs/`; no application source or root package/workspace manifest was present in the returned tree. The platform repository also had no non-documentation code/config files outside `docs/` in the inspected tree.
+
+This is stronger evidence than checking root manifest paths, but it remains a batch of 8/33 repositories. It does not establish that the other 25 repositories are documentation-only, and it does not validate build or runtime behavior. Next pass: inspect the remaining 25 recursive trees, then update repository implementation status based only on returned tree evidence.
