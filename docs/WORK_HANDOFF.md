@@ -285,4 +285,19 @@ Next: document aether-ai-sdk, then evaluations, observability, integrations, tes
 - Extended [Dependency Direction Audit](DEPENDENCY_DIRECTION_AUDIT_2026-10-23.md) with three additional concrete contradictions: cache depended on application consumers/database; plugins depended on admin; deployment listed platform/services without distinguishing release artifacts from runtime dependencies.
 - Corrected the contracts for cache, plugins and deployment on review branches and fetched the changed files back from GitHub.
 - Total targeted findings now documented: six. Review all six component PRs and the master audit PR; do not merge automatically.
-- Next: inspect remaining repository-level contracts against the machine-readable graph and typed edge register. Source imports, CI and runtime behavior remain unverified; application coding remains blocked.
+- Next: inspect remaining repository-level contracts against the machine-readable graph and typed edge register. Source imports and runtime behavior remain unverified; no application integration or production readiness is claimed.
+
+
+## Implementation progress — 2026-10-23
+
+The user explicitly authorized starting coding. Work is proceeding as isolated, draft-only implementation slices; no PRs have been merged and no production deployment has been attempted. P0 identity, tenant/membership, authorization-context trust, run-state/idempotency, tool-execution and retention/deletion decisions still block end-to-end runtime integration and production release.
+
+Draft implementation PRs:
+- SDK client + bounded SSE parser: https://github.com/Monupatel62/aether-ai-sdk/pull/4 — Node.js 20/22 typecheck, unit tests and build passed. Dependency audit remains open; initial install reported 3 vulnerabilities (1 moderate, 2 critical).
+- Shared test helpers + JSON Schema Draft 2020-12 validator: https://github.com/Monupatel62/aether-ai-testing/pull/2 — Node.js 20/22 typecheck, unit tests and build passed.
+- Provider-neutral adapter contracts/registry: https://github.com/Monupatel62/aether-ai-providers/pull/6 — Node.js 20/22 typecheck, unit tests and build passed. Gateway/provider contract remains a proposal.
+- Tenant-scoped cache interface + bounded in-memory reference adapter: https://github.com/Monupatel62/aether-ai-cache/pull/8 — Node.js 20/22 typecheck, unit tests and build passed. In-memory adapter is not production/distributed storage.
+- Deterministic evaluation dataset validator/scorer: https://github.com/Monupatel62/aether-ai-evaluations/pull/4 — Node.js 20/22 typecheck, unit tests and build passed. No model calls or release thresholds implemented.
+- Versioned workflow definition/graph validator: https://github.com/Monupatel62/aether-ai-workflows/pull/5 — CI is still pending at this handoff snapshot.
+
+These are initial foundations, not complete repositories. All must remain draft until cross-repository contracts, dependency/license checks, security review, and integration gates are addressed. Do not mark a repository production-ready solely because its local package CI passes.
