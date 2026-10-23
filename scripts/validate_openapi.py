@@ -12,7 +12,6 @@ from pathlib import Path
 
 import yaml
 from openapi_spec_validator import validate_spec
-from openapi_spec_validator.validation.exceptions import OpenAPIError
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC_PATH = ROOT / "docs" / "contracts" / "openapi.v1.yaml"
@@ -37,12 +36,9 @@ def main() -> int:
 
     try:
         validate_spec(spec)
-    except OpenAPIError as exc:
-        print(f"FAIL: OpenAPI validation failed: {exc}", file=sys.stderr)
+    except Exception as exc:  # validator exception classes vary by version
+        print(f"FAIL: OpenAPI validation failed: {type(exc).__name__}: {exc}", file=sys.stderr)
         return 1
-    except Exception as exc:  # validator may expose version-specific exceptions
-        print(f"FAIL: validator could not complete: {type(exc).__name__}: {exc}", file=sys.stderr)
-        return 2
 
     print(f"OpenAPI version: {spec['openapi']}")
     print(f"Paths checked: {len(spec.get('paths', {}))}")
