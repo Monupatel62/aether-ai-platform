@@ -142,3 +142,10 @@ For each future change, record the date, exact files, rationale, alternatives co
 ## 2026-10-23 — 33-repository tree audit
 
 Inspected recursive main-branch trees for all 33 canonical repositories. All have the repository-specific documentation baseline; none showed conventional code/test directories or GitHub Actions workflows under the audited path patterns. This is not proof that no source exists in any possible path/language. No build or runtime tests were run. Next gate is to resolve master ADR blockers, then implement and test one vertical slice before scaling out.
+
+
+## 2026-10-23 — Identity and authorization POC gate
+
+- Added `docs/IDENTITY_AUTHORIZATION_POC_TEST_MATRIX.md` with explicit pass/fail tests for OIDC validation, browser sessions/CSRF, tenant membership freshness, resource authorization, internal authorization-context trust, workload identity, audit logging and fail-closed behavior.
+- The matrix is a proposed acceptance plan only; no provider POC or security test has been run.
+- Next: review and accept the canonical tenant-membership owner and authorization-context trust profile, then use the same test matrix to compare one managed and one self-hosted identity provider. Keep production implementation blocked until the documentation gate is approved.
