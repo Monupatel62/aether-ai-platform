@@ -300,6 +300,6 @@ Draft implementation PRs:
 - Deterministic evaluation dataset validator/scorer: https://github.com/Monupatel62/aether-ai-evaluations/pull/4 — Node.js 20/22 typecheck, unit tests and build passed. No model calls or release thresholds implemented.
 - Versioned workflow definition/graph validator: https://github.com/Monupatel62/aether-ai-workflows/pull/5 — Node.js 20/22 typecheck, unit tests and build passed.
 - Metadata-only telemetry contract/sanitizer: https://github.com/Monupatel62/aether-ai-observability/pull/4 — Node.js 20/22 typecheck, unit tests and build passed. No exporter or retention enforcement implemented.
-- Deterministic RAG text chunker: https://github.com/Monupatel62/aether-ai-rag/pull/3 — CI is pending at this handoff snapshot. Pure chunking utility only; no extraction, embeddings, persistence, or ACL enforcement.
+- Deterministic RAG text chunker: https://github.com/Monupatel62/aether-ai-rag/pull/3 — Node.js 20/22 typecheck, unit tests and build passed. Pure chunking utility only; no extraction, embeddings, persistence, or ACL enforcement.
 
 These are initial foundations, not complete repositories. All must remain draft until cross-repository contracts, dependency/license checks, security review, and integration gates are addressed. Do not mark a repository production-ready solely because its local package CI passes.
