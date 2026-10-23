@@ -260,3 +260,16 @@ Verified CI at this update:
 - Files PR #3: in progress/queued.
 
 All implementation PRs remain draft/open/unmerged pending CI, review, and integration/security validation.
+
+
+## Follow-up implementation pilot — Auth — 2026-10-23
+
+A tenth implementation PR is open: [aether-ai-auth PR #4](https://github.com/Monupatel62/aether-ai-auth/pull/4).
+
+The PR adds versioned principal identity and session-envelope contracts, expiry/maximum-lifetime checks, payload-free session-revocation events, secure HTTP-only cookie policy defaults, tests, and Node 22 CI. Session-envelope validation is not signature verification or a complete authentication adapter. Provider selection remains open. Tenant/workspace membership and role-grant ownership remain unresolved under ADR-0021.
+
+Verified CI at this update:
+- Files PR #3: success.
+- Auth PR #4: in progress/queued.
+
+All implementation PRs remain draft/open/unmerged pending CI, review, and integration/security validation.
