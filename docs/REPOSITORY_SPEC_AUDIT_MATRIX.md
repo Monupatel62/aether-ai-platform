@@ -204,3 +204,20 @@ Updated pilot CI status:
 - Observability PR #2: pending at time of check.
 
 These foundational slices do not establish full repository completion or production readiness. Keep all PRs unmerged pending review and further integration, security, license, and operational validation.
+
+
+## Follow-up implementation pilot — search — 2026-10-23
+
+A sixth implementation PR is open: [aether-ai-search PR #2](https://github.com/Monupatel62/aether-ai-search/pull/2).
+
+The PR adds backend-neutral versioned query/index contracts, explicit tenant and principal requirements, mandatory non-empty ACL scope, bounded query/pagination/filter inputs, fail-closed tenant/ACL/deleted-document projection filtering, a versioned deletion-request event, tests, and Node 22 CI. Search remains a rebuildable projection; callers must reauthorize against authoritative domain/security policy. No backend is selected and no indexing/deletion propagation is claimed.
+
+Verified status at this update:
+- Security PR #2: success.
+- Queue PR #2: success.
+- SDK PR #2: success on latest reruns.
+- Cache PR #5: success.
+- Observability PR #2: success.
+- Search PR #2: CI in progress/queued.
+
+All implementation PRs remain draft/open/unmerged pending review and full integration/security validation.
