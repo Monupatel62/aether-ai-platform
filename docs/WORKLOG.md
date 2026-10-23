@@ -167,3 +167,19 @@ Inspected recursive main-branch trees for all 33 canonical repositories. All hav
 - Opened draft documentation-only [platform PR #3](https://github.com/Monupatel62/aether-ai-platform/pull/3), adding all ten agentic risk categories, Aether component mappings, required tests, and agentic release-gate additions. Branch content was fetched back and verified.
 - Added finding F-16 to the cross-repository audit branch and updated that branch's open-PR inventory to 17 open PRs across 12 repositories.
 - ADR-0014 remains proposed; the implementation gate remains blocked. No application code, builds, security tests, or merges were performed.
+
+
+## 2026-10-23 — Gateway capability-validation follow-up
+
+- Opened draft [Gateway PR #3](https://github.com/Monupatel62/aether-ai-gateway/pull/3) to validate provider capability metadata, reject malformed priorities/model lists, handle duplicate provider IDs deterministically, normalize provider failures, and expand negative tests.
+- Verified CI run [39931683878](https://github.com/Monupatel62/aether-ai-gateway/actions/runs/39931683878): completed successfully; the `test` job conclusion is `success` for head `c78744bfd40266ce237628653b0fe178c8fb0912`.
+- PR #3 remains open and draft, based on `feat/provider-neutral-request-contract` so it layers on Gateway PR #2 rather than duplicating its changes. No PR was merged.
+- This verifies the repository's current CI workflow only; it is not production integration, provider conformance, or authorization verification. Gateway must not treat client-supplied tenant metadata as authorization; trusted Security authorization remains a prerequisite before routing.
+
+
+## 2026-10-23 — Security contract hardening follow-up
+
+- Reviewed open draft [Security PR #2](https://github.com/Monupatel62/aether-ai-security/pull/2), which introduces a dependency-free, versioned authorization decision helper with an injected policy evaluator. Its previous CI run 39926519170 passed before this follow-up.
+- Found a fail-closed gap: malformed policy obligations on an allow result were silently converted to an empty list. Added input bounds for principal/action/resource/scope identifiers and bounded obligation count/length; malformed obligations now return `POLICY_ERROR` instead of allowing with obligations silently discarded.
+- Added negative tests for oversized request fields, malformed scope, and malformed/oversized obligations. Follow-up CI runs 39933221665 and 39933226791 were triggered for the source and test commits; their final status must be checked before marking this change verified.
+- This helper does not authenticate users or determine membership. Callers must supply trusted principal/scope context and an authoritative policy evaluator. No PR merged.
