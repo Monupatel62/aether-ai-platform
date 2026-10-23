@@ -119,3 +119,11 @@ The following expected paths were also checked and not found in the first eight 
 - Updated event-envelope and tool-invocation schemas with 100-property bounds for generic payload/argument objects.
 - Added conditional run-event requirements and five related fixture cases; the fixture collection now contains 19 author-defined cases.
 - These are draft contract edits only. No JSON Schema validator or runtime test was run, so the validation blocker remains open.
+
+
+## 2026-10-23 follow-up check
+
+- Parsed the seven contract schema JSON files, the fixture JSON, and the package graph as JSON: all nine parsed successfully.
+- Fixture integrity check: 19 unique case IDs; all fixture schema references resolve to one of the seven contract schemas.
+- Manually evaluated the five newly added run-event conditional cases against the draft conditional rules: all five expected outcomes matched.
+- This was a focused JavaScript check of JSON syntax, fixture references, and the new conditions only. It was not a JSON Schema Draft 2020-12 validator run, did not assert `format`, and did not validate OpenAPI YAML or runtime behavior.
