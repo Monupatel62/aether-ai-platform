@@ -304,3 +304,11 @@ These remain draft/open/unmerged. Contract helpers are not substitutes for runti
 - Database PR #2 latest CI runs passed, and Auth PR #4 latest CI reruns passed as recorded above.
 
 All implementation pilots remain draft/open/unmerged. Passing unit CI does not prove production authorization, provider integration, tenant isolation, end-to-end behavior, or deployment readiness.
+
+
+## Follow-up implementation pilot — Providers — 2026-10-23
+
+- [Providers PR #3](https://github.com/Monupatel62/aether-ai-providers/pull/3): versioned provider descriptor, model/capability validation, request bounds, normalized provider error categories, credential-boundary requirements, tests, and Node 22 CI. CI runs https://github.com/Monupatel62/aether-ai-providers/actions/runs/39929958971 (queued) and https://github.com/Monupatel62/aether-ai-providers/actions/runs/39929949325 (in progress) at this update.
+- Gateway PR #2 latest reruns passed: https://github.com/Monupatel62/aether-ai-gateway/actions/runs/39929714023 and https://github.com/Monupatel62/aether-ai-gateway/actions/runs/39929704684.
+
+Provider contract remains vendor-neutral; no vendor SDK or credentials integration is selected. All pilots remain draft/open/unmerged.
