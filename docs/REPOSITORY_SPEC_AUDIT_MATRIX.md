@@ -234,3 +234,16 @@ Verified CI status at this update:
 - RAG PR #1: in progress/queued.
 
 All implementation PRs remain draft/open/unmerged pending CI, review, and integration/security validation.
+
+
+## Follow-up implementation pilot — Knowledge — 2026-10-23
+
+An eighth implementation PR is open: [aether-ai-knowledge PR #1](https://github.com/Monupatel62/aether-ai-knowledge/pull/1).
+
+The PR adds versioned collection/source metadata, explicit tenant and ACL references, policy/source version tracking, bounded scalar metadata, lifecycle state validation, allowlisted lifecycle events for indexing/revocation/deletion, unit tests, and Node 22 CI. It does not implement persistence, ACL mutation authorization, event delivery, or deletion propagation.
+
+Verified CI at this update:
+- RAG PR #1: success.
+- Knowledge PR #1: in progress.
+
+All pilot PRs remain draft/open/unmerged pending CI, review, and integration/security validation.
