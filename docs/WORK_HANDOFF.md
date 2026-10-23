@@ -309,3 +309,5 @@ All ten isolated implementation PRs listed above pass the Node.js 22 dependency-
 
 - Database migration metadata validator: https://github.com/Monupatel62/aether-ai-database/pull/4 — Node.js 22 dependency audit, typecheck, unit tests and build passed. It validates metadata only; no database adapter or SQL execution.
 - Gateway request validator: https://github.com/Monupatel62/aether-ai-gateway/pull/5 — Node.js 22 dependency audit, typecheck, unit tests and build passed. It validates request shape/limits only; no authorization, provider routing, or model execution.
+
+- API safe error/request metadata contract: https://github.com/Monupatel62/aether-ai-api/pull/5 — Node.js 22 dependency audit, typecheck, unit tests and build passed. No authentication middleware or product routes implemented.
