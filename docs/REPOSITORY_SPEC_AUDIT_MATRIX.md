@@ -295,3 +295,12 @@ Database PR #2 CI was in progress/queued at this update. All pilot PRs remain dr
 - Auth PR #4's two latest reruns passed after correcting the future-issued session test fixture.
 
 These remain draft/open/unmerged. Contract helpers are not substitutes for runtime authorization, database isolation, production adapters, or integration testing.
+
+
+## Follow-up implementation pilot — Gateway — 2026-10-23
+
+- [Gateway PR #2](https://github.com/Monupatel62/aether-ai-gateway/pull/2): bounded model request validation, deterministic capability-based provider selection, normalized provider failure categories, safety guardrails, unit tests, and Node 22 CI. One CI run passed: https://github.com/Monupatel62/aether-ai-gateway/actions/runs/39929704684; latest rerun https://github.com/Monupatel62/aether-ai-gateway/actions/runs/39929714023 was in progress when recorded.
+- [API PR #3](https://github.com/Monupatel62/aether-ai-api/pull/3): latest two CI runs passed after secret-like error-detail keys were redacted: https://github.com/Monupatel62/aether-ai-api/actions/runs/39929595255 and https://github.com/Monupatel62/aether-ai-api/actions/runs/39929586409.
+- Database PR #2 latest CI runs passed, and Auth PR #4 latest CI reruns passed as recorded above.
+
+All implementation pilots remain draft/open/unmerged. Passing unit CI does not prove production authorization, provider integration, tenant isolation, end-to-end behavior, or deployment readiness.
