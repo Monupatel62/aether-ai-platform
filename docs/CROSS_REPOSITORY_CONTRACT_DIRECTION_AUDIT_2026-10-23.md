@@ -126,3 +126,12 @@ The master dependency edge register labels the two asynchronous usage-event rows
 **Correction:** Change the rows to `aether-ai-api → aether-ai-billing` and `aether-ai-gateway → aether-ai-billing`. Keep both relationships classified as asynchronous event/queue edges; do not add them to the package-import graph.
 
 **Follow-up:** A documentation-only correction is proposed in [master edge-direction PR](https://github.com/Monupatel62/aether-ai-platform/pull/2). The register rows were fetched back from the working branch and checked against the stated event flow.
+
+
+### F-15 — Database tenancy mission risks implying unresolved ownership (medium)
+
+The Database repository specification and architecture mission list a “tenancy model” alongside persistence and migration responsibilities, while the decision log leaves canonical tenant/workspace membership and role-grant ownership unresolved under ADR-0021. This wording could be interpreted as assigning canonical membership ownership to Database before the required decision is accepted.
+
+**Correction:** Clarify that Database owns low-level tenant-isolation patterns and persistence guidance only. It must not become the canonical membership/role-grant authority unless an accepted ADR explicitly assigns that responsibility. Preserve domain-owned table semantics and resource-boundary authorization.
+
+**Status:** Finding recorded for documentation follow-up. The attempted direct update to the Database architecture document was rejected by the GitHub tool; no repository content was changed by that attempt.
