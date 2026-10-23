@@ -247,3 +247,16 @@ Verified CI at this update:
 - Knowledge PR #1: in progress.
 
 All pilot PRs remain draft/open/unmerged pending CI, review, and integration/security validation.
+
+
+## Follow-up implementation pilot — Files — 2026-10-23
+
+A ninth implementation PR is open: [aether-ai-files PR #3](https://github.com/Monupatel62/aether-ai-files/pull/3).
+
+The PR adds upload-intent validation with bounded size and normalized filename, server-observed MIME allowlisting/signature/malware-scan validation, opaque tenant-bound object keys, payload-free lifecycle events, and short-lived download-grant eligibility checks. It includes unit tests and Node 22 CI. It does not implement object storage, malware scanning, persistence, signed URL generation, or deletion propagation.
+
+Verified CI at this update:
+- Knowledge PR #1: success.
+- Files PR #3: in progress/queued.
+
+All implementation PRs remain draft/open/unmerged pending CI, review, and integration/security validation.
