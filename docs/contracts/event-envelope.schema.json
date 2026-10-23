@@ -5,7 +5,15 @@
   "description": "Draft envelope for asynchronous events. Consumer idempotency and authorization checks remain mandatory.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "event_id", "event_type", "occurred_at", "producer", "correlation_id", "payload"],
+  "required": [
+    "schema_version",
+    "event_id",
+    "event_type",
+    "occurred_at",
+    "producer",
+    "correlation_id",
+    "payload"
+  ],
   "properties": {
     "schema_version": {
       "type": "integer",
@@ -47,15 +55,30 @@
     "aggregate": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["type", "id", "version"],
+      "required": [
+        "type",
+        "id",
+        "version"
+      ],
       "properties": {
-        "type": {"type": "string", "maxLength": 80},
-        "id": {"type": "string", "maxLength": 128},
-        "version": {"type": "integer", "minimum": 1}
+        "type": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "id": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        }
       }
     },
     "payload": {
-      "type": "object"
+      "type": "object",
+      "maxProperties": 100,
+      "description": "Event-type-specific payload; consumers must validate it against the registered schema for event_type. This envelope limit does not replace transport byte limits."
     }
   }
 }
