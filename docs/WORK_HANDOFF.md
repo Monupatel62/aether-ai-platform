@@ -277,7 +277,7 @@ Next: document aether-ai-sdk, then evaluations, observability, integrations, tes
 - Added [Dependency Direction Audit](DEPENDENCY_DIRECTION_AUDIT_2026-10-23.md) and corrected three repository-level contract declarations on review branches: provider adapters no longer depend on gateway; agents no longer depend on orchestration implementation; files lists API as a consumer rather than a dependency.
 - The three component files and the new master report were fetched back after writes. These are documentation-only corrections, not source-import verification.
 - Review the four draft pull requests before merging. Next: compare all 33 dependency contracts with the typed edge register and JSON graph, then verify graph consistency without claiming source-level cycle freedom.
-- Application implementation remains blocked by the documentation-first rule and unresolved P0 security/identity/tenant decisions.
+- End-to-end application integration and production release remain gated by unresolved P0 security/identity/tenant decisions; isolated foundation coding is now explicitly authorized.
 
 
 ## Dependency direction audit — second pass (2026-10-23)
@@ -298,6 +298,8 @@ Draft implementation PRs:
 - Provider-neutral adapter contracts/registry: https://github.com/Monupatel62/aether-ai-providers/pull/6 — Node.js 20/22 typecheck, unit tests and build passed. Gateway/provider contract remains a proposal.
 - Tenant-scoped cache interface + bounded in-memory reference adapter: https://github.com/Monupatel62/aether-ai-cache/pull/8 — Node.js 20/22 typecheck, unit tests and build passed. In-memory adapter is not production/distributed storage.
 - Deterministic evaluation dataset validator/scorer: https://github.com/Monupatel62/aether-ai-evaluations/pull/4 — Node.js 20/22 typecheck, unit tests and build passed. No model calls or release thresholds implemented.
-- Versioned workflow definition/graph validator: https://github.com/Monupatel62/aether-ai-workflows/pull/5 — CI is still pending at this handoff snapshot.
+- Versioned workflow definition/graph validator: https://github.com/Monupatel62/aether-ai-workflows/pull/5 — Node.js 20/22 typecheck, unit tests and build passed.
+- Metadata-only telemetry contract/sanitizer: https://github.com/Monupatel62/aether-ai-observability/pull/4 — Node.js 20/22 typecheck, unit tests and build passed. No exporter or retention enforcement implemented.
+- Deterministic RAG text chunker: https://github.com/Monupatel62/aether-ai-rag/pull/3 — CI is pending at this handoff snapshot. Pure chunking utility only; no extraction, embeddings, persistence, or ACL enforcement.
 
 These are initial foundations, not complete repositories. All must remain draft until cross-repository contracts, dependency/license checks, security review, and integration gates are addressed. Do not mark a repository production-ready solely because its local package CI passes.
