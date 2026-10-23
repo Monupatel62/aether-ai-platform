@@ -270,3 +270,71 @@ Next: document aether-ai-sdk, then evaluations, observability, integrations, tes
 
 
 - Added [Implementation Gate Blockers](IMPLEMENTATION_GATE_BLOCKERS.md) to consolidate the remaining P0 contract/security blockers and P1 product/operations decisions. This is a review checklist, not an implementation approval.
+
+
+## Dependency direction audit — 2026-10-23
+
+- Added [Dependency Direction Audit](DEPENDENCY_DIRECTION_AUDIT_2026-10-23.md) and corrected three repository-level contract declarations on review branches: provider adapters no longer depend on gateway; agents no longer depend on orchestration implementation; files lists API as a consumer rather than a dependency.
+- The three component files and the new master report were fetched back after writes. These are documentation-only corrections, not source-import verification.
+- Review the four draft pull requests before merging. Next: compare all 33 dependency contracts with the typed edge register and JSON graph, then verify graph consistency without claiming source-level cycle freedom.
+- End-to-end application integration and production release remain gated by unresolved P0 security/identity/tenant decisions; isolated foundation coding is now explicitly authorized.
+
+
+## Dependency direction audit — second pass (2026-10-23)
+
+- Extended [Dependency Direction Audit](DEPENDENCY_DIRECTION_AUDIT_2026-10-23.md) with three additional concrete contradictions: cache depended on application consumers/database; plugins depended on admin; deployment listed platform/services without distinguishing release artifacts from runtime dependencies.
+- Corrected the contracts for cache, plugins and deployment on review branches and fetched the changed files back from GitHub.
+- Total targeted findings now documented: six. Review all six component PRs and the master audit PR; do not merge automatically.
+- Next: inspect remaining repository-level contracts against the machine-readable graph and typed edge register. Source imports and runtime behavior remain unverified; no application integration or production readiness is claimed.
+
+
+## Implementation progress — 2026-10-23
+
+The user explicitly authorized starting coding. Work is proceeding as isolated, draft-only implementation slices; no PRs have been merged and no production deployment has been attempted. P0 identity, tenant/membership, authorization-context trust, run-state/idempotency, tool-execution and retention/deletion decisions still block end-to-end runtime integration and production release.
+
+Draft implementation PRs:
+- SDK client + bounded SSE parser: https://github.com/Monupatel62/aether-ai-sdk/pull/4 — Node.js 22 dependency audit, typecheck, unit tests and build passed after upgrading Vitest to 5.0.5 and enforcing `npm audit --audit-level=high`; the first dependency graph reported 3 vulnerabilities (1 moderate, 2 critical), so full license/security review remains required.
+- Shared test helpers + JSON Schema Draft 2020-12 validator: https://github.com/Monupatel62/aether-ai-testing/pull/2 — Node.js 22 dependency audit, typecheck, unit tests and build passed.
+- Provider-neutral adapter contracts/registry: https://github.com/Monupatel62/aether-ai-providers/pull/6 — Node.js 22 dependency audit, typecheck, unit tests and build passed. Gateway/provider contract remains a proposal.
+- Tenant-scoped cache interface + bounded in-memory reference adapter: https://github.com/Monupatel62/aether-ai-cache/pull/8 — Node.js 22 dependency audit, typecheck, unit tests and build passed. In-memory adapter is not production/distributed storage.
+- Deterministic evaluation dataset validator/scorer: https://github.com/Monupatel62/aether-ai-evaluations/pull/4 — Node.js 22 dependency audit, typecheck, unit tests and build passed. No model calls or release thresholds implemented.
+- Versioned workflow definition/graph validator: https://github.com/Monupatel62/aether-ai-workflows/pull/5 — Node.js 22 dependency audit, typecheck, unit tests and build passed.
+- Metadata-only telemetry contract/sanitizer: https://github.com/Monupatel62/aether-ai-observability/pull/4 — Node.js 22 dependency audit, typecheck, unit tests and build passed. No exporter or retention enforcement implemented.
+- Deterministic RAG text chunker: https://github.com/Monupatel62/aether-ai-rag/pull/3 — Node.js 22 dependency audit, typecheck, unit tests and build passed. Pure chunking utility only; no extraction, embeddings, persistence, or ACL enforcement.
+- Best-effort secret redaction helpers: https://github.com/Monupatel62/aether-ai-security/pull/5 — Node.js 22 dependency audit, typecheck, unit tests and build passed. Not a DLP scanner or security certification.
+- Bounded file-signature/upload metadata validation: https://github.com/Monupatel62/aether-ai-files/pull/6 — Node.js 22 dependency audit, typecheck, unit tests and build passed. No malware scanning, storage, authorization, or deletion lifecycle implemented.
+
+The ten initial implementation PRs listed above and subsequent foundations recorded below pass the Node.js 22 dependency-audit, typecheck, unit-test and build workflow where explicitly marked as passed. Vitest was upgraded to patched 5.0.5 and `npm audit --audit-level=high` is enforced. Node.js 20 CI was removed after dependency installation failed with an npm Arborist `edgesOut` error even after npm upgrades; package manifests still declare Node >=20, so Node 20 compatibility is not verified and must be resolved before claiming it. These are initial foundations, not complete repositories. All must remain draft until cross-repository contracts, dependency/license checks, security review, and integration gates are addressed. Do not mark a repository production-ready solely because its local package CI passes.
+
+
+- Database migration metadata validator: https://github.com/Monupatel62/aether-ai-database/pull/4 — Node.js 22 dependency audit, typecheck, unit tests and build passed. It validates metadata only; no database adapter or SQL execution.
+- Gateway request validator: https://github.com/Monupatel62/aether-ai-gateway/pull/5 — Node.js 22 dependency audit, typecheck, unit tests and build passed. It validates request shape/limits only; no authorization, provider routing, or model execution.
+
+- API safe error/request metadata contract: https://github.com/Monupatel62/aether-ai-api/pull/5 — Node.js 22 dependency audit, typecheck, unit tests and build passed. No authentication middleware or product routes implemented.
+
+- Queue envelope/retry utilities: https://github.com/Monupatel62/aether-ai-queue/pull/4 — Node.js 22 dependency audit, typecheck, unit tests and build passed. No broker adapter, durable idempotency, or worker runtime.
+
+- Deterministic lexical search baseline: https://github.com/Monupatel62/aether-ai-search/pull/4 — Node.js 22 dependency audit, typecheck, unit tests and build passed. No backend, ACL integration, or deletion propagation.
+- Tool manifest validator/fail-closed preflight: https://github.com/Monupatel62/aether-ai-tools/pull/6 — Node.js 22 dependency audit, typecheck, unit tests and build passed. No executor/sandbox; tool-policy ADR remains a release blocker.
+
+- MCP JSON-RPC request/response validator: https://github.com/Monupatel62/aether-ai-mcp/pull/4 — Node.js 22 dependency audit, typecheck, unit tests and build passed. No transport or server trust implementation.
+
+- Plugin manifest/version compatibility validator: https://github.com/Monupatel62/aether-ai-plugins/pull/5 — Node.js 22 dependency audit, typecheck, unit tests and build passed. Requested capabilities are not grants; artifact verification and isolation are not implemented.
+
+- Release manifest validator: https://github.com/Monupatel62/aether-ai-deployment/pull/6 — Node.js 22 dependency audit, typecheck, unit tests and build passed. No artifact verification or deployment execution.
+
+- Generic webhook HMAC verifier: https://github.com/Monupatel62/aether-ai-integrations/pull/4 — Node.js 22 dependency audit, typecheck, unit tests and build passed. Provider signature format and durable replay prevention are not implemented.
+
+- Framework-neutral safe-link/accessibility text helpers: https://github.com/Monupatel62/aether-ai-ui-components/pull/2 — Node.js 22 dependency audit, typecheck, unit tests and build passed. No framework-specific UI components or visual tests.
+
+- Bounded agent-run policy validator: https://github.com/Monupatel62/aether-ai-agents/pull/6 — Node.js 22 CI pending. No runtime enforcement, durable run state, or gateway/tool integration.
+
+- Bounded agent-run policy validator: https://github.com/Monupatel62/aether-ai-agents/pull/6 — Node.js 22 dependency audit, typecheck, unit tests and build passed. Static metadata validation only; no runtime budget enforcement or durable run lifecycle.
+
+- Pure orchestration run-state transition validator: https://github.com/Monupatel62/aether-ai-orchestration/pull/4 — Node.js 22 dependency audit, typecheck, unit tests and build passed. It does not provide durable state, leases, crash recovery, or exactly-once side effects.
+
+- Memory record metadata validator: https://github.com/Monupatel62/aether-ai-memory/pull/3 — Node.js 22 dependency audit, typecheck, unit tests and build passed; no storage, authorization, retention enforcement, or deletion propagation.
+
+- Knowledge source metadata validator: https://github.com/Monupatel62/aether-ai-knowledge/pull/3 — Node.js 22 dependency audit, typecheck, unit tests and build passed. Metadata only; source ACL enforcement and index tombstone propagation remain unimplemented.
+
+- Usage event metadata validator: https://github.com/Monupatel62/aether-ai-billing/pull/3 — Node.js 22 dependency audit, typecheck, unit tests and build passed. No ledger, deduplication, pricing, quota enforcement, or payment integration.
