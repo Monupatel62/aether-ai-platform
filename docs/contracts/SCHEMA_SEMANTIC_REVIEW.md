@@ -38,7 +38,8 @@ Before approval, assign an owner and consumer list to every contract; decide ten
 
 ## Current verification status
 
-- JSON syntax: parsed successfully for all seven schema files in the current focused check; this is not JSON Schema validation.\n- Draft-only hardening: bounded generic event payload and tool argument object property counts to 100; added conditional requirements for step events, retry scheduling, and failed run/step events.
+- JSON syntax: parsed successfully for all seven schema files in the current focused check; this is not JSON Schema validation.
+- Draft-only hardening: bounded generic event payload and tool argument object property counts to 100; added conditional requirements for step events, retry scheduling, and failed run/step events.
 - JSON Schema semantic validation: not run.
 - Positive/negative fixtures: 19 author-defined cases added in `contract-fixtures.v1.json`; not executed or validator-verified.
 - Runtime enforcement and security tests: not run.
