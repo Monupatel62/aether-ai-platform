@@ -311,3 +311,5 @@ All ten isolated implementation PRs listed above pass the Node.js 22 dependency-
 - Gateway request validator: https://github.com/Monupatel62/aether-ai-gateway/pull/5 — Node.js 22 dependency audit, typecheck, unit tests and build passed. It validates request shape/limits only; no authorization, provider routing, or model execution.
 
 - API safe error/request metadata contract: https://github.com/Monupatel62/aether-ai-api/pull/5 — Node.js 22 dependency audit, typecheck, unit tests and build passed. No authentication middleware or product routes implemented.
+
+- Queue envelope/retry utilities: https://github.com/Monupatel62/aether-ai-queue/pull/4 — Node.js 22 CI pending. No broker adapter, durable idempotency, or worker runtime.
