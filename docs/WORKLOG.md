@@ -124,3 +124,10 @@ For each future change, record the date, exact files, rationale, alternatives co
 - Added a 100-property bound to generic event payloads and tool argument objects.
 - Encoded conditional run-event requirements for step lifecycle events, retry scheduling, and failed run/step events.
 - Added five fixtures, bringing the author-defined fixture set to 19. Fixtures remain unexecuted; validator and runtime gates remain open.
+
+
+## 2026-10-23 — Fixture integrity follow-up
+
+- Parsed all seven contract schema JSON files, the fixture file, and package graph as JSON: all nine parsed successfully.
+- Checked 19 fixture IDs are unique and all schema references resolve. Manually checked the five new run-event conditional fixtures against their draft rules; all expected outcomes matched.
+- This was not full JSON Schema validation, format assertion, OpenAPI YAML validation, or runtime testing.
