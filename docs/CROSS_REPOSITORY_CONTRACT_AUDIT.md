@@ -118,3 +118,12 @@ No application code or deployment was performed.
 ## Follow-up status — 2026-10-23
 
 The repository visibility section above is a historical snapshot from 2026-10-22 and is superseded for repository-count purposes: the latest documentation pass confirmed all 33 canonical repository names are present and added a repository specification to each. The substantive contract-maturity findings above remain open unless explicitly corrected in a later audited artifact. The new repository specs do not by themselves establish machine-testable OpenAPI, event schemas, provider conformance fixtures, or runtime correctness.
+
+
+## 2026-10-23 — Gateway capability metadata validation update
+
+Gateway PR #3 is open as a draft and layers on the provider-neutral request contract branch: https://github.com/Monupatel62/aether-ai-gateway/pull/3. CI run 39931683878 completed successfully for commit `c78744bfd40266ce237628653b0fe178c8fb0912` (test job: success).
+
+The change adds bounded validation for request fields and provider capability metadata, deterministic handling of duplicate provider IDs and routing priorities, stream capability checks, normalized provider failure categories, and negative tests. It does not select a vendor SDK, configure credentials, or add a production network client. Client-supplied tenant metadata remains untrusted and must not be used as authorization; trusted principal/tenant authorization must occur before routing.
+
+**Status caveat:** green CI is not acceptance of the proposed contract or a production-readiness claim. PR #3 and the dependent Gateway PRs remain unmerged pending architecture/contract gates.
