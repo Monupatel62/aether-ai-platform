@@ -17,7 +17,7 @@
 
 | # | Repository | Docs | Default-branch implementation | GitHub Actions workflows | Tests / CI evidence | Branch protection | Release state | Next actionable work |
 |---:|---|---|---|---|---|---|---|---|
-| 1 | `aether-ai-platform` | Present | Documentation-only | Not found | Not run | Unverified | Not release-ready | Add docs/contract/graph validation CI; verify rulesets with admin. |
+| 1 | `aether-ai-platform` | Present | Documentation-only | Main: not found; PR #27 adds docs validation workflow | PR branch run 39937004297 passed | Unverified | Not release-ready | Get admin verification of branch protection; retain contract validator and add more gates only when justified. |
 | 2 | `aether-ai-web` | Present | Documentation-only | Not found | Not run | Unverified | Blocked | Resolve session/auth architecture; implement UI only after P0 approval; add frontend checks. |
 | 3 | `aether-ai-api` | Present | Documentation-only | Not found | Not run | Unverified | Blocked | Resolve identity/tenant/resource authorization and OpenAPI validation; then API contract CI. |
 | 4 | `aether-ai-gateway` | Present | Documentation-only | Not found | Not run | Unverified | Blocked | Define gateway/provider contracts; add capability, fallback, timeout, and credential-isolation tests. |
@@ -65,7 +65,8 @@
 
 - Canonical repositories in scope: **33**.
 - Default-branch roots inspected for CI/CD inventory: **33/33**.
-- Conventional GitHub Actions workflow directories found on inspected default branches: **0/33**.
+- Conventional GitHub Actions workflow directories found on inspected default branches before this PR: **0/33**.
+- Proposed platform documentation/contract validation workflow in PR #27: **1 workflow added; run 39937004297 passed** on the PR branch.
 - Application implementation verified by this inventory: **0/33**.
 - Test suites executed in this audit: **0**.
 - Branch protection verified: **0/33** (access was insufficient; status is unknown, not disabled).
