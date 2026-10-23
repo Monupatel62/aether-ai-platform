@@ -322,3 +322,5 @@ All ten isolated implementation PRs listed above pass the Node.js 22 dependency-
 - Plugin manifest/version compatibility validator: https://github.com/Monupatel62/aether-ai-plugins/pull/5 — Node.js 22 dependency audit, typecheck, unit tests and build passed. Requested capabilities are not grants; artifact verification and isolation are not implemented.
 
 - Release manifest validator: https://github.com/Monupatel62/aether-ai-deployment/pull/6 — Node.js 22 dependency audit, typecheck, unit tests and build passed. No artifact verification or deployment execution.
+
+- Generic webhook HMAC verifier: https://github.com/Monupatel62/aether-ai-integrations/pull/4 — Node.js 22 CI pending. Provider signature format and durable replay prevention are not implemented.
