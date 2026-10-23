@@ -18,6 +18,10 @@
 | P1 | Unknown fields | Top-level objects mostly reject additional properties, but generic nested payload/arguments objects allow arbitrary keys. | Reject unknown fields inside each concrete event/tool payload schema once those schemas are defined. |
 | P1 | Identifier semantics | IDs are plain strings with limited shape checks; tenant/resource IDs can be confused across systems if namespaces are not defined. | Define opaque ID ownership, normalization, case sensitivity, and cross-service namespace rules. |
 
+## Event envelope and revocation follow-up — 2026-10-23
+
+Added [Event Envelope and Resource Revocation Test Plan](EVENT_ENVELOPE_REVOCATION_TEST_PLAN.md) with proposed cases for producer authentication, event-type authorization, tenant/actor claims, duplicate and out-of-order delivery, aggregate/ACL versions, lifecycle transitions, and revocation across caches, search/RAG, queued jobs, and tool execution. The plan deliberately leaves event-specific required-field policy and version/replay thresholds as owner decisions. No validator or runtime tests were run; the P0 schema and consumer-semantics gate remains open.
+
 ## Invariants JSON Schema cannot enforce by itself
 
 - A client cannot author trusted authentication context or self-assert a tenant, role, scope, authorization decision, or approval.
