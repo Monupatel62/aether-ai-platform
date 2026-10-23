@@ -1,0 +1,36 @@
+name: Documentation and contract validation
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docs-contract-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-docs-contracts:
+    name: Validate catalog, schemas, fixtures, OpenAPI, and dependency graph
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: .github/requirements-docs-validation.txt
+
+      - name: Install pinned validators
+        run: python -m pip install --requirement .github/requirements-docs-validation.txt
+
+      - name: Validate documentation contracts
+        run: python .github/scripts/validate_docs_contracts.py
