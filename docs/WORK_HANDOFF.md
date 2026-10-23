@@ -278,3 +278,11 @@ Next: document aether-ai-sdk, then evaluations, observability, integrations, tes
 - The three component files and the new master report were fetched back after writes. These are documentation-only corrections, not source-import verification.
 - Review the four draft pull requests before merging. Next: compare all 33 dependency contracts with the typed edge register and JSON graph, then verify graph consistency without claiming source-level cycle freedom.
 - Application implementation remains blocked by the documentation-first rule and unresolved P0 security/identity/tenant decisions.
+
+
+## Dependency direction audit — second pass (2026-10-23)
+
+- Extended [Dependency Direction Audit](DEPENDENCY_DIRECTION_AUDIT_2026-10-23.md) with three additional concrete contradictions: cache depended on application consumers/database; plugins depended on admin; deployment listed platform/services without distinguishing release artifacts from runtime dependencies.
+- Corrected the contracts for cache, plugins and deployment on review branches and fetched the changed files back from GitHub.
+- Total targeted findings now documented: six. Review all six component PRs and the master audit PR; do not merge automatically.
+- Next: inspect remaining repository-level contracts against the machine-readable graph and typed edge register. Source imports, CI and runtime behavior remain unverified; application coding remains blocked.
