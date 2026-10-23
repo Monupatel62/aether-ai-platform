@@ -8,6 +8,10 @@
 
 Do not begin application implementation until every P0 blocker has an accepted contract/ADR or a documented, reviewed deferral. The existence of 33 repositories and completed documentation does not mean the architecture is implementation-ready.
 
+## Security/privacy/release readiness audit — 2026-10-23
+
+See [Security, Privacy, Testing, and Release Readiness Audit](SECURITY_PRIVACY_RELEASE_READINESS_AUDIT.md) for a 33-repository section-presence pass and cross-cutting evidence gaps. Section presence is not proof of enforcement: CI test results, security scans, retention/deletion evidence, and recovery drills remain unverified. The P0 gate below remains authoritative.
+
 ## P0 — resolve before the first vertical slice
 
 | Blocker | Current evidence | Required resolution |
