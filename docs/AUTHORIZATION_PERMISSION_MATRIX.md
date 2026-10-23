@@ -73,10 +73,12 @@ Legend: **A** = allowed within authorized tenant/resource scope; **O** = own res
 | Change billing/payment method | A | —/J | — | — | — | — | — |
 | Read security/audit events | A (tenant-scoped) | A (tenant-scoped) | own security events only | — | — | G for required telemetry only | platform events only |
 | Manage platform-wide configuration | — | — | — | — | — | — | J with separate platform authorization |
-| Access customer content for support | — | — | — | — | — | — | J, time-bound, reason/ticket and audited |
+| Access customer content for support | — | — | — | — | — | — | — (default deny; no implicit support access) |
 
 * Ownership transfer should require a dedicated flow, re-authentication and audit; no role may grant itself ownership.  
 ** Workspace creation by Members is a configurable tenant policy and should default to denied until explicitly enabled.  
+**Support-access gate:** The Support Operator is named as a principal but is intentionally not a permission-bearing column in this baseline. No Platform Operator or other role receives customer-content access by implication. Any support workflow requires a separately approved identity, scope, ticket/reason, approval authority, expiry, emergency-access controls, and audit/retention policy before a future matrix revision. Until those decisions are approved, customer-content support access is denied.
+
 These broad roles are not enough for resource-level security. Ownership, sharing, membership status, resource state, data classification and explicit grants can further restrict access.
 
 ## 5. Mandatory invariants
