@@ -221,3 +221,16 @@ Verified status at this update:
 - Search PR #2: CI in progress/queued.
 
 All implementation PRs remain draft/open/unmerged pending review and full integration/security validation.
+
+
+## Follow-up implementation pilot — RAG — 2026-10-23
+
+A seventh implementation PR is open: [aether-ai-rag PR #1](https://github.com/Monupatel62/aether-ai-rag/pull/1).
+
+The PR adds versioned RAG chunk metadata (tenant/resource versions, embedding model/version, policy version, ACL references and provenance), bounded retrieval request validation with explicit tenant/principal/ACL scope, defense-in-depth tenant/ACL/deletion filtering, citation provenance, a versioned deletion notice, tests, and Node 22 CI. It does not select an embedding provider/vector backend or implement persistent indexing/deletion propagation. Fresh authoritative authorization remains required.
+
+Verified CI status at this update:
+- Search PR #2: success.
+- RAG PR #1: in progress/queued.
+
+All implementation PRs remain draft/open/unmerged pending CI, review, and integration/security validation.
