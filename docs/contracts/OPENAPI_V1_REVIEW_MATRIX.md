@@ -40,3 +40,9 @@ This matrix is a manual reading of the current YAML text. No OpenAPI parser, val
 ## Follow-up correction — message-role draft fix (2026-10-22)
 
 The OpenAPI YAML has now been edited to replace the shared message schema with separate `RequestChatMessage` and `ResponseChatMessage` schemas. Client request messages are constrained to role `user`; generated response messages are constrained to role `assistant`. This addresses the specific schema-level P0 finding in the draft. It is not yet validated by an OpenAPI parser, and runtime enforcement remains untested. See [OpenAPI contract test plan](OPENAPI_V1_CONTRACT_TEST_PLAN.md) for required positive and negative cases. The other findings in this review matrix remain open.
+
+
+## 2026-10-23 — OpenAPI static reference scan
+
+- Manually scanned the draft OpenAPI YAML text: found five operation IDs with no duplicates and 51 local component references with no unresolved names against the declared component sections.
+- This was a targeted text scan only. It does not parse YAML, validate OpenAPI 3.1 semantics, or prove endpoint/runtime behavior. A dedicated OpenAPI validator remains required.
