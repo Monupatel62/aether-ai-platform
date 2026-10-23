@@ -47,7 +47,13 @@ A recursive Git tree was then inspected for all 33 repositories on their `main` 
 | 32 | `aether-ai-enterprise` | Not found | Documentation exists; Node package manifest not verified |
 | 33 | `aether-ai-infrastructure` | Not found | Documentation exists; Node package manifest not verified |
 
-## Full recursive tree inspection — 2026-10-23\n\nAll 33 canonical repositories were queried through the GitHub recursive tree endpoint on `main`. All returned `truncated: false`. Every tree was limited to documentation paths: README files and `docs/` files. The smaller trees in `aether-ai-memory`, `aether-ai-observability`, and `aether-ai-integrations`/`aether-ai-testing`/`aether-ai-ui-components`/`aether-ai-enterprise`/`aether-ai-infrastructure` contain only a README and/or `docs/REPOSITORY_SPECIFICATION.md`; the larger trees contain README plus documentation artifacts. No source, manifest, test, or CI path was present in any returned tree.\n\nThis is stronger than the earlier known-path checks and supersedes the earlier limitation that full tree enumeration had not been done. It does not prove the code cannot exist on another branch, in an unlisted repository, or outside the queried default branches.\n\n## Core repository path checks
+## Full recursive tree inspection — 2026-10-23
+
+All 33 canonical repositories were queried through the GitHub recursive tree endpoint on `main`. All returned `truncated: false`. Every tree was limited to documentation paths: README files and `docs/` files. The smaller trees in `aether-ai-memory`, `aether-ai-observability`, and `aether-ai-integrations`/`aether-ai-testing`/`aether-ai-ui-components`/`aether-ai-enterprise`/`aether-ai-infrastructure` contain only a README and/or `docs/REPOSITORY_SPECIFICATION.md`; the larger trees contain README plus documentation artifacts. No source, manifest, test, or CI path was present in any returned tree.
+
+This is stronger than the earlier known-path checks and supersedes the earlier limitation that full tree enumeration had not been done. It does not prove the code cannot exist on another branch, in an unlisted repository, or outside the queried default branches.
+
+## Core repository path checks
 
 The following expected paths were also checked and not found in the first eight core repositories: `src/index.ts` and `.github/workflows/ci.yml`.
 
@@ -71,7 +77,8 @@ The following expected paths were also checked and not found in the first eight 
 
 - File-not-found for a particular path is not proof that all code is absent.
 - This audit did not enumerate full Git trees, install dependencies, run builds, run tests, inspect every workflow, or deploy services.
-- Repository specification documents are design documentation, not evidence of working application code.\n- The inspected recursive trees were not truncated and showed documentation-only contents on each default branch; other branches were not audited.
+- Repository specification documents are design documentation, not evidence of working application code.
+- The inspected recursive trees were not truncated and showed documentation-only contents on each default branch; other branches were not audited.
 - Aether AI remains standalone; this audit does not assume external project dependencies.
 
 
