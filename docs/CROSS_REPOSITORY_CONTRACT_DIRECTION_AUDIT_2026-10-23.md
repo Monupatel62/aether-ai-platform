@@ -117,3 +117,12 @@ Continue reviewing identity/tenant context, run lifecycle, billing/usage event d
 - Draft correction PRs created: [Agents PR #1](https://github.com/Monupatel62/aether-ai-agents/pull/1) and [Auth PR #1](https://github.com/Monupatel62/aether-ai-auth/pull/1).
 - Both edited dependency documents were fetched back from their branches and the intended boundary statements were verified.
 - The ADR decision log confirms tenant hierarchy/membership ownership is still an open decision; no ownership choice was made by this audit.
+
+
+### F-14 — Billing usage-event register reverses edge endpoints (high)
+
+The master dependency edge register labels the two asynchronous usage-event rows as `aether-ai-billing → aether-ai-api` and `aether-ai-billing → aether-ai-gateway`, while each row's own contract text says the events flow from API/Gateway to Billing. This makes the machine-readable direction disagree with the stated contract and can mislead graph generation or implementation planning.
+
+**Correction:** Change the rows to `aether-ai-api → aether-ai-billing` and `aether-ai-gateway → aether-ai-billing`. Keep both relationships classified as asynchronous event/queue edges; do not add them to the package-import graph.
+
+**Follow-up:** A documentation-only correction is proposed in [master edge-direction PR](https://github.com/Monupatel62/aether-ai-platform/pull/2). The register rows were fetched back from the working branch and checked against the stated event flow.
