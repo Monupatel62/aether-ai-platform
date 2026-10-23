@@ -16,14 +16,14 @@ This is the decision register. A decision is **proposed** until its status is ch
 | ADR-0010 | Project name and public branding | Open | Aether AI is provisional; check GitHub/domain/trademark availability before public launch. |
 | ADR-0011 | Monorepo vs multi-repo package management and CI | Open | Avoid duplicate release/version complexity; document ownership and cross-repo CI before coding. |
 | ADR-0012 | Prompt/file/memory retention and telemetry policy | Open | Privacy/security requirement; define defaults and user controls before persistence features. |
-
-## ADR format for new decisions
-
-Each accepted ADR must include: context/problem, options considered, chosen option, reasons, consequences/tradeoffs, security/license implications, migration plan, affected repositories, date, and reviewer. If a decision changes, supersede it with a new ADR rather than silently rewriting history.
 | ADR-0013 | MCP protocol/SDK compatibility | Proposed | Use an explicit adapter/version matrix and validate against the selected official protocol revision. |
 | ADR-0014 | AI security baseline | Proposed | Map the threat model and tests to OWASP GenAI LLM Top 10 2026; prompt text alone is not a security control. |
 | ADR-0015 | GenAI observability and privacy | Proposed | Use OpenTelemetry conventions where useful, but keep raw prompt/completion capture disabled by default and define retention/redaction first. |
 | ADR-0016 | CI action and release supply-chain policy | Proposed | Pin Actions to full commit SHAs unless an approved lockfile/policy gives equivalent immutability; use least-privilege workflow tokens and protected releases. |
+
+## ADR format for new decisions
+
+Each accepted ADR must include: context/problem, options considered, chosen option, reasons, consequences/tradeoffs, security/license implications, migration plan, affected repositories, date, and reviewer. If a decision changes, supersede it with a new ADR rather than silently rewriting history.
 
 ## Architecture review update — 2026-10-22
 
@@ -95,3 +95,49 @@ Each accepted ADR must include: context/problem, options considered, chosen opti
 
 - Added [IDENTITY_AUTHORIZATION_POC_RUNBOOK.md](IDENTITY_AUTHORIZATION_POC_RUNBOOK.md) with 24 scenarios, hard security gates, reproducible test-fixture guidance, measurement rules and an evidence-based weighted scorecard.
 - No provider was tested or selected. Running the POC remains gated on explicit approval of scope, environment, operators and budget. All hard-gate failures block candidate acceptance regardless of weighted score.
+
+
+## 2026-10-23 — Consolidated ADR status register (reconciliation, no decisions made)
+
+**Why this section exists.** The tables above only list ADR-0001 through ADR-0016, ADR-0007 and ADR-0018 updates. ADR-0019 through ADR-0024 appear only in dated narrative bullets, so the critical open decision ADR-0021 had no register row, status or owner-approval requirement. This section is append-only: earlier entries above are preserved as history and are not rewritten. It records **status as written in this log**; it accepts, selects or ranks nothing.
+
+| ID | Subject (wording as used in the cited documents) | Status per this log | Source of status |
+|---|---|---|---|
+| ADR-0001 – ADR-0004 | Standalone project; no assumed external runtime dependencies; 33 repositories; repository ≠ service boundary | Accepted | Register table above |
+| ADR-0005 | Gateway approach (adopt / adapter / custom, also worded as native vs optional external gateway) | Open | Register table; 2026-10-22 update |
+| ADR-0006 | Frontend/backend technology stack | Open | Register table |
+| ADR-0007 | Database, queue, cache, vector/search engine | Open; baseline proposed | Data infrastructure review |
+| ADR-0008 | Identity provider and session model | Open | Register table; identity research entries |
+| ADR-0009 – ADR-0012 | Provider/fallback policy; branding; monorepo vs multi-repo CI; retention/telemetry policy | Open | Register table |
+| ADR-0013 – ADR-0016 | MCP compatibility; AI security baseline; GenAI observability/privacy; CI supply chain | Proposed | Register table |
+| ADR-0017 | **No entry found** in this log or in any other file of this repository | Unknown; number unassigned or entry missing | See finding R-2 |
+| ADR-0018 | Data-layer ownership and source-of-truth rules | Proposed | Data infrastructure review |
+| ADR-0019 | Browser session architecture (BFF/server-side session vs alternatives) | Proposed / open | 2026-10-22 identity research |
+| ADR-0020 | Authorization model and policy-engine scope (RBAC baseline vs ABAC/ReBAC/engine) | Proposed / open | 2026-10-22 identity research |
+| **ADR-0021** | **Tenant/workspace hierarchy, privileged support access, and canonical tenant/workspace membership and role-grant ownership** | **Open — owner approval required; no option accepted** | 2026-10-22 identity research; tenant membership and ACL consistency entry; [owner decision brief](TENANT_MEMBERSHIP_OWNER_DECISION_BRIEF.md) |
+| ADR-0022 | API-key and workload identity | Proposed / open | 2026-10-22 identity research |
+| ADR-0023 | MFA/recovery/session/revocation targets | Proposed / open | 2026-10-22 identity research |
+| ADR-0024 | Tenant isolation and PostgreSQL RLS rollout | Proposed / open | 2026-10-22 identity research |
+
+### ADR-0021 — what is blocked and what the owner must decide
+
+- **Decision needed:** which component is the single canonical owner of tenant/workspace membership, invitations, role grants and membership lifecycle. Authentication identity, resource ACLs, policy evaluation and billing entitlements stay separate concerns whichever owner is chosen.
+- **Options on record** (from the [owner decision brief](TENANT_MEMBERSHIP_OWNER_DECISION_BRIEF.md); not accepted):
+  - **A — `aether-ai-enterprise` owns tenancy for every customer tier.** Keeps the 33-repository scope. Implication: Enterprise must work for personal/free/team customers without SSO, SCIM or billing, and must expose a narrow versioned membership contract.
+  - **B — new `aether-ai-tenancy` repository.** Implication: changes the accepted 33-repository plan (ADR-0003), so it needs explicit owner approval plus catalog, dependency-graph and specification updates. **Do not create it without that approval.**
+  - **C — `aether-ai-auth` owns tenancy.** Implication: couples membership lifecycle to login/provider concerns; the brief keeps it only as a fallback if that coupling is intended.
+- **About the brief's recommendation:** the brief records a review recommendation favoring Option A, explicitly stated as not an accepted ADR. This log does **not** adopt it.
+- **Owner approval required before:** freezing the auth, enterprise, security and database contracts; classifying any membership edge as final in the dependency matrix, edge register or `dependency-package-graph.json`; any membership/role-grant persistence in any repository.
+- **Owner's questions to answer** (brief, "Acceptance questions"): personal users without an organization; multi-tenant membership and switching; workspace nesting and role scope; first-tenant creation and ownership recovery; revocation behavior for sessions, queued jobs, search/RAG results and signed file links; whether Enterprise is intended to serve every customer tier.
+- **Until accepted:** `aether-ai-enterprise`, `aether-ai-auth` and `aether-ai-database` must each state that canonical membership ownership is unresolved. Open correction PRs exist for Enterprise ([#1](https://github.com/Monupatel62/aether-ai-enterprise/pull/1)) and Database ([#1](https://github.com/Monupatel62/aether-ai-database/pull/1)); they are drafts and are not merged.
+
+### Findings recorded by this reconciliation (documentation defects, not decisions)
+
+- **R-1 — Table layout defect (fixed in this change).** Rows ADR-0013 to ADR-0016 followed the "ADR format" paragraph with no table header, so they rendered as plain text outside the register table. The paragraph now sits after the ADR-0016 row. Row text is unchanged.
+- **R-2 — ADR-0017 is absent.** Numbering jumps from ADR-0016 to ADR-0018 with no entry or reference anywhere in the repository. The owner should state whether the number was reserved, skipped or lost. Nothing was invented here.
+- **R-3 — ADR-0021 scope is worded inconsistently.** Most documents describe it as "tenant/workspace hierarchy and support access". The tenant membership consistency decision, the work log and the owner brief treat it as including the canonical membership owner. The register row above combines the phrasings; the owner should confirm that is one decision, or split membership ownership into its own ADR number.
+- **R-4 — Possible overlap between ADR-0008 and ADR-0019.** ADR-0008 covers "identity provider and session model"; ADR-0019 covers browser session architecture, and some documents label ADR-0019 "identity provider and browser session". Boundary between them should be stated when either is accepted.
+- **R-5 — Stale count in a historical entry.** The "Architecture review update — 2026-10-22" row for ADR-0003 says the remaining 23 repositories can be created after the documentation phase. All 33 repositories now exist (verified 2026-10-23 through public git refs). The earlier text is preserved as history; ADR-0003's accepted status is unchanged.
+- **R-6 — Status vocabulary.** The log mixes "Proposed" and "Open" for the same ADRs (for example ADR-0019 to ADR-0024). Both mean not accepted. Standardize on one vocabulary when the register is next revised.
+
+No ADR status was changed by this reconciliation. No application code, build or test was run for this entry.
