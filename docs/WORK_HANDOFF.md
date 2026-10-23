@@ -325,4 +325,4 @@ All ten isolated implementation PRs listed above pass the Node.js 22 dependency-
 
 - Generic webhook HMAC verifier: https://github.com/Monupatel62/aether-ai-integrations/pull/4 — Node.js 22 dependency audit, typecheck, unit tests and build passed. Provider signature format and durable replay prevention are not implemented.
 
-- Framework-neutral safe-link/accessibility text helpers: https://github.com/Monupatel62/aether-ai-ui-components/pull/2 — Node.js 22 CI pending. No framework-specific UI components or visual tests.
+- Framework-neutral safe-link/accessibility text helpers: https://github.com/Monupatel62/aether-ai-ui-components/pull/2 — Node.js 22 dependency audit, typecheck, unit tests and build passed. No framework-specific UI components or visual tests.
