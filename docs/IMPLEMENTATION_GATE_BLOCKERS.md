@@ -8,6 +8,10 @@
 
 Do not begin application implementation until every P0 blocker has an accepted contract/ADR or a documented, reviewed deferral. The existence of 33 repositories and completed documentation does not mean the architecture is implementation-ready.
 
+## Decision ownership and evidence register
+
+Use [P0 Architecture Decision and Blocker Register](P0_ARCHITECTURE_DECISION_BLOCKER_REGISTER.md) to track each P0 blocker, proposed accountable role, affected repositories, required evidence, acceptance criteria, and current gate impact. The register does not change any ADR status or authorize implementation.
+
 ## P0 — resolve before the first vertical slice
 
 | Blocker | Current evidence | Required resolution |
