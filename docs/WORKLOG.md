@@ -149,3 +149,13 @@ Inspected recursive main-branch trees for all 33 canonical repositories. All hav
 - Added `docs/IDENTITY_AUTHORIZATION_POC_TEST_MATRIX.md` with explicit pass/fail tests for OIDC validation, browser sessions/CSRF, tenant membership freshness, resource authorization, internal authorization-context trust, workload identity, audit logging and fail-closed behavior.
 - The matrix is a proposed acceptance plan only; no provider POC or security test has been run.
 - Next: review and accept the canonical tenant-membership owner and authorization-context trust profile, then use the same test matrix to compare one managed and one self-hosted identity provider. Keep production implementation blocked until the documentation gate is approved.
+
+## 2026-10-23 — Final repository/PR inventory pass
+
+- Re-queried the connected GitHub repository index and confirmed the canonical set contains 33/33 expected repositories, all with `main` as the reported default branch.
+- Queried open pull requests across the set and recorded 16 open documentation PRs across 12 repositories in the cross-repository audit branch. Search results establish that PRs are open; they do not establish approval or merge readiness.
+- Updated and fetched back the master cross-repository audit report on `docs/contract-direction-audit-2026-10-23`, adding the inventory, links, branch-only verification notes, and explicit gate status.
+- Fetched back the Files and Plugins architecture corrections and both Database ownership documents from their proposed branches.
+- Important: these corrections remain branch-only until their PRs are reviewed and merged. Do not describe default-branch architecture as fully corrected yet.
+- Implementation gate remains blocked by P0 decisions/contracts, including ADR-0008 identity/session model, ADR-0021 canonical tenant/workspace membership and role-grant ownership, authorization-context trust, resource authorization, agent/tool schemas, run lifecycle/retention, and validator-backed contract evidence.
+- No PRs were merged. No application code, builds, or implementation tests were run.
