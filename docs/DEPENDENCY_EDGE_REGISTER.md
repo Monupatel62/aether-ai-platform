@@ -71,8 +71,8 @@ Where the same logical relationship could be either a package import or network 
 | aether-ai-billing | aether-ai-database | Package import | Billing-owned persistence via shared tooling. |
 | aether-ai-billing | aether-ai-queue | Package import | Consume trusted usage events and publish entitlement events/contracts. |
 | aether-ai-billing | aether-ai-security | Package import | Billing/administrative policy contract. |
-| aether-ai-billing | aether-ai-api | Asynchronous event/queue | Trusted usage events flow API → billing; no billing → API synchronous callback. |
-| aether-ai-billing | aether-ai-gateway | Asynchronous event/queue | Trusted server-side usage events flow gateway → billing. |
+| aether-ai-api | aether-ai-billing | Asynchronous event/queue | API publishes trusted, server-side usage events to Billing; Billing must not synchronously call API back to validate usage. |
+| aether-ai-gateway | aether-ai-billing | Asynchronous event/queue | Gateway publishes trusted, server-side usage events to Billing; event identity, idempotency and provenance are validated by Billing. |
 | aether-ai-sdk | aether-ai-api | Generated/public artifact | SDK schemas/client generated from versioned API contract. |
 | aether-ai-evaluations | aether-ai-agents | Package import | Evaluate agent contracts using synthetic/sanitized datasets by default. |
 | aether-ai-evaluations | aether-ai-gateway | Package import | Evaluate normalized model behavior. |
