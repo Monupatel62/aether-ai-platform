@@ -131,3 +131,9 @@ For each future change, record the date, exact files, rationale, alternatives co
 - Parsed all seven contract schema JSON files, the fixture file, and package graph as JSON: all nine parsed successfully.
 - Checked 19 fixture IDs are unique and all schema references resolve. Manually checked the five new run-event conditional fixtures against their draft rules; all expected outcomes matched.
 - This was not full JSON Schema validation, format assertion, OpenAPI YAML validation, or runtime testing.
+
+
+## 2026-10-23 — OpenAPI static reference scan
+
+- Manually scanned draft OpenAPI YAML: five unique operation IDs and 51 local component references with no unresolved component names.
+- This was not a YAML/OpenAPI validator run; parser-based validation and runtime tests remain open.
