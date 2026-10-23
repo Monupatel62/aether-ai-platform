@@ -2,6 +2,10 @@
 
 **Research/design snapshot:** 2026-10-22. **Scope:** 33 Aether AI repositories. Aether AI is a standalone project; no external project is assumed to be a dependency.
 
+## CI/CD and release readiness audit — 2026-10-23
+
+- [CI/CD, Branch Protection, and Release-Gate Audit](CICD_BRANCH_PROTECTION_RELEASE_READINESS_AUDIT.md) records default-branch inventory across all 33 repositories. No `.github/workflows` directory was found on the inspected default branches; branch protection could not be verified because the API returned 403 for the integration. This is an inventory finding, not a claim that no automation exists on any branch or that branch protection is disabled.
+
 ## Current status
 
 - Aether AI repositories in this plan: **33**.
