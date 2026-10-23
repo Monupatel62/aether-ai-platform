@@ -82,3 +82,8 @@ Before this matrix can become an implementation contract, decide:
 5. Run the identity/authorization POC only after explicit approval.
 
 No application code, tests, identity-provider selection, or repository creation was performed during this audit.
+
+
+## Follow-up — workspace creation default-deny wording (2026-10-23)
+
+**AUTH-GAP-01 documentation correction:** the role matrix previously displayed `A**` for Member workspace creation while the footnote said the capability must default to denied. The matrix now says `Configurable; default deny` and clarifies that enabling the capability requires an explicit tenant policy and server-side evaluation. This resolves the contradictory wording only; it does not decide who may enable the setting or approve a product role model. No application behavior was changed and no tests were run.
