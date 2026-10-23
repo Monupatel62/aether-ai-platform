@@ -270,3 +270,11 @@ Next: document aether-ai-sdk, then evaluations, observability, integrations, tes
 
 
 - Added [Implementation Gate Blockers](IMPLEMENTATION_GATE_BLOCKERS.md) to consolidate the remaining P0 contract/security blockers and P1 product/operations decisions. This is a review checklist, not an implementation approval.
+
+
+## Dependency direction audit — 2026-10-23
+
+- Added [Dependency Direction Audit](DEPENDENCY_DIRECTION_AUDIT_2026-10-23.md) and corrected three repository-level contract declarations on review branches: provider adapters no longer depend on gateway; agents no longer depend on orchestration implementation; files lists API as a consumer rather than a dependency.
+- The three component files and the new master report were fetched back after writes. These are documentation-only corrections, not source-import verification.
+- Review the four draft pull requests before merging. Next: compare all 33 dependency contracts with the typed edge register and JSON graph, then verify graph consistency without claiming source-level cycle freedom.
+- Application implementation remains blocked by the documentation-first rule and unresolved P0 security/identity/tenant decisions.
