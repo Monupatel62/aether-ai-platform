@@ -2,6 +2,10 @@
 
 **Research/design snapshot:** 2026-10-22. **Scope:** 33 Aether AI repositories. Aether AI is a standalone project; no external project is assumed to be a dependency.
 
+## API/SDK compatibility audit — 2026-10-23
+
+- [API and SDK Contract Versioning & Compatibility Audit](API_SDK_COMPATIBILITY_AUDIT.md) records a 33-repository documentation scan, missing explicit compatibility-policy language, proposed minimum rules, and validation gaps. This is a documentation review, not proof of contract compatibility or validator success.
+
 ## Current status
 
 - Aether AI repositories in this plan: **33**.
