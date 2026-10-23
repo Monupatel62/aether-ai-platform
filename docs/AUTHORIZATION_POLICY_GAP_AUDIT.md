@@ -32,6 +32,10 @@ Added [Tenant Context Resolution Contract](contracts/TENANT_CONTEXT_RESOLUTION_C
 | AUTH-GAP-13 | Medium | Tenant Admin access to provider/model policy, tenant keys, usage, audit and resource content is not consistently distinguished between configuration, metadata and secret/content access. | Admin rights may be interpreted more broadly than intended. | Split configure/read-secret/read-content/manage-grant actions and explicitly deny raw secrets. |
 | AUTH-GAP-14 | Medium | The table does not explicitly cover tenant suspension, workspace suspension, legal hold, retention expiry or deleted-resource restoration, although related docs mention them. | A deleted or suspended resource may remain available through queues, caches, indexes, exports or restoration. | Define lifecycle states and ensure authorization checks include resource state; keep retention/legal hold separate from access revocation. |
 
+## Follow-up contract artifact — 2026-10-23 (conversation and memory access)
+
+Updated the proposed permission matrix so Tenant Owner and Tenant Admin status does not implicitly grant access to other users' conversation content or AI memory. The baseline now limits access to own or explicitly granted content. Any broader administrative access remains an unresolved product-policy decision and must not be inferred from the role name. Documentation-only change; no runtime enforcement or tests were performed.
+
 ## 3. Proposed baseline clarifications
 
 These are recommendations for review, not accepted policy:
