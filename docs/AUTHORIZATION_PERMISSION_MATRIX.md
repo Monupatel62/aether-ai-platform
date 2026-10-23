@@ -59,7 +59,7 @@ Legend: **A** = allowed within authorized tenant/resource scope; **O** = own res
 | Invite/remove members | A | A | — | — | — | — | — |
 | Change owner/admin roles | A* | J | — | — | — | — | — |
 | View workspace metadata | A | A | A | R | G | G | metadata only by default |
-| Create workspace | A | A | A** | — | — | G | — |
+| Create workspace | A | A | Configurable; default deny | — | — | G only when explicitly granted | — |
 | Update/delete workspace | A | A | O/G | — | G | G | — |
 | Access assigned files | A | A | G/O | R/G | G | G | — |
 | Export tenant content | J | J | O/G with limits | — | G with limits | G with limits | — |
@@ -76,7 +76,7 @@ Legend: **A** = allowed within authorized tenant/resource scope; **O** = own res
 | Access customer content for support | — | — | — | — | — | — | J, time-bound, reason/ticket and audited |
 
 * Ownership transfer should require a dedicated flow, re-authentication and audit; no role may grant itself ownership.  
-** Workspace creation by Members is a configurable tenant policy and should default to denied until explicitly enabled.  
+Member workspace creation is denied by default. A tenant policy may explicitly enable it; if enabled, the server must evaluate the authoritative tenant policy and resource limits for each creation request.  
 These broad roles are not enough for resource-level security. Ownership, sharing, membership status, resource state, data classification and explicit grants can further restrict access.
 
 ## 5. Mandatory invariants
