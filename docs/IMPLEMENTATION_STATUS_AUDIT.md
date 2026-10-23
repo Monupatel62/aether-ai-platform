@@ -76,7 +76,7 @@ The following expected paths were also checked and not found in the first eight 
 ## Limitations
 
 - File-not-found for a particular path is not proof that all code is absent.
-- This audit did not enumerate full Git trees, install dependencies, run builds, run tests, inspect every workflow, or deploy services.
+- This audit enumerated the recursive Git trees for all 33 default branches, but did not install dependencies, run builds, execute a test suite, inspect every workflow in depth, or deploy services.
 - Repository specification documents are design documentation, not evidence of working application code.
 - The inspected recursive trees were not truncated and showed documentation-only contents on each default branch; other branches were not audited.
 - Aether AI remains standalone; this audit does not assume external project dependencies.
