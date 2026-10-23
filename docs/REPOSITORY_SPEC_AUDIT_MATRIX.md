@@ -153,3 +153,23 @@ This is strong evidence that the current `main` trees are documentation-only or 
 2. Build each repository's minimal implementation against its existing specification and approved dependency boundaries; do not introduce a new repository or resolve open ADR-0021 by assumption.
 3. Add tests and CI for each implementation, then verify dependency direction, security controls, license/SBOM, build, and integration behavior.
 4. Keep all changes in reviewable branches/PRs; do not merge or deploy without explicit approval.
+
+
+## Implementation pilot status — 2026-10-23
+
+Three reviewable implementation PRs have been opened from the documentation-only baseline. None has been merged.
+
+| Repository | PR | Initial implementation scope | CI status at this audit update |
+|---|---|---|---|
+| `aether-ai-security` | [#2](https://github.com/Monupatel62/aether-ai-security/pull/2) | Versioned fail-closed authorization decision contract, unit tests, CI | Success |
+| `aether-ai-queue` | [#2](https://github.com/Monupatel62/aether-ai-queue/pull/2) | Transport-neutral versioned message envelope and shape/size validation, unit tests, CI | Success |
+| `aether-ai-sdk` | [#2](https://github.com/Monupatel62/aether-ai-sdk/pull/2) | Generic HTTP client foundation, TypeScript declarations, conservative retry policy, unit tests, CI | Initial CI failed on a path-traversal test; fix committed and rerun queued at the time of this update |
+
+These are narrow foundation slices, not complete repositories or release-ready implementations. The Security contract does not decide identity or tenant/workspace membership ownership. The Queue package validates message shape but does not provide a broker, delivery guarantees, publisher authentication, or consumer authorization. The SDK does not invent endpoint-specific routes; its typed endpoint methods must follow the approved OpenAPI contract.
+
+### Next implementation order
+
+1. Close the SDK CI failure and verify the rerun.
+2. Keep each pilot PR open until CI and review are complete; do not merge automatically.
+3. Continue with small, contract-first vertical slices in additional repositories, respecting the dependency matrix and open ADR-0021.
+4. Update each repository's progress only from implementation, test, and integration evidence; do not use the tree audit as a runtime completion metric.
