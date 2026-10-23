@@ -117,3 +117,10 @@ For each future change, record the date, exact files, rationale, alternatives co
 
 - Added `docs/IMPLEMENTATION_GATE_BLOCKERS.md` to gather P0 contract/security blockers and P1 product/operations decisions in one reviewable checklist.
 - The checklist links to existing detailed evidence and preserves the rule that documentation completion is not implementation approval.
+
+
+## 2026-10-23 — Contract schema hardening
+
+- Added a 100-property bound to generic event payloads and tool argument objects.
+- Encoded conditional run-event requirements for step lifecycle events, retry scheduling, and failed run/step events.
+- Added five fixtures, bringing the author-defined fixture set to 19. Fixtures remain unexecuted; validator and runtime gates remain open.
