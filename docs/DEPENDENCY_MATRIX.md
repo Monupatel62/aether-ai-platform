@@ -53,6 +53,10 @@
 | 32 | [`aether-ai-enterprise`](repositories/aether-ai-enterprise.md) | aether-ai-auth principal/session contracts; aether-ai-security policy contracts; aether-ai-billing entitlement contracts; aether-ai-observability | Enterprise-specific SSO/SCIM and org controls may extend core policies but must not duplicate identity/session logic. Canonical tenant/workspace membership and role-grant ownership remains open for explicit product decision. |
 | 33 | [`aether-ai-infrastructure`](repositories/aether-ai-infrastructure.md) | Selected infrastructure providers/modules (TBD); no application service dependency | Infrastructure-as-code and environment foundations; deployment repo consumes its modules. |
 
+## All-repository dependency reconciliation — 2026-10-23
+
+See [All-Repository Dependency Reconciliation](ALL_REPOSITORY_DEPENDENCY_RECONCILIATION.md) for a comparison of the declared dependency sections in all 33 repository specifications against this matrix. It records a specific Search/Database wording mismatch and remaining edge-classification decisions. This is documentation-level evidence only; no source-import graph or cycle detector was run.
+
 ## Important architecture decisions still open
 
 - Confirm ADR acceptance for the proposed API → orchestration → agents path; avoid two owners for run state.
