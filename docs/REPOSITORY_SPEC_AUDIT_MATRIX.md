@@ -71,3 +71,19 @@ Review [Dependency Matrix](DEPENDENCY_MATRIX.md), resolve the remaining architec
 ## Repository-level documentation rollout — 2026-10-23
 
 A follow-up GitHub write pass added `docs/REPOSITORY_SPECIFICATION.md` to all 33 canonical Aether AI repositories and corrected relative links to the master documentation. README documentation entry points were added where missing and writable; existing README content was preserved. This is a documentation rollout, not a code, security, legal, or penetration-test pass. Each repository still needs implementation-specific API schemas, tests, and operational runbooks before release.
+
+
+## Initial source-manifest spot check — 2026-10-23
+
+A limited live check fetched the repository root `package.json` and `pnpm-workspace.yaml` paths for these six repositories: `aether-ai-platform`, `aether-ai-web`, `aether-ai-api`, `aether-ai-gateway`, `aether-ai-agents`, and `aether-ai-workflows`.
+
+| Repository | Root package.json found | Root pnpm-workspace.yaml found | Repository specification found |
+|---|---:|---:|---:|
+| aether-ai-platform | No | No | Yes |
+| aether-ai-web | No | No | Yes |
+| aether-ai-api | No | No | Yes |
+| aether-ai-gateway | No | No | Yes |
+| aether-ai-agents | No | No | Yes |
+| aether-ai-workflows | No | No | Yes |
+
+This is a path-level spot check only, not proof that no source code or manifests exist in subdirectories, and not a completed 33-repository source audit. It does mean package-import cycles, installed dependency versions, exports, buildability, and executable test status cannot be inferred from these root paths. Next source-audit pass must inspect repository trees and identify the actual implementation roots before classifying each repository as documentation-only or implemented.
