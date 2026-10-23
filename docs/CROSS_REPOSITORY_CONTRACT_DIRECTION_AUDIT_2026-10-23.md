@@ -96,3 +96,24 @@ Deployment dependency documents list “infrastructure, platform, and services b
 ## Next audit
 
 Continue reviewing identity/tenant context, run lifecycle, billing/usage event direction, SDK generation, database/queue boundaries, and the remaining repository specifications. Keep changes documentation-only until the implementation gate is approved.
+
+
+## Follow-up findings — identity and execution dependency direction
+
+### F-12 — Agents declares Orchestration as a direct dependency (high)
+
+`aether-ai-agents/docs/DEPENDENCIES_AND_CONTRACTS.md` lists `aether-ai-orchestration` as a direct dependency, while Orchestration itself depends on Agents. This reverses the intended ownership and can create a package cycle. The master matrix and repository specifications assign durable run state to Orchestration and describe Agents as the execution contract it invokes.
+
+**Correction:** Remove Orchestration from Agents' direct dependencies. Orchestration consumes the versioned Agent execution contract; Agents returns typed results or emits versioned lifecycle events without importing Orchestration internals.
+
+### F-13 — Auth lists API and domain consumers as dependencies (high)
+
+`aether-ai-auth/docs/DEPENDENCIES_AND_CONTRACTS.md` lists “API and domain consumers” under Dependencies, contradicting the master matrix and Auth repository specification. Auth is a low-level identity/session owner; higher-level APIs and domains consume its public principal/session contract.
+
+**Correction:** Keep Auth dependencies limited to the selected identity-provider adapter, narrow principal/session primitives, and required low-level Security contracts. Explicitly prohibit Auth → API/domain implementation imports. Tenant membership/role-grant ownership remains unresolved under ADR-0021 and must not be inferred.
+
+## Follow-up status
+
+- Draft correction PRs created: [Agents PR #1](https://github.com/Monupatel62/aether-ai-agents/pull/1) and [Auth PR #1](https://github.com/Monupatel62/aether-ai-auth/pull/1).
+- Both edited dependency documents were fetched back from their branches and the intended boundary statements were verified.
+- The ADR decision log confirms tenant hierarchy/membership ownership is still an open decision; no ownership choice was made by this audit.
