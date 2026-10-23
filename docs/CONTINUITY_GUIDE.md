@@ -81,3 +81,8 @@ Read `docs/BROWSER_SESSION_AND_AUTHORIZATION_ARCHITECTURE.md`. It uses IETF RFC 
 ## Latest continuation point — authorization permission matrix (2026-10-22)
 
 Read `docs/AUTHORIZATION_PERMISSION_MATRIX.md`. This is a draft permission specification, not accepted policy. It covers Owner/Admin/Member/Viewer, scoped Resource Manager, Service Principal, Platform Operator and controlled Support Operator access. Continue by checking consistency with the 33 repo contracts, identifying role conflicts/overbroad grants and refining the launch resource inventory. Keep implementation blocked until explicit documentation-gate approval.
+
+
+## Latest continuation point — identity/authorization POC matrix (2026-10-23)
+
+Read `docs/IDENTITY_AUTHORIZATION_POC_TEST_MATRIX.md` alongside `docs/IMPLEMENTATION_GATE_BLOCKERS.md`. The matrix defines pass/fail cases but has not been executed. The next documentation decision is to settle the canonical tenant/workspace membership owner and accept the authorization-context trust profile. Then compare one managed and one self-hosted identity provider against the same tests. Do not begin production implementation or claim a provider passed until evidence is recorded and the user approves moving beyond the documentation gate.
