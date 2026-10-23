@@ -61,6 +61,16 @@
 6. **Integration and operations:** create synthetic-data end-to-end tests for auth, API, gateway/providers, tool execution, orchestration/queue, knowledge/RAG/search, memory/files, billing, telemetry, deployment, and recovery.
 7. **Release evidence:** require commit SHA, workflow run, test report, scan results, migration/recovery evidence, release owner, and accepted residual risks before calling any repository release-ready.
 
+## Current audit pull requests
+
+| PR | Scope | State at last check | Verification |
+|---|---|---|---|
+| [#25](https://github.com/Monupatel62/aether-ai-platform/pull/25) | Security, privacy, testing, and release-readiness audit | Open, draft, unmerged | Documentation section-presence audit only; no runtime/security tests claimed. |
+| [#26](https://github.com/Monupatel62/aether-ai-platform/pull/26) | API/SDK compatibility audit | Open, draft, unmerged | Documentation keyword scan only; no contract validator or compatibility tests claimed. |
+| [#27](https://github.com/Monupatel62/aether-ai-platform/pull/27) | CI/CD audit, master tracker, and platform documentation/contract validation workflow | Open, draft, unmerged | Workflow run [39937059490](https://github.com/Monupatel62/aether-ai-platform/actions/runs/39937059490) passed on the PR branch after the tracker update. |
+
+PR state and CI status must be refreshed before any merge decision. No merge is authorized by this tracker.
+
 ## Overall verified status
 
 - Canonical repositories in scope: **33**.
