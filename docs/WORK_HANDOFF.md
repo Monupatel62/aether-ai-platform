@@ -313,3 +313,6 @@ All ten isolated implementation PRs listed above pass the Node.js 22 dependency-
 - API safe error/request metadata contract: https://github.com/Monupatel62/aether-ai-api/pull/5 — Node.js 22 dependency audit, typecheck, unit tests and build passed. No authentication middleware or product routes implemented.
 
 - Queue envelope/retry utilities: https://github.com/Monupatel62/aether-ai-queue/pull/4 — Node.js 22 dependency audit, typecheck, unit tests and build passed. No broker adapter, durable idempotency, or worker runtime.
+
+- Deterministic lexical search baseline: https://github.com/Monupatel62/aether-ai-search/pull/4 — Node.js 22 dependency audit, typecheck, unit tests and build passed. No backend, ACL integration, or deletion propagation.
+- Tool manifest validator/fail-closed preflight: https://github.com/Monupatel62/aether-ai-tools/pull/6 — Node.js 22 CI pending. No executor/sandbox; tool-policy ADR remains a release blocker.
