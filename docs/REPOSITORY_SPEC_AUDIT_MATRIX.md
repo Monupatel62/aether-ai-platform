@@ -107,3 +107,49 @@ GitHub recursive tree responses were inspected for eight canonical repositories.
 For the seven component repositories in this batch, the complete returned tree consisted of `README.md`, `docs/`, and documentation files under `docs/`; no application source or root package/workspace manifest was present in the returned tree. The platform repository also had no non-documentation code/config files outside `docs/` in the inspected tree.
 
 This is stronger evidence than checking root manifest paths, but it remains a batch of 8/33 repositories. It does not establish that the other 25 repositories are documentation-only, and it does not validate build or runtime behavior. Next pass: inspect the remaining 25 recursive trees, then update repository implementation status based only on returned tree evidence.
+
+
+## Recursive repository-tree inspection — remaining 25 repositories — 2026-10-23
+
+The remaining 25 canonical repositories were inspected using GitHub recursive tree responses. All 25 responses reported `truncated: false`; each returned 12 tree entries and no matching application source/configuration files outside `docs/`.
+
+| Repository | Total tree entries | Non-documentation root-level entries | Source/config code files outside `docs/` |
+|---|---:|---|---:|
+| aether-ai-providers | 12 | README.md, docs/ | 0 |
+| aether-ai-mcp | 12 | README.md, docs/ | 0 |
+| aether-ai-memory | 12 | README.md, docs/ | 0 |
+| aether-ai-rag | 12 | README.md, docs/ | 0 |
+| aether-ai-files | 12 | README.md, docs/ | 0 |
+| aether-ai-knowledge | 12 | README.md, docs/ | 0 |
+| aether-ai-auth | 12 | README.md, docs/ | 0 |
+| aether-ai-security | 12 | README.md, docs/ | 0 |
+| aether-ai-admin | 12 | README.md, docs/ | 0 |
+| aether-ai-billing | 12 | README.md, docs/ | 0 |
+| aether-ai-sdk | 12 | README.md, docs/ | 0 |
+| aether-ai-evaluations | 12 | README.md, docs/ | 0 |
+| aether-ai-observability | 12 | README.md, docs/ | 0 |
+| aether-ai-deployment | 12 | README.md, docs/ | 0 |
+| aether-ai-docs | 12 | README.md, docs/ | 0 |
+| aether-ai-database | 12 | README.md, docs/ | 0 |
+| aether-ai-queue | 12 | README.md, docs/ | 0 |
+| aether-ai-cache | 12 | README.md, docs/ | 0 |
+| aether-ai-search | 12 | README.md, docs/ | 0 |
+| aether-ai-plugins | 12 | README.md, docs/ | 0 |
+| aether-ai-integrations | 12 | README.md, docs/ | 0 |
+| aether-ai-testing | 12 | README.md, docs/ | 0 |
+| aether-ai-ui-components | 12 | README.md, docs/ | 0 |
+| aether-ai-enterprise | 12 | README.md, docs/ | 0 |
+| aether-ai-infrastructure | 12 | README.md, docs/ | 0 |
+
+### Consolidated source-tree result
+
+All 33/33 canonical repositories have now had their recursive GitHub trees inspected in this audit. No application source/configuration files matching the audit's code/config extension filter were found outside `docs/` in any of the 33 returned trees. The platform repository has 97 tree entries, while each of the other 32 repositories has 12 entries. The recursive responses were not truncated.
+
+This is strong evidence that the current `main` trees are documentation-only or documentation-dominant, but it is not a runtime/build/test audit. The extension filter may miss extensionless executables, generated artifacts, or unusual source formats. No build, test, dependency, security, deployment, or runtime checks are implied by this result.
+
+### Required next work
+
+1. Treat implementation completion for all 33 repositories as **not verified / not started in the inspected trees**, rather than assigning unsupported completion percentages.
+2. Build each repository's minimal implementation against its existing specification and approved dependency boundaries; do not introduce a new repository or resolve open ADR-0021 by assumption.
+3. Add tests and CI for each implementation, then verify dependency direction, security controls, license/SBOM, build, and integration behavior.
+4. Keep all changes in reviewable branches/PRs; do not merge or deploy without explicit approval.
