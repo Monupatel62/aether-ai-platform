@@ -71,3 +71,9 @@ The shared fixture file now contains 19 author-defined cases. Five added cases c
 - Fixture integrity check: 19 unique case IDs; all fixture schema references resolve to one of the seven contract schemas.
 - Manually evaluated the five newly added run-event conditional cases against the draft conditional rules: all five expected outcomes matched.
 - This was a focused JavaScript check of JSON syntax, fixture references, and the new conditions only. It was not a JSON Schema Draft 2020-12 validator run, did not assert `format`, and did not validate OpenAPI YAML or runtime behavior.
+
+
+## 2026-10-23 — OpenAPI static reference scan
+
+- Manually scanned the draft OpenAPI YAML text: found five operation IDs with no duplicates and 51 local component references with no unresolved names against the declared component sections.
+- This was a targeted text scan only. It does not parse YAML, validate OpenAPI 3.1 semantics, or prove endpoint/runtime behavior. A dedicated OpenAPI validator remains required.
