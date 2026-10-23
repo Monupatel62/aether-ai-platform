@@ -144,7 +144,7 @@ A fresh connected-repository search returned all **33/33 canonical Aether AI rep
 
 ### Open documentation PR inventory
 
-A fresh open-PR search found **17 open PRs across 12 repositories** after adding the agentic-security mapping PR:
+A fresh open-PR search found **18 open PRs across 13 repositories** after adding the agentic-security mapping PR:
 
 | Repository | Open PRs |
 |---|---|
@@ -160,6 +160,7 @@ A fresh open-PR search found **17 open PRs across 12 repositories** after adding
 | `aether-ai-queue` | [#1 queue/authorization boundary](https://github.com/Monupatel62/aether-ai-queue/pull/1) |
 | `aether-ai-cache` | [#1 cache dependency clarification](https://github.com/Monupatel62/aether-ai-cache/pull/1); [#2 architecture dependency alignment](https://github.com/Monupatel62/aether-ai-cache/pull/2) |
 | `aether-ai-plugins` | [#1 plugin dependency direction](https://github.com/Monupatel62/aether-ai-plugins/pull/1) |
+| `aether-ai-enterprise` | [#1 membership ownership boundary](https://github.com/Monupatel62/aether-ai-enterprise/pull/1) |
 
 These are open-PR search results, not evidence of merge or approval. Treat proposed corrections as branch-only until individually reviewed and merged by an authorized maintainer. The default branches still retain any affected old wording until merge; this is especially relevant to API architecture, Files architecture, Plugins architecture, Database ownership wording, and the Billing event-edge register.
 
@@ -181,3 +182,12 @@ The security threat model mapped the OWASP GenAI LLM Top 10 2026, but only refer
 **Correction proposed:** Add a separate mapping for all ten OWASP Top 10 for Agentic Applications 2026 risks, component ownership, required tests, and agentic release-gate additions. Keep this as a design checklist only; it does not establish control implementation or test completion.
 
 **Status:** Proposed in [platform PR #3](https://github.com/Monupatel62/aether-ai-platform/pull/3), a draft documentation-only PR. The branch version of `docs/SECURITY_THREAT_MODEL.md` was fetched back and its new mapping verified. ADR-0014 remains proposed; no implementation or security tests were run.
+
+
+### F-17 — Enterprise membership workflow wording could imply canonical ownership (medium)
+
+The Enterprise dependency contract mentions “membership/admin actions” while ADR-0021 leaves canonical tenant/workspace membership and role-grant ownership undecided. The same contract says not to create a second source of truth, but did not clearly distinguish an Enterprise administration workflow from the authoritative membership domain. That ambiguity could lead to implementation before the product owner has selected an owner.
+
+**Correction proposed:** Explicitly state that “membership/admin actions” does not assign canonical ownership; define Auth, Security, Enterprise, resource-domain and Billing boundaries; prohibit membership/role-grant persistence in Enterprise until ADR-0021 is accepted. If Option A is selected, it must explicitly cover all customer tiers, including personal users.
+
+**Status:** Proposed in [Enterprise PR #1](https://github.com/Monupatel62/aether-ai-enterprise/pull/1), a draft documentation-only PR. The branch file was fetched back and verified. No ADR option was selected and the implementation gate remains blocked.
