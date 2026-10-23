@@ -118,3 +118,8 @@ No application code or deployment was performed.
 ## Follow-up status — 2026-10-23
 
 The repository visibility section above is a historical snapshot from 2026-10-22 and is superseded for repository-count purposes: the latest documentation pass confirmed all 33 canonical repository names are present and added a repository specification to each. The substantive contract-maturity findings above remain open unless explicitly corrected in a later audited artifact. The new repository specs do not by themselves establish machine-testable OpenAPI, event schemas, provider conformance fixtures, or runtime correctness.
+
+
+## Follow-up — dependency direction audit (2026-10-23)
+
+The targeted comparison in [Dependency Direction Audit](DEPENDENCY_DIRECTION_AUDIT_2026-10-23.md) found and documented three more direct-dependency contradictions: providers depended on gateway contracts despite owning the provider abstraction; agents declared orchestration as a dependency despite orchestration consuming the agent runtime; and files listed the product API as a dependency even though API consumes the file contract. Proposed documentation corrections were made on review branches in the three component repositories. These changes do not prove actual source-import direction or runtime graph safety. See draft PRs and review evidence before accepting the corrections.
