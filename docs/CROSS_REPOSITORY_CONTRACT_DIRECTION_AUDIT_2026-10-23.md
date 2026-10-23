@@ -4,7 +4,7 @@
 
 ## Scope
 
-Reviewed `docs/DEPENDENCIES_AND_CONTRACTS.md` in all 33 canonical Aether AI repositories against the master `docs/DEPENDENCY_MATRIX.md` and `docs/DEPENDENCY_EDGE_REGISTER.md`. Follow-up spot checks compared technical-design documents for API, Agents, Orchestration, Billing, Queue, Auth, Security and Enterprise.
+Reviewed `docs/DEPENDENCIES_AND_CONTRACTS.md` in all 33 canonical Aether AI repositories against the master `docs/DEPENDENCY_MATRIX.md` and `docs/DEPENDENCY_EDGE_REGISTER.md`. Follow-up spot checks compared technical-design and architecture documents for API, Agents, Orchestration, Billing, Queue, Auth, Security, Enterprise, SDK, Cache, Database and Deployment.
 
 ## Findings requiring correction
 
@@ -28,13 +28,13 @@ Reviewed `docs/DEPENDENCIES_AND_CONTRACTS.md` in all 33 canonical Aether AI repo
 
 ### F-04 — Cache consumers confused with implementation dependencies (medium)
 
-`aether-ai-cache/docs/DEPENDENCIES_AND_CONTRACTS.md` lists API, Gateway, Search, and Database as dependencies. The master matrix describes Cache as depending on a selected cache adapter and shared key/TTL contracts; consumers should depend on Cache only through a stable public contract if that package is selected.
+Cache dependency documents list API, Gateway, Search, and Database as dependencies. The master matrix describes Cache as depending on a selected cache adapter and shared key/TTL contracts; consumers should depend on Cache only through a stable public contract if that package is selected.
 
 **Correction:** Separate cache backend/low-level contract dependencies from potential consumers. Keep cache reconstructible and non-authoritative for permissions, billing, and durable run state.
 
 ### F-05 — Deployment/Platform dependency ambiguity (medium)
 
-`aether-ai-deployment/docs/DEPENDENCIES_AND_CONTRACTS.md` lists “infrastructure, platform, and services being deployed” under Direct dependencies. The master matrix defines Platform as a documentation control plane with no runtime dependencies.
+Deployment dependency documents list “infrastructure, platform, and services being deployed.” The master matrix defines Platform as a documentation control plane with no runtime dependencies.
 
 **Correction:** Describe Platform references as documentation/control-plane inputs only. Deployment consumes reviewed infrastructure modules and versioned release artifacts, not runtime code from Platform.
 
@@ -42,13 +42,37 @@ Reviewed `docs/DEPENDENCIES_AND_CONTRACTS.md` in all 33 canonical Aether AI repo
 
 `aether-ai-api/docs/TECHNICAL_DESIGN.md` says “API -> orchestration/agents for run creation/status.” The master dependency matrix explicitly says durable runs flow API → Orchestration → Agents, and API must not bypass Orchestration for durable execution.
 
-**Correction:** Change the wording to API → Orchestration for durable run create/status/cancel; Orchestration invokes Agents. Keep direct API → Gateway requests separately documented as bounded synchronous calls only.
+**Correction:** Route durable run create/status/cancel through Orchestration; Orchestration invokes Agents. Keep direct API → Gateway requests separately documented as bounded synchronous calls only.
 
 ### F-07 — Queue processing sequence may imply duplicated authorization ownership (medium)
 
-`aether-ai-queue/docs/TECHNICAL_DESIGN.md` includes a generic queue-processing step to “resolve trusted identity, tenant and resource scope” and apply authorization/ownership checks. The master architecture treats Queue as a neutral transport/envelope abstraction; authorization belongs at the resource-owning consumer boundary, while Queue validates message shape and transport-level producer/replay constraints.
+`aether-ai-queue/docs/TECHNICAL_DESIGN.md` includes a generic queue-processing step to resolve trusted identity, tenant and resource scope and apply authorization. The master architecture treats Queue as a neutral transport/envelope abstraction; authorization belongs at the resource-owning consumer boundary, while Queue validates message shape and transport-level producer/replay constraints.
 
-**Correction:** Clarify that Queue validates producer identity, envelope/schema/version, payload bounds and delivery/replay properties. The consumer owning the resource must resolve current membership and enforce resource authorization before data access or side effects. Do not let Queue become a second domain authorization owner.
+**Correction:** Clarify that Queue validates producer identity, envelope/schema/version, payload bounds and delivery/replay properties. The consumer owning the resource resolves current membership and enforces resource authorization before data access or side effects.
+
+### F-08 — API architecture lists forbidden/obsolete direct dependencies (high)
+
+`aether-ai-api/docs/ARCHITECTURE.md` lists Agents and Database among its direct dependencies. The master matrix says API must not import Agents for durable execution and may use generated/public database/domain contracts only where explicitly required, never database implementation internals. The API's dependency list also omits Orchestration, Security and Billing's public entitlement contract.
+
+**Correction:** Align the list with the master matrix: Auth, bounded synchronous Gateway, Orchestration for durable runs, Files, Knowledge, Billing entitlement contract, Security, Observability, and narrowly scoped generated/public persistence contracts only where justified. Do not list Agents as a direct durable-run dependency.
+
+### F-09 — Billing depends on API in the wrong direction (high)
+
+`aether-ai-billing/docs/ARCHITECTURE.md` lists API as a Billing dependency for product-facing plan and usage queries. The master matrix says API consumes Billing's public entitlement contract and Billing must not call API back to validate usage.
+
+**Correction:** Treat API as a consumer of Billing's public contract. Billing depends on producer usage events/contracts, database tooling, queue semantics if selected, Auth/Security and Observability; no Billing → API synchronous dependency.
+
+### F-10 — Cache architecture repeats stale consumer dependencies (medium)
+
+`aether-ai-cache/docs/ARCHITECTURE.md` lists API, Gateway, Search and Database as dependencies, contradicting the intended low-level cache adapter/key/TTL boundary.
+
+**Correction:** Separate selected cache backend and low-level contracts from potential API/Gateway/Search consumers. Database is optional only if a concrete approved need is documented.
+
+### F-11 — Deployment architecture repeats Platform dependency ambiguity (medium)
+
+`aether-ai-deployment/docs/ARCHITECTURE.md` lists “Infrastructure, platform, and services being deployed” as dependencies, which may be read as a runtime dependency on the documentation/control-plane repository.
+
+**Correction:** Name Infrastructure modules and versioned release artifacts as deployment inputs; treat Platform as documentation/governance reference only.
 
 ## Aligned boundaries observed
 
@@ -71,4 +95,4 @@ Reviewed `docs/DEPENDENCIES_AND_CONTRACTS.md` in all 33 canonical Aether AI repo
 
 ## Next audit
 
-Review remaining technical-design and repository-specification documents for identity/tenant context, run lifecycle, billing/usage event direction, SDK generation, database/queue boundaries, and deployment contracts. Keep changes documentation-only until the implementation gate is approved.
+Continue reviewing identity/tenant context, run lifecycle, billing/usage event direction, SDK generation, database/queue boundaries, and the remaining repository specifications. Keep changes documentation-only until the implementation gate is approved.
