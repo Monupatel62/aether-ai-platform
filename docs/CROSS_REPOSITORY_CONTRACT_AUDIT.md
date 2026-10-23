@@ -118,3 +118,46 @@ No application code or deployment was performed.
 ## Follow-up status — 2026-10-23
 
 The repository visibility section above is a historical snapshot from 2026-10-22 and is superseded for repository-count purposes: the latest documentation pass confirmed all 33 canonical repository names are present and added a repository specification to each. The substantive contract-maturity findings above remain open unless explicitly corrected in a later audited artifact. The new repository specs do not by themselves establish machine-testable OpenAPI, event schemas, provider conformance fixtures, or runtime correctness.
+
+
+## Follow-up contract review — 2026-10-23 (additional repositories)
+
+This section records a documentation-level review of additional repository contracts and open draft PRs. It does not establish implementation readiness or runtime correctness.
+
+### Reviewed boundaries
+
+| Area | Reviewed contract | Required invariant | Remaining verification |
+|---|---|---|---|
+| Plugins | [Dependencies and contracts](https://github.com/Monupatel62/aether-ai-plugins/blob/main/docs/DEPENDENCIES_AND_CONTRACTS.md) | Plugin manifests request capabilities but cannot grant themselves permissions; invocation binds to a specific plugin/version; Tools owns execution policy. Admin is not a direct plugin dependency. | Manifest schema, artifact provenance policy, isolation runtime, and resource limits remain unselected. |
+| Integrations | [Dependencies and contracts](https://github.com/Monupatel62/aether-ai-integrations/blob/main/docs/DEPENDENCIES_AND_CONTRACTS.md) | Credential references rather than raw secrets; verify webhook signatures and deduplicate events; reauthorize before side effects; use the shared Tools egress policy where applicable. | Provider-specific signature behavior, OAuth scope lifecycle, egress implementation and retry/idempotency tests are not verified. |
+| SDK | [Dependencies and contracts](https://github.com/Monupatel62/aether-ai-sdk/blob/main/docs/DEPENDENCIES_AND_CONTRACTS.md) | API contract is the source of truth; API must not import its own SDK; mutation retries require explicit idempotency semantics. | Language, generator, runtime targets and package registry remain open; no release pipeline is proven by the document. |
+| Evaluations | [Technical design](https://github.com/Monupatel62/aether-ai-evaluations/blob/main/docs/TECHNICAL_DESIGN.md) | Version datasets, rubrics and reports; bound cost/time/tool access; incomplete cases must not pass. | Runner, artifact storage, judge method and score aggregation require ADR/POC evidence. |
+| Observability | [Technical design](https://github.com/Monupatel62/aether-ai-observability/blob/main/docs/TECHNICAL_DESIGN.md) | Metadata-first telemetry; redact sensitive values before export; bound cardinality and buffers. | Backend, retention, sampling, audit-event durability and redaction tests remain unverified. |
+| Deployment | [Technical design](https://github.com/Monupatel62/aether-ai-deployment/blob/main/docs/TECHNICAL_DESIGN.md) | Runtime secrets, protected environments, immutable artifacts where feasible, explicit rollback and migration order. | Deployment topology, numeric SLOs, environment contract and provider integration remain open. |
+| Enterprise | [Security review](https://github.com/Monupatel62/aether-ai-enterprise/blob/main/docs/SECURITY_REVIEW.md) | SSO and privileged export paths need server-side authorization and audit; enterprise must not create a second membership authority. | ADR-0021 remains open; no membership-owner choice is implied by these docs. |
+| Infrastructure | [Security review](https://github.com/Monupatel62/aether-ai-infrastructure/blob/main/docs/SECURITY_REVIEW.md) | Default-deny public exposure, least-privilege IAM, protected state, runtime secrets, separated environments and tested restore. | Provider, state backend, secret manager and network design remain open; checklist is not infrastructure test evidence. |
+
+### Draft PR and CI status observed during this review
+
+The following proposals were found open and marked draft when inspected:
+
+- [Plugins #1 — dependency direction](https://github.com/Monupatel62/aether-ai-plugins/pull/1)
+- [Integrations #1 — connection and webhook security](https://github.com/Monupatel62/aether-ai-integrations/pull/1)
+- [SDK #1 — contract compatibility and release gates](https://github.com/Monupatel62/aether-ai-sdk/pull/1)
+- [Evaluations #1 — corpus integrity and grading contract](https://github.com/Monupatel62/aether-ai-evaluations/pull/1)
+- [Observability #1 — GenAI telemetry privacy](https://github.com/Monupatel62/aether-ai-observability/pull/1)
+- [Deployment #1](https://github.com/Monupatel62/aether-ai-deployment/pull/1) and [Deployment #2](https://github.com/Monupatel62/aether-ai-deployment/pull/2)
+- [Enterprise #1 — unresolved membership ownership](https://github.com/Monupatel62/aether-ai-enterprise/pull/1) and [Enterprise #2 — SSO/directory lifecycle security](https://github.com/Monupatel62/aether-ai-enterprise/pull/2)
+
+The GitHub connector returned no PR-triggered workflow runs for the inspected head commits of Plugins #1, Integrations #1, SDK #1, Evaluations #1, Observability #1, Deployment #2 and Enterprise #2. CI is therefore **unverified by this check**; this does not prove that no other workflows ran. No PR was merged as part of this review.
+
+### Dependency-graph audit limitation
+
+The master dependency matrix defines intended ownership and several cycle-prevention rules, but explicitly says edge types are still being normalized and does not certify package imports or runtime call graphs. The current review did not inspect all source files or execute a graph detector. Therefore:
+- do not claim the current codebase is cycle-free based on the proposed matrix alone;
+- keep package-import, synchronous-call, event/queue, generated-artifact, infrastructure and documentation edges distinct;
+- next verify actual source/package manifests against the matrix and run cycle detection on the package-import graph;
+- separately inspect synchronous request paths for loops and verify that durable runs follow API → orchestration → agents;
+- retain ADR-0021 as open until the product owner explicitly chooses the membership/role-grant authority.
+
+No runtime code, infrastructure, production configuration or deployment was changed by this audit.
