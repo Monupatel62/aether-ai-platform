@@ -18,6 +18,10 @@
 | P1 | Unknown fields | Top-level objects mostly reject additional properties, but generic nested payload/arguments objects allow arbitrary keys. | Reject unknown fields inside each concrete event/tool payload schema once those schemas are defined. |
 | P1 | Identifier semantics | IDs are plain strings with limited shape checks; tenant/resource IDs can be confused across systems if namespaces are not defined. | Define opaque ID ownership, normalization, case sensitivity, and cross-service namespace rules. |
 
+## Tool invocation follow-up — 2026-10-23
+
+Added [Tool Invocation Contract Test Plan](TOOL_INVOCATION_CONTRACT_TEST_PLAN.md) with proposed schema and execution-boundary cases for forged identity/tenant fields, resource scope, approval binding, stale authorization, fail-closed dependency errors, and idempotency conflicts. These cases are not yet executed. The P0 finding remains open until per-tool schemas/limits and conditional risk-based approval requirements are accepted, and validator plus non-production execution tests provide evidence.
+
 ## Invariants JSON Schema cannot enforce by itself
 
 - A client cannot author trusted authentication context or self-assert a tenant, role, scope, authorization decision, or approval.
