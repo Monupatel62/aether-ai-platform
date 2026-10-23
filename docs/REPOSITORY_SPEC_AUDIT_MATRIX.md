@@ -312,3 +312,11 @@ All implementation pilots remain draft/open/unmerged. Passing unit CI does not p
 - Gateway PR #2 latest reruns passed: https://github.com/Monupatel62/aether-ai-gateway/actions/runs/39929714023 and https://github.com/Monupatel62/aether-ai-gateway/actions/runs/39929704684.
 
 Provider contract remains vendor-neutral; no vendor SDK or credentials integration is selected. All pilots remain draft/open/unmerged.
+
+
+## Follow-up implementation pilot — Agents — 2026-10-23
+
+- [Agents PR #3](https://github.com/Monupatel62/aether-ai-agents/pull/3): bounded/versioned run contract, state transitions, explicit approval gate, step/token/duration budget helpers, correlated redacted events, architectural boundary checks, tests, and Node 22 CI. Runs https://github.com/Monupatel62/aether-ai-agents/actions/runs/39930248090 (queued) and https://github.com/Monupatel62/aether-ai-agents/actions/runs/39930231744 (in progress) at this update.
+- Providers PR #3 latest two CI runs passed: https://github.com/Monupatel62/aether-ai-providers/actions/runs/39929958971 and https://github.com/Monupatel62/aether-ai-providers/actions/runs/39929949325.
+
+The Agents PR is a contract pilot, not a runtime; it does not call models/tools, persist state, or independently authorize tenant membership/approval. All pilot PRs remain draft/open/unmerged.
