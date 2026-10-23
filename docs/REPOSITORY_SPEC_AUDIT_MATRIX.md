@@ -173,3 +173,18 @@ These are narrow foundation slices, not complete repositories or release-ready i
 2. Keep each pilot PR open until CI and review are complete; do not merge automatically.
 3. Continue with small, contract-first vertical slices in additional repositories, respecting the dependency matrix and open ADR-0021.
 4. Update each repository's progress only from implementation, test, and integration evidence; do not use the tree audit as a runtime completion metric.
+
+
+## Follow-up implementation pilot — cache contract — 2026-10-23
+
+A fourth implementation PR is open: [aether-ai-cache PR #5](https://github.com/Monupatel62/aether-ai-cache/pull/5).
+
+The PR adds deterministic tenant/resource-scoped cache keys, TTL bounds, a conservative cache policy helper, and tests. It does not select a cache vendor/backend and explicitly rejects marking sensitive or authoritative data cacheable. The PR remains draft and unmerged; CI was still running when checked.
+
+Updated pilot status:
+- Security PR #2: CI success.
+- Queue PR #2: CI success.
+- SDK PR #2: latest reruns CI success after correcting path traversal handling and the corresponding test assertion.
+- Cache PR #5: CI pending at time of check.
+
+All four changes remain unmerged pending review. These are foundational slices, not full repository completion. Do not count a PR as a complete repository or infer production readiness from unit CI alone.
