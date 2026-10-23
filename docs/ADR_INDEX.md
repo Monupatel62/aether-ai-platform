@@ -48,6 +48,10 @@
 5. The validator detects duplicate ADR IDs in the canonical table and invalid status labels. It does not decide architecture, approve an ADR, or infer missing decisions.
 6. ADR-0017 remains **Needs reconciliation** until an authorized owner confirms whether it is reserved or missing.
 
+## Evidence review
+
+See [ADR Evidence and Status Consistency Audit](ADR_EVIDENCE_STATUS_CONSISTENCY_AUDIT.md) for a document-by-document comparison of indexed statuses against the supporting research. It is an evidence audit only; no decisions are accepted by that review.
+
 ## Evidence boundary
 
 This index is normalized from the inspected `DECISION_LOG.md` text. ADR-0019 through ADR-0024 are marked Open because the log explicitly says they remain open. ADR-0017 has no recorded occurrence in the inspected source. No P0 blocker is closed by this index.
