@@ -167,3 +167,13 @@ Inspected recursive main-branch trees for all 33 canonical repositories. All hav
 - Opened draft documentation-only [platform PR #3](https://github.com/Monupatel62/aether-ai-platform/pull/3), adding all ten agentic risk categories, Aether component mappings, required tests, and agentic release-gate additions. Branch content was fetched back and verified.
 - Added finding F-16 to the cross-repository audit branch and updated that branch's open-PR inventory to 17 open PRs across 12 repositories.
 - ADR-0014 remains proposed; the implementation gate remains blocked. No application code, builds, security tests, or merges were performed.
+
+## 2026-10-23 — Current component contract and CI follow-up
+
+- Verified Providers PR #3 CI passed on the current head.
+- Verified Workflows PR #2 and hardening PR #3 unit-test CI passed; hardening remains a draft and its limits/entry-terminal semantics remain provisional.
+- Opened documentation alignment PRs: Orchestration #2, Tools #4, MCP #2, and Agents #4. Edited files were fetched back from their branches to check committed content.
+- Verified Agents contract-pilot PR #3's Node 22 push and pull-request CI jobs succeeded. Its code is contract-helper logic only and is not a complete runtime.
+- Added the component-level status/limitations summary to `docs/REPOSITORY_SPEC_AUDIT_MATRIX.md` on this branch.
+- Phase 0 remains in force: ADR-0021 membership/role authority, canonical nested schemas and approval binding, machine-validated OpenAPI/JSON Schema fixtures, and explicit implementation approval remain unresolved.
+- No PR was merged, no provider/sandbox/identity/runtime vendor was selected, and no production credential or deployment was added.
