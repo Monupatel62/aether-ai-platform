@@ -228,6 +228,81 @@
         "occurred_at": "2026-10-22T12:00:00Z",
         "change_id": "change-0000000001"
       }
+    },
+    {
+      "case_id": "RUN-STEP-INVALID-001",
+      "schema": "run-event.schema.json",
+      "expected_valid": false,
+      "description": "Step lifecycle events require step_id.",
+      "payload": {
+        "event_id": "evt-00000000000004",
+        "run_id": "run-000001",
+        "run_version": 2,
+        "event_type": "step.started",
+        "occurred_at": "2026-10-22T12:00:00Z",
+        "idempotency_key": "idem-key-00000002"
+      }
+    },
+    {
+      "case_id": "RUN-RETRY-INVALID-001",
+      "schema": "run-event.schema.json",
+      "expected_valid": false,
+      "description": "Retry scheduling requires attempt and not_before as well as step_id.",
+      "payload": {
+        "event_id": "evt-00000000000005",
+        "run_id": "run-000001",
+        "run_version": 3,
+        "step_id": "step-001",
+        "event_type": "step.retry_scheduled",
+        "occurred_at": "2026-10-22T12:00:00Z",
+        "idempotency_key": "idem-key-00000003"
+      }
+    },
+    {
+      "case_id": "RUN-FAILED-INVALID-001",
+      "schema": "run-event.schema.json",
+      "expected_valid": false,
+      "description": "Failed lifecycle events require a stable failure_code.",
+      "payload": {
+        "event_id": "evt-00000000000006",
+        "run_id": "run-000001",
+        "run_version": 4,
+        "event_type": "run.failed",
+        "occurred_at": "2026-10-22T12:00:00Z",
+        "idempotency_key": "idem-key-00000004"
+      }
+    },
+    {
+      "case_id": "RUN-RETRY-VALID-001",
+      "schema": "run-event.schema.json",
+      "expected_valid": true,
+      "description": "Valid retry event includes step_id, attempt and not_before.",
+      "payload": {
+        "event_id": "evt-00000000000007",
+        "run_id": "run-000001",
+        "run_version": 3,
+        "step_id": "step-001",
+        "event_type": "step.retry_scheduled",
+        "occurred_at": "2026-10-22T12:00:00Z",
+        "idempotency_key": "idem-key-00000005",
+        "attempt": 1,
+        "not_before": "2026-10-22T12:00:10Z"
+      }
+    },
+    {
+      "case_id": "RUN-FAILED-VALID-001",
+      "schema": "run-event.schema.json",
+      "expected_valid": true,
+      "description": "Valid failed run event includes a stable non-sensitive failure code.",
+      "payload": {
+        "event_id": "evt-00000000000008",
+        "run_id": "run-000001",
+        "run_version": 5,
+        "event_type": "run.failed",
+        "occurred_at": "2026-10-22T12:00:00Z",
+        "idempotency_key": "idem-key-00000006",
+        "failure_code": "PROVIDER_TIMEOUT"
+      }
     }
   ]
 }
