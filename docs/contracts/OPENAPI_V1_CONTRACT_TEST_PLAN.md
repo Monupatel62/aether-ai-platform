@@ -63,3 +63,11 @@ See [AUTHORIZATION_CONTEXT_TRUST_PROFILE.md](AUTHORIZATION_CONTEXT_TRUST_PROFILE
 ## Draft JSON Schema conditional cases added — 2026-10-23
 
 The shared fixture file now contains 19 author-defined cases. Five added cases cover required `step_id` on step events, `attempt` and `not_before` on retry scheduling, and `failure_code` on failed run/step events. These cases are authored but not executed. The event envelope payload and tool argument objects also have a `maxProperties: 100` draft limit; transport byte and nesting-depth limits remain separate decisions.
+
+
+## 2026-10-23 follow-up check
+
+- Parsed the seven contract schema JSON files, the fixture JSON, and the package graph as JSON: all nine parsed successfully.
+- Fixture integrity check: 19 unique case IDs; all fixture schema references resolve to one of the seven contract schemas.
+- Manually evaluated the five newly added run-event conditional cases against the draft conditional rules: all five expected outcomes matched.
+- This was a focused JavaScript check of JSON syntax, fixture references, and the new conditions only. It was not a JSON Schema Draft 2020-12 validator run, did not assert `format`, and did not validate OpenAPI YAML or runtime behavior.
