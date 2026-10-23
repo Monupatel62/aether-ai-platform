@@ -188,3 +188,19 @@ Updated pilot status:
 - Cache PR #5: CI pending at time of check.
 
 All four changes remain unmerged pending review. These are foundational slices, not full repository completion. Do not count a PR as a complete repository or infer production readiness from unit CI alone.
+
+
+## Follow-up implementation pilot — observability — 2026-10-23
+
+A fifth implementation PR is open: [aether-ai-observability PR #2](https://github.com/Monupatel62/aether-ai-observability/pull/2).
+
+The PR introduces metadata-only telemetry event creation, default exclusion of sensitive attribute names, bounded recursive redaction, correlation IDs, retention-bound validation, unit tests, and CI. No exporter, backend, retention store, or dashboard vendor has been selected. The PR remains draft and unmerged; CI was in progress/queued when checked.
+
+Updated pilot CI status:
+- Security PR #2: success.
+- Queue PR #2: success.
+- SDK PR #2: success on latest reruns.
+- Cache PR #5: success.
+- Observability PR #2: pending at time of check.
+
+These foundational slices do not establish full repository completion or production readiness. Keep all PRs unmerged pending review and further integration, security, license, and operational validation.
