@@ -135,3 +135,40 @@ The Database repository specification and architecture mission list a “tenancy
 **Correction:** Clarify that Database owns low-level tenant-isolation patterns and persistence guidance only. It must not become the canonical membership/role-grant authority unless an accepted ADR explicitly assigns that responsibility. Preserve domain-owned table semantics and resource-boundary authorization.
 
 **Status:** A documentation-only correction is proposed in [Database PR #1](https://github.com/Monupatel62/aether-ai-database/pull/1). The edited architecture document was fetched back from the branch and the narrowed mission and explicit ownership boundary were verified. The PR remains draft and unmerged.
+
+## 2026-10-23 repository and open-PR inventory
+
+### Canonical repository inventory
+
+A fresh connected-repository search returned all **33/33 canonical Aether AI repositories**, each with `main` as its default branch. No additional repository is proposed by this audit.
+
+### Open documentation PR inventory
+
+A fresh open-PR search found **16 open PRs across 12 repositories**:
+
+| Repository | Open PRs |
+|---|---|
+| `aether-ai-platform` | [#1 cross-repository audit](https://github.com/Monupatel62/aether-ai-platform/pull/1); [#2 billing event-edge direction](https://github.com/Monupatel62/aether-ai-platform/pull/2) |
+| `aether-ai-api` | [#1 durable-run routing](https://github.com/Monupatel62/aether-ai-api/pull/1); [#2 architecture dependency alignment](https://github.com/Monupatel62/aether-ai-api/pull/2) |
+| `aether-ai-agents` | [#1 remove Orchestration back-dependency](https://github.com/Monupatel62/aether-ai-agents/pull/1) |
+| `aether-ai-tools` | [#1 Tools/MCP dependency direction](https://github.com/Monupatel62/aether-ai-tools/pull/1) |
+| `aether-ai-files` | [#1 Files/API dependency direction](https://github.com/Monupatel62/aether-ai-files/pull/1) |
+| `aether-ai-auth` | [#1 Auth dependency direction](https://github.com/Monupatel62/aether-ai-auth/pull/1) |
+| `aether-ai-billing` | [#1 Billing/API dependency direction](https://github.com/Monupatel62/aether-ai-billing/pull/1) |
+| `aether-ai-deployment` | [#1 deployment control-plane boundary](https://github.com/Monupatel62/aether-ai-deployment/pull/1); [#2 architecture boundary](https://github.com/Monupatel62/aether-ai-deployment/pull/2) |
+| `aether-ai-database` | [#1 tenant-ownership boundary](https://github.com/Monupatel62/aether-ai-database/pull/1) |
+| `aether-ai-queue` | [#1 queue/authorization boundary](https://github.com/Monupatel62/aether-ai-queue/pull/1) |
+| `aether-ai-cache` | [#1 cache dependency clarification](https://github.com/Monupatel62/aether-ai-cache/pull/1); [#2 architecture dependency alignment](https://github.com/Monupatel62/aether-ai-cache/pull/2) |
+| `aether-ai-plugins` | [#1 plugin dependency direction](https://github.com/Monupatel62/aether-ai-plugins/pull/1) |
+
+These are open-PR search results, not evidence of merge or approval. Treat proposed corrections as branch-only until individually reviewed and merged by an authorized maintainer. The default branches still retain any affected old wording until merge; this is especially relevant to API architecture, Files architecture, Plugins architecture, Database ownership wording, and the Billing event-edge register.
+
+### Newly verified branch corrections
+
+- [Files PR #1](https://github.com/Monupatel62/aether-ai-files/pull/1): fetched back `docs/ARCHITECTURE.md`; it now explicitly states Files does not depend on API and API consumes Files' public lifecycle/authorization contract.
+- [Plugins PR #1](https://github.com/Monupatel62/aether-ai-plugins/pull/1): fetched back `docs/ARCHITECTURE.md`; Admin is explicitly not a direct dependency and operator workflows use the owning API/domain contract.
+- [Database PR #1](https://github.com/Monupatel62/aether-ai-database/pull/1): fetched back both `docs/ARCHITECTURE.md` and `docs/DEPENDENCIES_AND_CONTRACTS.md`; Database provides tenant-isolation primitives/guidance only and does not establish canonical membership or role-grant ownership.
+
+### Gate decision
+
+**Implementation gate remains BLOCKED.** The P0 blockers in `IMPLEMENTATION_GATE_BLOCKERS.md` still require explicit accepted decisions or documented, reviewed deferrals. ADR-0021 remains open for canonical tenant/workspace membership and role-grant ownership. This audit did not run application builds/tests, did not merge any PR, and does not claim runtime validation.
