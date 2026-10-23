@@ -5,7 +5,16 @@
   "description": "Draft invocation envelope. The server must re-authorize the principal, resource and action at execution time; approval references must be validated and bound to the exact action and arguments.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["invocation_id", "run_id", "tool_id", "tool_version", "arguments", "requested_by", "requested_at", "idempotency_key"],
+  "required": [
+    "invocation_id",
+    "run_id",
+    "tool_id",
+    "tool_version",
+    "arguments",
+    "requested_by",
+    "requested_at",
+    "idempotency_key"
+  ],
   "properties": {
     "invocation_id": {
       "type": "string",
@@ -27,7 +36,9 @@
       "maxLength": 64
     },
     "arguments": {
-      "type": "object"
+      "type": "object",
+      "maxProperties": 100,
+      "description": "Arguments must also validate against the registered tool-version input schema. This property-count limit does not replace transport byte/depth limits."
     },
     "requested_by": {
       "type": "string",
@@ -49,11 +60,27 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["resource_type", "resource_id", "action"],
+        "required": [
+          "resource_type",
+          "resource_id",
+          "action"
+        ],
         "properties": {
-          "resource_type": {"type": "string", "maxLength": 80},
-          "resource_id": {"type": "string", "maxLength": 128},
-          "action": {"type": "string", "maxLength": 128}
+          "resource_type": {
+            "type": "string",
+            "maxLength": 80,
+            "minLength": 1
+          },
+          "resource_id": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1
+          },
+          "action": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1
+          }
         }
       }
     },
