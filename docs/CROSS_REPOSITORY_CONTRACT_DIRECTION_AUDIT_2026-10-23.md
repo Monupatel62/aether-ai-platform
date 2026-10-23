@@ -144,11 +144,11 @@ A fresh connected-repository search returned all **33/33 canonical Aether AI rep
 
 ### Open documentation PR inventory
 
-A fresh open-PR search found **16 open PRs across 12 repositories**:
+A fresh open-PR search found **17 open PRs across 12 repositories** after adding the agentic-security mapping PR:
 
 | Repository | Open PRs |
 |---|---|
-| `aether-ai-platform` | [#1 cross-repository audit](https://github.com/Monupatel62/aether-ai-platform/pull/1); [#2 billing event-edge direction](https://github.com/Monupatel62/aether-ai-platform/pull/2) |
+| `aether-ai-platform` | [#1 cross-repository audit](https://github.com/Monupatel62/aether-ai-platform/pull/1); [#2 billing event-edge direction](https://github.com/Monupatel62/aether-ai-platform/pull/2); [#3 agentic security mapping](https://github.com/Monupatel62/aether-ai-platform/pull/3) |
 | `aether-ai-api` | [#1 durable-run routing](https://github.com/Monupatel62/aether-ai-api/pull/1); [#2 architecture dependency alignment](https://github.com/Monupatel62/aether-ai-api/pull/2) |
 | `aether-ai-agents` | [#1 remove Orchestration back-dependency](https://github.com/Monupatel62/aether-ai-agents/pull/1) |
 | `aether-ai-tools` | [#1 Tools/MCP dependency direction](https://github.com/Monupatel62/aether-ai-tools/pull/1) |
@@ -172,3 +172,12 @@ These are open-PR search results, not evidence of merge or approval. Treat propo
 ### Gate decision
 
 **Implementation gate remains BLOCKED.** The P0 blockers in `IMPLEMENTATION_GATE_BLOCKERS.md` still require explicit accepted decisions or documented, reviewed deferrals. ADR-0021 remains open for canonical tenant/workspace membership and role-grant ownership. This audit did not run application builds/tests, did not merge any PR, and does not claim runtime validation.
+
+
+### F-16 — Agentic-specific threat mapping was not operationalized (medium)
+
+The security threat model mapped the OWASP GenAI LLM Top 10 2026, but only referenced the OWASP Top 10 for Agentic Applications and Agent Control Standard as further reading. Aether includes tool-using agents, orchestration, durable memory, queue messages, and potential inter-agent workflows; without an explicit agentic risk-to-component/test map, goal hijack, identity/privilege abuse, unexpected code execution, inter-agent message spoofing, cascading failures, and approval binding could be missed by the implementation test plan.
+
+**Correction proposed:** Add a separate mapping for all ten OWASP Top 10 for Agentic Applications 2026 risks, component ownership, required tests, and agentic release-gate additions. Keep this as a design checklist only; it does not establish control implementation or test completion.
+
+**Status:** Proposed in [platform PR #3](https://github.com/Monupatel62/aether-ai-platform/pull/3), a draft documentation-only PR. The branch version of `docs/SECURITY_THREAT_MODEL.md` was fetched back and its new mapping verified. ADR-0014 remains proposed; no implementation or security tests were run.
