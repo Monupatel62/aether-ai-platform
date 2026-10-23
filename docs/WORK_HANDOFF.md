@@ -318,3 +318,5 @@ All ten isolated implementation PRs listed above pass the Node.js 22 dependency-
 - Tool manifest validator/fail-closed preflight: https://github.com/Monupatel62/aether-ai-tools/pull/6 — Node.js 22 dependency audit, typecheck, unit tests and build passed. No executor/sandbox; tool-policy ADR remains a release blocker.
 
 - MCP JSON-RPC request/response validator: https://github.com/Monupatel62/aether-ai-mcp/pull/4 — Node.js 22 dependency audit, typecheck, unit tests and build passed. No transport or server trust implementation.
+
+- Plugin manifest/version compatibility validator: https://github.com/Monupatel62/aether-ai-plugins/pull/5 — Node.js 22 CI pending. Requested capabilities are not grants; artifact verification and isolation are not implemented.
