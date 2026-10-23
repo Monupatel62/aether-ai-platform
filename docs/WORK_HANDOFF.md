@@ -330,3 +330,5 @@ The ten initial implementation PRs listed above and subsequent foundations recor
 - Bounded agent-run policy validator: https://github.com/Monupatel62/aether-ai-agents/pull/6 — Node.js 22 CI pending. No runtime enforcement, durable run state, or gateway/tool integration.
 
 - Bounded agent-run policy validator: https://github.com/Monupatel62/aether-ai-agents/pull/6 — Node.js 22 dependency audit, typecheck, unit tests and build passed. Static metadata validation only; no runtime budget enforcement or durable run lifecycle.
+
+- Pure orchestration run-state transition validator: https://github.com/Monupatel62/aether-ai-orchestration/pull/4 — Node.js 22 CI is running; result not yet confirmed. It does not provide durable state, leases, crash recovery, or exactly-once side effects.
