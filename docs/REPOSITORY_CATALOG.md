@@ -98,6 +98,8 @@ This is a proposed logical graph, not a claim that all 33 repositories must beco
 
 - [Master architecture](MASTER_ARCHITECTURE.md)
 - [Dependency matrix for all 33 repositories](DEPENDENCY_MATRIX.md)
+- [Machine-readable repository manifest](repository-manifest.json)
+- [Cross-repository specification discrepancy register](CROSS_REPOSITORY_SPECIFICATION_DISCREPANCY_REGISTER.md)
 - [Structural audit matrix for all 33 specs](REPOSITORY_SPEC_AUDIT_MATRIX.md)
 - [Implementation status audit — manifest and core entry-point checks](IMPLEMENTATION_STATUS_AUDIT.md)
 - [Project-wide implementation roadmap](IMPLEMENTATION_ROADMAP.md)
