@@ -63,8 +63,8 @@ Legend: **A** = allowed within authorized tenant/resource scope; **O** = own res
 | Update/delete workspace | A | A | O/G | — | G | G | — |
 | Access assigned files | A | A | G/O | R/G | G | G | — |
 | Export tenant content | J | J | O/G with limits | — | G with limits | G with limits | — |
-| Read/run own conversations | A | A | O/G | R/G | G | G | — |
-| Access AI memory | A | A | O/G | R/G | G | G | — |
+| Read/run own conversations | O/G | O/G | O/G | R/G | G | G | — |
+| Access AI memory | O/G | O/G | O/G | R/G | G | G | — |
 | Create/run agents/workflows | A | A | A/G | — | G | G | — |
 | Configure tools/MCP connections | A | A/G | — | — | G if assigned | G if assigned | platform scope only |
 | Configure provider/model policy | A | A/G | — | — | G if assigned | — | platform scope only |
@@ -77,6 +77,8 @@ Legend: **A** = allowed within authorized tenant/resource scope; **O** = own res
 
 * Ownership transfer should require a dedicated flow, re-authentication and audit; no role may grant itself ownership.  
 ** Workspace creation by Members is a configurable tenant policy and should default to denied until explicitly enabled.  
+**Conversation and memory privacy baseline:** Tenant Owner and Tenant Admin status does not by itself grant access to another person's conversation or AI memory. Access is limited to the principal's own content or content explicitly shared/granted through an authorized resource-level policy. Any broader administrative or exceptional access requires a separately approved product policy and auditable workflow; absent that decision, deny.
+
 These broad roles are not enough for resource-level security. Ownership, sharing, membership status, resource state, data classification and explicit grants can further restrict access.
 
 ## 5. Mandatory invariants
