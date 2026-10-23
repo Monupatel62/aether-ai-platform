@@ -25,6 +25,10 @@
 | Health semantics | One public `/v1/health` route combines health/readiness concepts. | Decide whether liveness and readiness are separate and which are exposed publicly; do not leak dependency details in readiness output. |
 | Authentication scheme | Bearer/JWT is a placeholder without issuer, audience, claim, key rotation, session, or workload identity rules. | Resolve identity ADRs and document token validation and service-to-service authentication before treating security requirements as complete. |
 
+## Run cancellation and idempotency follow-up — 2026-10-23
+
+Added [Run Cancellation and Idempotency Test Plan](RUN_CANCELLATION_IDEMPOTENCY_TEST_PLAN.md), a proposed set of cases for duplicate creates, payload fingerprint conflicts, concurrent requests, cancellation races, stale workers/events, crash recovery, execution-time reauthorization, result retention, and safe errors. Key scope/retention, state-machine, fencing, and external-side-effect recovery decisions remain open. No OpenAPI validator or runtime tests were run.
+
 ## Review decision log
 
 - **Do not approve as-is.** The message-role defect has been corrected in the draft, but tenant resolution, agent input validation, run output authorization/retention, cancellation semantics, identity rules, limits, and contract validation remain unresolved.
