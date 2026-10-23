@@ -44,3 +44,11 @@ Before approval, assign an owner and consumer list to every contract; decide ten
 - Positive/negative fixtures: 19 author-defined cases added in `contract-fixtures.v1.json`; not executed or validator-verified.
 - Runtime enforcement and security tests: not run.
 - Production contract approval: none.
+
+
+## 2026-10-23 follow-up check
+
+- Parsed the seven contract schema JSON files, the fixture JSON, and the package graph as JSON: all nine parsed successfully.
+- Fixture integrity check: 19 unique case IDs; all fixture schema references resolve to one of the seven contract schemas.
+- Manually evaluated the five newly added run-event conditional cases against the draft conditional rules: all five expected outcomes matched.
+- This was a focused JavaScript check of JSON syntax, fixture references, and the new conditions only. It was not a JSON Schema Draft 2020-12 validator run, did not assert `format`, and did not validate OpenAPI YAML or runtime behavior.
