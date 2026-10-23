@@ -112,3 +112,10 @@ The following expected paths were also checked and not found in the first eight 
 - Removed unrelated project/package assumptions from affected READMEs, project specifications, work logs, research/license notes, provider/agent/tool/MCP architecture documents, and implementation plans.
 - Re-fetched the affected files and scanned the standard documentation paths across the repositories. The inspected README and specification files for all 33 repositories returned zero matches for the unrelated-project/package markers. Additional technical-design, architecture, dependency, implementation, research, work-log, security, and engineering documents inspected in this pass also returned zero matches after cleanup.
 - This is a text/documentation audit, not a claim that external links are reachable or that software has been implemented.
+
+
+## Contract schema hardening — 2026-10-23
+
+- Updated event-envelope and tool-invocation schemas with 100-property bounds for generic payload/argument objects.
+- Added conditional run-event requirements and five related fixture cases; the fixture collection now contains 19 author-defined cases.
+- These are draft contract edits only. No JSON Schema validator or runtime test was run, so the validation blocker remains open.
