@@ -159,3 +159,11 @@ Inspected recursive main-branch trees for all 33 canonical repositories. All hav
 - Important: these corrections remain branch-only until their PRs are reviewed and merged. Do not describe default-branch architecture as fully corrected yet.
 - Implementation gate remains blocked by P0 decisions/contracts, including ADR-0008 identity/session model, ADR-0021 canonical tenant/workspace membership and role-grant ownership, authorization-context trust, resource authorization, agent/tool schemas, run lifecycle/retention, and validator-backed contract evidence.
 - No PRs were merged. No application code, builds, or implementation tests were run.
+
+## 2026-10-23 — Agentic security mapping
+
+- Reviewed `docs/SECURITY_THREAT_MODEL.md` against the official OWASP Top 10 for Agentic Applications 2026 publication: https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/.
+- Found that the LLM Top 10 had an Aether mapping, while the agentic Top 10 was only referenced, not mapped to component boundaries and required tests.
+- Opened draft documentation-only [platform PR #3](https://github.com/Monupatel62/aether-ai-platform/pull/3), adding all ten agentic risk categories, Aether component mappings, required tests, and agentic release-gate additions. Branch content was fetched back and verified.
+- Added finding F-16 to the cross-repository audit branch and updated that branch's open-PR inventory to 17 open PRs across 12 repositories.
+- ADR-0014 remains proposed; the implementation gate remains blocked. No application code, builds, security tests, or merges were performed.
