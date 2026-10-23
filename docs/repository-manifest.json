@@ -1,0 +1,366 @@
+{
+  "schemaVersion": "1.0",
+  "updated": "2026-10-23",
+  "purpose": "Machine-readable inventory transcribed from the proposed dependency matrix. Edges are candidate relationships, not approved deployment topology.",
+  "edgeTypeVocabulary": [
+    "package_import",
+    "sync_api",
+    "async_event",
+    "generated_artifact",
+    "infrastructure",
+    "documentation_only",
+    "unclassified"
+  ],
+  "repositories": [
+    {
+      "id": "aether-ai-platform",
+      "repository": "Monupatel62/aether-ai-platform",
+      "dependencies": [],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-web",
+      "repository": "Monupatel62/aether-ai-web",
+      "dependencies": [
+        "aether-ai-api",
+        "aether-ai-ui-components",
+        "aether-ai-sdk"
+      ],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-api",
+      "repository": "Monupatel62/aether-ai-api",
+      "dependencies": [
+        "aether-ai-auth",
+        "aether-ai-gateway",
+        "aether-ai-orchestration",
+        "aether-ai-files",
+        "aether-ai-knowledge",
+        "aether-ai-billing",
+        "aether-ai-security",
+        "aether-ai-observability"
+      ],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-gateway",
+      "repository": "Monupatel62/aether-ai-gateway",
+      "dependencies": [
+        "aether-ai-providers",
+        "aether-ai-security",
+        "aether-ai-observability"
+      ],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-providers",
+      "repository": "Monupatel62/aether-ai-providers",
+      "dependencies": [],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-agents",
+      "repository": "Monupatel62/aether-ai-agents",
+      "dependencies": [
+        "aether-ai-gateway",
+        "aether-ai-tools",
+        "aether-ai-memory",
+        "aether-ai-security",
+        "aether-ai-observability"
+      ],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-workflows",
+      "repository": "Monupatel62/aether-ai-workflows",
+      "dependencies": [],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-orchestration",
+      "repository": "Monupatel62/aether-ai-orchestration",
+      "dependencies": [
+        "aether-ai-workflows",
+        "aether-ai-agents",
+        "aether-ai-queue",
+        "aether-ai-database",
+        "aether-ai-security",
+        "aether-ai-observability"
+      ],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-tools",
+      "repository": "Monupatel62/aether-ai-tools",
+      "dependencies": [
+        "aether-ai-security",
+        "aether-ai-observability"
+      ],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-mcp",
+      "repository": "Monupatel62/aether-ai-mcp",
+      "dependencies": [
+        "aether-ai-tools",
+        "aether-ai-security",
+        "aether-ai-observability"
+      ],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-memory",
+      "repository": "Monupatel62/aether-ai-memory",
+      "dependencies": [
+        "aether-ai-database",
+        "aether-ai-security"
+      ],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-rag",
+      "repository": "Monupatel62/aether-ai-rag",
+      "dependencies": [
+        "aether-ai-files",
+        "aether-ai-knowledge",
+        "aether-ai-search",
+        "aether-ai-providers",
+        "aether-ai-security"
+      ],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-files",
+      "repository": "Monupatel62/aether-ai-files",
+      "dependencies": [
+        "aether-ai-database",
+        "aether-ai-security",
+        "aether-ai-observability"
+      ],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-knowledge",
+      "repository": "Monupatel62/aether-ai-knowledge",
+      "dependencies": [
+        "aether-ai-files",
+        "aether-ai-database",
+        "aether-ai-auth",
+        "aether-ai-security"
+      ],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-auth",
+      "repository": "Monupatel62/aether-ai-auth",
+      "dependencies": [
+        "aether-ai-security"
+      ],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-security",
+      "repository": "Monupatel62/aether-ai-security",
+      "dependencies": [],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-admin",
+      "repository": "Monupatel62/aether-ai-admin",
+      "dependencies": [
+        "aether-ai-api",
+        "aether-ai-auth",
+        "aether-ai-ui-components"
+      ],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-billing",
+      "repository": "Monupatel62/aether-ai-billing",
+      "dependencies": [],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-sdk",
+      "repository": "Monupatel62/aether-ai-sdk",
+      "dependencies": [
+        "aether-ai-api"
+      ],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-evaluations",
+      "repository": "Monupatel62/aether-ai-evaluations",
+      "dependencies": [
+        "aether-ai-agents",
+        "aether-ai-gateway",
+        "aether-ai-testing",
+        "aether-ai-observability"
+      ],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-observability",
+      "repository": "Monupatel62/aether-ai-observability",
+      "dependencies": [],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-deployment",
+      "repository": "Monupatel62/aether-ai-deployment",
+      "dependencies": [
+        "aether-ai-infrastructure"
+      ],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-docs",
+      "repository": "Monupatel62/aether-ai-docs",
+      "dependencies": [],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-database",
+      "repository": "Monupatel62/aether-ai-database",
+      "dependencies": [],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-queue",
+      "repository": "Monupatel62/aether-ai-queue",
+      "dependencies": [],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-cache",
+      "repository": "Monupatel62/aether-ai-cache",
+      "dependencies": [],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-search",
+      "repository": "Monupatel62/aether-ai-search",
+      "dependencies": [
+        "aether-ai-security"
+      ],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-plugins",
+      "repository": "Monupatel62/aether-ai-plugins",
+      "dependencies": [
+        "aether-ai-tools",
+        "aether-ai-auth",
+        "aether-ai-security"
+      ],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-integrations",
+      "repository": "Monupatel62/aether-ai-integrations",
+      "dependencies": [
+        "aether-ai-tools",
+        "aether-ai-auth",
+        "aether-ai-security",
+        "aether-ai-mcp"
+      ],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-testing",
+      "repository": "Monupatel62/aether-ai-testing",
+      "dependencies": [],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-ui-components",
+      "repository": "Monupatel62/aether-ai-ui-components",
+      "dependencies": [],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-enterprise",
+      "repository": "Monupatel62/aether-ai-enterprise",
+      "dependencies": [
+        "aether-ai-auth",
+        "aether-ai-security",
+        "aether-ai-billing",
+        "aether-ai-observability"
+      ],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    },
+    {
+      "id": "aether-ai-infrastructure",
+      "repository": "Monupatel62/aether-ai-infrastructure",
+      "dependencies": [],
+      "edgeTypes": "unclassified",
+      "owner": "TBD",
+      "status": "documentation-only"
+    }
+  ]
+}
