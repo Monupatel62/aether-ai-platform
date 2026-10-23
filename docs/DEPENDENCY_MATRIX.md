@@ -81,3 +81,8 @@ Aether AI is standalone; external dependencies require an explicit architecture 
 - **Billing/usage:** API/gateway publish trusted, versioned usage events; billing consumes them. API may read an entitlement contract, but billing must not synchronously call back into API to validate usage. Use queue/event contracts to avoid a service-call cycle.
 - **Plugins/admin:** the admin UI consumes plugin registry APIs; the plugin registry must not depend on the admin UI.
 - **Enterprise/admin:** enterprise domain contracts are consumed by admin/API. The enterprise domain must not depend on the admin frontend.
+
+
+## Focused ownership consistency follow-up — 2026-10-23
+
+See [Cross-Repository Ownership Consistency Follow-up](CROSS_REPOSITORY_OWNERSHIP_CONSISTENCY_FOLLOWUP.md) for a focused comparison of the current matrix/register against ten high-risk repository specifications. It records aligned ownership statements, remaining decision gaps, and verification limits. The matrix remains proposed and no runtime dependency graph has been validated.
