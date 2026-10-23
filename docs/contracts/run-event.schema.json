@@ -5,22 +5,146 @@
   "description": "Draft event payload for durable agent run lifecycle. Consumers must deduplicate event_id and verify current authorization before exposing run details or executing side effects.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["event_id", "run_id", "run_version", "event_type", "occurred_at", "idempotency_key"],
+  "required": [
+    "event_id",
+    "run_id",
+    "run_version",
+    "event_type",
+    "occurred_at",
+    "idempotency_key"
+  ],
   "properties": {
-    "event_id": {"type": "string", "minLength": 16, "maxLength": 128},
-    "run_id": {"type": "string", "minLength": 8, "maxLength": 128},
-    "run_version": {"type": "integer", "minimum": 1},
-    "step_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "event_id": {
+      "type": "string",
+      "minLength": 16,
+      "maxLength": 128
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128
+    },
+    "run_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "step_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "description": "Required for step.* lifecycle events."
+    },
     "event_type": {
       "type": "string",
-      "enum": ["run.queued", "run.started", "run.waiting_approval", "run.cancellation_requested", "run.cancelled", "run.succeeded", "run.failed", "step.started", "step.retry_scheduled", "step.succeeded", "step.failed"]
+      "enum": [
+        "run.queued",
+        "run.started",
+        "run.waiting_approval",
+        "run.cancellation_requested",
+        "run.cancelled",
+        "run.succeeded",
+        "run.failed",
+        "step.started",
+        "step.retry_scheduled",
+        "step.succeeded",
+        "step.failed"
+      ]
     },
-    "occurred_at": {"type": "string", "format": "date-time"},
-    "idempotency_key": {"type": "string", "minLength": 16, "maxLength": 200},
-    "tenant_id": {"type": "string", "minLength": 1, "maxLength": 128},
-    "requested_by": {"type": "string", "minLength": 1, "maxLength": 128},
-    "attempt": {"type": "integer", "minimum": 0},
-    "not_before": {"type": "string", "format": "date-time"},
-    "failure_code": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]{2,63}$"}
-  }
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 16,
+      "maxLength": 200
+    },
+    "tenant_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "requested_by": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "attempt": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Required for step.retry_scheduled; zero-based attempt index."
+    },
+    "not_before": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Required for step.retry_scheduled."
+    },
+    "failure_code": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_]{2,63}$",
+      "description": "Required for run.failed and step.failed; use a stable non-sensitive code, never raw error text."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "enum": [
+              "step.started",
+              "step.retry_scheduled",
+              "step.succeeded",
+              "step.failed"
+            ]
+          }
+        },
+        "required": [
+          "event_type"
+        ]
+      },
+      "then": {
+        "required": [
+          "step_id"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "const": "step.retry_scheduled"
+          }
+        },
+        "required": [
+          "event_type"
+        ]
+      },
+      "then": {
+        "required": [
+          "attempt",
+          "not_before"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "enum": [
+              "run.failed",
+              "step.failed"
+            ]
+          }
+        },
+        "required": [
+          "event_type"
+        ]
+      },
+      "then": {
+        "required": [
+          "failure_code"
+        ]
+      }
+    }
+  ]
 }
