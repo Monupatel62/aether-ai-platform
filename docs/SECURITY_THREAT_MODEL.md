@@ -94,3 +94,34 @@ The official 2026 document uses the following category names. This mapping is an
 | **LLM10 Improper Output Handling** | web, API, agents, tools, providers, MCP, integrations | Validate structured outputs in trusted code; encode for sink; avoid shell/SQL concatenation; constrain paths/network; test XSS, SSRF, command/path injection and schema-valid malicious payloads where relevant. |
 
 Official source: [OWASP GenAI LLM Top 10 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/). OWASP's 2026 document also points to the [Top 10 for Agentic Applications](https://genai.owasp.org/initiatives/top-10-for-llm-and-genai/) and the [Agent Control Standard](https://genai.owasp.org/resource/agent-control-standard-acs/). Because Aether includes tool-using agents, pair the LLM Top 10 with agentic-specific guidance rather than treating the LLM list as sufficient by itself.
+
+## 9. OWASP Top 10 for Agentic Applications — 2026 mapping
+
+The LLM Top 10 above does not fully cover risks created by agents that plan, delegate, call tools, persist memory, or act across workflows. Use this second mapping alongside the LLM list. This is a design and test checklist only; no control is considered implemented or verified by documenting it.
+
+Official source: [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/).
+
+| OWASP agentic risk | Aether components most affected | Required Aether design/test focus |
+|---|---|---|
+| **ASI01 — Agent Goal Hijack** | web, agents, RAG, knowledge, memory, workflows | Treat instructions in user/retrieved/tool content as untrusted; test goal redirection, hidden instructions, and multi-step prompt injection; ensure policy and permissions remain independent of agent goals. |
+| **ASI02 — Tool Misuse & Exploitation** | tools, MCP, plugins, integrations, agents | Use typed allowlisted tools, narrow capabilities, sink-safe inputs, output limits, and per-action authorization; test malicious arguments, tool chaining, SSRF/path traversal, and misuse of legitimate tools. |
+| **ASI03 — Identity & Privilege Abuse** | auth, security, API, gateway, tools, enterprise | Bind every action to a verified user or workload principal and current authorization context; prohibit privilege inheritance by default; test token theft/replay, confused-deputy paths, scope escalation, revocation, and cross-tenant access. |
+| **ASI04 — Agentic Supply Chain Vulnerabilities** | providers, MCP, plugins, integrations, deployment, infrastructure | Inventory and pin SDKs/actions/tools; validate provenance and versions; review server/tool metadata and capabilities; constrain credentials; test changed schemas, compromised dependencies, and untrusted tool discovery. |
+| **ASI05 — Unexpected Code Execution (RCE)** | tools, agents, API, deployment, infrastructure | Do not pass model output into shells/interpreters as trusted code; isolate execution, restrict filesystem/network, apply resource ceilings, and require reviewed approval for privileged execution; test command injection and sandbox escape boundaries. |
+| **ASI06 — Memory & Context Poisoning** | memory, knowledge, RAG, search, agents | Define who may write/modify durable memory, preserve provenance and tenant ownership, support deletion/versioning, and re-authorize reads; test poisoned memories, stale permissions, persistence across sessions, and deletion propagation. |
+| **ASI07 — Insecure Inter-Agent Communication** | agents, orchestration, workflows, queue, API | Authenticate sender/workload, validate versioned message schemas, bind audience/run/tenant, prevent replay, and re-check authorization at the receiving side; test spoofed, replayed, reordered, and cross-tenant messages. |
+| **ASI08 — Cascading Failures** | orchestration, queue, agents, gateway, billing, observability | Bound retries, fan-out, concurrency, time, steps, and cost; define circuit breakers, idempotency, backpressure, terminal-state invariants, and compensating/recovery behavior; test retry storms and partial-failure propagation. |
+| **ASI09 — Human-Agent Trust Exploitation** | web, admin, agents, tools, workflows | Show action intent, target, scope, and consequences before approval; bind approval to the exact action/payload and expiry; do not treat a generic click or model-generated rationale as authorization; test misleading summaries and approval replay. |
+| **ASI10 — Rogue Agents** | agents, orchestration, tools, observability, security | Enforce runtime policy outside the model, least privilege, bounded execution, independent monitoring, kill/cancel controls, and attributable audit events; test policy evasion, repeated unauthorized proposals, cancellation races, and detection/containment. |
+
+### Agentic release-gate additions
+
+Before enabling tool-using or multi-agent execution, the reviewed test plan must include:
+- adversarial goal-hijack and poisoned-memory fixtures across multiple turns;
+- per-action identity, authorization, approval binding, and revocation checks;
+- authenticated, versioned inter-agent/queue envelopes with replay and ordering tests;
+- execution isolation and explicit filesystem/network boundaries for code-capable tools;
+- bounded fan-out/retries/cost with idempotent side effects and failure recovery;
+- auditability that records principal, tool, target, decision, and outcome without logging secrets or raw sensitive content by default.
+
+These are required future validations, not claims that tests have run. ADR-0014 remains proposed until the security baseline and its ownership/acceptance criteria are explicitly approved.
