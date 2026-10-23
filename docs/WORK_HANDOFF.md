@@ -337,4 +337,4 @@ The ten initial implementation PRs listed above and subsequent foundations recor
 
 - Knowledge source metadata validator: https://github.com/Monupatel62/aether-ai-knowledge/pull/3 — Node.js 22 dependency audit, typecheck, unit tests and build passed. Metadata only; source ACL enforcement and index tombstone propagation remain unimplemented.
 
-- Usage event metadata validator: https://github.com/Monupatel62/aether-ai-billing/pull/3 — Node.js 22 CI queued/running at last check. No ledger, deduplication, pricing, quota enforcement, or payment integration.
+- Usage event metadata validator: https://github.com/Monupatel62/aether-ai-billing/pull/3 — Node.js 22 dependency audit, typecheck, unit tests and build passed. No ledger, deduplication, pricing, quota enforcement, or payment integration.
