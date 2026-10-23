@@ -331,6 +331,6 @@ The ten initial implementation PRs listed above and subsequent foundations recor
 
 - Bounded agent-run policy validator: https://github.com/Monupatel62/aether-ai-agents/pull/6 — Node.js 22 dependency audit, typecheck, unit tests and build passed. Static metadata validation only; no runtime budget enforcement or durable run lifecycle.
 
-- Pure orchestration run-state transition validator: https://github.com/Monupatel62/aether-ai-orchestration/pull/4 — Node.js 22 CI result not yet confirmed; latest runs were still in progress. It does not provide durable state, leases, crash recovery, or exactly-once side effects.
+- Pure orchestration run-state transition validator: https://github.com/Monupatel62/aether-ai-orchestration/pull/4 — Node.js 22 dependency audit, typecheck, unit tests and build passed. It does not provide durable state, leases, crash recovery, or exactly-once side effects.
 
-- Memory record metadata validator: https://github.com/Monupatel62/aether-ai-memory/pull/3 — Node.js 22 CI is queued/running; no storage, authorization, retention enforcement, or deletion propagation.
+- Memory record metadata validator: https://github.com/Monupatel62/aether-ai-memory/pull/3 — Node.js 22 dependency audit, typecheck, unit tests and build passed; no storage, authorization, retention enforcement, or deletion propagation.
