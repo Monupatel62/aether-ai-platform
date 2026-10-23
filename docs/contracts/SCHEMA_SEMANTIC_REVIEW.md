@@ -30,7 +30,7 @@
 
 ## Fixture coverage (draft)
 
-`contract-fixtures.v1.json` contains 19 author-defined examples: the original valid/invalid pair for each of the seven schema files plus five conditional run-event cases. The invalid examples target a required-field omission, unknown property, unsupported enum value, or conditional requirement. These are fixture definitions only; no JSON Schema validator has executed them yet. Before treating this set as a gate, run it with a Draft 2020-12 validator configured to assert `format`, review each validator result, and add boundary cases for malformed timestamps, unknown nested fields, and conditional event semantics.
+`contract-fixtures.v1.json` contains 24 author-defined examples: the original valid/invalid pair for each of the seven schema files plus five conditional run-event cases and five boundary cases. The invalid examples target a required-field omission, unknown property, unsupported enum value, or conditional requirement. These are fixture definitions only; no JSON Schema validator has executed them yet. Before treating this set as a gate, run it with a Draft 2020-12 validator configured to assert `format`, review each validator result, and added cases for malformed timestamps, unknown nested fields, payload/argument property-count overflow, and conditional event semantics.
 
 ## Review gate
 
