@@ -286,3 +286,12 @@ Auth PR #4 CI failure was traced to a test fixture where the future-issued times
 - https://github.com/Monupatel62/aether-ai-auth/actions/runs/39928738428
 
 Database PR #2 CI was in progress/queued at this update. All pilot PRs remain draft/open/unmerged pending CI, review, and integration/security validation.
+
+
+## Follow-up implementation pilots — Database and API — 2026-10-23
+
+- [Database PR #2](https://github.com/Monupatel62/aether-ai-database/pull/2): driver-neutral migration manifest validation, dependency/cycle checks, tenant/principal context validation, pool-safe context reset requirements, tests, and Node 22 CI. Latest CI runs passed: https://github.com/Monupatel62/aether-ai-database/actions/runs/39928847368 and https://github.com/Monupatel62/aether-ai-database/actions/runs/39928838390.
+- [API PR #3](https://github.com/Monupatel62/aether-ai-api/pull/3): versioned error envelope, request/correlation context, idempotency-key and pagination validation, durable-vs-bounded execution routing descriptor, and security boundary tests. The first CI run exposed that error details did not redact secret-like keys; the implementation now filters token/secret/password/authorization/cookie/credential/API-key-like detail keys. Verification rerun: https://github.com/Monupatel62/aether-ai-api/actions/runs/39929586409 (in progress at matrix update).
+- Auth PR #4's two latest reruns passed after correcting the future-issued session test fixture.
+
+These remain draft/open/unmerged. Contract helpers are not substitutes for runtime authorization, database isolation, production adapters, or integration testing.
