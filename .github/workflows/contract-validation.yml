@@ -1,6 +1,14 @@
 name: Contract fixture validation
 
 on:
+  push:
+    branches:
+      - "docs/add-contract-validation-harness-2026-10-23"
+    paths:
+      - "docs/contracts/**"
+      - "scripts/validate_contract_fixtures.py"
+      - "requirements-contract-validation.txt"
+      - ".github/workflows/contract-validation.yml"
   pull_request:
     paths:
       - "docs/contracts/**"
