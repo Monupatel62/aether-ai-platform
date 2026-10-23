@@ -134,4 +134,4 @@ The Database repository specification and architecture mission list a “tenancy
 
 **Correction:** Clarify that Database owns low-level tenant-isolation patterns and persistence guidance only. It must not become the canonical membership/role-grant authority unless an accepted ADR explicitly assigns that responsibility. Preserve domain-owned table semantics and resource-boundary authorization.
 
-**Status:** Finding recorded for documentation follow-up. The attempted direct update to the Database architecture document was rejected by the GitHub tool; no repository content was changed by that attempt.
+**Status:** A documentation-only correction is proposed in [Database PR #1](https://github.com/Monupatel62/aether-ai-database/pull/1). The edited architecture document was fetched back from the branch and the narrowed mission and explicit ownership boundary were verified. The PR remains draft and unmerged.
