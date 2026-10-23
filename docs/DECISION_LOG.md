@@ -17,6 +17,10 @@ This is the decision register. A decision is **proposed** until its status is ch
 | ADR-0011 | Monorepo vs multi-repo package management and CI | Open | Avoid duplicate release/version complexity; document ownership and cross-repo CI before coding. |
 | ADR-0012 | Prompt/file/memory retention and telemetry policy | Open | Privacy/security requirement; define defaults and user controls before persistence features. |
 
+## Canonical ADR index
+
+Use [ADR_INDEX.md](ADR_INDEX.md) as the normalized index of ADR IDs and controlled statuses. The index preserves unresolved states explicitly; it does not override the decision history or accept proposed architecture. The structural checker is available at [validate_adr_index.py](../.github/scripts/validate_adr_index.py).
+
 ## ADR format for new decisions
 
 Each accepted ADR must include: context/problem, options considered, chosen option, reasons, consequences/tradeoffs, security/license implications, migration plan, affected repositories, date, and reviewer. If a decision changes, supersede it with a new ADR rather than silently rewriting history.
