@@ -4,7 +4,7 @@
 
 ## Scope
 
-Reviewed `docs/DEPENDENCIES_AND_CONTRACTS.md` in all 33 canonical Aether AI repositories against the master `docs/DEPENDENCY_MATRIX.md` and `docs/DEPENDENCY_EDGE_REGISTER.md`.
+Reviewed `docs/DEPENDENCIES_AND_CONTRACTS.md` in all 33 canonical Aether AI repositories against the master `docs/DEPENDENCY_MATRIX.md` and `docs/DEPENDENCY_EDGE_REGISTER.md`. Follow-up spot checks compared technical-design documents for API, Agents, Orchestration, Billing, Queue, Auth, Security and Enterprise.
 
 ## Findings requiring correction
 
@@ -34,18 +34,31 @@ Reviewed `docs/DEPENDENCIES_AND_CONTRACTS.md` in all 33 canonical Aether AI repo
 
 ### F-05 — Deployment/Platform dependency ambiguity (medium)
 
-`aether-ai-deployment/docs/DEPENDENCIES_AND_CONTRACTS.md` lists “infrastructure, platform, and services being deployed” under Direct dependencies. The master matrix defines Platform as a documentation/control plane with no runtime dependencies.
+`aether-ai-deployment/docs/DEPENDENCIES_AND_CONTRACTS.md` lists “infrastructure, platform, and services being deployed” under Direct dependencies. The master matrix defines Platform as a documentation control plane with no runtime dependencies.
 
 **Correction:** Describe Platform references as documentation/control-plane inputs only. Deployment consumes reviewed infrastructure modules and versioned release artifacts, not runtime code from Platform.
+
+### F-06 — API durable-run path includes Agents ambiguously (high)
+
+`aether-ai-api/docs/TECHNICAL_DESIGN.md` says “API -> orchestration/agents for run creation/status.” The master dependency matrix explicitly says durable runs flow API → Orchestration → Agents, and API must not bypass Orchestration for durable execution.
+
+**Correction:** Change the wording to API → Orchestration for durable run create/status/cancel; Orchestration invokes Agents. Keep direct API → Gateway requests separately documented as bounded synchronous calls only.
+
+### F-07 — Queue processing sequence may imply duplicated authorization ownership (medium)
+
+`aether-ai-queue/docs/TECHNICAL_DESIGN.md` includes a generic queue-processing step to “resolve trusted identity, tenant and resource scope” and apply authorization/ownership checks. The master architecture treats Queue as a neutral transport/envelope abstraction; authorization belongs at the resource-owning consumer boundary, while Queue validates message shape and transport-level producer/replay constraints.
+
+**Correction:** Clarify that Queue validates producer identity, envelope/schema/version, payload bounds and delivery/replay properties. The consumer owning the resource must resolve current membership and enforce resource authorization before data access or side effects. Do not let Queue become a second domain authorization owner.
 
 ## Aligned boundaries observed
 
 - Gateway consumes the provider interface; provider adapters do not import Gateway implementation.
 - Workflows define versioned schema/validation; Orchestration consumes the contract and owns durable execution.
-- Tools is the policy boundary for tool invocation; MCP adapters must not bypass it.
-- Knowledge owns authoritative source/collection ACL references; RAG/Search consume versioned contracts and never write authoritative ACL state.
+- Agents delegate model calls to Gateway and tool execution to Tools; Orchestration owns durable run state across process restarts.
+- Billing's proposed ledger is append-oriented and duplicate events must not create a second charge.
 - Auth owns principal/session lifecycle; authentication alone does not grant resource access.
 - Security fails closed on missing or invalid protected-action context.
+- Knowledge owns authoritative source/collection ACL references; RAG/Search consume versioned contracts and never write authoritative ACL state.
 - Database and Queue define low-level tooling/transport contracts and must not import domain consumers.
 - UI components remain presentation-only; Testing remains test-only; Infrastructure remains infrastructure-only.
 
@@ -58,4 +71,4 @@ Reviewed `docs/DEPENDENCIES_AND_CONTRACTS.md` in all 33 canonical Aether AI repo
 
 ## Next audit
 
-Review detailed repository specifications and architecture documents for the five findings above, then reconcile identity/tenant context, run lifecycle, billing/usage events, SDK generation, and deployment contracts. Keep changes documentation-only until the implementation gate is approved.
+Review remaining technical-design and repository-specification documents for identity/tenant context, run lifecycle, billing/usage event direction, SDK generation, database/queue boundaries, and deployment contracts. Keep changes documentation-only until the implementation gate is approved.
