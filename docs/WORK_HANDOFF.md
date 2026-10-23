@@ -328,3 +328,5 @@ The ten initial implementation PRs listed above and subsequent foundations recor
 - Framework-neutral safe-link/accessibility text helpers: https://github.com/Monupatel62/aether-ai-ui-components/pull/2 — Node.js 22 dependency audit, typecheck, unit tests and build passed. No framework-specific UI components or visual tests.
 
 - Bounded agent-run policy validator: https://github.com/Monupatel62/aether-ai-agents/pull/6 — Node.js 22 CI pending. No runtime enforcement, durable run state, or gateway/tool integration.
+
+- Bounded agent-run policy validator: https://github.com/Monupatel62/aether-ai-agents/pull/6 — Node.js 22 dependency audit, typecheck, unit tests and build passed. Static metadata validation only; no runtime budget enforcement or durable run lifecycle.
