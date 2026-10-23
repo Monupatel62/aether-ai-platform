@@ -17,6 +17,10 @@ This is the decision register. A decision is **proposed** until its status is ch
 | ADR-0011 | Monorepo vs multi-repo package management and CI | Open | Avoid duplicate release/version complexity; document ownership and cross-repo CI before coding. |
 | ADR-0012 | Prompt/file/memory retention and telemetry policy | Open | Privacy/security requirement; define defaults and user controls before persistence features. |
 
+## Decision-log integrity review — 2026-10-23
+
+- [ADR Log Integrity Audit](ADR_LOG_INTEGRITY_AUDIT.md) identifies duplicate rows for ADR-0003, ADR-0004, ADR-0005, and ADR-0007, a possible ADR-0017 gap, and inconsistent index metadata/status vocabulary. This audit is a finding report only; it does not change any decision status.
+
 ## ADR format for new decisions
 
 Each accepted ADR must include: context/problem, options considered, chosen option, reasons, consequences/tradeoffs, security/license implications, migration plan, affected repositories, date, and reviewer. If a decision changes, supersede it with a new ADR rather than silently rewriting history.
