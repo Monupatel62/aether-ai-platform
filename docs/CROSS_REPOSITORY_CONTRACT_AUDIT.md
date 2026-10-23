@@ -123,3 +123,8 @@ The repository visibility section above is a historical snapshot from 2026-10-22
 ## Follow-up — dependency direction audit (2026-10-23)
 
 The targeted comparison in [Dependency Direction Audit](DEPENDENCY_DIRECTION_AUDIT_2026-10-23.md) found and documented three more direct-dependency contradictions: providers depended on gateway contracts despite owning the provider abstraction; agents declared orchestration as a dependency despite orchestration consuming the agent runtime; and files listed the product API as a dependency even though API consumes the file contract. Proposed documentation corrections were made on review branches in the three component repositories. These changes do not prove actual source-import direction or runtime graph safety. See draft PRs and review evidence before accepting the corrections.
+
+
+## Second follow-up — dependency direction audit (2026-10-23)
+
+A second targeted pass identified three more contradictory declarations in cache, plugins and deployment contracts. Corrections are proposed on component review branches and recorded in [Dependency Direction Audit](DEPENDENCY_DIRECTION_AUDIT_2026-10-23.md). The cache contract now excludes application consumers as package dependencies; plugin runtime no longer depends on the admin application; deployment consumes infrastructure modules and versioned release artifacts rather than treating the documentation platform as a runtime dependency. These are documentation corrections only.
