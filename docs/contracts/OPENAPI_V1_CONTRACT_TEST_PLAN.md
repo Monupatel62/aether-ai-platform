@@ -58,3 +58,8 @@ These response shapes are provisional draft proposals and require review; tests 
 ## Internal authorization-context trust tests
 
 See [AUTHORIZATION_CONTEXT_TRUST_PROFILE.md](AUTHORIZATION_CONTEXT_TRUST_PROFILE.md) for the full proposed ACTX-001 through ACTX-014 acceptance set. These tests cover trusted issuer and consumer binding, integrity, exact principal/tenant/resource/action scope, expiry, version freshness, replay, approval revocation, fail-closed dependency behavior, model/tool boundary leakage, and safe audit logging. They are test requirements only and have not been executed.
+
+
+## Draft JSON Schema conditional cases added — 2026-10-23
+
+The shared fixture file now contains 19 author-defined cases. Five added cases cover required `step_id` on step events, `attempt` and `not_before` on retry scheduling, and `failure_code` on failed run/step events. These cases are authored but not executed. The event envelope payload and tool argument objects also have a `maxProperties: 100` draft limit; transport byte and nesting-depth limits remain separate decisions.
