@@ -71,3 +71,252 @@ Review [Dependency Matrix](DEPENDENCY_MATRIX.md), resolve the remaining architec
 ## Repository-level documentation rollout — 2026-10-23
 
 A follow-up GitHub write pass added `docs/REPOSITORY_SPECIFICATION.md` to all 33 canonical Aether AI repositories and corrected relative links to the master documentation. README documentation entry points were added where missing and writable; existing README content was preserved. This is a documentation rollout, not a code, security, legal, or penetration-test pass. Each repository still needs implementation-specific API schemas, tests, and operational runbooks before release.
+
+
+## Initial source-manifest spot check — 2026-10-23
+
+A limited live check fetched the repository root `package.json` and `pnpm-workspace.yaml` paths for these six repositories: `aether-ai-platform`, `aether-ai-web`, `aether-ai-api`, `aether-ai-gateway`, `aether-ai-agents`, and `aether-ai-workflows`.
+
+| Repository | Root package.json found | Root pnpm-workspace.yaml found | Repository specification found |
+|---|---:|---:|---:|
+| aether-ai-platform | No | No | Yes |
+| aether-ai-web | No | No | Yes |
+| aether-ai-api | No | No | Yes |
+| aether-ai-gateway | No | No | Yes |
+| aether-ai-agents | No | No | Yes |
+| aether-ai-workflows | No | No | Yes |
+
+This is a path-level spot check only, not proof that no source code or manifests exist in subdirectories, and not a completed 33-repository source audit. It does mean package-import cycles, installed dependency versions, exports, buildability, and executable test status cannot be inferred from these root paths. Next source-audit pass must inspect repository trees and identify the actual implementation roots before classifying each repository as documentation-only or implemented.
+
+
+## Recursive repository-tree inspection — initial batch — 2026-10-23
+
+GitHub recursive tree responses were inspected for eight canonical repositories. All eight responses reported `truncated: false`.
+
+| Repository | Total tree entries | Non-documentation root-level entries | Source/config code files outside `docs/` |
+|---|---:|---|---:|
+| aether-ai-api | 12 | README.md, docs/ | 0 |
+| aether-ai-gateway | 12 | README.md, docs/ | 0 |
+| aether-ai-agents | 12 | README.md, docs/ | 0 |
+| aether-ai-workflows | 12 | README.md, docs/ | 0 |
+| aether-ai-platform | 97 | README.md, docs/ | 0 |
+| aether-ai-web | 12 | README.md, docs/ | 0 |
+| aether-ai-orchestration | 12 | README.md, docs/ | 0 |
+| aether-ai-tools | 12 | README.md, docs/ | 0 |
+
+For the seven component repositories in this batch, the complete returned tree consisted of `README.md`, `docs/`, and documentation files under `docs/`; no application source or root package/workspace manifest was present in the returned tree. The platform repository also had no non-documentation code/config files outside `docs/` in the inspected tree.
+
+This is stronger evidence than checking root manifest paths, but it remains a batch of 8/33 repositories. It does not establish that the other 25 repositories are documentation-only, and it does not validate build or runtime behavior. Next pass: inspect the remaining 25 recursive trees, then update repository implementation status based only on returned tree evidence.
+
+
+## Recursive repository-tree inspection — remaining 25 repositories — 2026-10-23
+
+The remaining 25 canonical repositories were inspected using GitHub recursive tree responses. All 25 responses reported `truncated: false`; each returned 12 tree entries and no matching application source/configuration files outside `docs/`.
+
+| Repository | Total tree entries | Non-documentation root-level entries | Source/config code files outside `docs/` |
+|---|---:|---|---:|
+| aether-ai-providers | 12 | README.md, docs/ | 0 |
+| aether-ai-mcp | 12 | README.md, docs/ | 0 |
+| aether-ai-memory | 12 | README.md, docs/ | 0 |
+| aether-ai-rag | 12 | README.md, docs/ | 0 |
+| aether-ai-files | 12 | README.md, docs/ | 0 |
+| aether-ai-knowledge | 12 | README.md, docs/ | 0 |
+| aether-ai-auth | 12 | README.md, docs/ | 0 |
+| aether-ai-security | 12 | README.md, docs/ | 0 |
+| aether-ai-admin | 12 | README.md, docs/ | 0 |
+| aether-ai-billing | 12 | README.md, docs/ | 0 |
+| aether-ai-sdk | 12 | README.md, docs/ | 0 |
+| aether-ai-evaluations | 12 | README.md, docs/ | 0 |
+| aether-ai-observability | 12 | README.md, docs/ | 0 |
+| aether-ai-deployment | 12 | README.md, docs/ | 0 |
+| aether-ai-docs | 12 | README.md, docs/ | 0 |
+| aether-ai-database | 12 | README.md, docs/ | 0 |
+| aether-ai-queue | 12 | README.md, docs/ | 0 |
+| aether-ai-cache | 12 | README.md, docs/ | 0 |
+| aether-ai-search | 12 | README.md, docs/ | 0 |
+| aether-ai-plugins | 12 | README.md, docs/ | 0 |
+| aether-ai-integrations | 12 | README.md, docs/ | 0 |
+| aether-ai-testing | 12 | README.md, docs/ | 0 |
+| aether-ai-ui-components | 12 | README.md, docs/ | 0 |
+| aether-ai-enterprise | 12 | README.md, docs/ | 0 |
+| aether-ai-infrastructure | 12 | README.md, docs/ | 0 |
+
+### Consolidated source-tree result
+
+All 33/33 canonical repositories have now had their recursive GitHub trees inspected in this audit. No application source/configuration files matching the audit's code/config extension filter were found outside `docs/` in any of the 33 returned trees. The platform repository has 97 tree entries, while each of the other 32 repositories has 12 entries. The recursive responses were not truncated.
+
+This is strong evidence that the current `main` trees are documentation-only or documentation-dominant, but it is not a runtime/build/test audit. The extension filter may miss extensionless executables, generated artifacts, or unusual source formats. No build, test, dependency, security, deployment, or runtime checks are implied by this result.
+
+### Required next work
+
+1. Treat implementation completion for all 33 repositories as **not verified / not started in the inspected trees**, rather than assigning unsupported completion percentages.
+2. Build each repository's minimal implementation against its existing specification and approved dependency boundaries; do not introduce a new repository or resolve open ADR-0021 by assumption.
+3. Add tests and CI for each implementation, then verify dependency direction, security controls, license/SBOM, build, and integration behavior.
+4. Keep all changes in reviewable branches/PRs; do not merge or deploy without explicit approval.
+
+
+## Implementation pilot status — 2026-10-23
+
+Three reviewable implementation PRs have been opened from the documentation-only baseline. None has been merged.
+
+| Repository | PR | Initial implementation scope | CI status at this audit update |
+|---|---|---|---|
+| `aether-ai-security` | [#2](https://github.com/Monupatel62/aether-ai-security/pull/2) | Versioned fail-closed authorization decision contract, unit tests, CI | Success |
+| `aether-ai-queue` | [#2](https://github.com/Monupatel62/aether-ai-queue/pull/2) | Transport-neutral versioned message envelope and shape/size validation, unit tests, CI | Success |
+| `aether-ai-sdk` | [#2](https://github.com/Monupatel62/aether-ai-sdk/pull/2) | Generic HTTP client foundation, TypeScript declarations, conservative retry policy, unit tests, CI | Initial CI failed on a path-traversal test; fix committed and rerun queued at the time of this update |
+
+These are narrow foundation slices, not complete repositories or release-ready implementations. The Security contract does not decide identity or tenant/workspace membership ownership. The Queue package validates message shape but does not provide a broker, delivery guarantees, publisher authentication, or consumer authorization. The SDK does not invent endpoint-specific routes; its typed endpoint methods must follow the approved OpenAPI contract.
+
+### Next implementation order
+
+1. Close the SDK CI failure and verify the rerun.
+2. Keep each pilot PR open until CI and review are complete; do not merge automatically.
+3. Continue with small, contract-first vertical slices in additional repositories, respecting the dependency matrix and open ADR-0021.
+4. Update each repository's progress only from implementation, test, and integration evidence; do not use the tree audit as a runtime completion metric.
+
+
+## Follow-up implementation pilot — cache contract — 2026-10-23
+
+A fourth implementation PR is open: [aether-ai-cache PR #5](https://github.com/Monupatel62/aether-ai-cache/pull/5).
+
+The PR adds deterministic tenant/resource-scoped cache keys, TTL bounds, a conservative cache policy helper, and tests. It does not select a cache vendor/backend and explicitly rejects marking sensitive or authoritative data cacheable. The PR remains draft and unmerged; CI was still running when checked.
+
+Updated pilot status:
+- Security PR #2: CI success.
+- Queue PR #2: CI success.
+- SDK PR #2: latest reruns CI success after correcting path traversal handling and the corresponding test assertion.
+- Cache PR #5: CI pending at time of check.
+
+All four changes remain unmerged pending review. These are foundational slices, not full repository completion. Do not count a PR as a complete repository or infer production readiness from unit CI alone.
+
+
+## Follow-up implementation pilot — observability — 2026-10-23
+
+A fifth implementation PR is open: [aether-ai-observability PR #2](https://github.com/Monupatel62/aether-ai-observability/pull/2).
+
+The PR introduces metadata-only telemetry event creation, default exclusion of sensitive attribute names, bounded recursive redaction, correlation IDs, retention-bound validation, unit tests, and CI. No exporter, backend, retention store, or dashboard vendor has been selected. The PR remains draft and unmerged; CI was in progress/queued when checked.
+
+Updated pilot CI status:
+- Security PR #2: success.
+- Queue PR #2: success.
+- SDK PR #2: success on latest reruns.
+- Cache PR #5: success.
+- Observability PR #2: pending at time of check.
+
+These foundational slices do not establish full repository completion or production readiness. Keep all PRs unmerged pending review and further integration, security, license, and operational validation.
+
+
+## Follow-up implementation pilot — search — 2026-10-23
+
+A sixth implementation PR is open: [aether-ai-search PR #2](https://github.com/Monupatel62/aether-ai-search/pull/2).
+
+The PR adds backend-neutral versioned query/index contracts, explicit tenant and principal requirements, mandatory non-empty ACL scope, bounded query/pagination/filter inputs, fail-closed tenant/ACL/deleted-document projection filtering, a versioned deletion-request event, tests, and Node 22 CI. Search remains a rebuildable projection; callers must reauthorize against authoritative domain/security policy. No backend is selected and no indexing/deletion propagation is claimed.
+
+Verified status at this update:
+- Security PR #2: success.
+- Queue PR #2: success.
+- SDK PR #2: success on latest reruns.
+- Cache PR #5: success.
+- Observability PR #2: success.
+- Search PR #2: CI in progress/queued.
+
+All implementation PRs remain draft/open/unmerged pending review and full integration/security validation.
+
+
+## Follow-up implementation pilot — RAG — 2026-10-23
+
+A seventh implementation PR is open: [aether-ai-rag PR #1](https://github.com/Monupatel62/aether-ai-rag/pull/1).
+
+The PR adds versioned RAG chunk metadata (tenant/resource versions, embedding model/version, policy version, ACL references and provenance), bounded retrieval request validation with explicit tenant/principal/ACL scope, defense-in-depth tenant/ACL/deletion filtering, citation provenance, a versioned deletion notice, tests, and Node 22 CI. It does not select an embedding provider/vector backend or implement persistent indexing/deletion propagation. Fresh authoritative authorization remains required.
+
+Verified CI status at this update:
+- Search PR #2: success.
+- RAG PR #1: in progress/queued.
+
+All implementation PRs remain draft/open/unmerged pending CI, review, and integration/security validation.
+
+
+## Follow-up implementation pilot — Knowledge — 2026-10-23
+
+An eighth implementation PR is open: [aether-ai-knowledge PR #1](https://github.com/Monupatel62/aether-ai-knowledge/pull/1).
+
+The PR adds versioned collection/source metadata, explicit tenant and ACL references, policy/source version tracking, bounded scalar metadata, lifecycle state validation, allowlisted lifecycle events for indexing/revocation/deletion, unit tests, and Node 22 CI. It does not implement persistence, ACL mutation authorization, event delivery, or deletion propagation.
+
+Verified CI at this update:
+- RAG PR #1: success.
+- Knowledge PR #1: in progress.
+
+All pilot PRs remain draft/open/unmerged pending CI, review, and integration/security validation.
+
+
+## Follow-up implementation pilot — Files — 2026-10-23
+
+A ninth implementation PR is open: [aether-ai-files PR #3](https://github.com/Monupatel62/aether-ai-files/pull/3).
+
+The PR adds upload-intent validation with bounded size and normalized filename, server-observed MIME allowlisting/signature/malware-scan validation, opaque tenant-bound object keys, payload-free lifecycle events, and short-lived download-grant eligibility checks. It includes unit tests and Node 22 CI. It does not implement object storage, malware scanning, persistence, signed URL generation, or deletion propagation.
+
+Verified CI at this update:
+- Knowledge PR #1: success.
+- Files PR #3: in progress/queued.
+
+All implementation PRs remain draft/open/unmerged pending CI, review, and integration/security validation.
+
+
+## Follow-up implementation pilot — Auth — 2026-10-23
+
+A tenth implementation PR is open: [aether-ai-auth PR #4](https://github.com/Monupatel62/aether-ai-auth/pull/4).
+
+The PR adds versioned principal identity and session-envelope contracts, expiry/maximum-lifetime checks, payload-free session-revocation events, secure HTTP-only cookie policy defaults, tests, and Node 22 CI. Session-envelope validation is not signature verification or a complete authentication adapter. Provider selection remains open. Tenant/workspace membership and role-grant ownership remain unresolved under ADR-0021.
+
+Verified CI at this update:
+- Files PR #3: success.
+- Auth PR #4: in progress/queued.
+
+All implementation PRs remain draft/open/unmerged pending CI, review, and integration/security validation.
+
+
+## Follow-up implementation pilot — Database — 2026-10-23
+
+An eleventh implementation PR is open: [aether-ai-database PR #2](https://github.com/Monupatel62/aether-ai-database/pull/2).
+
+The PR adds driver-neutral migration manifest validation (timestamped names, SHA-256 checksums, compatibility category, dependencies), migration-plan checks for duplicate/missing/cyclic dependencies, tenant/principal context validation, a pool-safe transaction-local context reset policy, tests, and Node 22 CI. It does not select a database driver or migration framework and does not implement RLS or physical database isolation. Production adapters must enforce these boundaries.
+
+Auth PR #4 CI failure was traced to a test fixture where the future-issued timestamp also made expiry precede issuance. The test was corrected to use a valid future issuance/expiry pair. Both latest Auth reruns now pass:
+- https://github.com/Monupatel62/aether-ai-auth/actions/runs/39928743044
+- https://github.com/Monupatel62/aether-ai-auth/actions/runs/39928738428
+
+Database PR #2 CI was in progress/queued at this update. All pilot PRs remain draft/open/unmerged pending CI, review, and integration/security validation.
+
+
+## Follow-up implementation pilots — Database and API — 2026-10-23
+
+- [Database PR #2](https://github.com/Monupatel62/aether-ai-database/pull/2): driver-neutral migration manifest validation, dependency/cycle checks, tenant/principal context validation, pool-safe context reset requirements, tests, and Node 22 CI. Latest CI runs passed: https://github.com/Monupatel62/aether-ai-database/actions/runs/39928847368 and https://github.com/Monupatel62/aether-ai-database/actions/runs/39928838390.
+- [API PR #3](https://github.com/Monupatel62/aether-ai-api/pull/3): versioned error envelope, request/correlation context, idempotency-key and pagination validation, durable-vs-bounded execution routing descriptor, and security boundary tests. The first CI run exposed that error details did not redact secret-like keys; the implementation now filters token/secret/password/authorization/cookie/credential/API-key-like detail keys. Verification rerun: https://github.com/Monupatel62/aether-ai-api/actions/runs/39929586409 (in progress at matrix update).
+- Auth PR #4's two latest reruns passed after correcting the future-issued session test fixture.
+
+These remain draft/open/unmerged. Contract helpers are not substitutes for runtime authorization, database isolation, production adapters, or integration testing.
+
+
+## Follow-up implementation pilot — Gateway — 2026-10-23
+
+- [Gateway PR #2](https://github.com/Monupatel62/aether-ai-gateway/pull/2): bounded model request validation, deterministic capability-based provider selection, normalized provider failure categories, safety guardrails, unit tests, and Node 22 CI. One CI run passed: https://github.com/Monupatel62/aether-ai-gateway/actions/runs/39929704684; latest rerun https://github.com/Monupatel62/aether-ai-gateway/actions/runs/39929714023 was in progress when recorded.
+- [API PR #3](https://github.com/Monupatel62/aether-ai-api/pull/3): latest two CI runs passed after secret-like error-detail keys were redacted: https://github.com/Monupatel62/aether-ai-api/actions/runs/39929595255 and https://github.com/Monupatel62/aether-ai-api/actions/runs/39929586409.
+- Database PR #2 latest CI runs passed, and Auth PR #4 latest CI reruns passed as recorded above.
+
+All implementation pilots remain draft/open/unmerged. Passing unit CI does not prove production authorization, provider integration, tenant isolation, end-to-end behavior, or deployment readiness.
+
+
+## Follow-up implementation pilot — Providers — 2026-10-23
+
+- [Providers PR #3](https://github.com/Monupatel62/aether-ai-providers/pull/3): versioned provider descriptor, model/capability validation, request bounds, normalized provider error categories, credential-boundary requirements, tests, and Node 22 CI. CI runs https://github.com/Monupatel62/aether-ai-providers/actions/runs/39929958971 (queued) and https://github.com/Monupatel62/aether-ai-providers/actions/runs/39929949325 (in progress) at this update.
+- Gateway PR #2 latest reruns passed: https://github.com/Monupatel62/aether-ai-gateway/actions/runs/39929714023 and https://github.com/Monupatel62/aether-ai-gateway/actions/runs/39929704684.
+
+Provider contract remains vendor-neutral; no vendor SDK or credentials integration is selected. All pilots remain draft/open/unmerged.
+
+
+## Follow-up implementation pilot — Agents — 2026-10-23
+
+- [Agents PR #3](https://github.com/Monupatel62/aether-ai-agents/pull/3): bounded/versioned run contract, state transitions, explicit approval gate, step/token/duration budget helpers, correlated redacted events, architectural boundary checks, tests, and Node 22 CI. Runs https://github.com/Monupatel62/aether-ai-agents/actions/runs/39930248090 (queued) and https://github.com/Monupatel62/aether-ai-agents/actions/runs/39930231744 (in progress) at this update.
+- Providers PR #3 latest two CI runs passed: https://github.com/Monupatel62/aether-ai-providers/actions/runs/39929958971 and https://github.com/Monupatel62/aether-ai-providers/actions/runs/39929949325.
+
+The Agents PR is a contract pilot, not a runtime; it does not call models/tools, persist state, or independently authorize tenant membership/approval. All pilot PRs remain draft/open/unmerged.
