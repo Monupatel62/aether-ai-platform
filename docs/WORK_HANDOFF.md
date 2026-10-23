@@ -308,4 +308,4 @@ All ten isolated implementation PRs listed above pass the Node.js 22 dependency-
 
 
 - Database migration metadata validator: https://github.com/Monupatel62/aether-ai-database/pull/4 — Node.js 22 dependency audit, typecheck, unit tests and build passed. It validates metadata only; no database adapter or SQL execution.
-- Gateway request validator: https://github.com/Monupatel62/aether-ai-gateway/pull/5 — CI is running at this handoff update. It validates request shape/limits only; no authorization, provider routing, or model execution.
+- Gateway request validator: https://github.com/Monupatel62/aether-ai-gateway/pull/5 — Node.js 22 dependency audit, typecheck, unit tests and build passed. It validates request shape/limits only; no authorization, provider routing, or model execution.
