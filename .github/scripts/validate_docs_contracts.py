@@ -10,7 +10,7 @@ from pathlib import Path
 
 import yaml
 from jsonschema import Draft202012Validator, FormatChecker
-from openapi_spec_validator import validate as validate_openapi
+from openapi_spec_validator import validate as validate_openapi_spec
 
 ROOT = Path(__file__).resolve().parents[2]
 CONTRACTS = ROOT / "docs" / "contracts"
@@ -116,7 +116,7 @@ def validate_openapi() -> None:
         if not isinstance(spec, dict):
             fail("openapi.v1.yaml must parse to a YAML mapping")
             return
-        validate_openapi(spec)
+        validate_openapi_spec(spec)
         checks += 1
         print("PASS: OpenAPI specification validates")
     except Exception as exc:
