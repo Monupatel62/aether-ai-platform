@@ -28,3 +28,14 @@ The changes are proposed documentation corrections only. They do not prove that 
 2. Compare all repository-level direct-dependency declarations against the typed edge register and machine-readable graph.
 3. Normalize dependency edges by type (package import, synchronous API, event/queue, generated artifact, infrastructure, documentation) before any automated cycle claim.
 4. Keep implementation blocked until P0 identity/tenant/ACL, tool-policy, durable-run and data-deletion contracts are accepted and the user explicitly approves the transition.
+
+
+## Second targeted pass — additional findings
+
+| ID | Repository | Previous declaration | Why it conflicted | Correction |
+|---|---|---|---|---|
+| DEP-DIR-04 | `aether-ai-cache` | Cache depended on API, gateway, search and database | The master matrix defines cache as a low-level adapter/key/TTL capability. Application components consume cache; cache should not import consumers or require database as an inherent dependency. | Direct dependencies narrowed to selected cache adapter and neutral key/TTL/value-format contracts. |
+| DEP-DIR-05 | `aether-ai-plugins` | Plugins depended on the admin application | The master matrix makes plugins a capability/policy subsystem. Admin may consume plugin-management contracts, but plugin runtime must not import the admin app. | Removed admin from plugin direct dependencies and documented the consumer direction. |
+| DEP-DIR-06 | `aether-ai-deployment` | Deployment depended on “platform” and services being deployed | The platform repository is docs/control plane only; the generic declaration did not distinguish build/release artifacts from runtime/package dependencies. | Deployment consumes infrastructure modules and versioned component release artifacts/manifests; platform is not a runtime dependency. |
+
+The six findings are proposed dependency-contract corrections only. No source imports or runtime dependency graph was inspected.
