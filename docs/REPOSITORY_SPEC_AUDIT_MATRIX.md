@@ -273,3 +273,16 @@ Verified CI at this update:
 - Auth PR #4: in progress/queued.
 
 All implementation PRs remain draft/open/unmerged pending CI, review, and integration/security validation.
+
+
+## Follow-up implementation pilot — Database — 2026-10-23
+
+An eleventh implementation PR is open: [aether-ai-database PR #2](https://github.com/Monupatel62/aether-ai-database/pull/2).
+
+The PR adds driver-neutral migration manifest validation (timestamped names, SHA-256 checksums, compatibility category, dependencies), migration-plan checks for duplicate/missing/cyclic dependencies, tenant/principal context validation, a pool-safe transaction-local context reset policy, tests, and Node 22 CI. It does not select a database driver or migration framework and does not implement RLS or physical database isolation. Production adapters must enforce these boundaries.
+
+Auth PR #4 CI failure was traced to a test fixture where the future-issued timestamp also made expiry precede issuance. The test was corrected to use a valid future issuance/expiry pair. Both latest Auth reruns now pass:
+- https://github.com/Monupatel62/aether-ai-auth/actions/runs/39928743044
+- https://github.com/Monupatel62/aether-ai-auth/actions/runs/39928738428
+
+Database PR #2 CI was in progress/queued at this update. All pilot PRs remain draft/open/unmerged pending CI, review, and integration/security validation.
