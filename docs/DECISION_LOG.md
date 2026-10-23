@@ -17,6 +17,10 @@ This is the decision register. A decision is **proposed** until its status is ch
 | ADR-0011 | Monorepo vs multi-repo package management and CI | Open | Avoid duplicate release/version complexity; document ownership and cross-repo CI before coding. |
 | ADR-0012 | Prompt/file/memory retention and telemetry policy | Open | Privacy/security requirement; define defaults and user controls before persistence features. |
 
+## Canonical ADR index
+
+Use [ADR_INDEX.md](ADR_INDEX.md) as the normalized index of ADR IDs and controlled statuses. The index preserves unresolved states explicitly; it does not override the decision history or accept proposed architecture. The structural checker is available at [validate_adr_index.py](../.github/scripts/validate_adr_index.py).
+
 ## ADR format for new decisions
 
 Each accepted ADR must include: context/problem, options considered, chosen option, reasons, consequences/tradeoffs, security/license implications, migration plan, affected repositories, date, and reviewer. If a decision changes, supersede it with a new ADR rather than silently rewriting history.
@@ -25,20 +29,20 @@ Each accepted ADR must include: context/problem, options considered, chosen opti
 | ADR-0015 | GenAI observability and privacy | Proposed | Use OpenTelemetry conventions where useful, but keep raw prompt/completion capture disabled by default and define retention/redaction first. |
 | ADR-0016 | CI action and release supply-chain policy | Proposed | Pin Actions to full commit SHAs unless an approved lockfile/policy gives equivalent immutability; use least-privilege workflow tokens and protected releases. |
 
-## Architecture review update — 2026-10-22
+## Architecture review update — 2026-10-22 (historical notes)
 
-| ID | Decision | Status | Evidence / next action |
-|---|---|---|---|
-| ADR-0003 | Plan 33 Aether repositories | Accepted | User explicitly chose 33. This is a repository organization target, not a requirement to deploy 33 services. Remaining 23 can be created after the documentation phase. |
-| ADR-0004 | Repository boundaries are separate from service boundaries | Accepted | Dependency matrix requires a modular runtime/package map first. Create a separate network service only for a documented scaling, isolation, ownership or release reason. |
-| ADR-0005 | Native gateway vs optional external gateway | Open | [Gateway architecture evaluation](DIAL_ADOPTION_EVALUATION.md) compares the native approach with an optional external adapter. No external dependency is accepted. |
+The following are dated review notes about existing ADRs, not additional ADR records. Their content is retained here for traceability; the canonical current status is in [ADR_INDEX.md](ADR_INDEX.md).
 
-## Data infrastructure review — 2026-10-22
+- **ADR-0003 — Accepted:** The user explicitly chose 33 repositories. This is a repository-organization target, not a requirement to deploy 33 services. The note at the time said the remaining 23 could be created after the documentation phase.
+- **ADR-0004 — Accepted:** The dependency matrix requires a modular runtime/package map first. Create a separate network service only for a documented scaling, isolation, ownership, or release reason.
+- **ADR-0005 — Open:** [Gateway architecture evaluation](DIAL_ADOPTION_EVALUATION.md) compares the native approach with an optional external adapter. No external dependency is accepted.
 
-| ID | Decision | Status | Evidence / next action |
-|---|---|---|---|
-| ADR-0007 | Database, queue, cache, vector/search engine | Open; baseline proposed | [Data infrastructure evaluation](DATA_INFRASTRUCTURE_EVALUATION.md) recommends benchmarking PostgreSQL + pgvector/full-text, BullMQ, and a Valkey-compatible cache first. No final provider, queue, vector DB, or cache vendor selected. |
-| ADR-0018 | Data-layer ownership and source-of-truth rules | Proposed | PostgreSQL candidate is the transactional source of truth; search/vector indexes are rebuildable projections; queue payloads carry opaque IDs; orchestration persists durable run state; cache is reconstructible only. Validate via failure, isolation, restore and benchmark tests. |
+## Data infrastructure review — 2026-10-22 (historical notes)
+
+These notes retain the review evidence without creating duplicate canonical table rows.
+
+- **ADR-0007 — Open; baseline proposed:** [Data infrastructure evaluation](DATA_INFRASTRUCTURE_EVALUATION.md) recommends benchmarking PostgreSQL + pgvector/full-text, BullMQ, and a Valkey-compatible cache first. No final provider, queue, vector database, or cache vendor was selected.
+- **ADR-0018 — Proposed:** PostgreSQL candidate is the transactional source of truth; search/vector indexes are rebuildable projections; queue payloads carry opaque IDs; orchestration persists durable run state; cache is reconstructible only. Validate via failure, isolation, restore, and benchmark tests. This remains a proposal, not an accepted architecture decision.
 
 
 ## 2026-10-22 — Identity and tenant security research
