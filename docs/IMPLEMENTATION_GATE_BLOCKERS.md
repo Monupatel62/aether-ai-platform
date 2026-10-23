@@ -20,7 +20,7 @@ Do not begin application implementation until every P0 blocker has an accepted c
 | Run result and retention | RunStatus.result is not yet constrained by a stable output schema; retention/deletion periods remain open. | Define agent output schema/version, result visibility, redaction, current authorization on every read, retention/deletion/export behavior, and deletion propagation. |
 | Cancellation and idempotency | Cancellation is correctly described as a request, but state transitions/races are open. Idempotency-key scope/retention are open. | Specify allowed run transitions, repeated cancellation behavior, terminal-state races, durable acknowledgment semantics, key scope/retention, payload fingerprinting, and duplicate side-effect protection. |
 | Tool execution boundary | Tool schema and event schemas have unconstrained nested data and conditional security fields. | Define per-tool input/output schemas, scopes, risk class, approval binding, payload limits, execution-time reauthorization, producer identity, event deduplication and ordering rules. |
-| Contract validation | JSON syntax and graph checks passed; OpenAPI YAML and JSON Schema semantics have not been validated by dedicated validators. | Run an OpenAPI 3.1 validator and a Draft 2020-12 JSON Schema validator with format assertions; execute all 14 fixtures and add boundary/conditional cases before approval. |
+| Contract validation | JSON syntax and graph checks passed; OpenAPI YAML and JSON Schema semantics have not been validated by dedicated validators. | Run an OpenAPI 3.1 validator and a Draft 2020-12 JSON Schema validator with format assertions; execute all 19 fixtures and add boundary/conditional cases before approval. |
 | Gateway/provider contract | ADR-0005 is open; gateway POC is a plan only. | Keep an Aether-owned request/response/error/capability boundary. Run the documented mock/non-production POC before deciding whether an optional external gateway is justified. |
 
 ## P1 — resolve before the relevant feature phase
@@ -59,3 +59,9 @@ The gate can be reviewed when:
 5. The user explicitly approves moving from documentation/research into implementation.
 
 Until then, keep the project in Phase 0.
+
+## Contract hardening update — 2026-10-23
+
+- Added draft conditional requirements to run-event schema: step lifecycle events require `step_id`; retry scheduling requires `attempt` and `not_before`; failed run/step events require `failure_code`.
+- Added property-count bounds (`maxProperties: 100`) to generic event payload and tool argument objects.
+- Expanded fixture definitions from 14 to 19. The fixtures are still unexecuted; these changes do not close the validator P0 gate.
