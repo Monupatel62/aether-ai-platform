@@ -270,3 +270,11 @@ Next: document aether-ai-sdk, then evaluations, observability, integrations, tes
 
 
 - Added [Implementation Gate Blockers](IMPLEMENTATION_GATE_BLOCKERS.md) to consolidate the remaining P0 contract/security blockers and P1 product/operations decisions. This is a review checklist, not an implementation approval.
+
+
+## Contract readiness gate — 2026-10-23
+
+- Added [Contract Readiness Gate](CONTRACT_READINESS_GATE.md) with required contract artifacts, trust-boundary invariants, ownership checks, proposed CI checks and documentation-phase exit criteria.
+- Draft PR: https://github.com/Monupatel62/aether-ai-platform/pull/31
+- The document was fetched back from GitHub after creation. No CI run, application build, or runtime test is claimed.
+- Continue by reconciling the dependency matrix with all repository-level contracts and converting stable interfaces into versioned machine-readable schemas after the relevant ADRs are accepted.
